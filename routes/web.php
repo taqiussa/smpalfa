@@ -19,6 +19,7 @@ use App\Http\Livewire\Admin\Rapor\SetPenilaianRapor;
 use App\Http\Livewire\Admin\Rapor\TanggalRapor as RaporTanggalRapor;
 use App\Http\Livewire\Admin\Rapor\UploadKdRapor;
 use App\Http\Livewire\Admin\Role\TableRole;
+use App\Http\Livewire\Admin\Skor\DataSkor;
 use App\Http\Livewire\Admin\User\SetRole;
 use App\Http\Livewire\Admin\User\TableUser;
 use App\Http\Livewire\Guru\Absensi\AbsensiSiswa as AbsensiAbsensiSiswa;
@@ -86,6 +87,9 @@ Route::middleware(['auth'])->group(function () {
         //Menu Role
         Route::get('admin/role/table-role', TableRole::class)->name('admin.role.table-role');
     
+        //Menu Skor
+        Route::get('admin/skor/data-skor', DataSkor::class)->name('admin.skor.data-skor');
+        
         //Menu User
         Route::get('admin/user/table-user', TableUser::class)->name('admin.user.table-user');
         Route::get('admin/user/set-role', SetRole::class)->name('admin.user.set-role');

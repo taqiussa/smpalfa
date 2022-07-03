@@ -10,11 +10,12 @@ class Kd extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function scopeJoins($query)
+    public function scopeJoins($query, $tahun)
     {
         return $query->join('mata_pelajarans', 'mata_pelajarans.id', '=', 'kds.mata_pelajaran_id')
                     ->join('kategori_nilais', 'kategori_nilais.id', '=', 'kds.kategori_nilai_id')
                     ->join('jenis_penilaians', 'jenis_penilaians.id', '=', 'kds.jenis_penilaian_id')
+                    ->where('kds.tahun', $tahun)
                     ->select(
                         'kds.id as id',
                         'mata_pelajarans.nama as nama_mata_pelajaran',

@@ -15,6 +15,7 @@ class Kd extends Component
     //model
     public $id_kd;
     public $tahun;
+    public $tahuntable;
     public $tingkat;
     public $semester;
     public $mata_pelajaran;
@@ -47,7 +48,7 @@ class Kd extends Component
         return view(
             'livewire.admin.rapor.kd',
             [
-                'list_kd' => ModelsKd::joins()->paginate(4)
+                'list_kd' => ModelsKd::joins($this->tahuntable)->paginate(4)
             ]
         );
     }
@@ -61,8 +62,10 @@ class Kd extends Component
         $bulanIni = gmdate('m');
         if ($bulanIni <= 6) {
             $this->tahun = (intval($tahunIni) - 1) . ' / ' . intval($tahunIni);
+            $this->tahuntable = (intval($tahunIni) - 1) . ' / ' . intval($tahunIni);
         } else {
             $this->tahun = intval($tahunIni) . ' / ' . (intval($tahunIni) + 1);
+            $this->tahuntable = intval($tahunIni) . ' / ' . (intval($tahunIni) + 1);
         }
     }
 

@@ -69,8 +69,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="kategori_nilai" class="form-label">Kategori Penilaian</label>
-                                <select wire:model.defer="kategori_nilai" id="kategori_nilai"
-                                    class="form-select">
+                                <select wire:model.defer="kategori_nilai" id="kategori_nilai" class="form-select">
                                     <option value="">Pilih Kategori</option>
                                     @foreach ($list_kategori_nilai as $kategori)
                                         <option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
@@ -115,6 +114,27 @@
             </div>
         </div>
     @endif
+
+    <div class="row my-2">
+        <div class="col-md-3">
+            <div class="card shadow rounded-md border-top-0 border-end-0 border-bottom-0 border-3 border-primary">
+                <div class="card-body">
+                    <label for="tahuntable" class="form-label">Tahun Ajaran</label>
+                    <select wire:model="tahuntable" id="tahuntable" class="form-select">
+                        <option value="">Pilih Tahun</option>
+                        @for ($i = 2017; $i < gmdate('Y'); $i++)
+                            <option value="{{ $i + 1 . ' / ' . ($i + 2) }}">
+                                {{ $i + 1 . ' / ' . ($i + 2) }}</option>
+                        @endfor
+                    </select>
+                    @error('tahuntable')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row my-2">
         <div class="col-md-12">
             <div class="card shadow rounded-md border-top-0 border-end-0 border-bottom-0 border-3 border-primary">
@@ -136,20 +156,24 @@
                             </thead>
                             <tbody>
                                 @foreach ($list_kd as $key => $kd)
-                                <tr>
-                                    <td class=" text-nowrap">{{ $list_kd->firstItem() + $key }}</td>
-                                    <td class=" text-nowrap">{{ $kd->tahun }}</td>
-                                    <td class=" text-nowrap">{{ $kd->semester }}</td>
-                                    <td class=" text-nowrap">{{ $kd->tingkat }}</td>
-                                    <td class=" text-nowrap">{{ $kd->nama_mata_pelajaran }}</td>
-                                    <td class=" text-nowrap">{{ $kd->nama_kategori_nilai }}</td>
-                                    <td class=" text-nowrap">{{ $kd->nama_jenis_penilaian }}</td>
-                                    <td >{{ $kd->deskripsi }}</td>
-                                    <td class=" text-nowrap">
-                                        <a wire:click.prevent="confirm({{ $kd->id }})" class="badge text-danger mx-2 my-2" role="button"><i class="fas fa-trash-alt"></i></a>
-                                        <a wire:click.prevent="edit({{ $kd->id }})" class="badge text-primary mx-2 my-2" role="button"><i class="fas fa-edit"></i></a>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class=" text-nowrap">{{ $list_kd->firstItem() + $key }}</td>
+                                        <td class=" text-nowrap">{{ $kd->tahun }}</td>
+                                        <td class=" text-nowrap">{{ $kd->semester }}</td>
+                                        <td class=" text-nowrap">{{ $kd->tingkat }}</td>
+                                        <td class=" text-nowrap">{{ $kd->nama_mata_pelajaran }}</td>
+                                        <td class=" text-nowrap">{{ $kd->nama_kategori_nilai }}</td>
+                                        <td class=" text-nowrap">{{ $kd->nama_jenis_penilaian }}</td>
+                                        <td>{{ $kd->deskripsi }}</td>
+                                        <td class=" text-nowrap">
+                                            <a wire:click.prevent="confirm({{ $kd->id }})"
+                                                class="badge text-danger mx-2 my-2" role="button"><i
+                                                    class="fas fa-trash-alt"></i></a>
+                                            <a wire:click.prevent="edit({{ $kd->id }})"
+                                                class="badge text-primary mx-2 my-2" role="button"><i
+                                                    class="fas fa-edit"></i></a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>

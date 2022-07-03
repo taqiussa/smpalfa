@@ -31,7 +31,7 @@
                             <li class="d-flex justify-content-center">
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
-                                    <button class="px-1" type="submit"> <i class="lni lni-exit"></i> Sign
+                                    <button class="px-1" type="submit"> <i class="lni lni-exit"></i> Log
                                         Out </button>
                                 </form>
                             </li>

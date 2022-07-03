@@ -21,6 +21,9 @@ window.addEventListener('confirm', event => {
 });
 
 
+//select2
+window.jQuery = window.$ = require('jquery');
+require('select2');
 
 //turbolinks
 var Turbolinks = require("turbolinks")

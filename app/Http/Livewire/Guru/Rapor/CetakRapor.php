@@ -15,6 +15,7 @@ use App\Models\PenilaianEkstrakurikuler;
 use App\Models\PenilaianRapor;
 use App\Models\PenilaianSikap;
 use App\Models\Prestasi;
+use App\Models\TanggalRapor;
 use App\Models\WaliKelas;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +30,7 @@ class CetakRapor extends Component
     public $nama;
     public $informasi;
     public $kelas_wali;
-
+    
     //array
     public $list_kelas = [];
     public $list_siswa = [];
@@ -133,9 +134,63 @@ class CetakRapor extends Component
                 ->where('semester', $this->semester)
                 ->where('nis', $nis)
                 ->get(),
+            'tanggal_rapor' => TanggalRapor::where('tahun', $this->tahun)
+                ->where('semester', $this->semester)
+                ->value('tanggal'),
+            'wali_kelas' => WaliKelas::where('user_id', auth()->user()->id)
+                ->where('tahun', $this->tahun)
+                ->join('users', 'users.id', '=', 'kelas_wali_kelas.user_id')
+                ->value('users.name'),
             'kepala_sekolah' => User::role('Kepala Sekolah')->get(),
         ];
-        $pdf = Pdf::loadView('rapor.pdf', $data)->setPaper(array(0, 0, 595.276, 907.087))->download();
+        $pdf = Pdf::loadView('rapor.pdf', $data)->setPaper(array(0, 0, 595.276, 935.433))->download();
+        return response()->streamDownload(
+            fn () => print($pdf),
+            $this->nama . '.pdf'
+        );
+    }
+    public function downloadv($nis)
+    {
+        $this->validate();
+        $this->nama = User::where('nis', $nis)->first()->name;
+        $kelas = Kelas::find($this->kelas);
+        $data = [
+            'kelas_id' => $this->kelas,
+            'nama_kelas' => $kelas->nama,
+            'tingkat' => $kelas->tingkat,
+            'nama_siswa' => $this->nama,
+            'nis' => $nis,
+            'nisn' => Biodata::where('nis', $nis)->first()->nisn,
+            'tahun' => $this->tahun,
+            'semester' => $this->semester,
+            'spiritual' => $this->get_sikap($nis, 1),
+            'sosial' => $this->get_sikap($nis, 2),
+            'kelompok_a' => $this->get_nilai($nis, $kelas->tingkat, 3, 'A'),
+            'kelompok_b' => $this->get_nilai($nis, $kelas->tingkat, 3, 'B'),
+            'kelompok_c' => $this->get_nilai($nis, $kelas->tingkat, 3, 'C'),
+            'kelompok_a2' => $this->get_nilai($nis, $kelas->tingkat, 4, 'A'),
+            'kelompok_b2' => $this->get_nilai($nis, $kelas->tingkat, 4, 'B'),
+            'kelompok_c2' => $this->get_nilai($nis, $kelas->tingkat, 4, 'C'),
+            'nilai_ekstra' => PenilaianEkstrakurikuler::with('ekstra')
+                ->where('tahun', $this->tahun)
+                ->where('semester', $this->semester)
+                ->where('nis', $nis)
+                ->get(),
+            'sakit' => $this->get_kehadiran($nis, 2),
+            'izin' => $this->get_kehadiran($nis, 3),
+            'alpha' => $this->get_kehadiran($nis, 4),
+            'list_prestasi' => Prestasi::where('tahun', $this->tahun)
+                ->where('semester', $this->semester)
+                ->where('nis', $nis)
+                ->get(),
+            'list_catatan' => Catatan::where('tahun', $this->tahun)
+                ->where('semester', $this->semester)
+                ->where('nis', $nis)
+                ->get(),
+            'wali_kelas' => $this->wali_kelas,
+            'kepala_sekolah' => User::role('Kepala Sekolah')->get(),
+        ];
+        $pdf = Pdf::loadView('rapor.pdfv', $data)->setPaper(array(0, 0, 595.276, 935.433))->download();
         return response()->streamDownload(
             fn () => print($pdf),
             $this->nama . '.pdf'
@@ -145,33 +200,30 @@ class CetakRapor extends Component
     private function get_sikap($nis, $kategori)
     {
         $id_mapel = GuruMapel::where('user_id', auth()->user()->id)
-        ->pluck('mata_pelajaran_id');
+            ->pluck('mata_pelajaran_id');
         $sikap_mapel = PenilaianSikap::where('tahun', $this->tahun)
-        ->where('semester', $this->semester)
-        ->where('kategori_sikap_id', $kategori)
-        ->where('nis', $nis)
-        ->select(
-            DB::raw('round(avg(nilai)) as nilai')
-        )
-        ->value('nilai');
+            ->where('semester', $this->semester)
+            ->where('kategori_sikap_id', $kategori)
+            ->where('nis', $nis)
+            ->select(
+                DB::raw('round(avg(nilai)) as nilai')
+            )
+            ->value('nilai');
         $sikap_wali =  PenilaianSikap::where('tahun', $this->tahun)
-        ->where('semester', $this->semester)
-        ->where('kategori_sikap_id', $kategori)
-        ->where('nis', $nis)
-        ->whereIn('mata_pelajaran_id', $id_mapel)
-        ->select(
-            DB::raw('round(avg(nilai)) as nilai')
-        )
-        ->value('nilai');
+            ->where('semester', $this->semester)
+            ->where('kategori_sikap_id', $kategori)
+            ->where('nis', $nis)
+            ->whereIn('mata_pelajaran_id', $id_mapel)
+            ->select(
+                DB::raw('round(avg(nilai)) as nilai')
+            )
+            ->value('nilai');
         $hasil = (intval($sikap_mapel) + intval($sikap_wali)) / 2;
-        if ($hasil > 90 )
-        {
+        if ($hasil > 90) {
             $predikat = 'Sangat Baik';
-        } elseif ($hasil > 80)
-        {
+        } elseif ($hasil > 80) {
             $predikat = 'Baik';
-        } elseif ($hasil > 70)
-        {
+        } elseif ($hasil > 70) {
             $predikat = 'Cukup';
         } else {
             $predikat = 'Kurang';

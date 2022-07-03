@@ -10,6 +10,10 @@
         body {
             font-family: 'Times New Roman', Times, serif !important;
             font-size: 12pt;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            margin-left: 10px;
+            margin-right: 10px;
         }
 
         .table {
@@ -51,7 +55,7 @@
 
         div.footer {
             position: fixed;
-            bottom: -5px;
+            bottom: 0px;
         }
 
         /* @media screen {
@@ -67,35 +71,38 @@
             }
         } */
         @page {
-            margin: 1px;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            margin-left: 10px;
+            margin-right: 10px;
         }
     </style>
 </head>
 
 <body>
     <div class="footer">
-        {{ $nama_siswa }}
+        {{ $nama_siswa }} | {{ $nis }} | Kelas : {{ $nama_kelas }} | {{ $tahun }}
     </div>
     <div style="text-align: center">
         <h4>PENCAPAIAN KOMPETENSI AKADEMIK PESERTA DIDIK</h4>
         <h4>TAHUN PELAJARAN {{ $tahun }}</h4>
     </div>
     <hr>
-    <table>
+    <table style="text-align:justify">
         <tbody>
             <tr>
                 <td width="20%">Nama Sekolah</td>
                 <td width="1%">:</td>
                 <td width="39%">SMP Al Musyaffa Kendal</td>
-                <td width="20%">Kelas</td>
+                <td style="padding-left: 100px" width="15%">Kelas</td>
                 <td width="1%">:</td>
-                <td width="19%">{{ $nama_kelas }}</td>
+                <td width="10%">{{ $nama_kelas }}</td>
             </tr>
             <tr>
                 <td>Alamat</td>
                 <td>:</td>
                 <td>Jl. Kampir Sudipayung, Kec. Ngampel, Kab. Kendal</td>
-                <td>Semester</td>
+                <td style="padding-left: 100px">Semester</td>
                 <td>:</td>
                 <td>{{ $semester }}</td>
             </tr>
@@ -103,7 +110,7 @@
                 <td>Nama Siswa</td>
                 <td>:</td>
                 <td>{{ $nama_siswa }}</td>
-                <td>Tahun Pelajaran</td>
+                <td style="padding-left: 100px">Tahun Pelajaran</td>
                 <td>:</td>
                 <td>{{ $tahun }}</td>
             </tr>
@@ -132,7 +139,8 @@
                 <td width="3%"></td>
                 <td width="7%" style="border: solid 1px #000; padding: 10px">{{ $spiritual }}</td>
                 <td width="90%" style="border: solid 1px #000; padding: 10px">
-                    Terbiasa berdoa sebelum dan sesudah melakukan kegiatan, memelihara hubungan baik dengan sesama umat Ciptaan Tuhan Yang Maha Esa, dan bersyukur kepada Tuhan Yang Maha Esa sebagai bangsa Indonesia 
+                    Terbiasa berdoa sebelum dan sesudah melakukan kegiatan, memelihara hubungan baik dengan sesama umat
+                    Ciptaan Tuhan Yang Maha Esa, dan bersyukur kepada Tuhan Yang Maha Esa sebagai bangsa Indonesia
                 </td>
             </tr>
             <tr>
@@ -150,7 +158,8 @@
                 <td width="3%"></td>
                 <td width="7%" style="border: solid 1px #000; padding: 10px">{{ $sosial }}</td>
                 <td width="90%" style="border: solid 1px #000; padding: 10px">
-                    Terbiasa melaksanakan sikap jujur, disiplin, tanggung jawab, santun, percaya diri, peduli, dan toleransi 
+                    Terbiasa melaksanakan sikap jujur, disiplin, tanggung jawab, santun, percaya diri, peduli, dan
+                    toleransi
             </tr>
         </tbody>
     </table>
@@ -480,7 +489,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($nilai_ekstra as $ekstra)
+            @forelse ($nilai_ekstra as $ekstra)
                 <tr>
                     <td class="ctr">{{ $loop->iteration }}</td>
                     <td>{{ $ekstra->ekstra->nama }}</td>
@@ -497,7 +506,14 @@
                         @endif
                     </td>
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
     <br>
@@ -530,25 +546,37 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($list_prestasi as $prestasi)
+            @forelse ($list_prestasi as $prestasi)
                 <tr>
                     <td width="5%" style="text-align: center">{{ $loop->iteration }}</td>
                     <td width="40%">{{ $prestasi->prestasi }}</th>
                     <td width="55%">{{ $prestasi->keterangan }}</td>
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td width="5%" style="text-align: center">-</td>
+                    <td width="40%">-</th>
+                    <td width="55%">-</td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
     <br>
     <b>G. CATATAN WALIKELAS</b>
     <table class="table">
-        @foreach ($list_catatan as $catatan)
+        @forelse ($list_catatan as $catatan)
             <tr>
                 <td colspan="6" style="border:#000 1px solid">
                     {{ $catatan->catatan }}
                 </td>
             </tr>
-        @endforeach
+        @empty
+            <tr>
+                <td colspan="6" style="border:#000 1px solid">
+                    -
+                </td>
+            </tr>
+        @endforelse
     </table>
     <br>
     <b>H. TANGGAPAN ORANGTUA/WALI</b>
@@ -573,39 +601,48 @@
             Tinggal Kelas <br>
             *) Coret yang tidak perlu</p>
     @endif
-    <table width="100%">
+    <br>
+    <br>
+    <table style="padding-left: 65px;text-align:center" width="100%">
         <tr>
-            <td width="5%"></td>
-            <td width="20%">
-                Mengetahui : <br><br>
-                Orang Tua/Wali, <br>
-                <br><br><br><br>
-                <u>..........................</u>
+            <td style="text-align:center">Mengetahui</td>
+            <td colspan="3"></td>
+            <td style="text-align:center">
+                Ngampel, {{ Carbon\Carbon::parse($tanggal_rapor)->translatedFormat('d F Y') }}
             </td>
-            <td width="15%"></td>
-            <td width="25%">
-                <br>
-                <br>
-                Wali Kelas <br>
-                <br><br><br><br>
-                <u><b>Wali Kelas</b></u><br>
-                NIP. -
-            </td>
-            <td width="5%"></td>
-            <td width="30%">
-                Ngampel, 20 Juni 2022 <br><br>
-                Kepala SMP Al Musyaffa <br>
-                <br><br><br><br>
-                <u><b>
+        </tr>
+        <tr>
+            <td style="text-align:center">Orang Tua/Wali</td>
+            <td></td>
+            <td style="text-align:center">Wali Kelas</td>
+            <td></td>
+            <td style="text-align:center">Kepala SMP Al Musyaffa'</td>
+        </tr>
+        <tr>
+            <td colspan="5">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="5">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="5">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="5">&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="text-align:center"><u><b>..........................</b></u></td>
+            <td></td>
+            <td style="text-align:center"><u><b>{{ $wali_kelas }}</b></u></td>
+            <td></td>
+            <td style="text-align:center"><u><b>
                         @foreach ($kepala_sekolah as $kasek)
                             {{ $kasek->name }}
                         @endforeach
-                    </b></u><br>
-                NIP. -
-            </td>
+                        <br>
+                    </b></td>
         </tr>
     </table>
-
 </body>
 
 </html>

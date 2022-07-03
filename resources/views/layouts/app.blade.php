@@ -73,6 +73,7 @@
     <!-- Scripts -->
     <script src="{{ mix('js/main.js') }}" defer></script>
     <script src="{{ mix('js/notyf.js') }}" defer></script>
+    @stack('scripts')
 </body>
 
 </html>
