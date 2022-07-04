@@ -17,3 +17,7 @@ yang perlu di rubah
 Vendor/spatie/laravel-permission/src/Models/Role.php
 3. config/app.php
 timezone, locale, faker_local id_ID
+
+4. ABSENSI EKSTRA
+5. Karakter Siswa / Keterangan di Bimbingan
+6. Input Skor X jumlah = Kasir

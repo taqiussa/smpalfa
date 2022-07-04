@@ -43,7 +43,39 @@
                 <a href="{{ route('konseling.layanan.rekap-bimbingan') }}"
                     class="{{ Request::routeIs('konseling.layanan.rekap-bimbingan') ? 'active' : '' }}">Rekap Bimbingan</a>
             </li>
-
+        </ul>
+    </li>
+    <li class="nav-item nav-item-has-children">
+        <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#konseling_skor"
+            aria-controls="konseling_skor" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon">
+                <svg style="width:22px;height:22px" viewBox="0 0 22 22">
+                    <path fill="currentColor" d="M17 14V17H14V19H17V22H19V19H22V17H19V14M20 11V12.3C19.4 12.1 18.7 12 18 12C16.8 12 15.6 12.4 14.7 13H7V11H20M12.1 17H7V15H12.8C12.5 15.6 12.2 16.3 12.1 17M7 7H20V9H7V7M5 19H7V21H3V3H7V5H5V19Z" />
+                </svg>
+            </span>
+            <span class="text">Skor</span>
+        </a>
+        <ul id="konseling_skor" class="{{ Request::routeIs('konseling.skor.*') ? '' : 'collapse' }} dropdown-nav">
+            <li>
+                <a href="{{ route('konseling.skor.input-skor') }}"
+                    class="{{ Request::routeIs('konseling.skor.input-skor') ? 'active' : '' }}">Input Skor</a>
+            </li>
+            <li>
+                <a href="{{ route('konseling.skor.pencarian') }}"
+                    class="{{ Request::routeIs('konseling.skor.pencarian') ? 'active' : '' }}">Pencarian</a>
+            </li>
+            <li>
+                <a href="{{ route('konseling.skor.rekap-skor') }}"
+                    class="{{ Request::routeIs('konseling.skor.rekap-skor') ? 'active' : '' }}">Rekap Skor</a>
+            </li>
+            <li>
+                <a href="{{ route('konseling.skor.rekap-skor-print') }}"
+                    class="{{ Request::routeIs('konseling.skor.rekap-skor-print') ? 'active' : '' }}">Rekap Skor Print</a>
+            </li>
+            <li>
+                <a href="{{ route('konseling.skor.saldo-skor') }}"
+                    class="{{ Request::routeIs('konseling.skor.saldo-skor') ? 'active' : '' }}">Saldo Skor</a>
+            </li>
         </ul>
     </li>
     <span class="divider">

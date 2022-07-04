@@ -6,10 +6,13 @@ use App\Models\Catatan;
 use App\Models\Kelas;
 use App\Models\Siswa;
 use App\Models\WaliKelas;
+use App\Traits\GetData;
 use Livewire\Component;
 
 class InputCatatan extends Component
 {
+    use GetData;
+
     //model
     public $tahun;
     public $semester;
@@ -43,7 +46,7 @@ class InputCatatan extends Component
     public function render()
     {
         $this->list_kelas = Kelas::get();
-        $this->get_wali();
+        $this->get_wali_kelas();
         $this->get_catatan();
         $this->get_siswa();
         return view('livewire.guru.wali-kelas.input-catatan');
@@ -60,14 +63,14 @@ class InputCatatan extends Component
             $this->tahun = intval($tahunIni) . ' / ' . (intval($tahunIni) + 1);
             $this->semester = 1;
         }
-        $this->get_wali();
+        $this->get_wali_kelas();
         $this->get_siswa();
     }
     public function updated($property)
     {
         $this->resetErrorBag();
         $this->list_kelas = Kelas::get();
-        $this->get_wali();
+        $this->get_wali_kelas();
         $this->get_catatan();
         $this->get_siswa();
     }
@@ -156,17 +159,8 @@ class InputCatatan extends Component
     private function get_siswa()
     {
         if ($this->is_edit) {
-            $this->list_siswa = Siswa::join('users', 'siswas.nis', '=', 'users.nis')
-                ->where('siswas.kelas_id', $this->kelas)
-                ->where('siswas.tahun', $this->tahun)
-                ->select(
-                    'users.name as name',
-                    'siswas.nis as nis',
-                )
-                ->orderBy('users.name')
-                ->get();
+            $this->get_list_siswa();
         } else {
-
             $this->list_siswa = Siswa::join('users', 'siswas.nis', '=', 'users.nis')
                 ->where('siswas.kelas_id', $this->kelas)
                 ->where('siswas.tahun', $this->tahun)
@@ -177,22 +171,6 @@ class InputCatatan extends Component
                 )
                 ->orderBy('users.name')
                 ->get();
-        }
-    }
-    private function get_wali()
-    {
-        $this->kelas_wali = WaliKelas::where('tahun', $this->tahun)
-            ->where('user_id', auth()->user()->id)
-            ->first();
-        if (blank($this->kelas_wali)) {
-            $this->informasi = 'Anda Bukan Wali Kelas pada tahun ' . $this->tahun;
-            $this->kelas = '';
-            $this->siswa = '';
-            $this->list_siswa = [];
-            $this->list_kelas = [];
-        } else {
-            $this->informasi = '';
-            $this->kelas = $this->kelas_wali->kelas_id;
         }
     }
     private function get_catatan()

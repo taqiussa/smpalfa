@@ -8,9 +8,12 @@ use App\Models\Siswa;
 use Livewire\Component;
 use App\Models\Kehadiran;
 use App\Models\User;
+use App\Traits\GetData;
 
 class AbsensiBk extends Component
 {
+    use GetData;
+
     //model
     public $tanggal;
     public $jam;
@@ -78,11 +81,7 @@ class AbsensiBk extends Component
         $cari_siswa = Siswa::where('kelas_id', $this->kelas)
             ->where('tahun', $this->tahun)
             ->get();
-        $cari_absensi = Absensi::where('tanggal', $this->tanggal)
-            ->where('jam', $this->jam)
-            ->where('kelas_id', $this->kelas)
-            ->where('tahun', $this->tahun)
-            ->get();
+        $cari_absensi = $this->cek_absen();
 
         //Jika Belum di absensi, membuat list absen baru dengan kehadiran : hadir
         if (blank($cari_absensi)) {
@@ -144,14 +143,7 @@ class AbsensiBk extends Component
     }
     public function mount()
     {
-        $bulan = gmdate('m');
-        $tahun = gmdate('Y');
-        //make tahun ajaran based on month
-        if ($bulan < 7) {
-            $this->tahun = ($tahun - 1) . ' / ' . ($tahun);
-        } else {
-            $this->tahun = $tahun . ' / ' . ($tahun + 1);
-        }
+        $this->get_tahun();
         $this->tanggal = gmdate('Y-m-d');
         $this->list_kelas = Kelas::orderBy('nama')->get();
         $this->list_kehadiran = Kehadiran::skip(1)->take(5)->orderBy('id')->get();
@@ -165,31 +157,10 @@ class AbsensiBk extends Component
     public function updated($property)
     {
         $this->get_semester();
-        $this->get_list_siswa();
-    }
-    private function get_list_siswa()
-    {
         if (empty($this->tanggal) || empty($this->jam) || empty($this->kelas) || empty($this->tahun)) {
             $this->list_siswa = [];
         } else {
-            $this->list_siswa = Siswa::join('users', 'siswas.nis', '=', 'users.nis')
-                ->where('siswas.kelas_id', $this->kelas)
-                ->where('siswas.tahun', $this->tahun)
-                ->select(
-                    'users.name as name',
-                    'siswas.nis as nis',
-                )
-                ->orderBy('users.name')
-                ->get();
-        }
-    }
-    private function get_semester()
-    {
-        $bulan = gmdate('m');
-        if ($bulan < 7) {
-            $this->semester = 2;
-        } else {
-            $this->semester = 1;
+            $this->get_list_siswa();
         }
     }
 }

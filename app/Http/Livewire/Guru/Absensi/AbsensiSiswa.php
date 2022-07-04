@@ -7,9 +7,12 @@ use App\Models\Siswa;
 use App\Models\Absensi;
 use Livewire\Component;
 use App\Models\Kehadiran;
+use App\Traits\GetData;
 
 class AbsensiSiswa extends Component
 {
+    use GetData;
+
     // wire model
     public $tanggal;
     public $kelas;
@@ -105,13 +108,7 @@ class AbsensiSiswa extends Component
         $this->get_semester();
         $this->tanggal = gmdate('Y-m-d');
         $this->list_kelas = Kelas::get();
-        $tahunIni = gmdate('Y');
-        $bulanIni = gmdate('m');
-        if ($bulanIni <= 6) {
-            $this->tahun = (intval($tahunIni) - 1) . ' / ' . intval($tahunIni);
-        } else {
-            $this->tahun = intval($tahunIni) . ' / ' . (intval($tahunIni) + 1);
-        }
+        $this->get_tahun();
         $this->list_kehadiran = Kehadiran::get();
     }
     public function hydrate()
@@ -139,38 +136,13 @@ class AbsensiSiswa extends Component
         $this->get_semester();
         $this->get_list_kehadiran();
     }
-    private function get_list_siswa()
-    {
-        $this->list_siswa = Siswa::join('users', 'siswas.nis', '=', 'users.nis')
-            ->where('siswas.kelas_id', $this->kelas)
-            ->where('siswas.tahun', $this->tahun)
-            ->select(
-                'users.name as name',
-                'siswas.nis as nis',
-            )
-            ->orderBy('users.name')
-            ->get();
-    }
     private function get_list_kehadiran()
     {
         $this->resetErrorBag();
         if (!empty($this->tanggal) && !empty($this->jam) && !empty($this->kelas) && !empty($this->tahun)) {
             $this->list_siswa = [];
             $this->get_list_siswa();
-            $data_absensi = Absensi::join('users', 'absensis.nis', '=', 'users.nis')
-                ->where('tanggal', $this->tanggal)
-                ->where('jam', $this->jam)
-                ->where('kelas_id', $this->kelas)
-                ->where('tahun', $this->tahun)
-                ->select(
-                    'users.name as name',
-                    'absensis.id as id',
-                    'absensis.jam as jam',
-                    'absensis.kehadiran_id as kehadiran_id',
-                )
-                ->orderBy('users.name')
-                ->get();
-
+            $data_absensi = $this->data_absensi();
             if (blank($data_absensi)) {
                 foreach ($this->list_siswa as $key => $siswa) {
                     $this->kehadiran[$key] = [
@@ -187,15 +159,6 @@ class AbsensiSiswa extends Component
         }
         if (empty($this->tanggal) || empty($this->jam) || empty($this->kelas) || empty($this->tahun)) {
             $this->list_siswa = [];
-        }
-    }
-    private function get_semester()
-    {
-        $bulanIni = gmdate('m');
-        if ($bulanIni <= 6) {
-            $this->semester = 2;
-        } else {
-            $this->semester = 1;
         }
     }
 }

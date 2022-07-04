@@ -2,9 +2,8 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Konseling\Layanan\DetailBimbinganController;
-use App\Http\Controllers\PdfController;
 use App\Http\Controllers\PrintRaporController;
-use App\Http\Livewire\Admin\Dashboard;
+use App\Http\Controllers\RekapSkorPrintController;
 use App\Http\Livewire\Admin\Kelas\WaliKelas;
 use App\Http\Livewire\Admin\Kurikulum\MataPelajaran;
 use App\Http\Livewire\Admin\Kurikulum\TableKurikulum;
@@ -29,13 +28,19 @@ use App\Http\Livewire\Guru\Penilaian\InputNilaiSikap;
 use App\Http\Livewire\Guru\Penilaian\InputPrestasi;
 use App\Http\Livewire\Guru\Penilaian\UploadNilai;
 use App\Http\Livewire\Guru\Rapor\CetakRapor;
+use App\Http\Livewire\Guru\Skor\InputSkor;
+use App\Http\Livewire\Guru\Skor\SaldoSkor;
 use App\Http\Livewire\Guru\WaliKelas\InputCatatan;
+use App\Http\Livewire\Guru\WaliKelas\InputSkor as WaliKelasInputSkor;
 use App\Http\Livewire\Konseling\Absensi\AbsensiBk;
 use App\Http\Livewire\Konseling\Absensi\AbsensiSiswa;
 use App\Http\Livewire\Konseling\Absensi\ListKehadiran;
 use App\Http\Livewire\Konseling\Absensi\RekapKehadiran;
 use App\Http\Livewire\Konseling\Layanan\Bimbingan;
 use App\Http\Livewire\Konseling\Layanan\RekapBimbingan;
+use App\Http\Livewire\Konseling\Skor\PencarianSkor;
+use App\Http\Livewire\Konseling\Skor\RekapSkor;
+use App\Http\Livewire\Konseling\Skor\RekapSkorPrint;
 use App\Http\Livewire\Sarpras\Inventaris\DataInventaris;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -120,8 +125,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('guru/rapor/rapor-print', [PrintRaporController::class, 'index'])->name('guru.rapor.rapor-print');
         Route::get('guru/rapor/rapor-print-v', [PrintRaporController::class, 'indexv'])->name('guru.rapor.rapor-print-v');
 
+        //Menu Skor
+        Route::get('guru/skor/input-skor', InputSkor::class)->name('guru.skor.input-skor');
+        Route::get('guru/skor/saldo-skor', SaldoSkor::class)->name('guru.skor.saldo-skor');
+
         //Menu Wali Kelas
         Route::get('guru/wali-kelas/input-catatan', InputCatatan::class)->name('guru.wali-kelas.input-catatan');
+        Route::get('guru/wali-kelas/input-skor', WaliKelasInputSkor::class)->name('guru.wali-kelas.input-skor');
     });
 
     // Route For Konseling
@@ -137,12 +147,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('konseling/layanan/rekap-bimbingan', RekapBimbingan::class)->name('konseling.layanan.rekap-bimbingan');
         Route::get('konseling/layanan/detail-bimbingan/{bk_detail}', [DetailBimbinganController::class, 'show'])->name('konseling.layanan.detail-bimbingan');
 
-        Route::get('/admin/dashboard', Dashboard::class)->name('admin.dashboard');
-        Route::get('/admin/home', function () {
-            sleep(2);
-            return view('admin/home');
-        })->name('admin.home');
-        
+        //Menu Skor
+        Route::get('konseling/skor/input-skor', InputSkor::class)->name('konseling.skor.input-skor');
+        Route::get('konseling/skor/pencarian', PencarianSkor::class)->name('konseling.skor.pencarian');
+        Route::get('konseling/skor/rekap-skor', RekapSkor::class)->name('konseling.skor.rekap-skor');
+        Route::get('konseling/skor/rekap-skor-print', RekapSkorPrint::class)->name('konseling.skor.rekap-skor-print');
+        Route::get('konseling/skor/rekap-skor-perkelas', [RekapSkorPrintController::class, 'perkelas'])->name('konseling.skor.rekap-skor-perkelas');
+        Route::get('konseling/skor/rekap-skor-persiswa', [RekapSkorPrintController::class, 'persiswa'])->name('konseling.skor.rekap-skor-persiswa');
+        Route::get('konseling/skor/saldo-skor', SaldoSkor::class)->name('konseling.skor.saldo-skor');
     });
 
     //Route For Sarpras
