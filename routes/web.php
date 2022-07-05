@@ -70,8 +70,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('landing');
+})->name('landing');
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
