@@ -31,6 +31,7 @@
                         <div class="col-md-3">
                             <label for="mata_pelajaran" class="form-label">Mata Pelajaran</label>
                             <select wire:model="mata_pelajaran" id="mata_pelajaran" class="form-select">
+                                <option value="">Pilih Mata Pelajaran</option>
                                 @foreach ($list_mata_pelajaran as $mata_pelajaran)
                                     <option value="{{ $mata_pelajaran->id }}">{{ $mata_pelajaran->nama }}</option>
                                 @endforeach
