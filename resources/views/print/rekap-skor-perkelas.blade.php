@@ -37,6 +37,11 @@
         </div>
         <table align="center">
             <thead>
+                @php
+                    $total_Skor = App\Models\PenilaianSkor::where('nis', $siswa->nis)
+                        ->where('tahun', $tahun)
+                        ->sum('skor');
+                @endphp
                 <tr>
                     <td>Nama</td>
                     <td width="1%">:</td>
@@ -47,6 +52,17 @@
                     <td>Tahun</td>
                     <td width="1%">:</td>
                     <td>{{ $tahun }}</td>
+                    <td>Total Skor</td>
+                    <td width="1%">:</td>
+                    <td>
+                        @php
+                            $hitung_skor = App\Models\PenilaianSkor::where('nis', $siswa->nis)
+                                ->where('tahun', $tahun)
+                                ->sum('skor');
+                            $total_skor = 500 + $hitung_skor;
+                        @endphp
+                        {{ $total_skor }}
+                    </td>
                 </tr>
                 {{-- <tr>
                     <td>Tahun</td>
@@ -60,9 +76,6 @@
         </table>
         <table style="width: 100%;border:#000 solid 1px;border-collapse:collapse">
             <thead>
-                @php
-                    
-                @endphp
                 <tr>
                     <th style="border:#000 solid 1px;">#</th>
                     <th style="border:#000 solid 1px;">Tanggal</th>
@@ -73,14 +86,26 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td style="border:#000 solid 1px;padding-left:10px;">1</td>
-                    <td style="border:#000 solid 1px;padding-left:10px;">2 Juli</td>
-                    <td style="border:#000 solid 1px;padding-left:10px;">Siswa</td>
-                    <td style="border:#000 solid 1px;padding-left:10px;">Keterangan</td>
-                    <td style="border:#000 solid 1px;text-align:center;">Nilai Skor</td>
-                    <td style="border:#000 solid 1px;padding-left:10px;">Oleh Guru</td>
-                </tr>
+                @php
+                    $list_skor = App\Models\PenilaianSkor::with('skors')
+                        ->where('penilaian_skors.nis', $siswa->nis)
+                        ->where('penilaian_skors.tahun', $tahun)
+                        ->join('users', 'users.id', '=', 'penilaian_skors.user_id')
+                        ->select('users.name as nama_guru', 'penilaian_skors.tanggal as tanggal', 'penilaian_skors.skor_id as skor_id', 'penilaian_skors.skor as skor')
+                        ->orderBy('penilaian_skors.created_at')
+                        ->get();
+                @endphp
+                @foreach ($list_skor as $skor)
+                    <tr>
+                        <td style="border:#000 solid 1px;padding-left:10px;">{{ $loop->iteration }}</td>
+                        <td style="border:#000 solid 1px;padding-left:10px;">
+                            {{ date('d M Y', strtotime($skor->tanggal)) }}</td>
+                        <td style="border:#000 solid 1px;padding-left:10px;">{{ $siswa->name }}</td>
+                        <td style="border:#000 solid 1px;padding-left:10px;">{{ $skor->skors->keterangan }}</td>
+                        <td style="border:#000 solid 1px;text-align:center;">{{ $skor->skor }}</td>
+                        <td style="border:#000 solid 1px;padding-left:10px;">{{ $skor->nama_guru }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     @endforeach
