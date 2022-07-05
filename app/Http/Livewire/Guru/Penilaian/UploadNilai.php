@@ -109,7 +109,7 @@ class UploadNilai extends Component
             )
             ->get();
         //atur supaya otomatis mengambil id mata pelajaran , supaya tidak null(bug livewire)
-        $this->mata_pelajaran = $this->list_mata_pelajaran[0]->id;
+        // $this->mata_pelajaran = $this->list_mata_pelajaran[0]->id;
     }
     private function get_list_siswa()
     {
