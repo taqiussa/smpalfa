@@ -30,6 +30,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <button class="btn btn-primary" type="submit">{{ __('Login') }}</button>
+                            <a href="{{ route('landing') }}" class="btn btn-secondary" role="button">Batal</a>
                         </div>
                     </div>
                 </form>

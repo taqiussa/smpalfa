@@ -29,7 +29,7 @@
     </style>
     @livewireStyles
 
-        {{-- jQuery  --}}
+    {{-- jQuery  --}}
     <script src="{{ asset('js/select2/jquery-3.6.0.min.js') }}"></script>
     
     {{-- select2 --}}

@@ -30,7 +30,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="{{ asset('images/logoalfa2.png') }}" alt="" width="30" height="30"
+                <img src="{{ asset('images/logoalfa2-min.png') }}" alt="" width="30" height="30"
                     class="d-inline-block align-text-top">
                 SMP AL MUSYAFFA
             </a>
@@ -68,8 +68,8 @@
             </div>
         </div>
     </nav>
-    <header style="background-image:url('images/alfaguru.jpg'); background-repeat:no-repeat;background-attachment:scroll;background-position:center;background-size:cover;padding-top: 10.5rem;
-    padding-bottom: 10.5rem;
+    <header style="background-image:url('images/alfaguru.jpg'); background-repeat:no-repeat;background-attachment:scroll;background-position:center;background-size:cover;padding-top: 14rem;
+    padding-bottom: 14rem;
     text-align: center;">
         <div class="container">
             <h2>SMP AL MUSYAFFA KENDAL</h2>

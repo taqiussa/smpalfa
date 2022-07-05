@@ -72,11 +72,17 @@ class Bimbingan extends Component
                 $this->resetErrorBag();
                 $this->validate();
                 if ($this->foto) {
+                    $this->validate([
+                        'foto' => 'image|max:2048'
+                    ]);
                     $foto = $this->foto->store('foto');
                 } else {
                     $foto = '';
                 }
                 if ($this->foto_dokumen) {
+                    $this->validate([
+                        'foto_dokumen' => 'image|max:2048'
+                    ]);
                     $fotoDokumen = $this->foto_dokumen->store('fotodokumen');
                 } else {
                     $fotoDokumen = '';
