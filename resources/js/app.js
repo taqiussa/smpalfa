@@ -20,6 +20,3 @@ window.addEventListener('confirm', event => {
     });
 });
 
-//turbolinks
-var Turbolinks = require("turbolinks")
-Turbolinks.start()

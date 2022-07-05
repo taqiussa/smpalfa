@@ -2,6 +2,7 @@
     "/js/app.js": "/js/app.js",
     "/js/main.js": "/js/main.js",
     "/js/notyf.js": "/js/notyf.js",
+    "/js/turbolinks.js": "/js/turbolinks.js",
     "/css/app.css": "/css/app.css",
     "/webfonts/fa-brands-400.eot": "/webfonts/fa-brands-400.eot",
     "/webfonts/fa-brands-400.svg": "/webfonts/fa-brands-400.svg",
