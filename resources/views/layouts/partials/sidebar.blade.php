@@ -12,7 +12,10 @@
             @include('layouts.partials.sidebar.sidebar-guru', ['title' => 'Guru'])
         @endrole
         @role('Konseling')
-            @include('layouts.partials.sidebar.sidebar-konseling', ['title' => 'Konseling'])
+        @include('layouts.partials.sidebar.sidebar-konseling', ['title' => 'Konseling'])
+        @endrole
+        @role('Kurikulum')
+            @include('layouts.partials.sidebar.sidebar-kurikulum', ['title' => 'Kurikulum'])
         @endrole
         @role('Sarpras')
             @include('layouts.partials.sidebar.sidebar-sarpras', ['title' => 'Sarpras'])

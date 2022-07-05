@@ -13,7 +13,8 @@ class RekapSkorPrint extends Component
     //model
     public $tahun;
     public $kelas;
-    
+    public $idkelas;
+
     //array
     public $list_kelas = [];
     public $list_siswa = [];
@@ -21,6 +22,8 @@ class RekapSkorPrint extends Component
 
     public function render()
     {
+        $this->list_kelas = Kelas::get();
+        $this->idkelas = $this->kelas;
         return view('livewire.konseling.skor.rekap-skor-print');
     }
 
@@ -29,17 +32,10 @@ class RekapSkorPrint extends Component
         $this->get_tahun();
         $this->list_kelas = Kelas::get();
     }
-
-    public function hydrate()
+    
+    public function updated($property)
     {
-        $this->get_list_siswa();
-    }
-    public function updatedTahun()
-    {
-        $this->get_list_siswa();
-    }
-    public function updatedKelas()
-    {
+        $this->list_kelas = Kelas::get();
         $this->get_list_siswa();
     }
 }

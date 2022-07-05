@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 class RekapSkorPrintController extends Controller
@@ -17,9 +19,19 @@ class RekapSkorPrintController extends Controller
     }
     public function perkelas()
     {
+        $nama_kelas = Kelas::find($this->kelas_id)->nama;
         $data = [
             'tahun' => $this->tahun,
-            'kelas' => $this->kelas_id,
+            'nama_kelas' => $nama_kelas,
+            'list_siswa' => Siswa::join('users', 'siswas.nis', '=', 'users.nis')
+            ->where('siswas.kelas_id', $this->kelas_id)
+            ->where('siswas.tahun', $this->tahun)
+            ->select(
+                'users.name as name',
+                'siswas.nis as nis',
+            )
+            ->orderBy('users.name')
+            ->get(),
         ];
         return view('print.rekap-skor-perkelas', $data);
     }

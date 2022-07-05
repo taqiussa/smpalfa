@@ -34,7 +34,7 @@
                             <a href="{{ route('konseling.skor.rekap-skor-perkelas',
                             [
                                 'tahun' => $tahun,
-                                'kelas_id' => $kelas
+                                'kelas_id' => $idkelas
                             ]) }}" class="btn btn-primary form-control" role="button" target="__blank">Print Kelas <i class="fas fa-file-alt"></i></a>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                                             <a href="{{ route('konseling.skor.rekap-skor-persiswa',
                                             [
                                                 'tahun' => $tahun,
-                                                'kelas_id' => $kelas,
+                                                'kelas_id' => $idkelas,
                                                 'nis' => $siswa->nis
                                             ]) }}"
                                                 class="btn btn-success mx-2 my-2" role="button">Print <i

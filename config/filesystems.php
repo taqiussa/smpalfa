@@ -70,6 +70,9 @@ return [
         public_path('storage') => storage_path('app/public'),
         public_path('storage/foto') => storage_path('app/foto'),
         public_path('storage/fotodokumen') => storage_path('app/fotodokumen'),
+        // public_path('../../public_html/alfa/public/storage') => storage_path('app/public'),
+        // public_path('../../public_html/alfa/public/storage/foto') => storage_path('app/foto'),
+        // public_path('../../public_html/alfa/public/storage/fotodokumen') => storage_path('app/fotodokumen'),
     ],
 
 ];

@@ -41,6 +41,19 @@ use App\Http\Livewire\Konseling\Layanan\RekapBimbingan;
 use App\Http\Livewire\Konseling\Skor\PencarianSkor;
 use App\Http\Livewire\Konseling\Skor\RekapSkor;
 use App\Http\Livewire\Konseling\Skor\RekapSkorPrint;
+use App\Http\Livewire\Kurikulum\Kurikulum\MataPelajaran as KurikulumMataPelajaran;
+use App\Http\Livewire\Kurikulum\Kurikulum\TableKurikulum as KurikulumTableKurikulum;
+use App\Http\Livewire\Kurikulum\MataPelajaran\TableGuru as MataPelajaranTableGuru;
+use App\Http\Livewire\Kurikulum\MataPelajaran\TableMataPelajaran as MataPelajaranTableMataPelajaran;
+use App\Http\Livewire\Kurikulum\Penilaian\Ekstrakurikuler as PenilaianEkstrakurikuler;
+use App\Http\Livewire\Kurikulum\Penilaian\JenisPenilaian as PenilaianJenisPenilaian;
+use App\Http\Livewire\Kurikulum\Penilaian\KategoriPenilaian as PenilaianKategoriPenilaian;
+use App\Http\Livewire\Kurikulum\Rapor\Kd;
+use App\Http\Livewire\Kurikulum\Rapor\RaporKd as RaporRaporKd;
+use App\Http\Livewire\Kurikulum\Rapor\RaporKkm as RaporRaporKkm;
+use App\Http\Livewire\Kurikulum\Rapor\SetPenilaianRapor as RaporSetPenilaianRapor;
+use App\Http\Livewire\Kurikulum\Rapor\TanggalRapor;
+use App\Http\Livewire\Kurikulum\Rapor\UploadKdRapor as RaporUploadKdRapor;
 use App\Http\Livewire\Sarpras\Inventaris\DataInventaris;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -76,7 +89,7 @@ Route::middleware(['auth'])->group(function () {
         //Menu Mata Pelajaran
         Route::get('admin/mata-pelajaran/table-mata-pelajaran', TableMataPelajaran::class)->name('admin.mata-pelajaran.table-mata-pelajaran');
         Route::get('admin/mata-pelajaran/table-guru', TableGuru::class)->name('admin.mata-pelajaran.table-guru');
-    
+
         //Menu Penilaian
         Route::get('admin/penilaian/ekstrakurikuler', Ekstrakurikuler::class)->name('admin.penilaian.ekstrakurikuler');
         Route::get('admin/penilaian/jenis-penilaian', JenisPenilaian::class)->name('admin.penilaian.jenis-penilaian');
@@ -91,22 +104,22 @@ Route::middleware(['auth'])->group(function () {
 
         //Menu Role
         Route::get('admin/role/table-role', TableRole::class)->name('admin.role.table-role');
-    
+
         //Menu Skor
         Route::get('admin/skor/data-skor', DataSkor::class)->name('admin.skor.data-skor');
-        
+
         //Menu User
         Route::get('admin/user/table-user', TableUser::class)->name('admin.user.table-user');
         Route::get('admin/user/set-role', SetRole::class)->name('admin.user.set-role');
 
-        
-        
+
+
         Route::get('/admin/home', function () {
             sleep(2);
             return view('admin/home');
         })->name('admin.home');
     });
-    
+
     //Route For Guru
     Route::middleware(['role:Guru'])->group(function () {
         //Menu Absensi
@@ -121,7 +134,7 @@ Route::middleware(['auth'])->group(function () {
 
         //Menu Rapor
         Route::get('guru/rapor/cetak-rapor', CetakRapor::class)->name('guru.rapor.cetak-rapor');
-        Route::get('guru/rapor/pdf', [HomeController::class,'pdf'])->name('guru.rapor.pdf-rapor');
+        Route::get('guru/rapor/pdf', [HomeController::class, 'pdf'])->name('guru.rapor.pdf-rapor');
         Route::get('guru/rapor/rapor-print', [PrintRaporController::class, 'index'])->name('guru.rapor.rapor-print');
         Route::get('guru/rapor/rapor-print-v', [PrintRaporController::class, 'indexv'])->name('guru.rapor.rapor-print-v');
 
@@ -141,7 +154,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('konseling/absensi/absensi-bk', AbsensiBk::class)->name('konseling.absensi.absensi-bk');
         Route::get('konseling/absensi/rekap-kehadiran', RekapKehadiran::class)->name('konseling.absensi.rekap-kehadiran');
         Route::get('konseling/absensi/list-kehadiran/{tanggal}/{jam}/{kehadiran}', ListKehadiran::class)->name('konseling.absensi.list-kehadiran');
-        
+
         //Menu Layanan
         Route::get('konseling/layanan/bimbingan-dan-konseling', Bimbingan::class)->name('konseling.layanan.bimbingan');
         Route::get('konseling/layanan/rekap-bimbingan', RekapBimbingan::class)->name('konseling.layanan.rekap-bimbingan');
@@ -157,6 +170,28 @@ Route::middleware(['auth'])->group(function () {
         Route::get('konseling/skor/saldo-skor', SaldoSkor::class)->name('konseling.skor.saldo-skor');
     });
 
+    Route::middleware(['role:Kurikulum'])->group(function () {
+
+        //Menu Kurikulum
+        Route::get('kurikulum/kurikulum/table-kurikulum', KurikulumTableKurikulum::class)->name('kurikulum.kurikulum.table-kurikulum');
+        Route::get('kurikulum/kurikulum/mata-pelajaran', KurikulumMataPelajaran::class)->name('kurikulum.kurikulum.mata-pelajaran');
+
+        //Menu Mata Pelajaran
+        Route::get('kurikulum/mata-pelajaran/table-guru', MataPelajaranTableGuru::class)->name('kurikulum.mata-pelajaran.table-guru');
+        Route::get('kurikulum/mata-pelajaran/table-mata-pelajaran', MataPelajaranTableMataPelajaran::class)->name('kurikulum.mata-pelajaran.table-mata-pelajaran');
+
+        //Menu Penilaian
+        Route::get('kurikulum/penilaian/ekstrakurikuler', PenilaianEkstrakurikuler::class)->name('kurikulum.penilaian.ekstrakurikuler');
+        Route::get('kurikulum/penilaian/jenis-penilaian', PenilaianJenisPenilaian::class)->name('kurikulum.penilaian.jenis-penilaian');
+        Route::get('kurikulum/penilaian/kategori-penilaian', PenilaianKategoriPenilaian::class)->name('kurikulum.penilaian.kategori-penilaian');
+
+        //Menu Rapor
+        Route::get('kurikulum/rapor/kd', RaporRaporKd::class)->name('kurikulum.rapor.kd');
+        Route::get('kurikulum/rapor/upload-kd-rapor', RaporUploadKdRapor::class)->name('kurikulum.rapor.upload-kd-rapor');
+        Route::get('kurikulum/rapor/kkm', RaporRaporKkm::class)->name('kurikulum.rapor.kkm');
+        Route::get('kurikulum/rapor/set-penilaian-rapor', RaporSetPenilaianRapor::class)->name('kurikulum.rapor.set-penilaian-rapor');
+        Route::get('kurikulum/rapor/tanggal-rapor', TanggalRapor::class)->name('kurikulum.rapor.tanggal-rapor');
+    });
     //Route For Sarpras
     Route::middleware(['role:Sarpras'])->group(function () {
         //Menu Inventaris

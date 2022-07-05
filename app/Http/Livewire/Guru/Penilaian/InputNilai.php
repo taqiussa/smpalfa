@@ -51,7 +51,6 @@ class InputNilai extends Component
     public function simpan()
     {
         $this->validate();
-
         $cek_nilai = Penilaian::where('tahun', $this->tahun)
         ->where('semester', $this->semester)
         ->where('mata_pelajaran_id', $this->mata_pelajaran)
