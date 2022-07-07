@@ -19,6 +19,27 @@
         </ul>
     </li>
     <li class="nav-item nav-item-has-children">
+        <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#absensi_ekstrakurikuler"
+            aria-controls="absensi_ekstrakurikuler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon">
+                <svg style="width:22px;height:22px" viewBox="0 0 22 22">
+                    <path fill="currentColor" d="M15.83 10.43A6.93 6.93 0 0 1 18.39 14.86A6.64 6.64 0 0 1 17.5 19.5L15.78 18.5A5 5 0 0 0 16.44 16A5.22 5.22 0 0 0 15.46 13.06L9.18 23.93L7.44 22.95L10.44 17.75L8.71 16.76L7.21 19.34L5.5 18.36L10.63 9.45A7 7 0 0 1 8.8 5.46A6.91 6.91 0 0 1 9.69 1.1L11.43 2.13A4.84 4.84 0 0 0 10.91 5.9A4.74 4.74 0 0 0 13.21 8.93M16 5A2 2 0 1 0 18 7A2 2 0 0 0 16 5M13.5 1A1.5 1.5 0 1 0 15 2.5A1.5 1.5 0 0 0 13.5 1Z" />
+                </svg>
+            </span>
+            <span class="text">Ekstrakurikuler</span>
+        </a>
+        <ul id="absensi_ekstrakurikuler" class="{{ Request::routeIs('guru.ekstrakurikuler.*') ? '' : 'collapse' }} dropdown-nav">
+            <li>
+                <a href="{{ route('guru.ekstrakurikuler.absensi-ekstrakurikuler') }}"
+                    class="{{ Request::routeIs('guru.ekstrakurikuler.absensi-ekstrakurikuler') ? 'active' : '' }}"> Absensi Ekstrakurikuler</a>
+            </li>
+            <li>
+                <a href="{{ route('guru.ekstrakurikuler.absensi-ekstrakurikuler-print') }}"
+                    class="{{ Request::routeIs('guru.ekstrakurikuler.absensi-ekstrakurikuler-print') ? 'active' : '' }}"> Absensi Print</a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item nav-item-has-children">
         <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#penilaian_guru"
             aria-controls="penilaian_guru" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon">

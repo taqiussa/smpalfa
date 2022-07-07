@@ -33,11 +33,11 @@ class RekapSkorPrintController extends Controller
             ->orderBy('users.name')
             ->get(),
         ];
-        return view('print.rekap-skor-perkelas', $data);
+        return view('skor.rekap-skor-perkelas', $data);
     }
 
     public function persiswa()
     {
-        return view('print.rekap-skor-persiswa');
+        return view('skor.rekap-skor-persiswa');
     }
 }

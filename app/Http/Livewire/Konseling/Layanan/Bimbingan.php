@@ -19,6 +19,7 @@ class Bimbingan extends Component
     public $kelas;
     public $tahun;
     public $siswa;
+    public $karakter;
     public $permasalahan;
     public $penyelesaian;
     public $tindak_lanjut;
@@ -109,6 +110,7 @@ class Bimbingan extends Component
                     'tahun' => $this->tahun,
                     'nis' => $this->siswa,
                     'user_name' => $cari_siswa->name,
+                    'karakter' => $this->karakter,
                     'permasalahan' => $this->permasalahan,
                     'penyelesaian' => $this->penyelesaian,
                     'tindak_lanjut' => $this->tindak_lanjut,

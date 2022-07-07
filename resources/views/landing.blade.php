@@ -30,7 +30,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="{{ asset('images/logoalfa2-min.png') }}" alt="" width="30" height="30"
+                <img src="{{ asset('images/logoalfa2.png') }}" alt="" width="30" height="30"
                     class="d-inline-block align-text-top">
                 SMP AL MUSYAFFA
             </a>

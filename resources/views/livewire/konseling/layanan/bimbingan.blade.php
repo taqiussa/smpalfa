@@ -82,6 +82,12 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="row my-2">
+                            <div class="col-md-12">
+                                <label for="karakter" class="form-label">Karakter Individual Siswa</label>
+                                <input wire:model.defer="karakter" type="text" class="form-control">
+                            </div>
+                        </div>
                     @break
 
                     @case('Kelompok')
@@ -112,7 +118,7 @@
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <label for="siswa" class="form-label">Siswa</label>
                                 <select wire:model.defer="siswa" id="siswa" class="form-select">
                                     <option value="">Pilih Siswa</option>
@@ -124,7 +130,7 @@
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <label class="form-label">&nbsp;</label>
                                 <button wire:click.prevent="tambah" class="btn btn-primary form-control">
                                     Tambah
@@ -160,7 +166,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <button wire:click="hapus({{ $key }})" class="btn btn-danger"><i
+                                                <button wire:click.prevent="hapus({{ $key }})" class="btn btn-danger"><i
                                                         class="fas fa-times"></i></button>
                                             </td>
                                         </tr>

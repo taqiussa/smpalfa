@@ -5,6 +5,7 @@ namespace App\Traits;
 use App\Models\Siswa;
 use App\Models\Absensi;
 use App\Models\WaliKelas;
+use App\Models\AbsensiEkstra;
 
 trait GetData
 {
@@ -20,7 +21,6 @@ trait GetData
             ->orderBy('users.name')
             ->get();
     }
-
     public function get_semester()
     {
         $bulanIni = gmdate('m');
@@ -30,7 +30,6 @@ trait GetData
             $this->semester = 1;
         }
     }
-    
     public function get_tahun()
     {
         $tahunIni = gmdate('Y');
@@ -57,6 +56,7 @@ trait GetData
             $this->kelas = $this->kelas_wali->kelas_id;
         }
     }
+
     public function cek_absen()
     {
         $cek_absen = Absensi::where('tanggal', $this->tanggal)
@@ -84,4 +84,27 @@ trait GetData
         return $data_absensi;
     }
 
+    public function cek_absen_ekstra()
+    {
+        $absen_ekstra = AbsensiEkstra::with('ekstra')
+            ->where('tanggal', $this->tanggal)
+            ->where('absensi_ekstras.tahun', $this->tahun)
+            ->where('ekstrakurikuler_id', $this->ekstrakurikuler)
+            ->join('users', 'users.nis', '=', 'absensi_ekstras.nis')
+            ->join('kehadirans', 'kehadirans.id', '=', 'absensi_ekstras.kehadiran_id')
+            ->join('kelas', 'kelas.id', '=', 'absensi_ekstras.kelas_id')
+            ->select(
+                'users.name as name',
+                'kelas.nama as kelas',
+                'kehadirans.nama as kehadiran',
+                'absensi_ekstras.id as id',
+                'absensi_ekstras.tanggal as tanggal',
+                'absensi_ekstras.tahun as tahun',
+                'absensi_ekstras.semester as semester',
+                'absensi_ekstras.ekstrakurikuler_id as ekstrakurikuler_id'
+            )
+            ->get();
+
+        return $absen_ekstra;
+    }
 }

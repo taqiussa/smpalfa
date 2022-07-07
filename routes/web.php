@@ -21,7 +21,9 @@ use App\Http\Livewire\Admin\Role\TableRole;
 use App\Http\Livewire\Admin\Skor\DataSkor;
 use App\Http\Livewire\Admin\User\SetRole;
 use App\Http\Livewire\Admin\User\TableUser;
+use App\Http\Livewire\Guru\Absensi\AbsensiEkstra;
 use App\Http\Livewire\Guru\Absensi\AbsensiSiswa as AbsensiAbsensiSiswa;
+use App\Http\Livewire\Guru\Ekstra\AbsensiEkstraPrint;
 use App\Http\Livewire\Guru\Penilaian\InputNilai;
 use App\Http\Livewire\Guru\Penilaian\InputNilaiEkstra;
 use App\Http\Livewire\Guru\Penilaian\InputNilaiSikap;
@@ -48,7 +50,6 @@ use App\Http\Livewire\Kurikulum\MataPelajaran\TableMataPelajaran as MataPelajara
 use App\Http\Livewire\Kurikulum\Penilaian\Ekstrakurikuler as PenilaianEkstrakurikuler;
 use App\Http\Livewire\Kurikulum\Penilaian\JenisPenilaian as PenilaianJenisPenilaian;
 use App\Http\Livewire\Kurikulum\Penilaian\KategoriPenilaian as PenilaianKategoriPenilaian;
-use App\Http\Livewire\Kurikulum\Rapor\Kd;
 use App\Http\Livewire\Kurikulum\Rapor\RaporKd as RaporRaporKd;
 use App\Http\Livewire\Kurikulum\Rapor\RaporKkm as RaporRaporKkm;
 use App\Http\Livewire\Kurikulum\Rapor\SetPenilaianRapor as RaporSetPenilaianRapor;
@@ -124,6 +125,10 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Guru'])->group(function () {
         //Menu Absensi
         Route::get('guru/absensi/absensi-siswa', AbsensiAbsensiSiswa::class)->name('guru.absensi.absensi-siswa');
+        
+        //Menu Ekstrakurikuler
+        Route::get('guru/ekstrakurikuler/absensi-ekstrakurikuler', AbsensiEkstra::class)->name('guru.ekstrakurikuler.absensi-ekstrakurikuler');
+        Route::get('guru/ekstrakurikuler/absensi-ekstrakurikuler-print', AbsensiEkstraPrint::class)->name('guru.ekstrakurikuler.absensi-ekstrakurikuler-print');
 
         //Menu Penilaian
         Route::get('guru/penilaian/input-nilai', InputNilai::class)->name('guru.penilaian.input-nilai');

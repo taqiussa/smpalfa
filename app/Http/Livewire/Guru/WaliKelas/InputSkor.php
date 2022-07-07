@@ -46,6 +46,7 @@ class InputSkor extends Component
                 'list_nilai_skor' => PenilaianSkor::with('skors')
                     ->where('penilaian_skors.tahun', $this->tahun)
                     ->where('penilaian_skors.kelas_id', $this->kelas)
+                    ->where('penilaian_skors.user_id', auth()->user()->id)
                     ->join('users as siswa', 'siswa.nis', '=', 'penilaian_skors.nis')
                     ->join('users as guru', 'guru.id', '=', 'penilaian_skors.user_id')
                     ->select(

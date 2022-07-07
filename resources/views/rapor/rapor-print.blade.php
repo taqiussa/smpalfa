@@ -535,7 +535,7 @@
             </td>
             <td style="width: 5%"></td>
             <td style="width: 30%">
-                Ngampel, 20 Juni 2022 <br><br>
+                Ngampel, {{ Carbon\Carbon::parse($tanggal_rapor)->translatedFormat('d F Y') }} <br><br>
                 Kepala SMP Al Musyaffa <br>
                 <br><br><br><br>
                 <u><b>
