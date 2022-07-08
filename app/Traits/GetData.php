@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Models\Siswa;
 use App\Models\Absensi;
+use App\Models\GuruMapel;
 use App\Models\WaliKelas;
 use App\Models\AbsensiEkstra;
 
@@ -106,5 +107,16 @@ trait GetData
             ->get();
 
         return $absen_ekstra;
+    }
+
+    public function cek_mata_pelajaran()
+    {
+        return GuruMapel::join('mata_pelajarans', 'mata_pelajarans.id', '=', 'guru_mata_pelajaran.mata_pelajaran_id')
+            ->where('user_id', auth()->user()->id)
+            ->select(
+                'guru_mata_pelajaran.mata_pelajaran_id as id',
+                'mata_pelajarans.nama as nama'
+            )
+            ->get();
     }
 }

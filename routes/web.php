@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DaftarNilaiController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Konseling\Layanan\DetailBimbinganController;
 use App\Http\Controllers\PrintRaporController;
@@ -22,6 +23,7 @@ use App\Http\Livewire\Admin\Skor\DataSkor;
 use App\Http\Livewire\Admin\User\SetRole;
 use App\Http\Livewire\Admin\User\TableUser;
 use App\Http\Livewire\Bendahara\Pengaturan\WajibBayar;
+use App\Http\Livewire\Bendahara\Transaksi\DataPemasukan;
 use App\Http\Livewire\Bendahara\Transaksi\Pemasukan;
 use App\Http\Livewire\Guru\Absensi\AbsensiEkstra;
 use App\Http\Livewire\Guru\Absensi\AbsensiSiswa as AbsensiAbsensiSiswa;
@@ -32,6 +34,7 @@ use App\Http\Livewire\Guru\Penilaian\InputNilaiSikap;
 use App\Http\Livewire\Guru\Penilaian\InputPrestasi;
 use App\Http\Livewire\Guru\Penilaian\UploadNilai;
 use App\Http\Livewire\Guru\Rapor\CetakRapor;
+use App\Http\Livewire\Guru\Rapor\DaftarNilaiGuru;
 use App\Http\Livewire\Guru\Skor\InputSkor;
 use App\Http\Livewire\Guru\Skor\SaldoSkor;
 use App\Http\Livewire\Guru\WaliKelas\InputCatatan;
@@ -128,7 +131,11 @@ Route::middleware(['auth'])->group(function () {
 
         //Menu Pengaturan
         Route::get('bendahara/pengaturan/atur-wajib-bayar', WajibBayar::class)->name('bendahara.pengaturan.atur-wajib-bayar');
+        
+        //Menu Transaksi
         Route::get('bendahara/transaksi/pemasukan', Pemasukan::class)->name('bendahara.transaksi.pemasukan');
+        Route::get('bendahara/transaksi/data-pemasukan', DataPemasukan::class)->name('bendahara.transaksi.data-pemasukan');
+    
     });
     //Route For Guru
     Route::middleware(['role:Guru'])->group(function () {
@@ -151,6 +158,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('guru/rapor/pdf', [HomeController::class, 'pdf'])->name('guru.rapor.pdf-rapor');
         Route::get('guru/rapor/rapor-print', [PrintRaporController::class, 'index'])->name('guru.rapor.rapor-print');
         Route::get('guru/rapor/rapor-print-v', [PrintRaporController::class, 'indexv'])->name('guru.rapor.rapor-print-v');
+        Route::get('guru/rapor/daftar-nilai-guru', DaftarNilaiGuru::class)->name('guru.rapor.daftar-nilai-guru');
+        Route::get('guru/rapor/daftar-nilai-guru-print', [DaftarNilaiController::class,'nilai_guru'])->name('guru.rapor.daftar-nilai-guru-print');
+        
 
         //Menu Skor
         Route::get('guru/skor/input-skor', InputSkor::class)->name('guru.skor.input-skor');

@@ -91,18 +91,17 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Tanggal</th>
                                     <th>Pembayaran</th>
+                                    <th>Tanggal</th>
                                     <th>Jumlah</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($list_pembayaran as $pembayaran)
+                                @foreach ($list_pembayaran as $key => $pembayaran)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ date('d M Y', strtotime($pembayaran->tanggal)) }}</td>
-                                        <td>{{ $pembayaran->pembayaran }}</td>
-                                        <td>{{ 'Rp ' . number_format($pembayaran->jumlah, 0, ",", ".") }}</td>
+                                        <td>{{ $pembayaran->nama }}</td>
+                                        <td>{{ $jumlah }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -36,6 +36,10 @@
                 <a href="{{ route('bendahara.transaksi.pemasukan') }}"
                     class="{{ Request::routeIs('bendahara.transaksi.pemasukan') ? 'active' : '' }}">Pemasukan</a>
             </li>
+            <li>
+                <a href="{{ route('bendahara.transaksi.data-pemasukan') }}"
+                    class="{{ Request::routeIs('bendahara.transaksi.data-pemasukan') ? 'active' : '' }}">Data Pemasukan</a>
+            </li>
         </ul>
     </li>
     <span class="divider">

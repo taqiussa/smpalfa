@@ -10,4 +10,8 @@ class Pemasukan extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public function jenis()
+    {
+        return $this->belongsTo(JenisPemasukan::class, 'jenis_pemasukan_id');
+    }
 }

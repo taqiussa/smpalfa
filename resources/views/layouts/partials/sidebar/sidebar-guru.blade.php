@@ -89,6 +89,10 @@
                 <a href="{{ route('guru.rapor.cetak-rapor') }}"
                     class="{{ Request::routeIs('guru.rapor.cetak-rapor') ? 'active' : '' }}">Cetak Rapor</a>
             </li>
+            <li>
+                <a href="{{ route('guru.rapor.daftar-nilai-guru') }}"
+                    class="{{ Request::routeIs('guru.rapor.daftar-nilai-guru') ? 'active' : '' }}">Daftar Nilai Guru</a>
+            </li>
         </ul>
     </li>
     <li class="nav-item nav-item-has-children">

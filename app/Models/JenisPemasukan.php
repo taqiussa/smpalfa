@@ -10,4 +10,8 @@ class JenisPemasukan extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public function pemasukan()
+    {
+        return $this->hasMany(Pemasukan::class);
+    }
 }

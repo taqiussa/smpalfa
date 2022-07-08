@@ -6,6 +6,7 @@ use App\Models\JenisPemasukan;
 use App\Models\Kelas;
 use App\Models\Pemasukan as ModelsPemasukan;
 use App\Traits\GetData;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class Pemasukan extends Component
@@ -19,6 +20,7 @@ class Pemasukan extends Component
     public $siswa;
     public $pemasukan;
     public $jumlah;
+    public $sumjumlah;
 
     //array
     public $list_kelas = [];
@@ -37,6 +39,7 @@ class Pemasukan extends Component
     ];
     public function render()
     {
+        $this->get_list_pembayaran();
         return view('livewire.bendahara.transaksi.pemasukan');
     }
 
@@ -78,17 +81,13 @@ class Pemasukan extends Component
     private function get_list_pembayaran()
     {
         $this->list_pembayaran = [];
-        $this->list_pembayaran = ModelsPemasukan::where('tahun', $this->tahun)
-                                                    ->where('nis', $this->siswa)
-                                                    ->join('jenis_pemasukans', 'jenis_pemasukans.id', '=', 'pemasukans.jenis_pemasukan_id')
-                                                    ->select(
-                                                        'pemasukans.id as id',
-                                                        'pemasukans.tahun as tahun',
-                                                        'pemasukans.tanggal as tanggal',
-                                                        'pemasukans.jenis_pemasukan_id as jenis_pemasukan_id',
-                                                        'pemasukans.jumlah as jumlah',
-                                                        'jenis_pemasukans.nama as pembayaran',
-                                                    )
-                                                    ->get();
+        foreach($this->list_pemasukan as $key => $pemasukan)
+        {
+            ModelsPemasukan::where('tahun', $this->tahun)
+            ->where('nis', $this->siswa)
+            ->where('jenis_pemasukan_id', $pemasukan->id)
+            ->get();
+            
+        }
     }
 }
