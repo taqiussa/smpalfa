@@ -28,4 +28,6 @@ timezone, locale, faker_local id_ID
 10. Rapor Draft Nilai Per Mapel
 11. Jurnal Guru dan Jurnal Wali Kelas
 12. Rekap Bimbingan Print
-13. Rekap Skor Print - belum selesai, tanda tangan 
+13. Rekap Skor Print - belum selesai, tanda tangan , tambahkan lagi sesuai BK yang mengampu
+14. Set Role Username perbaiki
+15. Table User dan Set Role Perbaiki, tambahkan pencarian User

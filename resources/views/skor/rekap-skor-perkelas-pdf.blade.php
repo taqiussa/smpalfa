@@ -8,7 +8,19 @@
     <title>Print Skor Kelas</title>
     <style>
         body {
-            font-family: 'Times New Roman', Times, serif;
+            font-family: 'Times New Roman', Times, serif !important;
+            font-size: 12pt;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        @page {
+            margin-top: 15px;
+            margin-bottom: 5px;
+            margin-left: 10px;
+            margin-right: 10px;
         }
     </style>
 </head>

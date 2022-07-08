@@ -59,6 +59,7 @@ class AbsensiEkstraPrint extends Component
             'nama_ekstra' => $this->nama_ekstra,
             'list_absensi' => $this->cek_absen_ekstra(),
             'kepala_sekolah' => User::role('Kepala Sekolah')->get(),
+            'kesiswaan' => User::role('Kesiswaan')->get(),
         ];
         $pdf = Pdf::loadView('ekstra.pdf', $data)->setPaper(array(0, 0, 595.276, 935.433))->download();
         return response()->streamDownload(

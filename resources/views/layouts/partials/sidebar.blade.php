@@ -8,6 +8,9 @@
         @role('Admin')
             @include('layouts.partials.sidebar.sidebar-admin', ['title' => 'Admin'])
         @endrole
+        @role('Bendahara')
+            @include('layouts.partials.sidebar.sidebar-bendahara', ['title' => 'Bendahara'])
+        @endrole
         @role('Guru')
             @include('layouts.partials.sidebar.sidebar-guru', ['title' => 'Guru'])
         @endrole

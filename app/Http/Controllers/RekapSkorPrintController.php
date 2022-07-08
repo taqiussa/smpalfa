@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kelas;
 use App\Models\Siswa;
-use Illuminate\Http\Request;
+use App\Models\User;
 
 class RekapSkorPrintController extends Controller
 {
@@ -32,6 +32,8 @@ class RekapSkorPrintController extends Controller
             )
             ->orderBy('users.name')
             ->get(),
+            'kesiswaan' => User::role('Kesiswaan')->get(),
+            'kepala_sekolah' => User::role('Kepala Sekolah')->get(),
         ];
         return view('skor.rekap-skor-perkelas', $data);
     }

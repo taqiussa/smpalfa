@@ -21,6 +21,8 @@ use App\Http\Livewire\Admin\Role\TableRole;
 use App\Http\Livewire\Admin\Skor\DataSkor;
 use App\Http\Livewire\Admin\User\SetRole;
 use App\Http\Livewire\Admin\User\TableUser;
+use App\Http\Livewire\Bendahara\Pengaturan\WajibBayar;
+use App\Http\Livewire\Bendahara\Transaksi\Pemasukan;
 use App\Http\Livewire\Guru\Absensi\AbsensiEkstra;
 use App\Http\Livewire\Guru\Absensi\AbsensiSiswa as AbsensiAbsensiSiswa;
 use App\Http\Livewire\Guru\Ekstra\AbsensiEkstraPrint;
@@ -121,6 +123,13 @@ Route::middleware(['auth'])->group(function () {
         })->name('admin.home');
     });
 
+    //Route For Bendahara
+    Route::middleware(['role:Bendahara'])->group(function () {
+
+        //Menu Pengaturan
+        Route::get('bendahara/pengaturan/atur-wajib-bayar', WajibBayar::class)->name('bendahara.pengaturan.atur-wajib-bayar');
+        Route::get('bendahara/transaksi/pemasukan', Pemasukan::class)->name('bendahara.transaksi.pemasukan');
+    });
     //Route For Guru
     Route::middleware(['role:Guru'])->group(function () {
         //Menu Absensi

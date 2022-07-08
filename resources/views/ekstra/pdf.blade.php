@@ -15,6 +15,7 @@
             margin-left: 10px;
             margin-right: 10px;
         }
+
         @page {
             margin-top: 15px;
             margin-bottom: 5px;
@@ -57,7 +58,8 @@
         <tr>
             <th style="width: 25%; text-align:left">Tanggal Absensi</th>
             <th style="width: 1%">:</th>
-            <th style="width: 30%; text-align:left">{{ Carbon\Carbon::parse($tanggal)->translatedFormat('l, d F Y') }}</th>
+            <th style="width: 30%; text-align:left">{{ Carbon\Carbon::parse($tanggal)->translatedFormat('l, d F Y') }}
+            </th>
             <th style="width: 10%">&nbsp;</th>
             <th style="width: 15%; text-align:left">Semester</th>
             <th style="width: 1%">:</th>
@@ -75,12 +77,15 @@
         </thead>
         <tbody>
             @foreach ($list_absensi as $absensi)
-            <tr>
-                <td style="border:#000 solid 1px;border-collapse:collapse; padding:5px; text-align:center">{{ $loop->iteration }}</td>
-                <td style="border:#000 solid 1px;border-collapse:collapse; padding:5px">{{ $absensi->name }}</td>
-                <td style="border:#000 solid 1px;border-collapse:collapse; padding:5px; text-align:center">{{ $absensi->kelas }}</td>
-                <td style="border:#000 solid 1px;border-collapse:collapse; padding:5px">{{ $absensi->kehadiran }}</td>
-            </tr>
+                <tr>
+                    <td style="border:#000 solid 1px;border-collapse:collapse; padding:5px; text-align:center">
+                        {{ $loop->iteration }}</td>
+                    <td style="border:#000 solid 1px;border-collapse:collapse; padding:5px">{{ $absensi->name }}</td>
+                    <td style="border:#000 solid 1px;border-collapse:collapse; padding:5px; text-align:center">
+                        {{ $absensi->kelas }}</td>
+                    <td style="border:#000 solid 1px;border-collapse:collapse; padding:5px">{{ $absensi->kehadiran }}
+                    </td>
+                </tr>
             @endforeach
         </tbody>
     </table>
@@ -110,7 +115,11 @@
             <td colspan="3">&nbsp;</td>
         </tr>
         <tr>
-            <td style="text-align:center"><b>Ristiyono,S.Pd</b></td>
+            <td style="text-align:center">
+                <b>
+                    {{ $kesiswaan[0]->name }}
+                </b>
+            </td>
             <td></td>
             <td style="text-align:center">
                 <b>
