@@ -6,52 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>RAPOR</title>
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <script src="{{ mix('js/app.js') }}" defer></script>
     <style type="text/css">
         body {
             font-family: 'Times New Roman', Times, serif !important;
             font-size: 12pt;
-        }
-
-        .table {
-            border-collapse: collapse;
-            border: solid 1px #999;
-            width: 100%
-        }
-
-        .table tr td,
-        .table tr th {
-            border: solid 1px #000;
-            padding: 3px;
-        }
-
-        .table tr th {
-            font-weight: bold;
-            text-align: center
-        }
-
-        .rgt {
-            text-align: right;
-        }
-
-        .ctr {
-            text-align: center;
-        }
-
-        .tbl {
-            font-weight: bold
-        }
-
-        table tr td {
-            vertical-align: top
-        }
-
-        .font_kecil {
-            font-size: 12px
-        }
-
-        div.footer {
-            position: fixed;
-            bottom: 0px;
         }
 
         @media screen {
@@ -70,39 +30,28 @@
 </head>
 
 <body>
-    <div class="footer">
-        {{ $nama_siswa }} | {{ $nis }} | Kelas : {{ $nama_kelas }} | {{ $tahun }}
-    </div>
-    <div style="text-align: center">
+    <div class="text-center border border-5 border-top-0 border-end-0 border-start-0">
         <h4>PENCAPAIAN KOMPETENSI AKADEMIK PESERTA DIDIK</h4>
         <h4>TAHUN PELAJARAN {{ $tahun }}</h4>
     </div>
-    <hr>
-    <table style="text-align:justify">
+    </div>
+    <table class="table table-borderless">
         <tbody>
             <tr>
-                <td width="20%">Nama Sekolah</td>
-                <td width="1%">:</td>
-                <td width="39%">SMP Al Musyaffa Kendal</td>
-                <td style="padding-left: 100px" width="15%">Kelas</td>
-                <td width="1%">:</td>
-                <td width="10%">{{ $nama_kelas }}</td>
+                <td>Nama Sekolah</td>
+                <td>:</td>
+                <td>SMP Al Musyaffa Kendal</td>
+                <td>Kelas</td>
+                <td>:</td>
+                <td>{{ $nama_kelas }}</td>
             </tr>
             <tr>
                 <td>Alamat</td>
                 <td>:</td>
                 <td>Jl. Kampir Sudipayung, Kec. Ngampel, Kab. Kendal</td>
-                <td style="padding-left: 100px">Semester</td>
+                <td>Semester</td>
                 <td>:</td>
                 <td>{{ $semester }}</td>
-            </tr>
-            <tr>
-                <td>Nama Siswa</td>
-                <td>:</td>
-                <td>{{ $nama_siswa }}</td>
-                <td style="padding-left: 100px">Tahun Pelajaran</td>
-                <td>:</td>
-                <td>{{ $tahun }}</td>
             </tr>
             <tr>
                 <td>NIS / NISN</td>
@@ -112,63 +61,59 @@
             </tr>
         </tbody>
     </table>
+    <h5>A. SIKAP</h5>
     <br>
-    <b>A. SIKAP</b>
-    <table style="border-collapse: collapse">
-        <tbody>
-            <tr>
-                <td width="3%"><b>1.</b></td>
-                <td width="97%" colspan="2"><b>Sikap Spiritual</b></td>
-            </tr>
-            <tr>
-                <td width="3%"></td>
-                <td width="7%" style="border: solid 1px #000; padding: 10px">Predikat</td>
-                <td width="90%" style="border: solid 1px #000; padding: 10px">Deskripsi</td>
-            </tr>
-            <tr>
-                <td width="3%"></td>
-                <td width="7%" style="border: solid 1px #000; padding: 10px">{{ $spiritual }}</td>
-                <td width="90%" style="border: solid 1px #000; padding: 10px">
-                    Terbiasa berdoa sebelum dan sesudah melakukan kegiatan, memelihara hubungan baik dengan sesama umat
-                    Ciptaan Tuhan Yang Maha Esa, dan bersyukur kepada Tuhan Yang Maha Esa sebagai bangsa Indonesia
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3"><br></td>
-            </tr>
-            <tr>
-                <td width="3%">
-                    <b>2.</b>
-                </td>
-                <td width="97%" colspan="2">
-                    <b>Sikap Sosial</b>
-                </td>
-            </tr>
-            <tr>
-                <td width="3%"></td>
-                <td width="7%" style="border: solid 1px #000; padding: 10px">{{ $sosial }}</td>
-                <td width="90%" style="border: solid 1px #000; padding: 10px">
-                    Terbiasa melaksanakan sikap jujur, disiplin, tanggung jawab, santun, percaya diri, peduli, dan
-                    toleransi
-            </tr>
-        </tbody>
-    </table>
-    <br>
-    <b>B. PENGETAHUAN</b>
-    <table class="table">
+    <h6>1. Sikap Spiritual</h6>
+    <table class="table table-bordered border-dark">
         <thead>
             <tr>
-                <th width="5%">No</th>
-                <th width="25%">Mata Pelajaran</th>
-                <th width="8%">KBM</th>
-                <th width="8%">Nilai</th>
-                <th width="8%">Predikat</th>
-                <th width="46%">Deskripsi</th>
+                <th style="width: 15%">Predikat</th>
+                <th>Deskripsi</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td colspan="6" style="text-align: left">Kelompok A</td>
+                <td>{{ $spiritual }}</td>
+                <td class="text-justify">
+                    Terbiasa berdoa sebelum dan sesudah melakukan kegiatan, memelihara hubungan baik dengan sesama umat
+                    Ciptaan Tuhan Yang Maha Esa, dan bersyukur kepada Tuhan Yang Maha Esa sebagai bangsa Indonesia
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h6>2. Sikap Sosial</h6>
+    <table class="table table-bordered border-dark">
+        <thead>
+            <tr>
+                <th style="width: 15%">Predikat</th>
+                <th>Deskripsi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ $sosial }}</td>
+                <td class="text-justify">
+                    Terbiasa melaksanakan sikap jujur, disiplin, tanggung jawab, santun, percaya diri, peduli, dan
+                    toleransi
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h5>B. PENGETAHUAN</h5>
+    <table class="table table-bordered border-dark">
+        <thead>
+            <tr class="text-center">
+                <td style="width: 5%;">No</td>
+                <td style="width: 25%;">Mata Pelajaran</td>
+                <td style="width: 8%;">KBM</td>
+                <td style="width: 8%;">Nilai</td>
+                <td style="width: 8%;">Predikat</td>
+                <td style="width: 46%;">Deskripsi</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="6">Kelompok A</td>
             </tr>
             @foreach ($kelompok_a as $mapel)
                 @if ($mapel->nilai > 90)
@@ -193,14 +138,14 @@
                     @endphp
                 @endif
                 <tr>
-                    <td style="text-align: center">{{ $loop->iteration }}</td>
-                    <td style="text-align: left">{{ $mapel->nama }}</td>
-                    <td style="text-align: center">{{ $mapel->kkm }}</td>
-                    <td style="text-align: center">{{ $mapel->nilai }}</td>
-                    <td style="text-align: center">
+                    <td class="text-center">{{ $loop->iteration }}</td>
+                    <td>{{ $mapel->nama }}</td>
+                    <td class="text-center">{{ $mapel->kkm }}</td>
+                    <td class="text-center">{{ $mapel->nilai }}</td>
+                    <td class="text-center">
                         {{ $predikat }}
                     </td>
-                    <td style="text-align: justify">
+                    <td class="text-justify">
                         @php
                             $list_kd = App\Models\Kd::where('mata_pelajaran_id', $mapel->id)
                                 ->where('tingkat', $tingkat)
@@ -215,7 +160,7 @@
                 </tr>
             @endforeach
             <tr>
-                <td colspan="6" style="text-align: left">Kelompok B</td>
+                <td colspan="6">Kelompok B</td>
             </tr>
             @foreach ($kelompok_b as $mapel)
                 @if ($mapel->nilai > 90)
@@ -240,14 +185,14 @@
                     @endphp
                 @endif
                 <tr>
-                    <td style="text-align: center">{{ $loop->iteration }}</td>
-                    <td style="text-align: left">{{ $mapel->nama }}</td>
-                    <td style="text-align: center">{{ $mapel->kkm }}</td>
-                    <td style="text-align: center">{{ $mapel->nilai }}</td>
-                    <td style="text-align: center">
+                    <td class="text-center">{{ $loop->iteration }}</td>
+                    <td>{{ $mapel->nama }}</td>
+                    <td class="text-center">{{ $mapel->kkm }}</td>
+                    <td class="text-center">{{ $mapel->nilai }}</td>
+                    <td class="text-center">
                         {{ $predikat }}
                     </td>
-                    <td style="text-align: justify">
+                    <td class="text-justify">
                         @php
                             $list_kd = App\Models\Kd::where('mata_pelajaran_id', $mapel->id)
                                 ->where('tingkat', $tingkat)
@@ -262,7 +207,7 @@
                 </tr>
             @endforeach
             <tr>
-                <td colspan="6" style="text-align: left">Kelompok C</td>
+                <td colspan="6">Kelompok C</td>
             </tr>
             @foreach ($kelompok_c as $mapel)
                 @if ($mapel->nilai > 90)
@@ -287,14 +232,14 @@
                     @endphp
                 @endif
                 <tr>
-                    <td style="text-align: center">{{ $loop->iteration }}</td>
-                    <td style="text-align: left">{{ $mapel->nama }}</td>
-                    <td style="text-align: center">{{ $mapel->kkm }}</td>
-                    <td style="text-align: center">{{ $mapel->nilai }}</td>
-                    <td style="text-align: center">
+                    <td class="text-center">{{ $loop->iteration }}</td>
+                    <td>{{ $mapel->nama }}</td>
+                    <td class="text-center">{{ $mapel->kkm }}</td>
+                    <td class="text-center">{{ $mapel->nilai }}</td>
+                    <td class="text-center">
                         {{ $predikat }}
                     </td>
-                    <td style="text-align: justify">
+                    <td class="text-justify">
                         @php
                             $list_kd = App\Models\Kd::where('mata_pelajaran_id', $mapel->id)
                                 ->where('tingkat', $tingkat)
@@ -311,21 +256,21 @@
         </tbody>
     </table>
     <div style="page-break-before: always"></div>
-    <b>C. KETERAMPILAN</b>
-    <table class="table">
+    <h6>C. KETERAMPILAN</h6>
+    <table class="table table-bordered border-dark">
         <thead>
-            <tr>
-                <th width="5%">No</th>
-                <th width="25%">Mata Pelajaran</th>
-                <th width="8%">KBM</th>
-                <th width="8%">Nilai</th>
-                <th width="8%">Predikat</th>
-                <th width="46%">Deskripsi</th>
+            <tr class="text-center">
+                <td style="width: 5%;">No</td>
+                <td style="width: 25%;">Mata Pelajaran</td>
+                <td style="width: 8%;">KBM</td>
+                <td style="width: 8%;">Nilai</td>
+                <td style="width: 8%;">Predikat</td>
+                <td style="width: 46%;">Deskripsi</td>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td colspan="6" style="text-align: left">Kelompok A</td>
+                <td colspan="6">Kelompok A</td>
             </tr>
             @foreach ($kelompok_a2 as $mapel)
                 @if ($mapel->nilai > 90)
@@ -350,14 +295,14 @@
                     @endphp
                 @endif
                 <tr>
-                    <td style="text-align: center">{{ $loop->iteration }}</td>
-                    <td style="text-align: left">{{ $mapel->nama }}</td>
-                    <td style="text-align: center">{{ $mapel->kkm }}</td>
-                    <td style="text-align: center">{{ $mapel->nilai }}</td>
-                    <td style="text-align: center">
+                    <td class="text-center">{{ $loop->iteration }}</td>
+                    <td>{{ $mapel->nama }}</td>
+                    <td class="text-center">{{ $mapel->kkm }}</td>
+                    <td class="text-center">{{ $mapel->nilai }}</td>
+                    <td class="text-center">
                         {{ $predikat }}
                     </td>
-                    <td style="text-align: justify">
+                    <td class="text-justify">
                         @php
                             $list_kd = App\Models\Kd::where('mata_pelajaran_id', $mapel->id)
                                 ->where('tingkat', $tingkat)
@@ -372,7 +317,7 @@
                 </tr>
             @endforeach
             <tr>
-                <td colspan="6" style="text-align: left">Kelompok B</td>
+                <td colspan="6">Kelompok B</td>
             </tr>
             @foreach ($kelompok_b2 as $mapel)
                 @if ($mapel->nilai > 90)
@@ -397,14 +342,14 @@
                     @endphp
                 @endif
                 <tr>
-                    <td style="text-align: center">{{ $loop->iteration }}</td>
-                    <td style="text-align: left">{{ $mapel->nama }}</td>
-                    <td style="text-align: center">{{ $mapel->kkm }}</td>
-                    <td style="text-align: center">{{ $mapel->nilai }}</td>
-                    <td style="text-align: center">
+                    <td class="text-center">{{ $loop->iteration }}</td>
+                    <td>{{ $mapel->nama }}</td>
+                    <td class="text-center">{{ $mapel->kkm }}</td>
+                    <td class="text-center">{{ $mapel->nilai }}</td>
+                    <td class="text-center">
                         {{ $predikat }}
                     </td>
-                    <td style="text-align: justify">
+                    <td class="text-justify">
                         @php
                             $list_kd = App\Models\Kd::where('mata_pelajaran_id', $mapel->id)
                                 ->where('tingkat', $tingkat)
@@ -419,7 +364,7 @@
                 </tr>
             @endforeach
             <tr>
-                <td colspan="6" style="text-align: left">Kelompok C</td>
+                <td colspan="6">Kelompok C</td>
             </tr>
             @foreach ($kelompok_c2 as $mapel)
                 @if ($mapel->nilai > 90)
@@ -444,14 +389,14 @@
                     @endphp
                 @endif
                 <tr>
-                    <td style="text-align: center">{{ $loop->iteration }}</td>
-                    <td style="text-align: left">{{ $mapel->nama }}</td>
-                    <td style="text-align: center">{{ $mapel->kkm }}</td>
-                    <td style="text-align: center">{{ $mapel->nilai }}</td>
-                    <td style="text-align: center">
+                    <td class="text-center">{{ $loop->iteration }}</td>
+                    <td>{{ $mapel->nama }}</td>
+                    <td class="text-center">{{ $mapel->kkm }}</td>
+                    <td class="text-center">{{ $mapel->nilai }}</td>
+                    <td class="text-center">
                         {{ $predikat }}
                     </td>
-                    <td style="text-align: justify">
+                    <td class="text-justify">
                         @php
                             $list_kd = App\Models\Kd::where('mata_pelajaran_id', $mapel->id)
                                 ->where('tingkat', $tingkat)
@@ -467,19 +412,19 @@
             @endforeach
         </tbody>
     </table>
-    <div style="page-break-before: always"></div>
-    <b>D. EKSTRAKURIKULER</b>
-    <table class="table">
+    <div style="page-break-before: always;"></div>
+    <h6>D. EKSTRAKURIKULER</h6>
+    <table class="table table-bordered border-dark">
         <thead>
             <tr>
-                <th width="5%">No</th>
-                <th width="30%">Nama Kegiatan</th>
-                <th width="10%">Nilai</th>
-                <th width="55%">Keterangan</th>
+                <th style="width: 5%">No</th>
+                <th style="width: 30%">Nama Kegiatan</th>
+                <th style="width: 10%">Nilai</th>
+                <th style="width: 55%">Keterangan</th>
             </tr>
         </thead>
         <tbody>
-            @forelse ($nilai_ekstra as $ekstra)
+            @foreach ($nilai_ekstra as $ekstra)
                 <tr>
                     <td class="ctr">{{ $loop->iteration }}</td>
                     <td>{{ $ekstra->ekstra->nama }}</td>
@@ -496,24 +441,16 @@
                         @endif
                     </td>
                 </tr>
-            @empty
-                <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-            @endforelse
+            @endforeach
         </tbody>
     </table>
-    <br>
-    <b>E. KETIDAKHADIRAN</b>
-    <table class="table">
+    <h6>E. KETIDAKHADIRAN</h6>
+    <table class="table table-bordered border-dark">
         <tbody>
-            <tr>
-                <td width="60%">Sakit</td>
-                <td width="40%" class="ctr"> {{ $sakit }} hari</td>
-            </tr>
+            <t6>
+                <td style="width: 60%">Sakit</td>
+                <td style="width: 40%" class="text-center"> {{ $sakit }} hari</td>
+            </t6>
             <tr>
                 <td>Izin</td>
                 <td class="ctr"> {{ $izin }} hari</td>
@@ -525,51 +462,36 @@
             </tr>
         </tbody>
     </table>
-    <br>
-    <b>F. PRESTASI</b>
-    <table class="table">
+    <h6>F. PRESTASI</h6>
+    <table class="table table-bordered border-dark">
         <thead>
             <tr>
-                <th width="5%">No</th>
-                <th width="30%">Jenis Prestasi</th>
-                <th width="55%">Keterangan</th>
+                <th style="width: 5%">No</th>
+                <th style="width: 40%">Jenis Prestasi</th>
+                <th style="width: 55%">Keterangan</th>
             </tr>
         </thead>
         <tbody>
-            @forelse ($list_prestasi as $prestasi)
+            @foreach ($list_prestasi as $prestasi)
                 <tr>
-                    <td width="5%" style="text-align: center">{{ $loop->iteration }}</td>
-                    <td width="40%">{{ $prestasi->prestasi }}</th>
-                    <td width="55%">{{ $prestasi->keterangan }}</td>
+                    <td class="text-center">{{ $loop->iteration }}</td>
+                    <td class="text-justify">{{ $prestasi->prestasi }}</th>
+                    <td class="text-justify">{{ $prestasi->keterangan }}</td>
                 </tr>
-            @empty
-                <tr>
-                    <td width="5%" style="text-align: center">-</td>
-                    <td width="40%">-</th>
-                    <td width="55%">-</td>
-                </tr>
-            @endforelse
+            @endforeach
         </tbody>
     </table>
-    <br>
-    <b>G. CATATAN WALIKELAS</b>
-    <table class="table">
-        @forelse ($list_catatan as $catatan)
+    <h6>G. CATATAN WALIKELAS</h6>
+    <table class="table table-bordered border-dark">
+        @foreach ($list_catatan as $catatan)
             <tr>
                 <td colspan="6" style="border:#000 1px solid">
                     {{ $catatan->catatan }}
                 </td>
             </tr>
-        @empty
-            <tr>
-                <td colspan="6" style="border:#000 1px solid">
-                    -
-                </td>
-            </tr>
-        @endforelse
+        @endforeach
     </table>
-    <br>
-    <b>H. TANGGAPAN ORANGTUA/WALI</b>
+    <h6>H. TANGGAPAN ORANGTUA/WALI</h6>
     <table style="border-collapse:  collapse; border:#000 1px solid" width="100%">
         <tbody>
             <tr>
@@ -583,6 +505,7 @@
             </tr>
         </tbody>
     </table>
+    <br>
     @if ($semester = 2)
         <p>
             <b>Keputusan</b> berdasarkan pencapaian kompetensi pada semester ke-1 dan ke-2, peserta didik ditetapkan *)
@@ -592,47 +515,41 @@
             *) Coret yang tidak perlu</p>
     @endif
     <br>
-    <br>
-    <table style="padding-left: 65px;text-align:center" width="100%">
+    <table class="table table-borderless">
         <tr>
-            <td style="text-align:center">Mengetahui</td>
-            <td colspan="3"></td>
-            <td style="text-align:center">
-                Ngampel, {{ Carbon\Carbon::parse($tanggal_rapor->tanggal)->translatedFormat('d F Y') }}
+            <td style="width: 5%"></td>
+            <td style="width: 20%">
+                Mengetahui : <br><br>
+                Orang Tua/Wali, <br>
+                <br><br><br><br>
+                <u>..........................</u>
             </td>
-        </tr>
-        <tr>
-            <td style="text-align:center">Orang Tua/Wali</td>
-            <td></td>
-            <td style="text-align:center">Wali Kelas</td>
-            <td></td>
-            <td style="text-align:center">Kepala SMP Al Musyaffa'</td>
-        </tr>
-        <tr>
-            <td colspan="5">&nbsp;</td>
-        </tr>
-        <tr>
-            <td colspan="5">&nbsp;</td>
-        </tr>
-        <tr>
-            <td colspan="5">&nbsp;</td>
-        </tr>
-        <tr>
-            <td colspan="5">&nbsp;</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><u><b>..........................</b></u></td>
-            <td></td>
-            <td style="text-align:center"><u><b>{{ $wali_kelas }}</b></u></td>
-            <td></td>
-            <td style="text-align:center"><u><b>
+            <td style="width: 15%"></td>
+            <td style="width: 25%">
+                <br>
+                <br>
+                Wali Kelas <br>
+                <br><br><br><br>
+                <u><b>Wali Kelas</b></u><br>
+                NIP. -
+            </td>
+            <td style="width: 5%"></td>
+            <td style="width: 30%">
+                Ngampel, {{ Carbon\Carbon::parse($tanggal_rapor)->translatedFormat('d F Y') }} <br><br>
+                Kepala SMP Al Musyaffa <br>
+                <br><br><br><br>
+                <u><b>
                         @foreach ($kepala_sekolah as $kasek)
                             {{ $kasek->name }}
                         @endforeach
-                        <br>
-                    </b></td>
+                    </b></u><br>
+                NIP. -
+            </td>
         </tr>
     </table>
+    <div class="footer">
+        {{ $nama_siswa }}
+    </div>
 </body>
 
 </html>

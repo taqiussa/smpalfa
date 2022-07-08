@@ -9,6 +9,8 @@ use App\Models\Biodata;
 use App\Models\Catatan;
 use App\Models\Prestasi;
 use App\Models\GuruMapel;
+use App\Models\WaliKelas;
+use App\Models\TanggalRapor;
 use App\Models\KurikulumMapel;
 use App\Models\PenilaianRapor;
 use App\Models\PenilaianSikap;
@@ -65,6 +67,13 @@ class PrintRaporController extends Controller
                 ->where('semester', $this->semester)
                 ->where('nis', $this->nis)
                 ->get(),
+            'tanggal_rapor' => TanggalRapor::where('tahun', $this->tahun)
+                ->where('semester', $this->semester)
+                ->first(),
+            'wali_kelas' => WaliKelas::where('user_id', auth()->user()->id)
+                ->where('tahun', $this->tahun)
+                ->join('users', 'users.id', '=', 'kelas_wali_kelas.user_id')
+                ->value('users.name'),
             'kepala_sekolah' => User::role('Kepala Sekolah')->get(),
         ];
         return view('rapor.rapor-print', $data);

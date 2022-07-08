@@ -85,21 +85,21 @@
                                                 class="btn btn-danger mx-2 my-2">Download <i wire:loading
                                                     wire:target="download({{ $siswa->nis }})"
                                                     class="fas fa-spin fa-spinner"></i></a>
+
                                             {{-- <a wire:click.prevent="downloadv({{ $siswa->nis }})"
                                                 wire:loading.class="disabled"
                                                 wire:target="downloadv({{ $siswa->nis }})"
                                                 class="btn btn-danger mx-2 my-2">Download V <i wire:loading
                                                     wire:target="downloadv({{ $siswa->nis }})"
-                                                    class="fas fa-spin fa-spinner"></i></a>
-                                                    
-                                                    <a href="{{ route('guru.rapor.rapor-print', 
-                                                    [
-                                                        'tahun' => $tahun,
-                                                        'nis' => $siswa->nis,
-                                                        'kelas' => $idkelas,
-                                                        'semester' => $semester
-                                                    ]) }}" class="btn btn-success mx-2 my-2" role="button" target="__blank">
-                                                    Print</a> --}}
+                                                    class="fas fa-spin fa-spinner"></i></a> --}}
+                                            <a href="{{ route('guru.rapor.rapor-print', [
+                                                'tahun' => $tahun,
+                                                'nis' => $siswa->nis,
+                                                'kelas' => $idkelas,
+                                                'semester' => $semester,
+                                            ]) }}"
+                                                class="btn btn-success mx-2 my-2" role="button" target="__blank">
+                                                Print</a>
                                         </td>
                                     </tr>
                                 @endforeach
