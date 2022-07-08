@@ -38,13 +38,13 @@
     
     {{-- turbolinks --}}
     @livewireScripts
-    <script src="{{ asset('js/livewire-turbolinks.js') }}"
-        data-turbolinks-eval="false" data-turbo-eval="false"></script>
+    {{-- <script src="{{ asset('js/livewire-turbolinks.js') }}"
+        data-turbolinks-eval="false" data-turbo-eval="false"></script> --}}
     {{-- <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js"
         data-turbolinks-eval="false" data-turbo-eval="false"></script> --}}
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
-    <script src="{{ mix('js/turbolinks.js') }}" defer></script>
+    {{-- <script src="{{ mix('js/turbolinks.js') }}" defer></script> --}}
 </head>
 
 <body>

@@ -31,3 +31,5 @@ timezone, locale, faker_local id_ID
 13. Rekap Skor Print - belum selesai, tanda tangan , tambahkan lagi sesuai BK yang mengampu
 14. Set Role Username perbaiki
 15. Table User dan Set Role Perbaiki, tambahkan pencarian User
+16. rekapan ekstra per kelas
+17. data skor per siswa
