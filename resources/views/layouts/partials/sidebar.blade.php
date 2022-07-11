@@ -18,7 +18,7 @@
         @include('layouts.partials.sidebar.sidebar-konseling', ['title' => 'Konseling'])
         @endrole
         @role('Kreator')
-        @include('layouts.partials.sidebar.sidebar-Kreator', ['title' => 'Kreator'])
+        @include('layouts.partials.sidebar.sidebar-kreator', ['title' => 'Kreator'])
         @endrole
         @role('Kurikulum')
             @include('layouts.partials.sidebar.sidebar-kurikulum', ['title' => 'Kurikulum'])
