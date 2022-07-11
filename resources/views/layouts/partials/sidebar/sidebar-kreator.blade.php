@@ -17,7 +17,7 @@
             </li>
         </ul>
     </li>
-    <span class="divider">
+    {{-- <span class="divider">
         <hr />
-    </span>
+    </span> --}}
 </ul>
