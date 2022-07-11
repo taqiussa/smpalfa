@@ -15,6 +15,10 @@
                 <a href="{{ route('kreator.post.buat-post') }}"
                     class="{{ Request::routeIs('kreator.post.buat-post') ? 'active' : '' }}"> Buat Postingan </a>
             </li>
+            <li>
+                <a href="{{ route('kreator.post.list-post') }}"
+                    class="{{ Request::routeIs('kreator.post.list-post') || Request::routeIs('kreator.post.list-post.*') ? 'active' : '' }}"> List Postingan </a>
+            </li>
         </ul>
     </li>
     {{-- <span class="divider">

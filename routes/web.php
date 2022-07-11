@@ -5,6 +5,7 @@ use App\Http\Controllers\DaftarNilaiController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Konseling\Layanan\DetailBimbinganController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\PrintRaporController;
 use App\Http\Controllers\RekapSkorPrintController;
 use App\Http\Livewire\Admin\Kelas\WaliKelas;
@@ -62,6 +63,7 @@ use App\Http\Livewire\Konseling\Skor\PencarianSkor;
 use App\Http\Livewire\Konseling\Skor\RekapSkor;
 use App\Http\Livewire\Konseling\Skor\RekapSkorPrint;
 use App\Http\Livewire\Kreator\Post\BuatPost;
+use App\Http\Livewire\Kreator\Post\ListPost;
 use App\Http\Livewire\Kurikulum\Kurikulum\MataPelajaran as KurikulumMataPelajaran;
 use App\Http\Livewire\Kurikulum\Kurikulum\TableKurikulum as KurikulumTableKurikulum;
 use App\Http\Livewire\Kurikulum\MataPelajaran\TableGuru as MataPelajaranTableGuru;
@@ -232,7 +234,8 @@ Route::middleware(['auth'])->group(function () {
 
         //Menu Postingan
         Route::get('kreator/post/buat-post', BuatPost::class)->name('kreator.post.buat-post');
-
+        Route::get('kreator/post/list-post', ListPost::class)->name('kreator.post.list-post');
+        Route::get('kreator/post/list-post/detail/{slug}', [PostController::class, 'detail'])->name('kreator.post.list-post.detail');
         
     });
     // Route For Kurikulum
