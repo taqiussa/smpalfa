@@ -28,6 +28,9 @@
                     </tbody>
                 </table>
             </div>
+            <div>
+                {{ $list_post->links() }}
+            </div>
         </x-card>
     </div>
 </div>
