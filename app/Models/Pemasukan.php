@@ -10,8 +10,13 @@ class Pemasukan extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function jenis()
+    public function gunabayar()
     {
-        return $this->belongsTo(JenisPemasukan::class, 'jenis_pemasukan_id');
+        return $this->belongsTo(Gunabayar::class, 'gunabayar_id');
+    }
+
+    public function kategori()
+    {
+        return $this->belongsTo(KategoriPemasukan::class, 'kategori_pemasukan_id');
     }
 }

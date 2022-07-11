@@ -29,7 +29,7 @@
                                 @enderror
                             </div>
                             <div class="col-md-6">
-                                <label for="kategori" class="form-label">Kategori Pemasukan</label>
+                                <label for="kategori" class="form-label">Kategori Pengeluaran</label>
                                 <select wire:model.defer="kategori" id="kategori" class="form-select"
                                     {{ $is_disabled }}>
                                     <option value="">Pilih Kategori</option>
@@ -80,7 +80,7 @@
                                 <th>#</th>
                                 <th>Tanggal</th>
                                 <th>Tahun</th>
-                                <th>Kategori Pemasukan</th>
+                                <th>Kategori Pengeluaran</th>
                                 <th>Keterangan</th>
                                 <th>Jumlah</th>
                                 <th>Bendahara</th>
@@ -88,21 +88,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($list_pemasukan as $key => $pemasukan)
+                            @foreach ($list_pengeluaran as $key => $pengeluaran)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ date('d M Y', strtotime($pemasukan->tanggal)) }}</td>
-                                    <td>{{ $pemasukan->tahun }}</td>
-                                    <td>{{ $pemasukan->nama }}</td>
-                                    <td>{{ $pemasukan->keterangan }}</td>
-                                    <td>{{ 'Rp ' . number_format($pemasukan->jumlah, 0, ',', '.') }}</td>
-                                    <td>{{ $pemasukan->name }}</td>
+                                    <td>{{ date('d M Y', strtotime($pengeluaran->tanggal)) }}</td>
+                                    <td>{{ $pengeluaran->tahun }}</td>
+                                    <td>{{ $pengeluaran->nama }}</td>
+                                    <td>{{ $pengeluaran->keterangan }}</td>
+                                    <td>{{ 'Rp ' . number_format($pengeluaran->jumlah, 0, ',', '.') }}</td>
+                                    <td>{{ $pengeluaran->name }}</td>
                                     <td>
-                                        <a wire:click.prevent="edit({{ $pemasukan->id }})"
+                                        <a wire:click.prevent="edit({{ $pengeluaran->id }})"
                                             class="badge text-primary mx-2 my-2" role="button">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a wire:click.prevent="confirm({{ $pemasukan->id }})"
+                                        <a wire:click.prevent="confirm({{ $pengeluaran->id }})"
                                             class="badge text-danger mx-2 my-2" role="button">
                                             <i class="fas fa-trash-alt"></i></a>
                                     </td>

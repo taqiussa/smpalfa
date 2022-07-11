@@ -14,6 +14,7 @@ class SetRole extends Component
     public $role;
     public $user;
     public $user_id;
+    public $nama;
 
     //array
     public $list_role;
@@ -40,6 +41,7 @@ class SetRole extends Component
     public function show_user_roles($id)
     {
         $this->user = User::find($id);
+        $this->nama = $this->user->name;
         $list_user_roles = $this->user->roles->pluck('name')->toArray();
         $this->roles_name = array_fill_keys($list_user_roles, true);
         $this->user_id = $id;

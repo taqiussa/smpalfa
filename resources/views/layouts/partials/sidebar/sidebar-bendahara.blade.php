@@ -16,7 +16,19 @@
             <li>
                 <a href="{{ route('bendahara.pengaturan.atur-wajib-bayar') }}"
                     class="{{ Request::routeIs('bendahara.pengaturan.atur-wajib-bayar') ? 'active' : '' }}">Atur Wajib
-                    Bayar</a>
+                    Bayar SPP</a>
+            </li>
+            <li>
+                <a href="{{ route('bendahara.pengaturan.kategori-pemasukan') }}"
+                    class="{{ Request::routeIs('bendahara.pengaturan.kategori-pemasukan') ? 'active' : '' }}">Kategori Pemasukan</a>
+            </li>
+            <li>
+                <a href="{{ route('bendahara.pengaturan.kategori-pengeluaran') }}"
+                    class="{{ Request::routeIs('bendahara.pengaturan.kategori-pengeluaran') ? 'active' : '' }}">Kategori Pengeluaran</a>
+            </li>
+            <li>
+                <a href="{{ route('bendahara.pengaturan.gunabayar') }}"
+                    class="{{ Request::routeIs('bendahara.pengaturan.gunabayar') ? 'active' : '' }}">Guna Bayar</a>
             </li>
         </ul>
     </li>
@@ -33,12 +45,98 @@
         <ul id="bendahara_transaksi"
             class="{{ Request::routeIs('bendahara.transaksi.*') ? '' : 'collapse' }} dropdown-nav">
             <li>
+                <a href="{{ route('bendahara.transaksi.pembayaran-siswa') }}"
+                    class="{{ Request::routeIs('bendahara.transaksi.pembayaran-siswa') ? 'active' : '' }}">Pembayaran Siswa</a>
+            </li>
+            <li>
                 <a href="{{ route('bendahara.transaksi.pemasukan') }}"
                     class="{{ Request::routeIs('bendahara.transaksi.pemasukan') ? 'active' : '' }}">Pemasukan</a>
             </li>
             <li>
-                <a href="{{ route('bendahara.transaksi.data-pemasukan') }}"
-                    class="{{ Request::routeIs('bendahara.transaksi.data-pemasukan') ? 'active' : '' }}">Data Pemasukan</a>
+                <a href="{{ route('bendahara.transaksi.pengeluaran') }}"
+                    class="{{ Request::routeIs('bendahara.transaksi.pengeluaran') ? 'active' : '' }}">Pengeluaran</a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item nav-item-has-children">
+        <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#bendahara_rekap_pemasukan"
+            aria-controls="bendahara_rekap_pemasukan" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon">
+                <svg style="width:22px;height:22px" viewBox="0 0 22 22">
+                    <path fill="currentColor" d="M15.5,12C18,12 20,14 20,16.5C20,17.38 19.75,18.21 19.31,18.9L22.39,22L21,23.39L17.88,20.32C17.19,20.75 16.37,21 15.5,21C13,21 11,19 11,16.5C11,14 13,12 15.5,12M15.5,14A2.5,2.5 0 0,0 13,16.5A2.5,2.5 0 0,0 15.5,19A2.5,2.5 0 0,0 18,16.5A2.5,2.5 0 0,0 15.5,14M5,3H19C20.11,3 21,3.89 21,5V13.03C20.5,12.23 19.81,11.54 19,11V5H5V19H9.5C9.81,19.75 10.26,20.42 10.81,21H5C3.89,21 3,20.11 3,19V5C3,3.89 3.89,3 5,3M7,7H17V9H7V7M7,11H12.03C11.23,11.5 10.54,12.19 10,13H7V11M7,15H9.17C9.06,15.5 9,16 9,16.5V17H7V15Z" />
+                </svg>
+            </span>
+            <span class="text">Rekap Pemasukan</span>
+        </a>
+        <ul id="bendahara_rekap_pemasukan"
+            class="{{ Request::routeIs('bendahara.rekap-pemasukan.*') ? '' : 'collapse' }} dropdown-nav">
+            <li>
+                <a href="{{ route('bendahara.rekap-pemasukan.data-pembayaran') }}"
+                    class="{{ Request::routeIs('bendahara.rekap-pemasukan.data-pembayaran') ? 'active' : '' }}">Data Pembayaran Siswa</a>
+            </li>
+            <li>
+                <a href="{{ route('bendahara.rekap-pemasukan.data-pemasukan') }}"
+                class="{{ Request::routeIs('bendahara.rekap-pemasukan.data-pemasukan') ? 'active' : '' }}">Data Pemasukan</a>
+            </li>
+            <li>
+                <a href="{{ route('bendahara.rekap-pemasukan.rekap-harian-pemasukan') }}"
+                    class="{{ Request::routeIs('bendahara.rekap-pemasukan.rekap-harian-pemasukan') ? 'active' : '' }}">Rekap Harian Pemasukan</a>
+            </li>
+            <li>
+                <a href="{{ route('bendahara.rekap-pemasukan.rekap-tahunan-pemasukan') }}"
+                    class="{{ Request::routeIs('bendahara.rekap-pemasukan.rekap-tahunan-pemasukan') ? 'active' : '' }}">Rekap Tahunan Pemasukan</a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item nav-item-has-children">
+        <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#bendahara_rekap_pengeluaran"
+            aria-controls="bendahara_rekap_pengeluaran" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon">
+                <svg style="width:22px;height:22px" viewBox="0 0 22 22">
+                    <path fill="currentColor" d="M15.5,12C18,12 20,14 20,16.5C20,17.38 19.75,18.21 19.31,18.9L22.39,22L21,23.39L17.88,20.32C17.19,20.75 16.37,21 15.5,21C13,21 11,19 11,16.5C11,14 13,12 15.5,12M15.5,14A2.5,2.5 0 0,0 13,16.5A2.5,2.5 0 0,0 15.5,19A2.5,2.5 0 0,0 18,16.5A2.5,2.5 0 0,0 15.5,14M7,15V17H9C9.14,18.55 9.8,19.94 10.81,21H5C3.89,21 3,20.1 3,19V5C3,3.89 3.89,3 5,3H19A2,2 0 0,1 21,5V13.03C19.85,11.21 17.82,10 15.5,10C14.23,10 13.04,10.37 12.04,11H7V13H10C9.64,13.6 9.34,14.28 9.17,15H7M17,9V7H7V9H17Z" />
+                </svg>
+            </span>
+            <span class="text">Rekap Pengeluaran</span>
+        </a>
+        <ul id="bendahara_rekap_pengeluaran"
+            class="{{ Request::routeIs('bendahara.rekap-pengeluaran.*') ? '' : 'collapse' }} dropdown-nav">
+            <li>
+                <a href="{{ route('bendahara.rekap-pengeluaran.data-pengeluaran') }}"
+                class="{{ Request::routeIs('bendahara.rekap-pengeluaran.data-pengeluaran') ? 'active' : '' }}">Data Pengeluaran</a>
+            </li>
+            <li>
+                <a href="{{ route('bendahara.rekap-pengeluaran.rekap-harian-pengeluaran') }}"
+                    class="{{ Request::routeIs('bendahara.rekap-pengeluaran.rekap-harian-pengeluaran') ? 'active' : '' }}">Rekap Harian Pengeluaran</a>
+            </li>
+            <li>
+                <a href="{{ route('bendahara.rekap-pengeluaran.rekap-tahunan-pengeluaran') }}"
+                    class="{{ Request::routeIs('bendahara.rekap-pengeluaran.rekap-tahunan-pengeluaran') ? 'active' : '' }}">Rekap Tahunan Pengeluaran</a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item nav-item-has-children">
+        <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#bendahara_kas"
+            aria-controls="bendahara_kas" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon">
+                <svg style="width:22px;height:22px" viewBox="0 0 22 22">
+                    <path fill="currentColor" d="M17.45,15.18L22,7.31V19L22,21H2V3H4V15.54L9.5,6L16,9.78L20.24,2.45L21.97,3.45L16.74,12.5L10.23,8.75L4.31,19H6.57L10.96,11.44L17.45,15.18Z" />
+                </svg>
+            </span>
+            <span class="text">KAS</span>
+        </a>
+        <ul id="bendahara_kas"
+            class="{{ Request::routeIs('bendahara.rekap-pengeluaran.*') ? '' : 'collapse' }} dropdown-nav">
+            <li>
+                <a href="{{ route('bendahara.rekap-pengeluaran.data-pengeluaran') }}"
+                class="{{ Request::routeIs('bendahara.rekap-pengeluaran.data-pengeluaran') ? 'active' : '' }}">Data Pengeluaran</a>
+            </li>
+            <li>
+                <a href="{{ route('bendahara.rekap-pengeluaran.rekap-harian-pengeluaran') }}"
+                    class="{{ Request::routeIs('bendahara.rekap-pengeluaran.rekap-harian-pengeluaran') ? 'active' : '' }}">Rekap Harian Pengeluaran</a>
+            </li>
+            <li>
+                <a href="{{ route('bendahara.rekap-pengeluaran.rekap-tahunan-pengeluaran') }}"
+                    class="{{ Request::routeIs('bendahara.rekap-pengeluaran.rekap-tahunan-pengeluaran') ? 'active' : '' }}">Rekap Tahunan Pengeluaran</a>
             </li>
         </ul>
     </li>

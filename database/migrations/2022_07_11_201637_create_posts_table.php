@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePemasukansTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreatePemasukansTable extends Migration
      */
     public function up()
     {
-        Schema::create('pemasukans', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal');
-            $table->string('tahun');
-            $table->foreignId('kategori_pemasukan_id');
-            $table->text('keterangan')->nullable();
-            $table->bigInteger('jumlah');
             $table->foreignId('user_id');
+            $table->date('tanggal');
+            $table->string('judul');
+            $table->string('slug')->unique();
+            $table->string('kutipan');
+            $table->text('isi');
+            $table->string('foto');
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ class CreatePemasukansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pemasukans');
+        Schema::dropIfExists('posts');
     }
 }

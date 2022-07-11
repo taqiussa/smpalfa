@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJenisPemasukansTable extends Migration
+class CreatePengeluaransTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateJenisPemasukansTable extends Migration
      */
     public function up()
     {
-        Schema::create('jenis_pemasukans', function (Blueprint $table) {
+        Schema::create('pengeluarans', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('semester')->nullable();
+            $table->date('tanggal');
+            $table->string('tahun');
+            $table->foreignId('kategori_pengeluaran_id');
+            $table->text('keterangan')->nullable();
+            $table->bigInteger('jumlah');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ class CreateJenisPemasukansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jenis_pemasukans');
+        Schema::dropIfExists('pengeluarans');
     }
 }

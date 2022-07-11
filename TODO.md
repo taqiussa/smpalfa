@@ -19,7 +19,7 @@ Vendor/spatie/laravel-permission/src/Models/Role.php
 3. config/app.php
 timezone, locale, faker_local id_ID
 
-4. ABSENSI EKSTRA - Print absensi Ekstra
+4. ABSENSI EKSTRA - Print absensi Ekstra - Done
 5. Karakter Siswa / Keterangan di Bimbingan - print bimbingan siswa
 6. Input Skor X jumlah = Kasir
 7. Bendahara
@@ -33,3 +33,4 @@ timezone, locale, faker_local id_ID
 15. Table User dan Set Role Perbaiki, tambahkan pencarian User
 16. rekapan ekstra per kelas
 17. data skor per siswa
+18. Nilai Quran

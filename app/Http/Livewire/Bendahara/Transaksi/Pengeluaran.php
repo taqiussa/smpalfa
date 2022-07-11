@@ -2,12 +2,13 @@
 
 namespace App\Http\Livewire\Bendahara\Transaksi;
 
-use App\Models\KategoriPemasukan;
-use App\Models\Pemasukan as ModelsPemasukan;
+use App\Models\KategoriPengeluaran;
+use App\Models\Pengeluaran as ModelsPengeluaran;
 use App\Traits\GetData;
 use Livewire\Component;
 
-class Pemasukan extends Component
+
+class Pengeluaran extends Component
 {
     use GetData;
 
@@ -19,7 +20,7 @@ class Pemasukan extends Component
     public $keterangan;
     public $is_edit;
     public $is_disabled;
-    public $id_pemasukan;
+    public $id_pengeluaran;
 
     //array
     public $list_kategori = [];
@@ -34,21 +35,20 @@ class Pemasukan extends Component
     protected $listeners = ['delete' => 'delete'];
     public function render()
     {
-        return view('livewire.bendahara.transaksi.pemasukan',
+        return view('livewire.bendahara.transaksi.pengeluaran',
     [
-        'list_pemasukan' => ModelsPemasukan::join('kategori_pemasukans', 'kategori_pemasukans.id', '=' ,'pemasukans.kategori_pemasukan_id')
-        ->join('users', 'users.id', '=', 'pemasukans.user_id')
-        ->where('kategori_pemasukans.nama', '!=', 'SPP')
+        'list_pengeluaran' => ModelsPengeluaran::join('kategori_pengeluarans', 'kategori_pengeluarans.id', '=' ,'pengeluarans.kategori_pengeluaran_id')
+        ->join('users', 'users.id', '=', 'pengeluarans.user_id')
         ->select(
-            'kategori_pemasukans.nama as nama',
+            'kategori_pengeluarans.nama as nama',
             'users.name as name',
-            'pemasukans.id as id',
-            'pemasukans.tahun as tahun',
-            'pemasukans.tanggal as tanggal',
-            'pemasukans.keterangan as keterangan',
-            'pemasukans.jumlah as jumlah'
+            'pengeluarans.id as id',
+            'pengeluarans.tahun as tahun',
+            'pengeluarans.tanggal as tanggal',
+            'pengeluarans.keterangan as keterangan',
+            'pengeluarans.jumlah as jumlah'
         )
-        ->orderBy('pemasukans.created_at', 'desc')
+        ->orderBy('pengeluarans.created_at', 'desc')
         ->take(10)
         ->get()
     ]);
@@ -58,7 +58,7 @@ class Pemasukan extends Component
     {
         $this->tanggal = gmdate('Y-m-d');
         $this->get_tahun();
-        $this->list_kategori = KategoriPemasukan::where('nama', '!=', 'SPP')->get();
+        $this->list_kategori = KategoriPengeluaran::orderBy('nama')->get();
     }
 
     public function simpan()
@@ -66,10 +66,10 @@ class Pemasukan extends Component
         $this->validate();
         try {
             if ($this->is_edit) {
-                ModelsPemasukan::updateOrCreate(
+                ModelsPengeluaran::updateOrCreate(
                     [
-                        'id' => $this->id_pemasukan,
-                        'kategori_pemasukan_id' => $this->kategori,
+                        'id' => $this->id_pengeluaran,
+                        'kategori_pengeluaran_id' => $this->kategori,
                         'tahun' => $this->tahun,
                         'tanggal' => $this->tanggal,
                     ],
@@ -83,15 +83,15 @@ class Pemasukan extends Component
                     'notyf',
                     [
                         'type' => 'success',
-                        'message' => 'Berhasil Update Pemasukan'
+                        'message' => 'Berhasil Update pengeluaran'
                     ]
                 );
             } else {
-                ModelsPemasukan::create(
+                ModelsPengeluaran::create(
                     [
                         'tanggal' => $this->tanggal,
                         'tahun' => $this->tahun,
-                        'kategori_pemasukan_id' => $this->kategori,
+                        'kategori_pengeluaran_id' => $this->kategori,
                         'keterangan' => $this->keterangan,
                         'jumlah' => $this->jumlah,
                         'user_id' => auth()->user()->id
@@ -101,7 +101,7 @@ class Pemasukan extends Component
                     'notyf',
                     [
                         'type' => 'success',
-                        'message' => 'Berhasil Simpan Pemasukan'
+                        'message' => 'Berhasil Simpan pengeluaran'
                     ]
                 );
             }
@@ -121,11 +121,11 @@ class Pemasukan extends Component
     {
         $this->is_edit = true;
         $this->is_disabled = 'disabled';
-        $cari = ModelsPemasukan::find($id);
-        $this->id_pemasukan = $id;
+        $cari = ModelsPengeluaran::find($id);
+        $this->id_pengeluaran = $id;
         $this->tanggal = $cari->tanggal;
         $this->tahun = $cari->tahun;
-        $this->kategori = $cari->kategori_pemasukan_id;
+        $this->kategori = $cari->kategori_pengeluaran_id;
         $this->keterangan = $cari->keterangan;
         $this->jumlah  = $cari->jumlah;
     }
@@ -136,11 +136,11 @@ class Pemasukan extends Component
     }
     public function confirm($id)
     {
-        $this->dispatchBrowserEvent('confirm',['title' => 'Hapus Data Pemasukan', 'text' => 'Anda Yakin Hapus Data Pemasukan ?', 'id' => $id]);
+        $this->dispatchBrowserEvent('confirm',['title' => 'Hapus Data pengeluaran', 'text' => 'Anda Yakin Hapus Data pengeluaran ?', 'id' => $id]);
     }
     public function delete($id)
     {
-        ModelsPemasukan::find($id)->delete();
-        $this->dispatchBrowserEvent('notyf', ['type' => 'error', 'message' => 'Berhasil Menghapus Data Pemasukan']);
+        ModelsPengeluaran::find($id)->delete();
+        $this->dispatchBrowserEvent('notyf', ['type' => 'error', 'message' => 'Berhasil Menghapus Data pengeluaran']);
     }
 }

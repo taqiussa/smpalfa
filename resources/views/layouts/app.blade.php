@@ -21,13 +21,11 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <style>
-        .turbolinks-progress-bar {
-            height: 5px;
-        }
-
-    </style>
     @livewireStyles
+
+    {{-- Trix --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/trix.css') }}">
+    <script type="text/javascript" src="{{ asset('js/trix.js') }}"></script>
 
     {{-- jQuery  --}}
     <script src="{{ asset('js/select2/jquery-3.6.0.min.js') }}"></script>
@@ -36,15 +34,16 @@
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet" />
     <script src="{{ asset('js/select2/select2.min.js') }}"></script>
     
-    {{-- turbolinks --}}
     @livewireScripts
-    {{-- <script src="{{ asset('js/livewire-turbolinks.js') }}"
-        data-turbolinks-eval="false" data-turbo-eval="false"></script> --}}
-    {{-- <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js"
-        data-turbolinks-eval="false" data-turbo-eval="false"></script> --}}
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
-    {{-- <script src="{{ mix('js/turbolinks.js') }}" defer></script> --}}
+
+    {{-- Trix disable file attach --}}
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>

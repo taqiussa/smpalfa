@@ -5,13 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class JenisPemasukan extends Model
+class Pembayaran extends Model
 {
     use HasFactory;
     protected $guarded = [];
-
-    public function pemasukan()
-    {
-        return $this->hasMany(Pemasukan::class);
-    }
 }

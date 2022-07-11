@@ -7,7 +7,7 @@
             <div class="col-md-6">
                 <div class="card shadow rounded-md border-top-0 border-end-0 border-bottom-0 border-primary border-3">
                     <div class="card-body">
-                        <label for="role" class="form-label">Set Role : Username</label>
+                        <label for="role" class="form-label">Set Role : {{ $nama }}</label>
                         @foreach ($list_role as $key => $role)
                             <div class="form-check">
                                 <input wire:model.defer="roles_name.{{ $role->name }}" id="roles_name.{{ $key }}" class="form-check-input" type="checkbox" value="{{ $role->name }}">

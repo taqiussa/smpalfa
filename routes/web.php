@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\BendaharaPrintController;
 use App\Http\Controllers\DaftarNilaiController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Konseling\Layanan\DetailBimbinganController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PrintRaporController;
 use App\Http\Controllers\RekapSkorPrintController;
 use App\Http\Livewire\Admin\Kelas\WaliKelas;
@@ -22,9 +24,20 @@ use App\Http\Livewire\Admin\Role\TableRole;
 use App\Http\Livewire\Admin\Skor\DataSkor;
 use App\Http\Livewire\Admin\User\SetRole;
 use App\Http\Livewire\Admin\User\TableUser;
+use App\Http\Livewire\Bendahara\Pengaturan\Gunabayar;
+use App\Http\Livewire\Bendahara\Pengaturan\KategoriPemasukan;
+use App\Http\Livewire\Bendahara\Pengaturan\KategoriPengeluaran;
 use App\Http\Livewire\Bendahara\Pengaturan\WajibBayar;
-use App\Http\Livewire\Bendahara\Transaksi\DataPemasukan;
+use App\Http\Livewire\Bendahara\Rekap\DataPemasukan;
+use App\Http\Livewire\Bendahara\Rekap\DataPembayaran;
+use App\Http\Livewire\Bendahara\Rekap\DataPengeluaran;
+use App\Http\Livewire\Bendahara\Rekap\RekapHarian;
+use App\Http\Livewire\Bendahara\Rekap\RekapHarianPengeluaran;
+use App\Http\Livewire\Bendahara\Rekap\RekapTahunan;
+use App\Http\Livewire\Bendahara\Rekap\RekapTahunanPengeluaran;
 use App\Http\Livewire\Bendahara\Transaksi\Pemasukan;
+use App\Http\Livewire\Bendahara\Transaksi\PembayaranSiswa;
+use App\Http\Livewire\Bendahara\Transaksi\Pengeluaran;
 use App\Http\Livewire\Guru\Absensi\AbsensiEkstra;
 use App\Http\Livewire\Guru\Absensi\AbsensiSiswa as AbsensiAbsensiSiswa;
 use App\Http\Livewire\Guru\Ekstra\AbsensiEkstraPrint;
@@ -48,6 +61,7 @@ use App\Http\Livewire\Konseling\Layanan\RekapBimbingan;
 use App\Http\Livewire\Konseling\Skor\PencarianSkor;
 use App\Http\Livewire\Konseling\Skor\RekapSkor;
 use App\Http\Livewire\Konseling\Skor\RekapSkorPrint;
+use App\Http\Livewire\Kreator\Post\BuatPost;
 use App\Http\Livewire\Kurikulum\Kurikulum\MataPelajaran as KurikulumMataPelajaran;
 use App\Http\Livewire\Kurikulum\Kurikulum\TableKurikulum as KurikulumTableKurikulum;
 use App\Http\Livewire\Kurikulum\MataPelajaran\TableGuru as MataPelajaranTableGuru;
@@ -60,6 +74,7 @@ use App\Http\Livewire\Kurikulum\Rapor\RaporKkm as RaporRaporKkm;
 use App\Http\Livewire\Kurikulum\Rapor\SetPenilaianRapor as RaporSetPenilaianRapor;
 use App\Http\Livewire\Kurikulum\Rapor\TanggalRapor;
 use App\Http\Livewire\Kurikulum\Rapor\UploadKdRapor as RaporUploadKdRapor;
+use App\Http\Livewire\Landing\Posts;
 use App\Http\Livewire\Sarpras\Inventaris\DataInventaris;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -75,9 +90,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('landing');
-})->name('landing');
+// Route::get('/', [LandingController::class,'index'])->name('landing');
+Route::get('/', Posts::class)->name('landing');
+Route::get('/detail/{slug}', [LandingController::class,'detail'])->name('landing.detail');
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
@@ -131,17 +146,35 @@ Route::middleware(['auth'])->group(function () {
 
         //Menu Pengaturan
         Route::get('bendahara/pengaturan/atur-wajib-bayar', WajibBayar::class)->name('bendahara.pengaturan.atur-wajib-bayar');
+        Route::get('bendahara/pengaturan/kategori-pemasukan', KategoriPemasukan::class)->name('bendahara.pengaturan.kategori-pemasukan');
+        Route::get('bendahara/pengaturan/gunabayar', Gunabayar::class)->name('bendahara.pengaturan.gunabayar');
+        Route::get('bendahara/pengaturan/kategori-pengeluaran', KategoriPengeluaran::class)->name('bendahara.pengaturan.kategori-pengeluaran');
+        
         
         //Menu Transaksi
+        Route::get('bendahara/transaksi/pembayaran-siswa', PembayaranSiswa::class)->name('bendahara.transaksi.pembayaran-siswa');
         Route::get('bendahara/transaksi/pemasukan', Pemasukan::class)->name('bendahara.transaksi.pemasukan');
-        Route::get('bendahara/transaksi/data-pemasukan', DataPemasukan::class)->name('bendahara.transaksi.data-pemasukan');
-    
+        Route::get('bendahara/transaksi/pengeluaran', Pengeluaran::class)->name('bendahara.transaksi.pengeluaran');
+        
+        // Print
+        Route::get('bendahara/transaksi/pembayaran-siswa-print', [BendaharaPrintController::class,'pembayaran_siswa'])->name('bendahara.transaksi.pembayaran-siswa-print');
+
+        // Menu Rekap Pemasukan
+        Route::get('bendahara/rekap-pemasukan/data-pemasukan', DataPemasukan::class)->name('bendahara.rekap-pemasukan.data-pemasukan');
+        Route::get('bendahara/rekap-pemasukan/data-pembayaran', DataPembayaran::class)->name('bendahara.rekap-pemasukan.data-pembayaran');
+        Route::get('bendahara/rekap-pemasukan/rekap-harian-pemasukan', RekapHarian::class)->name('bendahara.rekap-pemasukan.rekap-harian-pemasukan');
+        Route::get('bendahara/rekap-pemasukan/rekap-tahunan-pemasukan', RekapTahunan::class)->name('bendahara.rekap-pemasukan.rekap-tahunan-pemasukan');
+        
+        // Menu Rekap Pengeluaran
+        Route::get('bendahara/rekap-pengeluaran/data-pengeluaran', DataPengeluaran::class)->name('bendahara.rekap-pengeluaran.data-pengeluaran');
+        Route::get('bendahara/rekap-pengeluaran/rekap-harian-pengeluaran', RekapHarianPengeluaran::class)->name('bendahara.rekap-pengeluaran.rekap-harian-pengeluaran');
+        Route::get('bendahara/rekap-pengeluaran/rekap-tahunan-pengeluaran', RekapTahunanPengeluaran::class)->name('bendahara.rekap-pengeluaran.rekap-tahunan-pengeluaran');
     });
     //Route For Guru
     Route::middleware(['role:Guru'])->group(function () {
         //Menu Absensi
         Route::get('guru/absensi/absensi-siswa', AbsensiAbsensiSiswa::class)->name('guru.absensi.absensi-siswa');
-        
+
         //Menu Ekstrakurikuler
         Route::get('guru/ekstrakurikuler/absensi-ekstrakurikuler', AbsensiEkstra::class)->name('guru.ekstrakurikuler.absensi-ekstrakurikuler');
         Route::get('guru/ekstrakurikuler/absensi-ekstrakurikuler-print', AbsensiEkstraPrint::class)->name('guru.ekstrakurikuler.absensi-ekstrakurikuler-print');
@@ -159,8 +192,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('guru/rapor/rapor-print', [PrintRaporController::class, 'index'])->name('guru.rapor.rapor-print');
         Route::get('guru/rapor/rapor-print-v', [PrintRaporController::class, 'indexv'])->name('guru.rapor.rapor-print-v');
         Route::get('guru/rapor/daftar-nilai-guru', DaftarNilaiGuru::class)->name('guru.rapor.daftar-nilai-guru');
-        Route::get('guru/rapor/daftar-nilai-guru-print', [DaftarNilaiController::class,'nilai_guru'])->name('guru.rapor.daftar-nilai-guru-print');
-        
+        Route::get('guru/rapor/daftar-nilai-guru-print', [DaftarNilaiController::class, 'nilai_guru'])->name('guru.rapor.daftar-nilai-guru-print');
+
 
         //Menu Skor
         Route::get('guru/skor/input-skor', InputSkor::class)->name('guru.skor.input-skor');
@@ -194,6 +227,15 @@ Route::middleware(['auth'])->group(function () {
         Route::get('konseling/skor/saldo-skor', SaldoSkor::class)->name('konseling.skor.saldo-skor');
     });
 
+    // Route For Kreator
+    Route::middleware(['role:Kreator'])->group(function () {
+
+        //Menu Postingan
+        Route::get('kreator/post/buat-post', BuatPost::class)->name('kreator.post.buat-post');
+
+        
+    });
+    // Route For Kurikulum
     Route::middleware(['role:Kurikulum'])->group(function () {
 
         //Menu Kurikulum
