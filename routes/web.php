@@ -25,6 +25,7 @@ use App\Http\Livewire\Admin\Role\TableRole;
 use App\Http\Livewire\Admin\Skor\DataSkor;
 use App\Http\Livewire\Admin\User\SetRole;
 use App\Http\Livewire\Admin\User\TableUser;
+use App\Http\Livewire\Bendahara\Kas\KasTahunan;
 use App\Http\Livewire\Bendahara\Pengaturan\Gunabayar;
 use App\Http\Livewire\Bendahara\Pengaturan\KategoriPemasukan;
 use App\Http\Livewire\Bendahara\Pengaturan\KategoriPengeluaran;
@@ -41,6 +42,7 @@ use App\Http\Livewire\Bendahara\Transaksi\PembayaranSiswa;
 use App\Http\Livewire\Bendahara\Transaksi\Pengeluaran;
 use App\Http\Livewire\Guru\Absensi\AbsensiEkstra;
 use App\Http\Livewire\Guru\Absensi\AbsensiSiswa as AbsensiAbsensiSiswa;
+use App\Http\Livewire\Guru\Alquran\InputNilai as AlquranInputNilai;
 use App\Http\Livewire\Guru\Ekstra\AbsensiEkstraPrint;
 use App\Http\Livewire\Guru\Penilaian\InputNilai;
 use App\Http\Livewire\Guru\Penilaian\InputNilaiEkstra;
@@ -94,7 +96,7 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('/', [LandingController::class,'index'])->name('landing');
 Route::get('/', Posts::class)->name('landing');
-Route::get('/detail/{slug}', [LandingController::class,'detail'])->name('landing.detail');
+Route::get('/detail/{slug}', [LandingController::class, 'detail'])->name('landing.detail');
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
@@ -151,32 +153,47 @@ Route::middleware(['auth'])->group(function () {
         Route::get('bendahara/pengaturan/kategori-pemasukan', KategoriPemasukan::class)->name('bendahara.pengaturan.kategori-pemasukan');
         Route::get('bendahara/pengaturan/gunabayar', Gunabayar::class)->name('bendahara.pengaturan.gunabayar');
         Route::get('bendahara/pengaturan/kategori-pengeluaran', KategoriPengeluaran::class)->name('bendahara.pengaturan.kategori-pengeluaran');
-        
-        
+
+
         //Menu Transaksi
         Route::get('bendahara/transaksi/pembayaran-siswa', PembayaranSiswa::class)->name('bendahara.transaksi.pembayaran-siswa');
         Route::get('bendahara/transaksi/pemasukan', Pemasukan::class)->name('bendahara.transaksi.pemasukan');
         Route::get('bendahara/transaksi/pengeluaran', Pengeluaran::class)->name('bendahara.transaksi.pengeluaran');
-        
+
         // Print
-        Route::get('bendahara/transaksi/pembayaran-siswa-print', [BendaharaPrintController::class,'pembayaran_siswa'])->name('bendahara.transaksi.pembayaran-siswa-print');
+        Route::get('bendahara/transaksi/pembayaran-siswa-print', [BendaharaPrintController::class, 'pembayaran_siswa'])->name('bendahara.transaksi.pembayaran-siswa-print');
+        Route::get('bendahara/rekap-pemasukan/rekap-harian-pemasukan-print', [BendaharaPrintController::class, 'rekap_pemasukan_harian'])->name('bendahara.rekap-pemasukan.rekap-harian-pemasukan-print');
+        Route::get('bendahara/rekap-pemasukan/rekap-harian-pemasukan-print-simple', [BendaharaPrintController::class, 'rekap_pemasukan_harian_simple'])->name('bendahara.rekap-pemasukan.rekap-harian-pemasukan-print-simple');
+        Route::get('bendahara/rekap-pemasukan/rekap-tahun-pemasukan-print', [BendaharaPrintController::class, 'rekap_pemasukan_tahunan'])->name('bendahara.rekap-pemasukan.rekap-tahunan-pemasukan-print');
+        Route::get('bendahara/rekap-pemasukan/rekap-tahun-pemasukan-print-simple', [BendaharaPrintController::class, 'rekap_pemasukan_tahunan_simple'])->name('bendahara.rekap-pemasukan.rekap-tahunan-pemasukan-print-simple');
+        Route::get('bendahara/rekap-pengeluaran/rekap-harian-pengeluaran-print', [BendaharaPrintController::class, 'rekap_pengeluaran_harian'])->name('bendahara.rekap-pengeluaran.rekap-harian-pengeluaran-print');
+        Route::get('bendahara/rekap-pengeluaran/rekap-harian-pengeluaran-print-simple', [BendaharaPrintController::class, 'rekap_pengeluaran_harian_simple'])->name('bendahara.rekap-pengeluaran.rekap-harian-pengeluaran-print-simple');
+        Route::get('bendahara/rekap-pengeluaran/rekap-tahun-pengeluaran-print', [BendaharaPrintController::class, 'rekap_pengeluaran_tahunan'])->name('bendahara.rekap-pengeluaran.rekap-tahunan-pengeluaran-print');
+        Route::get('bendahara/rekap-pengeluaran/rekap-tahun-pengeluaran-print-simple', [BendaharaPrintController::class, 'rekap_pengeluaran_tahunan_simple'])->name('bendahara.rekap-pengeluaran.rekap-tahunan-pengeluaran-print-simple');
 
         // Menu Rekap Pemasukan
         Route::get('bendahara/rekap-pemasukan/data-pemasukan', DataPemasukan::class)->name('bendahara.rekap-pemasukan.data-pemasukan');
         Route::get('bendahara/rekap-pemasukan/data-pembayaran', DataPembayaran::class)->name('bendahara.rekap-pemasukan.data-pembayaran');
         Route::get('bendahara/rekap-pemasukan/rekap-harian-pemasukan', RekapHarian::class)->name('bendahara.rekap-pemasukan.rekap-harian-pemasukan');
         Route::get('bendahara/rekap-pemasukan/rekap-tahunan-pemasukan', RekapTahunan::class)->name('bendahara.rekap-pemasukan.rekap-tahunan-pemasukan');
-        
+
         // Menu Rekap Pengeluaran
         Route::get('bendahara/rekap-pengeluaran/data-pengeluaran', DataPengeluaran::class)->name('bendahara.rekap-pengeluaran.data-pengeluaran');
         Route::get('bendahara/rekap-pengeluaran/rekap-harian-pengeluaran', RekapHarianPengeluaran::class)->name('bendahara.rekap-pengeluaran.rekap-harian-pengeluaran');
         Route::get('bendahara/rekap-pengeluaran/rekap-tahunan-pengeluaran', RekapTahunanPengeluaran::class)->name('bendahara.rekap-pengeluaran.rekap-tahunan-pengeluaran');
+
+        // Menu KAS
+        Route::get('bendahara/kas/kas-tahunan', KasTahunan::class)->name('bendahara.kas.kas-tahunan');
+        Route::get('bendahara/kas/kas-tahunan-print', [BendaharaPrintController::class,'kas_tahunan'])->name('bendahara.kas.kas-tahunan-print');
     });
     //Route For Guru
     Route::middleware(['role:Guru'])->group(function () {
         //Menu Absensi
         Route::get('guru/absensi/absensi-siswa', AbsensiAbsensiSiswa::class)->name('guru.absensi.absensi-siswa');
 
+        // Menu Alquran
+        Route::get('guru/alquran/input-nilai', AlquranInputNilai::class)->name('guru.alquran.input-nilai');
+        
         //Menu Ekstrakurikuler
         Route::get('guru/ekstrakurikuler/absensi-ekstrakurikuler', AbsensiEkstra::class)->name('guru.ekstrakurikuler.absensi-ekstrakurikuler');
         Route::get('guru/ekstrakurikuler/absensi-ekstrakurikuler-print', AbsensiEkstraPrint::class)->name('guru.ekstrakurikuler.absensi-ekstrakurikuler-print');
@@ -236,7 +253,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('kreator/post/buat-post', BuatPost::class)->name('kreator.post.buat-post');
         Route::get('kreator/post/list-post', ListPost::class)->name('kreator.post.list-post');
         Route::get('kreator/post/list-post/detail/{slug}', [PostController::class, 'detail'])->name('kreator.post.list-post.detail');
-        
     });
     // Route For Kurikulum
     Route::middleware(['role:Kurikulum'])->group(function () {

@@ -125,18 +125,10 @@
             <span class="text">KAS</span>
         </a>
         <ul id="bendahara_kas"
-            class="{{ Request::routeIs('bendahara.rekap-pengeluaran.*') ? '' : 'collapse' }} dropdown-nav">
+            class="{{ Request::routeIs('bendahara.kas.*') ? '' : 'collapse' }} dropdown-nav">
             <li>
-                <a href="{{ route('bendahara.rekap-pengeluaran.data-pengeluaran') }}"
-                class="{{ Request::routeIs('bendahara.rekap-pengeluaran.data-pengeluaran') ? 'active' : '' }}">Data Pengeluaran</a>
-            </li>
-            <li>
-                <a href="{{ route('bendahara.rekap-pengeluaran.rekap-harian-pengeluaran') }}"
-                    class="{{ Request::routeIs('bendahara.rekap-pengeluaran.rekap-harian-pengeluaran') ? 'active' : '' }}">Rekap Harian Pengeluaran</a>
-            </li>
-            <li>
-                <a href="{{ route('bendahara.rekap-pengeluaran.rekap-tahunan-pengeluaran') }}"
-                    class="{{ Request::routeIs('bendahara.rekap-pengeluaran.rekap-tahunan-pengeluaran') ? 'active' : '' }}">Rekap Tahunan Pengeluaran</a>
+                <a href="{{ route('bendahara.kas.kas-tahunan') }}"
+                class="{{ Request::routeIs('bendahara.kas.kas-tahunan') ? 'active' : '' }}">KAS Tahunan</a>
             </li>
         </ul>
     </li>

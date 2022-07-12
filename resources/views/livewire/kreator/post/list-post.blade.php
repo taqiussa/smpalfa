@@ -21,7 +21,7 @@
                                 <td>{{ $post->user->name }}</td>
                                 <td>
                                     <a href="{{ route('kreator.post.list-post.detail',['slug' => $post->slug]) }}" class="badge text-primary mx-2 my-2"><i class="fas fa-eye"></i></a>
-                                    <a wire:click.prevent="confirm({{ $post->id }})" class="badge text-danger mx-2 my-2"><i class="fas fa-trash-alt"></i></a>
+                                    <a wire:click.prevent="confirm({{ $post->id }})" class="badge text-danger mx-2 my-2"><i class="fas fa-trash-alt" role="button"></i></a>
                                 </td>
                             </tr>
                         @endforeach

@@ -14,4 +14,9 @@ class Pengeluaran extends Model
     {
         return $this->belongsTo(KategoriPengeluaran::class, 'kategori_pengeluaran_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Siswa;
-use Illuminate\Http\Request;
 
 class LandingController extends Controller
 {

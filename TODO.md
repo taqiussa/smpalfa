@@ -22,7 +22,7 @@ timezone, locale, faker_local id_ID
 4. ABSENSI EKSTRA - Print absensi Ekstra - Done
 5. Karakter Siswa / Keterangan di Bimbingan - print bimbingan siswa
 6. Input Skor X jumlah = Kasir
-7. Bendahara
+7. Bendahara Done
 8. Siswa
 9. Print Skor Per Siswa
 10. Rapor Draft Nilai Per Mapel
@@ -33,4 +33,4 @@ timezone, locale, faker_local id_ID
 15. Table User dan Set Role Perbaiki, tambahkan pencarian User
 16. rekapan ekstra per kelas
 17. data skor per siswa
-18. Nilai Quran
+18. Nilai Quran - on going

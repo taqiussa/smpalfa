@@ -19,4 +19,9 @@ class Pemasukan extends Model
     {
         return $this->belongsTo(KategoriPemasukan::class, 'kategori_pemasukan_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

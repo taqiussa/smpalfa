@@ -17,6 +17,18 @@
                         @enderror
                     </div>
                 </div>
+                <div>
+                    <a href="{{ route('bendahara.rekap-pengeluaran.rekap-tahunan-pengeluaran-print',
+                    [
+                        'tahun' => $tahun
+                    ]) }}" target="__blank" class="btn btn-success mx-2 my-2" role="button">
+                    <i class="fas fa-file-alt"></i> Print Versi Detail</a>
+                    <a href="{{ route('bendahara.rekap-pengeluaran.rekap-tahunan-pengeluaran-print-simple',
+                    [
+                        'tahun' => $tahun
+                    ]) }}" target="__blank" class="btn btn-danger mx-2 my-2" role="button">
+                    <i class="fas fa-file-alt"></i> Print Versi Simple</a>
+                </div>
             </x-card>
         </div>
     </div>

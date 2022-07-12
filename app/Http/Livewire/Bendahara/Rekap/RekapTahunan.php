@@ -6,10 +6,12 @@ use App\Models\Pemasukan;
 use App\Models\Pembayaran;
 use App\Traits\GetData;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class RekapTahunan extends Component
 {
     use GetData;
+    use WithPagination;
 
     //model
     public $tahun;
@@ -18,30 +20,33 @@ class RekapTahunan extends Component
     public $total;
 
     //array
-    public $list_pembayaran = [];
-    public $list_pemasukan = [];
+    protected $paginationTheme = 'bootstrap';
     public function render()
     {
-        return view('livewire.bendahara.rekap.rekap-tahunan');
+        $this->subtotal_pembayaran = Pembayaran::where('tahun', $this->tahun)->sum('jumlah');
+        $this->subtotal_pemasukan = Pemasukan::where('tahun', $this->tahun)->sum('jumlah');
+        $this->total = $this->subtotal_pembayaran + $this->subtotal_pemasukan;
+        return view('livewire.bendahara.rekap.rekap-tahunan',
+        [
+            'list_pembayaran' => $this->get_list_pembayaran(),
+            'list_pemasukan' => $this->get_list_pemasukan(),
+        ]
+    );
     }
 
     public function mount()
     {
         $this->get_tahun();
-        $this->get_list_pembayaran();
-        $this->get_list_pemasukan();
         $this->total = $this->subtotal_pembayaran + $this->subtotal_pemasukan;
     }
 
     public function updated($property)
     {
-        $this->get_list_pembayaran();
-        $this->get_list_pemasukan();
         $this->total = $this->subtotal_pembayaran + $this->subtotal_pemasukan;
     }
     private function get_list_pembayaran()
     {
-        $this->list_pembayaran = Pembayaran::join('gunabayars', 'gunabayars.id', '=', 'pembayarans.gunabayar_id')
+        return Pembayaran::join('gunabayars', 'gunabayars.id', '=', 'pembayarans.gunabayar_id')
             ->join('kelas', 'kelas.id', '=', 'pembayarans.kelas_id')
             ->join('users as siswa', 'siswa.nis', '=', 'pembayarans.nis')
             ->join('users as bendahara', 'bendahara.id', '=', 'pembayarans.user_id')
@@ -57,12 +62,11 @@ class RekapTahunan extends Component
             )
             ->where('pembayarans.tahun', $this->tahun)
             ->orderBy('pembayarans.created_at', 'desc')
-            ->get();
-        $this->subtotal_pembayaran = Pembayaran::where('tahun', $this->tahun)->sum('jumlah');
+            ->paginate(5);
     }
     private function get_list_pemasukan()
     {
-        $this->list_pemasukan = Pemasukan::join('kategori_pemasukans', 'kategori_pemasukans.id', '=', 'pemasukans.kategori_pemasukan_id')
+        return Pemasukan::join('kategori_pemasukans', 'kategori_pemasukans.id', '=', 'pemasukans.kategori_pemasukan_id')
             ->join('users', 'users.id', '=', 'pemasukans.user_id')
             ->select(
                 'pemasukans.id as id',
@@ -75,7 +79,6 @@ class RekapTahunan extends Component
             )
             ->where('pemasukans.tahun', $this->tahun)
             ->orderBy('pemasukans.created_at', 'desc')
-            ->get();
-        $this->subtotal_pemasukan = Pemasukan::where('tahun', $this->tahun)->sum('jumlah');
+            ->paginate(5);
     }
 }

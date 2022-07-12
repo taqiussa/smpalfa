@@ -12,6 +12,16 @@
                         <input wire:model="tanggalakhir" type="date" class="form-control">
                     </div>
                 </div>
+                <div class="d-flex justify-content-end">
+                    <a href="{{ route('bendahara.rekap-pemasukan.rekap-harian-pemasukan-print',[
+                        'tanggalawal' => $tanggalawal,
+                        'tanggalakhir' => $tanggalakhir
+                    ]) }}" target="__blank" class="btn btn-success mx-2 my-2"><i class="fas fa-file-alt"></i> Print Versi Detail</a>
+                    <a href="{{ route('bendahara.rekap-pemasukan.rekap-harian-pemasukan-print-simple',[
+                        'tanggalawal' => $tanggalawal,
+                        'tanggalakhir' => $tanggalakhir
+                    ]) }}" target="__blank" class="btn btn-danger mx-2 my-2"><i class="fas fa-file-alt"></i> Print Versi Simple</a>
+                </div>
             </x-card>
         </div>
     </div>

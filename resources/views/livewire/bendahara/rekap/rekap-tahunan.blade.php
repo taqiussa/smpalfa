@@ -17,6 +17,22 @@
                         @enderror
                     </div>
                 </div>
+                <div class="d-flex justify-content-end">
+                    <a href="{{ route('bendahara.rekap-pemasukan.rekap-tahunan-pemasukan-print',
+                    [
+                        'tahun' => $tahun
+                    ]) }}" target="__blank" class="btn btn-success mx-2 my-2" role="button">
+                    <i class="fas fa-file-alt"></i>
+                        Print Versi Detail
+                    </a>
+                    <a href="{{ route('bendahara.rekap-pemasukan.rekap-tahunan-pemasukan-print-simple',
+                    [
+                        'tahun' => $tahun
+                    ]) }}" target="__blank" class="btn btn-danger mx-2 my-2" role="button">
+                    <i class="fas fa-file-alt"></i>
+                        Print Versi Simple
+                    </a>
+                </div>
             </x-card>
         </div>
     </div>
@@ -58,6 +74,9 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div>
+                    {{ $list_pembayaran->links() }}
                 </div>
             </x-card>
         </div>
@@ -102,6 +121,9 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div>
+                    {{ $list_pemasukan->links() }}
                 </div>
             </x-card>
         </div>
