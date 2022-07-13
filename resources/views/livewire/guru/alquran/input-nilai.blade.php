@@ -69,7 +69,7 @@
                         </div>
                         <div class="col-md-3">
                             <label for="nilai" class="form-label">Nilai</label>
-                            <input wire:model.defer="nilai" type="number" class="form-control">
+                            <input wire:model.defer="nilai" type="text" class="form-control">
                             @error('nilai')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
