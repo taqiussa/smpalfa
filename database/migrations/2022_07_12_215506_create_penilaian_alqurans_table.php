@@ -22,7 +22,7 @@ class CreatePenilaianAlquransTable extends Migration
             $table->string('semester')->nullable();
             $table->foreignId('kategori_alquran_id');
             $table->foreignId('jenis_alquran_id');
-            $table->integer('nilai');
+            $table->string('nilai');
             $table->foreignId('user_id');
             $table->timestamps();
         });

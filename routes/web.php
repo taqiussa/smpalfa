@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Konseling\Layanan\DetailBimbinganController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PrintAlquranController;
 use App\Http\Controllers\PrintRaporController;
 use App\Http\Controllers\RekapSkorPrintController;
 use App\Http\Livewire\Admin\Kelas\WaliKelas;
@@ -43,6 +44,7 @@ use App\Http\Livewire\Bendahara\Transaksi\Pengeluaran;
 use App\Http\Livewire\Guru\Absensi\AbsensiEkstra;
 use App\Http\Livewire\Guru\Absensi\AbsensiSiswa as AbsensiAbsensiSiswa;
 use App\Http\Livewire\Guru\Alquran\InputNilai as AlquranInputNilai;
+use App\Http\Livewire\Guru\Alquran\PrintNilai;
 use App\Http\Livewire\Guru\Ekstra\AbsensiEkstraPrint;
 use App\Http\Livewire\Guru\Penilaian\InputNilai;
 use App\Http\Livewire\Guru\Penilaian\InputNilaiEkstra;
@@ -193,6 +195,8 @@ Route::middleware(['auth'])->group(function () {
 
         // Menu Alquran
         Route::get('guru/alquran/input-nilai', AlquranInputNilai::class)->name('guru.alquran.input-nilai');
+        Route::get('guru/alquran/print-nilai', PrintNilai::class)->name('guru.alquran.print-nilai');
+        Route::get('guru/alquran/print-nilai-print', [PrintAlquranController::class,'index'])->name('guru.alquran.print-nilai-print');
         
         //Menu Ekstrakurikuler
         Route::get('guru/ekstrakurikuler/absensi-ekstrakurikuler', AbsensiEkstra::class)->name('guru.ekstrakurikuler.absensi-ekstrakurikuler');

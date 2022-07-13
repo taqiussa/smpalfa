@@ -9,5 +9,4 @@ class JenisAlquran extends Model
 {
     use HasFactory;
     protected $guarded = [];
-
 }

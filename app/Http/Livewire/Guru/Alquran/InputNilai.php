@@ -41,7 +41,8 @@ class InputNilai extends Component
         'kelas' => 'required',
         'siswa' => 'required',
         'nilai' => 'required|numeric|max:100',
-        'kategori' => 'required'
+        'kategori' => 'required',
+        'jenis' => 'required'
     ];
 
     protected $listeners = ['delete' => 'delete'];
@@ -62,7 +63,7 @@ class InputNilai extends Component
     public function updated($property)
     {
         $this->get_list_siswa();
-        $this->list_jenis = JenisAlquran::where('kategori_alquran_id', $this->kategori)->orderBy('nama')->get();
+        $this->list_jenis = JenisAlquran::where('kategori_alquran_id', $this->kategori)->get();
         $this->get_nilai();
     }
 
@@ -74,7 +75,6 @@ class InputNilai extends Component
                 PenilaianAlquran::updateOrCreate(
                     [
                         'nis' => $this->siswa,
-                        'tahun' => $this->tahun,
                         'kategori_alquran_id' => $this->kategori,
                         'jenis_alquran_id' => $this->jenis
                     ],
@@ -105,8 +105,7 @@ class InputNilai extends Component
     {
         foreach($this->list_jenis as $key => $jenis)
         {
-            $cari = PenilaianAlquran::where('tahun', $this->tahun)
-            ->where('nis', $this->siswa)
+            $cari = PenilaianAlquran::where('nis', $this->siswa)
             ->where('jenis_alquran_id', $jenis->id)
             ->first();
             $this->list_nilai[$key] = $cari->nilai ?? '';

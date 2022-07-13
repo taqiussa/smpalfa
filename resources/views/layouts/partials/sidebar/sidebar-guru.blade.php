@@ -33,6 +33,10 @@
                 <a href="{{ route('guru.alquran.input-nilai') }}"
                     class="{{ Request::routeIs('guru.alquran.input-nilai') ? 'active' : '' }}"> Input Nilai Al Qur'an </a>
             </li>
+            <li>
+                <a href="{{ route('guru.alquran.print-nilai') }}"
+                    class="{{ Request::routeIs('guru.alquran.print-nilai') ? 'active' : '' }}"> Print Nilai Al Qur'an </a>
+            </li>
         </ul>
     </li>
     <li class="nav-item nav-item-has-children">

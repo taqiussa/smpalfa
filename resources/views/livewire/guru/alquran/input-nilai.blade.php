@@ -55,10 +55,10 @@
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="col-md-3">
-                            <label for="jenis" class="form-label">Surah</label>
+                        <div class="col-md-4">
+                            <label for="jenis" class="form-label">Surah / Juz</label>
                             <select wire:model.defer="jenis" id="jenis" class="form-select">
-                                <option value="">Pilih Surah</option>
+                                <option value="">Pilih Surah / Juz</option>
                                 @foreach ($list_jenis as $jenis)
                                     <option value="{{ $jenis->id }}">{{ $jenis->nama }}</option>
                                 @endforeach
@@ -93,10 +93,10 @@
                             <tr>
                                 <th>#</th>
                                 <th>Tanggal</th>
-                                <th>Surah</th>
+                                <th>Surah / Juz</th>
                                 <th>Nilai</th>
                                 <th>Guru</th>
-                                <th>Aksi</th>
+                                {{-- <th>Aksi</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -107,16 +107,16 @@
                                     <td>{{ $jenis->nama }}</td>
                                     <td>{{ $list_nilai[$key] }}</td>
                                     <td>{{ $list_guru[$key] }}</td>
-                                    <td>
-                                        {{-- <a wire:click.prevent="edit({{ $jenis->id }})"
+                                    {{-- <td>
+                                        <a wire:click.prevent="edit({{ $jenis->id }})"
                                             class="badge text-primary mx-2 my-2" role="button">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <a wire:click.prevent="confirm({{ $jenis->id }})"
                                             class="badge text-danger mx-2 my-2" role="button">
                                             <i class="fas fa-trash-alt"></i>
-                                        </a> --}}
-                                    </td>
+                                        </a>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>
