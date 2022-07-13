@@ -38,6 +38,11 @@ class RekapHarian extends Component
         $this->get_list_pemasukan();
         $this->total = $this->subtotal_pembayaran + $this->subtotal_pemasukan;
     }
+
+    public function download()
+    {
+        
+    }
     private function get_list_pembayaran()
     {
         $this->list_pembayaran = Pembayaran::join('gunabayars', 'gunabayars.id', '=', 'pembayarans.gunabayar_id')

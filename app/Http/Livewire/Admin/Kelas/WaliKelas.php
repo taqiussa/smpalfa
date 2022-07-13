@@ -49,7 +49,7 @@ class WaliKelas extends Component
         $id_kelas = ModelsWaliKelas::where('tahun', $this->tahun)->pluck('kelas_id');
         $this->list_kelas = Kelas::whereNotIn('id',$id_kelas)->get();
         $id_guru = ModelsWaliKelas::where('tahun', $this->tahun)->pluck('user_id');
-        $this->list_user = User::where('email', '!=', '')->whereNotIn('id', $id_guru)->orderBy('name')->get();
+        $this->list_user = User::where('username', '!=', '')->whereNotIn('id', $id_guru)->orderBy('name')->get();
         $this->list_wali_kelas = ModelsWaliKelas::join('users', 'users.id', '=', 'kelas_wali_kelas.user_id')
                                                     ->join('kelas', 'kelas.id', '=', 'kelas_wali_kelas.kelas_id')
                                                     ->where('tahun', $this->tahun)
@@ -120,7 +120,7 @@ class WaliKelas extends Component
         $id_kelas = ModelsWaliKelas::where('tahun', $this->tahun)->pluck('kelas_id');
         $this->list_kelas = Kelas::whereNotIn('id',$id_kelas)->get();
         $id_guru = ModelsWaliKelas::where('tahun', $this->tahun)->pluck('user_id');
-        $this->list_user = User::where('email', '!=', '')->whereNotIn('id', $id_guru)->orderBy('name')->get();
+        $this->list_user = User::where('username', '!=', '')->whereNotIn('id', $id_guru)->orderBy('name')->get();
         $this->list_wali_kelas = ModelsWaliKelas::join('users', 'users.id', '=', 'kelas_wali_kelas.user_id')
                                                     ->join('kelas', 'kelas.id', '=', 'kelas_wali_kelas.kelas_id')
                                                     ->where('tahun', $this->tahun)

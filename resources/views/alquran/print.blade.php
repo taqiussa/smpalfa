@@ -46,10 +46,15 @@
         </table>
         <div style="text-align: center">
             <h4>LAPORAN PENILAIAN AL QUR'AN</h4>
+            <div style="display: flex;justify-content:space-between">
+                <span>Nama : {{ $siswa->name }}</span>
+                <span>Kelas : {{ $kelas }}</span>
+                <span>Tahun : {{ $tahun }}</span>
+            </div>
         </div>
         <div style="display:flex;justify-content:space-around">
-        <h4>Bilghoib</h4>
-        <h4>Binnadzor</h4>
+        <b>Bilghoib</b>
+        <b>Binnadzor</b>
         </div>
         <div style="display: flex; flex-direction:row;">
             <table border="1" style="width: 100%;border-collapse:collapse;margin:5px">

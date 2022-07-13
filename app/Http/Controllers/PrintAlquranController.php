@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\JenisAlquran;
+use App\Models\Kelas;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 
@@ -24,6 +25,8 @@ class PrintAlquranController extends Controller
             ->get(),
             'list_bilghoib' => JenisAlquran::where('kategori_alquran_id', 1)->get(),
             'list_binnadzor' => JenisAlquran::where('kategori_alquran_id', 2)->get(),
+            'kelas' => Kelas::find($kelas)->nama,
+            'tahun' => $tahun,
         ];
         return view('alquran.print', $data);
     }

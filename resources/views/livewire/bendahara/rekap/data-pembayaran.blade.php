@@ -33,10 +33,15 @@
                             <td>{{ 'Rp ' . number_format($pembayaran->jumlah, 0, ',', '.') }}</td>
                             <td>{{ $pembayaran->bendahara }}</td>
                             <td>
-                                <a href="{{ route('bendahara.transaksi.pembayaran-siswa-print',
-                                        [
-                                            'id' => $pembayaran->id
-                                        ]) }}" class="badge text-success mx-2 my-2" target="__blank"><i class="fas fa-file-alt"></i></a>
+                                <a href="{{ route('bendahara.transaksi.pembayaran-siswa-print', [
+                                    'tanggal' => $pembayaran->tanggal,
+                                    'nis' => $pembayaran->nis,
+                                    'kelas' => $pembayaran->kelas,
+                                    'siswa' => $pembayaran->siswa,
+                                    'tahun' => $pembayaran->tahun,
+                                ]) }}"
+                                    class="badge text-success mx-2 my-2" target="__blank"><i
+                                        class="fas fa-file-alt"></i></a>
                                 <a wire:click.prevent="confirm({{ $pembayaran->id }})" class="badge text-danger"
                                     role="button">
                                     <i class="fas fa-trash-alt"></i>

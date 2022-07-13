@@ -52,7 +52,7 @@ class TableGuru extends Component
     public function get_mata_pelajaran()
     {
         $this->list_mapel = MataPelajaran::orderBy('kelompok')->orderBy('nama')->get();
-        $this->list_guru = User::where('email', '!=', '')->orderBy('name')->get();
+        $this->list_guru = User::where('username', '!=', '')->orderBy('name')->get();
         $this->list_mata_pelajaran = MataPelajaran::with(['guru' => fn($query) => $query->orderBy('name')])->orderBy('kelompok')->orderBy('nama')->get();
     }
 }

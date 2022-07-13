@@ -20,9 +20,9 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input wire:model.defer="email" type="email" class="form-control">
-                                    @error('email')
+                                    <label for="username" class="form-label">Username</label>
+                                    <input wire:model.defer="username" type="text" class="form-control">
+                                    @error('username')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -65,7 +65,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Nama</th>
-                                    <th>Email</th>
+                                    <th>Username</th>
                                     <th>Role</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -75,7 +75,7 @@
                                     <tr>
                                         <td>{{ $list_user->firstItem() + $key }}</td>
                                         <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->username }}</td>
                                         <td>
                                             @foreach ($user->roles as $role)
                                                 <li>{{ $role->name }}</li>

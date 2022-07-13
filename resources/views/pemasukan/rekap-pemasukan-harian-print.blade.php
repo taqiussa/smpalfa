@@ -85,7 +85,7 @@
             </tr>
         </tbody>
     </table>
-    <h4>Pemasukan</h4>
+    {{-- <h4>Pemasukan</h4>
     <table border="1" style="width:100%;border-collapse: collapse;">
         <thead>
             <tr>
@@ -147,7 +147,7 @@
                 <td style="text-align: right;padding-right: 5px"><h3>{{ 'Rp ' . number_format($total, 0, ',', '.') }}</h3></td>
             </tr>
         </tbody>
-    </table>
+    </table> --}}
     <br><br>
     <table style="padding-left: 25px;text-align:center" width="100%">
         <tr>

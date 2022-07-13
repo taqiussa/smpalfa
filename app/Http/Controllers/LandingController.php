@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Siswa;
+use App\Traits\GetData;
 
 class LandingController extends Controller
 {
+    use GetData;
+    public $tahun;
     public function detail()
     {
+        $this->get_tahun();
         $data = [
             'post' => Post::with('user')->where('slug', request('slug'))->first(),
             'siswa_kelas7' => $this->siswa_kelas7(),

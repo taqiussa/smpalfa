@@ -29,7 +29,7 @@ class SetRole extends Component
     {
         return view('livewire.admin.user.set-role',
     [
-        'list_user' => User::where('email', '!=', '')->orderBy('name')->paginate(5)
+        'list_user' => User::where('username', '!=', '')->orderBy('name')->paginate(5)
     ]);
     }
 

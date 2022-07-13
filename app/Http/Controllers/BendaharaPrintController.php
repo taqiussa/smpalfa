@@ -16,15 +16,20 @@ class BendaharaPrintController extends Controller
 {
     public function pembayaran_siswa()
     {
-        $pembayaran = Pembayaran::find(request('id'));
+        $tanggal = request('tanggal');
+        $nis = request('nis');
+        $kelas = request('kelas');
+        $siswa = request('siswa');
+        $tahun = request('tahun');
+        $pembayaran = Pembayaran::with('gunabayar')->where('tanggal', $tanggal)->where('nis', $nis)->get();
+        $total = Pembayaran::where('tanggal', $tanggal)->where('nis', $nis)->sum('jumlah');
         $data = [
-            'tanggal' => $pembayaran->tanggal,
-            'bendahara' => User::where('id', $pembayaran->user_id)->first()->name,
-            'jumlah' => $pembayaran->jumlah,
-            'siswa' => User::where('nis', $pembayaran->nis)->first()->name,
-            'kelas' => Kelas::find($pembayaran->kelas_id)->nama,
-            'tahun' => $pembayaran->tahun,
-            'gunabayar' => Gunabayar::find($pembayaran->gunabayar_id)->nama
+            'list_pembayaran' => $pembayaran,
+            'tanggal' => $tanggal,
+            'kelas' => $kelas,
+            'siswa' => $siswa,
+            'tahun' => $tahun,
+            'total' => $total,
         ];
         return view('pembayaran.print',$data);
     }

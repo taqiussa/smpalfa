@@ -149,7 +149,11 @@
                                     <td>
                                         <a href="{{ route('bendahara.transaksi.pembayaran-siswa-print',
                                         [
-                                            'id' => $data_bayar->id
+                                            'tanggal' => $data_bayar->tanggal,
+                                            'nis' => $data_bayar->nis,
+                                            'kelas' => $data_bayar->kelas,
+                                            'siswa' => $data_bayar->name,
+                                            'tahun' => $data_bayar->tahun
                                         ]) }}" class="badge text-success mx-2 my-2" target="__blank"><i class="fas fa-file-alt"></i></a>
                                         <a wire:click.prevent="edit({{ $data_bayar->id }})"
                                             class="badge text-primary mx-2 my-2" role="button"><i

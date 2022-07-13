@@ -25,6 +25,7 @@ use App\Http\Livewire\Admin\Rapor\UploadKdRapor;
 use App\Http\Livewire\Admin\Role\TableRole;
 use App\Http\Livewire\Admin\Skor\DataSkor;
 use App\Http\Livewire\Admin\User\SetRole;
+use App\Http\Livewire\Admin\User\SetUserSiswa;
 use App\Http\Livewire\Admin\User\TableUser;
 use App\Http\Livewire\Bendahara\Kas\KasTahunan;
 use App\Http\Livewire\Bendahara\Pengaturan\Gunabayar;
@@ -138,7 +139,7 @@ Route::middleware(['auth'])->group(function () {
         //Menu User
         Route::get('admin/user/table-user', TableUser::class)->name('admin.user.table-user');
         Route::get('admin/user/set-role', SetRole::class)->name('admin.user.set-role');
-
+        Route::get('admin/user/set-user', SetUserSiswa::class)->name('admin.user.set-user');
 
 
         Route::get('/admin/home', function () {

@@ -30,6 +30,7 @@ class DataPembayaran extends Component
             'pembayarans.jumlah as jumlah',
             'gunabayars.nama as gunabayar',
             'siswa.name as siswa',
+            'siswa.nis as nis',
             'bendahara.name as bendahara',
             'kelas.nama as kelas'
         )

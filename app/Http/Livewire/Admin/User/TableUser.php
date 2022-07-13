@@ -15,6 +15,7 @@ class TableUser extends Component
     public $show;
     public $name;
     public $email;
+    public $username;
     public $password;
     public $password_confirmation;
     public $is_edit;
@@ -24,7 +25,7 @@ class TableUser extends Component
     protected $paginationTheme = 'bootstrap';
     protected $rules = [
         'name' => 'required',
-        'email' => 'required|email|unique:users',
+        'username' => 'required|unique:users',
         'password' => 'required|min:8|confirmed'
     ];
     protected $listeners = [
@@ -35,7 +36,7 @@ class TableUser extends Component
         return view(
             'livewire.admin.user.table-user',
             [
-                'list_user' => User::where('email', '!=', '')->orderBy('name')->paginate(10)
+                'list_user' => User::where('username', '!=', '')->orderBy('name')->paginate(10)
             ]
         );
     }
@@ -47,7 +48,7 @@ class TableUser extends Component
         $this->id_user = $id;
         $user = User::find($id);
         $this->name = $user->name;
-        $this->email = $user->email;
+        $this->username = $user->username;
     }
     public function simpan()
     {
@@ -59,7 +60,7 @@ class TableUser extends Component
                 ],
                 [
                     'name' => $this->name,
-                    'email' => $this->email,
+                    'username' => $this->username,
                 ]
             );
             $this->dispatchBrowserEvent(
@@ -74,7 +75,7 @@ class TableUser extends Component
             $this->validate();
             User::create([
                 'name' => $this->name,
-                'email' => $this->email,
+                'username' => $this->username,
                 'password' => Hash::make($this->password)
             ]);
             $this->dispatchBrowserEvent(
@@ -85,7 +86,7 @@ class TableUser extends Component
                 ]
             );
         }
-        $this->reset();
+        // $this->reset();
     }
 
     public function confirm($id)

@@ -183,6 +183,10 @@
                 <a href="{{ route('admin.user.set-role') }}"
                     class="{{ Request::routeIs('admin.user.set-role') ? 'active' : '' }}">Set Role</a>
             </li>
+            <li>
+                <a href="{{ route('admin.user.set-user') }}"
+                    class="{{ Request::routeIs('admin.user.set-user') ? 'active' : '' }}">Set User As Siswa</a>
+            </li>
         </ul>
     </li>
     <span class="divider">
