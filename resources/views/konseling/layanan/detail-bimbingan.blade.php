@@ -54,13 +54,13 @@
         @if ($detail->foto)
             <div class="col-md-6 my-2">
                 <h4 class="my-2">Foto :</h4>
-                <img src="{{ asset('storage/' . $detail->foto) }}" alt="foto" class="img img-thumbnail">
+                <img src="{{ asset('storage/app/public' . $detail->foto) }}" alt="foto" class="img img-thumbnail">
             </div>
         @endif
         @if ($detail->foto_dokumen)
             <div class="col-md-6 my-2">
                 <h4 class="my-2">Dokumen:</h4>
-                <img src="{{ asset('storage/' . $detail->foto_dokumen) }}" alt="foto" class="img img-thumbnail">
+                <img src="{{ asset('storage/app/public' . $detail->foto_dokumen) }}" alt="foto" class="img img-thumbnail">
             </div>
         @endif
     </div>
