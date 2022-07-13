@@ -40,7 +40,7 @@ class InputNilai extends Component
         'tahun' => 'required',
         'kelas' => 'required',
         'siswa' => 'required',
-        'nilai' => 'required|numeric|max:100',
+        'nilai' => 'required',
         'kategori' => 'required',
         'jenis' => 'required'
     ];
