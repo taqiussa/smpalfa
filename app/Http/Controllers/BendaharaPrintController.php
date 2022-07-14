@@ -190,6 +190,28 @@ class BendaharaPrintController extends Controller
         return view('pengeluaran.rekap-pengeluaran-tahunan-print-simple',$data);
     }
 
+    // Kas
+    public function kas_bulanan()
+    {
+        $tahun = request('tahun');
+        $bulan = request('bulan');
+        $subtotal_pemasukan = Pemasukan::where('tahun', $tahun)->whereMonth('tanggal', $bulan)->sum('jumlah');
+        $subtotal_pembayaran = Pembayaran::where('tahun', $tahun)->whereMonth('tanggal', $bulan)->sum('jumlah');
+        $totalpemasukan = $subtotal_pembayaran + $subtotal_pemasukan;
+        $totalpengeluaran= Pengeluaran::where('tahun', $tahun)->whereMonth('tanggal', $bulan)->sum('jumlah');
+        $data = [
+            'kepala_sekolah' => User::role('Kepala Sekolah')->get(),
+            'tahun' => $tahun,
+            'bulan' => $bulan,
+            'subtotal_pembayaran' => $subtotal_pembayaran,
+            'list_kategori_pemasukan' => KategoriPemasukan::where('nama','!=','SPP')->orderBy('nama')->get(),
+            'list_kategori_pengeluaran' => KategoriPengeluaran::orderBy('nama')->get(),
+            'totalpemasukan' => $totalpemasukan,
+            'totalpengeluaran' => $totalpengeluaran,
+            'saldo' => $totalpemasukan - $totalpengeluaran
+        ];
+        return view('kas.kas-bulanan-print', $data);
+    }
     public function kas_tahunan()
     {
         $tahun = request('tahun');

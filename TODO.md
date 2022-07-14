@@ -34,3 +34,4 @@ timezone, locale, faker_local id_ID
 16. rekapan ekstra per kelas
 17. data skor per siswa
 18. Nilai Quran - on going
+19. alpha dari skor

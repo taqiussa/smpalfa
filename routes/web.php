@@ -27,6 +27,7 @@ use App\Http\Livewire\Admin\Skor\DataSkor;
 use App\Http\Livewire\Admin\User\SetRole;
 use App\Http\Livewire\Admin\User\SetUserSiswa;
 use App\Http\Livewire\Admin\User\TableUser;
+use App\Http\Livewire\Bendahara\Kas\KasBulanan;
 use App\Http\Livewire\Bendahara\Kas\KasTahunan;
 use App\Http\Livewire\Bendahara\Pengaturan\Gunabayar;
 use App\Http\Livewire\Bendahara\Pengaturan\KategoriPemasukan;
@@ -83,6 +84,9 @@ use App\Http\Livewire\Kurikulum\Rapor\TanggalRapor;
 use App\Http\Livewire\Kurikulum\Rapor\UploadKdRapor as RaporUploadKdRapor;
 use App\Http\Livewire\Landing\Posts;
 use App\Http\Livewire\Sarpras\Inventaris\DataInventaris;
+use App\Http\Livewire\TataUsaha\Siswa\DataSiswa;
+use App\Http\Livewire\TataUsaha\Siswa\HapusSiswa;
+use App\Http\Livewire\TataUsaha\Siswa\PindahKelasSiswa;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -186,7 +190,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('bendahara/rekap-pengeluaran/rekap-tahunan-pengeluaran', RekapTahunanPengeluaran::class)->name('bendahara.rekap-pengeluaran.rekap-tahunan-pengeluaran');
 
         // Menu KAS
+        Route::get('bendahara/kas/kas-bulanan', KasBulanan::class)->name('bendahara.kas.kas-bulanan');
         Route::get('bendahara/kas/kas-tahunan', KasTahunan::class)->name('bendahara.kas.kas-tahunan');
+        Route::get('bendahara/kas/kas-bulanan-print', [BendaharaPrintController::class,'kas_bulanan'])->name('bendahara.kas.kas-bulanan-print');
         Route::get('bendahara/kas/kas-tahunan-print', [BendaharaPrintController::class,'kas_tahunan'])->name('bendahara.kas.kas-tahunan-print');
     });
     //Route For Guru
@@ -259,6 +265,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('kreator/post/list-post', ListPost::class)->name('kreator.post.list-post');
         Route::get('kreator/post/list-post/detail/{slug}', [PostController::class, 'detail'])->name('kreator.post.list-post.detail');
     });
+    
     // Route For Kurikulum
     Route::middleware(['role:Kurikulum'])->group(function () {
 
@@ -282,9 +289,18 @@ Route::middleware(['auth'])->group(function () {
         Route::get('kurikulum/rapor/set-penilaian-rapor', RaporSetPenilaianRapor::class)->name('kurikulum.rapor.set-penilaian-rapor');
         Route::get('kurikulum/rapor/tanggal-rapor', TanggalRapor::class)->name('kurikulum.rapor.tanggal-rapor');
     });
+
     //Route For Sarpras
     Route::middleware(['role:Sarpras'])->group(function () {
         //Menu Inventaris
         Route::get('sarpras/inventaris/data-inventaris', DataInventaris::class)->name('sarpras.inventaris.data-inventaris');
+    });
+
+    //Route For Tata Usaha
+    Route::middleware(['role:Tata Usaha'])->group(function () {
+        // Menu Siswa
+        Route::get('tata-usaha/siswa/data-siswa', DataSiswa::class)->name('tata-usaha.siswa.data-siswa');
+        Route::get('tata-usaha/siswa/pindah-kelas-siswa', PindahKelasSiswa::class)->name('tata-usaha.siswa.pindah-kelas-siswa');
+        Route::get('tata-usaha/siswa/hapus-siswa', HapusSiswa::class)->name('tata-usaha.siswa.hapus-siswa');
     });
 });

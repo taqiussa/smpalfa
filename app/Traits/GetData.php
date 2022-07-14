@@ -18,6 +18,7 @@ trait GetData
             ->select(
                 'users.name as name',
                 'siswas.nis as nis',
+                'siswas.id as id',
             )
             ->orderBy('users.name')
             ->get();

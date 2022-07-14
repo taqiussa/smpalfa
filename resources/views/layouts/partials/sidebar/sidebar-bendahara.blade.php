@@ -127,6 +127,10 @@
         <ul id="bendahara_kas"
             class="{{ Request::routeIs('bendahara.kas.*') ? '' : 'collapse' }} dropdown-nav">
             <li>
+                <a href="{{ route('bendahara.kas.kas-bulanan') }}"
+                class="{{ Request::routeIs('bendahara.kas.kas-bulanan') ? 'active' : '' }}">KAS Bulanan</a>
+            </li>
+            <li>
                 <a href="{{ route('bendahara.kas.kas-tahunan') }}"
                 class="{{ Request::routeIs('bendahara.kas.kas-tahunan') ? 'active' : '' }}">KAS Tahunan</a>
             </li>

@@ -58,4 +58,13 @@ class User extends Authenticatable
     {
         return 'slug';
     }
+
+    public function alamat()
+    {
+        return $this->belongsTo(Alamat::class, 'nis', 'nis');
+    }
+    public function orangtua()
+    {
+        return $this->belongsTo(OrangTua::class, 'nis', 'nis');
+    }
 }
