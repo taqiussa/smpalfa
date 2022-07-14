@@ -16,13 +16,18 @@
                     class="{{ Request::routeIs('tata-usaha.siswa.data-siswa') ? 'active' : '' }}"> Data Siswa </a>
             </li>
             <li>
+                <a href="{{ route('tata-usaha.siswa.hapus-siswa') }}"
+                    class="{{ Request::routeIs('tata-usaha.siswa.hapus-siswa') ? 'active' : '' }}"> Hapus Siswa </a>
+            </li>
+            <li>
                 <a href="{{ route('tata-usaha.siswa.pindah-kelas-siswa') }}"
                     class="{{ Request::routeIs('tata-usaha.siswa.pindah-kelas-siswa') ? 'active' : '' }}"> Pindah Kelas Siswa </a>
             </li>
             <li>
-                <a href="{{ route('tata-usaha.siswa.hapus-siswa') }}"
-                    class="{{ Request::routeIs('tata-usaha.siswa.hapus-siswa') ? 'active' : '' }}"> Hapus Siswa </a>
+                <a href="{{ route('tata-usaha.siswa.tambah-siswa') }}"
+                    class="{{ Request::routeIs('tata-usaha.siswa.tambah-siswa') ? 'active' : '' }}"> Tambah Siswa </a>
             </li>
+
         </ul>
     </li>
     <span class="divider">

@@ -3,7 +3,7 @@
         <div class="col">
             <x-card>
                 <div class="row my-2">
-                    <div class="col-md-4">
+                    <div class="col-md-4 my-2">
                         <div class="input-group">
                             <span class="input-group-text">Tahun</span>
                             <select wire:model='tahun' id="tahun" class="form-select">
@@ -18,7 +18,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 my-2">
                         <div class="input-group">
                             <span class="input-group-text">Cari</span>
                             <input wire:model.debounce.100ms="search" type="text" class="form-control"
@@ -50,8 +50,8 @@
                         </tbody>
                     </table>
                 </div>
-                <div>
-                    {{ $list_siswa->links() }}
+                <div class="my-2">
+                    {{ $list_siswa->onEachSide(1)->links() }}
                 </div>
             </x-card>
         </div>

@@ -87,6 +87,7 @@ use App\Http\Livewire\Sarpras\Inventaris\DataInventaris;
 use App\Http\Livewire\TataUsaha\Siswa\DataSiswa;
 use App\Http\Livewire\TataUsaha\Siswa\HapusSiswa;
 use App\Http\Livewire\TataUsaha\Siswa\PindahKelasSiswa;
+use App\Http\Livewire\TataUsaha\Siswa\TambahSiswa;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -195,6 +196,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('bendahara/kas/kas-bulanan-print', [BendaharaPrintController::class,'kas_bulanan'])->name('bendahara.kas.kas-bulanan-print');
         Route::get('bendahara/kas/kas-tahunan-print', [BendaharaPrintController::class,'kas_tahunan'])->name('bendahara.kas.kas-tahunan-print');
     });
+
     //Route For Guru
     Route::middleware(['role:Guru'])->group(function () {
         //Menu Absensi
@@ -300,7 +302,8 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Tata Usaha'])->group(function () {
         // Menu Siswa
         Route::get('tata-usaha/siswa/data-siswa', DataSiswa::class)->name('tata-usaha.siswa.data-siswa');
-        Route::get('tata-usaha/siswa/pindah-kelas-siswa', PindahKelasSiswa::class)->name('tata-usaha.siswa.pindah-kelas-siswa');
         Route::get('tata-usaha/siswa/hapus-siswa', HapusSiswa::class)->name('tata-usaha.siswa.hapus-siswa');
+        Route::get('tata-usaha/siswa/pindah-kelas-siswa', PindahKelasSiswa::class)->name('tata-usaha.siswa.pindah-kelas-siswa');
+        Route::get('tata-usaha/siswa/tambah-siswa', TambahSiswa::class)->name('tata-usaha.siswa.tambah-siswa');
     });
 });

@@ -2144,7 +2144,8 @@ h6,
   background: #fff;
   width: 250px;
   padding: 20px 0px;
-  height: 100vh;
+  height: 100%;
+  height: -webkit-fill-available;
   position: fixed;
   overflow-y: scroll;
   overflow-x: hidden;
