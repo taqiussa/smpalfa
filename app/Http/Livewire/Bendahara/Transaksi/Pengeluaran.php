@@ -14,6 +14,7 @@ class Pengeluaran extends Component
 
     //model
     public $tanggal;
+    public $tanggal_nota;
     public $tahun;
     public $kategori;
     public $jumlah;
@@ -27,6 +28,7 @@ class Pengeluaran extends Component
     protected $rules =
     [
         'tanggal' => 'required',
+        'tanggal_nota' => 'required',
         'tahun' => 'required',
         'kategori' => 'required',
         'jumlah' => 'required|numeric',
@@ -45,6 +47,7 @@ class Pengeluaran extends Component
             'pengeluarans.id as id',
             'pengeluarans.tahun as tahun',
             'pengeluarans.tanggal as tanggal',
+            'pengeluarans.tanggal_nota as tanggal_nota',
             'pengeluarans.keterangan as keterangan',
             'pengeluarans.jumlah as jumlah'
         )
@@ -57,6 +60,7 @@ class Pengeluaran extends Component
     public function mount()
     {
         $this->tanggal = gmdate('Y-m-d');
+        $this->tanggal_nota = gmdate('Y-m-d');
         $this->get_tahun();
         $this->list_kategori = KategoriPengeluaran::orderBy('nama')->get();
     }
@@ -69,11 +73,12 @@ class Pengeluaran extends Component
                 ModelsPengeluaran::updateOrCreate(
                     [
                         'id' => $this->id_pengeluaran,
-                        'kategori_pengeluaran_id' => $this->kategori,
                         'tahun' => $this->tahun,
                         'tanggal' => $this->tanggal,
                     ],
                     [
+                        'kategori_pengeluaran_id' => $this->kategori,
+                        'tanggal_nota' => $this->tanggal_nota,
                         'keterangan' => $this->keterangan,
                         'jumlah' => $this->jumlah,
                         'user_id' => auth()->user()->id,
@@ -90,6 +95,7 @@ class Pengeluaran extends Component
                 ModelsPengeluaran::create(
                     [
                         'tanggal' => $this->tanggal,
+                        'tanggal_nota' => $this->tanggal_nota,
                         'tahun' => $this->tahun,
                         'kategori_pengeluaran_id' => $this->kategori,
                         'keterangan' => $this->keterangan,
@@ -114,7 +120,7 @@ class Pengeluaran extends Component
                 ]
             );
         }
-        $this->resetExcept('list_kategori', 'tanggal', 'tahun');
+        $this->resetExcept('list_kategori', 'tanggal', 'tahun', 'tanggal_nota');
     }
 
     public function edit($id)
@@ -124,6 +130,7 @@ class Pengeluaran extends Component
         $cari = ModelsPengeluaran::find($id);
         $this->id_pengeluaran = $id;
         $this->tanggal = $cari->tanggal;
+        $this->tanggal_nota = $cari->tanggal_nota;
         $this->tahun = $cari->tahun;
         $this->kategori = $cari->kategori_pengeluaran_id;
         $this->keterangan = $cari->keterangan;
@@ -131,7 +138,7 @@ class Pengeluaran extends Component
     }
     public function batal()
     {
-        $this->resetExcept('list_kategori', 'tanggal', 'tahun');
+        $this->resetExcept('list_kategori', 'tanggal', 'tahun', 'tanggal_nota');
 
     }
     public function confirm($id)

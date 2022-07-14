@@ -41,6 +41,7 @@
                                 <th>Tanggal</th>
                                 <th>Kategori Pengeluaran</th>
                                 <th>Keterangan</th>
+                                <th>Tanggal Nota</th>
                                 <th>Bendahara</th>
                                 <th>Jumlah</th>
                             </tr>
@@ -52,6 +53,7 @@
                                     <td>{{ date('d M Y', strtotime($pengeluaran->tanggal)) }}</td>
                                     <td>{{ $pengeluaran->kategori }}</td>
                                     <td>{{ $pengeluaran->keterangan }}</td>
+                                    <td>{{ date('d M Y', strtotime($pengeluaran->tanggal_nota)) }}</td>
                                     <td>{{ $pengeluaran->bendahara }}</td>
                                     <td>{{ 'Rp ' . number_format($pengeluaran->jumlah, 0, ',', '.') }}</td>
                                 </tr>

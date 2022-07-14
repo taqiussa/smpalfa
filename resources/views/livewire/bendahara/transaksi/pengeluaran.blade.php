@@ -28,16 +28,24 @@
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <label for="kategori" class="form-label">Kategori Pengeluaran</label>
                                 <select wire:model.defer="kategori" id="kategori" class="form-select"
-                                    {{ $is_disabled }}>
+                                    >
                                     <option value="">Pilih Kategori</option>
                                     @foreach ($list_kategori as $kategori)
                                         <option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
                                     @endforeach
                                 </select>
                                 @error('kategori')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                            <div class="col-md-3">
+                                <label for="tanggal_nota" class="form-label">Tanggal Nota</label>
+                                <input wire:model.defer="tanggal_nota" type="date" class="form-control"
+                                    >
+                                @error('tanggal_nota')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
@@ -82,6 +90,7 @@
                                 <th>Tahun</th>
                                 <th>Kategori Pengeluaran</th>
                                 <th>Keterangan</th>
+                                <th>Tanggal Nota</th>
                                 <th>Jumlah</th>
                                 <th>Bendahara</th>
                                 <th>Aksi</th>
@@ -95,6 +104,7 @@
                                     <td>{{ $pengeluaran->tahun }}</td>
                                     <td>{{ $pengeluaran->nama }}</td>
                                     <td>{{ $pengeluaran->keterangan }}</td>
+                                    <td>{{ date('d M Y', strtotime($pengeluaran->tanggal_nota)) }}</td>
                                     <td>{{ 'Rp ' . number_format($pengeluaran->jumlah, 0, ',', '.') }}</td>
                                     <td>{{ $pengeluaran->name }}</td>
                                     <td>

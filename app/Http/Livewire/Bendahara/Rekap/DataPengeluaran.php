@@ -30,6 +30,7 @@ class DataPengeluaran extends Component
                         'pengeluarans.id as id',
                         'pengeluarans.tahun as tahun',
                         'pengeluarans.tanggal as tanggal',
+                        'pengeluarans.tanggal_nota as tanggal_nota',
                         'pengeluarans.keterangan as keterangan',
                         'pengeluarans.jumlah as jumlah'
                     )

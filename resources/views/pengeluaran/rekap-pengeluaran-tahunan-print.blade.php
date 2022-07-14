@@ -54,6 +54,7 @@
                 <th>Tanggal</th>
                 <th>Kategori Pengeluaran</th>
                 <th>Keterangan</th>
+                <th>Tanggal Nota</th>
                 <th>Bendahara</th>
                 <th>Jumlah</th>
             </tr>
@@ -65,13 +66,14 @@
                     <td>{{ date('d M Y', strtotime($pengeluaran->tanggal)) }}</td>
                     <td align="left" style="padding-left: 5px">{{ $pengeluaran->kategori->nama }}</td>
                     <td align="left" style="padding-left: 5px">{{ $pengeluaran->keterangan }}</td>
+                    <td>{{ date('d M Y', strtotime($pengeluaran->tanggal_nota)) }}</td>
                     <td>{{ $pengeluaran->user->name }}</td>
                     <td align="right" style="padding-left: 5px;padding-right: 5px">
                         {{ 'Rp ' . number_format($pengeluaran->jumlah, 0, ',', '.') }}</td>
                 </tr>
             @endforeach
             <tr>
-                <td colspan="5  " style="padding: 5px"><h3>Total</h3></td>
+                <td colspan="6" style="padding: 5px"><h3>Total</h3></td>
                 <td align="right" style="padding: 5px">
                     <b>{{ 'Rp ' . number_format($total, 0, ',', '.') }}</b></td>
             </tr>

@@ -38,6 +38,7 @@ class RekapTahunanPengeluaran extends Component
             ->select(
                 'pengeluarans.id as id',
                 'pengeluarans.tanggal as tanggal',
+                'pengeluarans.tanggal_nota as tanggal_nota',
                 'pengeluarans.tahun as tahun',
                 'pengeluarans.jumlah as jumlah',
                 'pengeluarans.keterangan as keterangan',
