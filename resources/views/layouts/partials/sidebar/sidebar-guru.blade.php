@@ -156,6 +156,10 @@
                 <a href="{{ route('guru.wali-kelas.input-skor') }}"
                     class="{{ Request::routeIs('guru.wali-kelas.input-skor') ? 'active' : '' }}">Input Skor</a>
             </li>
+            <li>
+                <a href="{{ route('guru.wali-kelas.download-data-siswa') }}"
+                    class="{{ Request::routeIs('guru.wali-kelas.download-data-siswa') ? 'active' : '' }}">Download Data Siswa</a>
+            </li>
         </ul>
     </li>
     <span class="divider">

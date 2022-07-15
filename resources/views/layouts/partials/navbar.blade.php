@@ -18,7 +18,7 @@
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="profile-info">
                                 <div class="info">
-                                    <h6>{{ auth()->user()->name }}</h6>
+                                    {{-- <h6>{{ auth()->user()->name }}</h6> --}}
                                     <div class="image">
                                         <img src="{{ asset('images/logoalfa.png') }}" alt="" />
                                         <span class="status"></span>

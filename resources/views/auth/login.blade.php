@@ -11,21 +11,14 @@
                         <div class="input-group mb-3">
                             <span class="input-group-text">Username</span>
                             <input id="username" name="username" type="text" class="form-control">
-                            @error('username')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">Password</span>
                             <input id="password" name="password" type="password" class="form-control">
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
                         </div>
+                        @error('username')
+                        <small class="text-white mb-3">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="row">
                         <div class="col-md-4">

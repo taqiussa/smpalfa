@@ -57,6 +57,7 @@ use App\Http\Livewire\Guru\Rapor\CetakRapor;
 use App\Http\Livewire\Guru\Rapor\DaftarNilaiGuru;
 use App\Http\Livewire\Guru\Skor\InputSkor;
 use App\Http\Livewire\Guru\Skor\SaldoSkor;
+use App\Http\Livewire\Guru\WaliKelas\DownloadDataSiswa;
 use App\Http\Livewire\Guru\WaliKelas\InputCatatan;
 use App\Http\Livewire\Guru\WaliKelas\InputSkor as WaliKelasInputSkor;
 use App\Http\Livewire\Konseling\Absensi\AbsensiBk;
@@ -234,6 +235,7 @@ Route::middleware(['auth'])->group(function () {
         //Menu Wali Kelas
         Route::get('guru/wali-kelas/input-catatan', InputCatatan::class)->name('guru.wali-kelas.input-catatan');
         Route::get('guru/wali-kelas/input-skor', WaliKelasInputSkor::class)->name('guru.wali-kelas.input-skor');
+        Route::get('guru/wali-kelas/download-data-siswa', DownloadDataSiswa::class)->name('guru.wali-kelas.download-data-siswa');
     });
 
     // Route For Konseling

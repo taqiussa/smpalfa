@@ -5,6 +5,7 @@
         </a>
     </div>
     <nav class="sidebar-nav">
+        <h6 class="mx-3 mb-3">{{ auth()->user()->name }}</h6>
         @role('Admin')
             @include('layouts.partials.sidebar.sidebar-admin', ['title' => 'Admin'])
         @endrole

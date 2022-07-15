@@ -33,5 +33,5 @@ timezone, locale, faker_local id_ID
 15. Table User dan Set Role Perbaiki, tambahkan pencarian User
 16. rekapan ekstra per kelas
 17. data skor per siswa
-18. Nilai Quran - on going
+18. Nilai Quran - on going - kurang print per siswa
 19. alpha dari skor
