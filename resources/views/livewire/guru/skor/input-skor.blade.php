@@ -110,7 +110,6 @@
                                         <td>{{ $skor->skors->keterangan }}</td>
                                         <td>{{ $skor->skor }}</td>
                                         <td>{{ $skor->nama_guru }}</td>
-
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -252,6 +252,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('konseling/layanan/detail-bimbingan/{bk_detail}', [DetailBimbinganController::class, 'show'])->name('konseling.layanan.detail-bimbingan');
 
         //Menu Skor
+        Route::get('konseling/skor/data-skor', DataSkor::class)->name('konseling.skor.data-skor');
         Route::get('konseling/skor/input-skor', InputSkor::class)->name('konseling.skor.input-skor');
         Route::get('konseling/skor/pencarian', PencarianSkor::class)->name('konseling.skor.pencarian');
         Route::get('konseling/skor/rekap-skor', RekapSkor::class)->name('konseling.skor.rekap-skor');

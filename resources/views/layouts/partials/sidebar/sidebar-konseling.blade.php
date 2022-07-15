@@ -57,8 +57,12 @@
         </a>
         <ul id="konseling_skor" class="{{ Request::routeIs('konseling.skor.*') ? '' : 'collapse' }} dropdown-nav">
             <li>
+                <a href="{{ route('konseling.skor.data-skor') }}"
+                    class="{{ Request::routeIs('konseling.skor.data-skor') ? 'active' : '' }}">Input Data Skor</a>
+            </li>
+            <li>
                 <a href="{{ route('konseling.skor.input-skor') }}"
-                    class="{{ Request::routeIs('konseling.skor.input-skor') ? 'active' : '' }}">Input Skor</a>
+                    class="{{ Request::routeIs('konseling.skor.input-skor') ? 'active' : '' }}">Input Skor Siswa</a>
             </li>
             <li>
                 <a href="{{ route('konseling.skor.pencarian') }}"

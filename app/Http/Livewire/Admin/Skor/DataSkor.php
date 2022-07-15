@@ -15,6 +15,7 @@ class DataSkor extends Component
     public $skor;
     public $is_edit;
     public $id_skor;
+    public $search = '';
 
     //array
 
@@ -28,7 +29,7 @@ class DataSkor extends Component
     public function render()
     {
         return view('livewire.admin.skor.data-skor',[
-            'list_skor' => Skor::orderBy('keterangan')->paginate(5),
+            'list_skor' => Skor::where('keterangan', 'like', '%' . $this->search . '%')->orderBy('keterangan')->paginate(5),
         ]);
     }
     public function simpan()

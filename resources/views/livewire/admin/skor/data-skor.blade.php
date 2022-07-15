@@ -39,6 +39,12 @@
         <div class="col-md-12">
             <div class="card shadow rounded-md border-top-0 border-end-0 border-bottom-0 border-3 border-primary">
                 <div class="card-body">
+                    <div class="col-md-6 my-2">
+                        <div class="input-group">
+                            <span class="input-group-text">Cari</span>
+                            <input wire:model.debounce.300ms="search" type="text" class="form-control">
+                        </div>
+                    </div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
