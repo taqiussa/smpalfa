@@ -43,7 +43,7 @@ use App\Http\Livewire\Bendahara\Rekap\RekapTahunanPengeluaran;
 use App\Http\Livewire\Bendahara\Transaksi\Pemasukan;
 use App\Http\Livewire\Bendahara\Transaksi\PembayaranSiswa;
 use App\Http\Livewire\Bendahara\Transaksi\Pengeluaran;
-use App\Http\Livewire\Guru\Absensi\AbsensiEkstra;
+use App\Http\Livewire\Guru\Ekstra\AbsensiEkstra;
 use App\Http\Livewire\Guru\Absensi\AbsensiSiswa as AbsensiAbsensiSiswa;
 use App\Http\Livewire\Guru\Alquran\InputNilai as AlquranInputNilai;
 use App\Http\Livewire\Guru\Alquran\PrintNilai;
@@ -60,6 +60,7 @@ use App\Http\Livewire\Guru\Skor\SaldoSkor;
 use App\Http\Livewire\Guru\WaliKelas\DownloadDataSiswa;
 use App\Http\Livewire\Guru\WaliKelas\InputCatatan;
 use App\Http\Livewire\Guru\WaliKelas\InputSkor as WaliKelasInputSkor;
+use App\Http\Livewire\Kesiswaan\Ekstrakurikuler\PendaftaranSiswa;
 use App\Http\Livewire\Konseling\Absensi\AbsensiBk;
 use App\Http\Livewire\Konseling\Absensi\AbsensiSiswa;
 use App\Http\Livewire\Konseling\Absensi\ListKehadiran;
@@ -85,6 +86,10 @@ use App\Http\Livewire\Kurikulum\Rapor\TanggalRapor;
 use App\Http\Livewire\Kurikulum\Rapor\UploadKdRapor as RaporUploadKdRapor;
 use App\Http\Livewire\Landing\Posts;
 use App\Http\Livewire\Sarpras\Inventaris\DataInventaris;
+use App\Http\Livewire\Siswa\Administrasi;
+use App\Http\Livewire\Siswa\DataSkor as SiswaDataSkor;
+use App\Http\Livewire\Siswa\Kehadiran;
+use App\Http\Livewire\Siswa\Nilai;
 use App\Http\Livewire\TataUsaha\Siswa\DataSiswa;
 use App\Http\Livewire\TataUsaha\Siswa\HapusSiswa;
 use App\Http\Livewire\TataUsaha\Siswa\PindahKelasSiswa;
@@ -209,6 +214,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('guru/alquran/print-nilai-print', [PrintAlquranController::class,'index'])->name('guru.alquran.print-nilai-print');
         
         //Menu Ekstrakurikuler
+        // Route::get('guru/ekstrakurikuler/absensi-ekstrakurikuler', AbsensiEkstra::class)->name('guru.ekstrakurikuler.absensi-ekstrakurikuler');
         Route::get('guru/ekstrakurikuler/absensi-ekstrakurikuler', AbsensiEkstra::class)->name('guru.ekstrakurikuler.absensi-ekstrakurikuler');
         Route::get('guru/ekstrakurikuler/absensi-ekstrakurikuler-print', AbsensiEkstraPrint::class)->name('guru.ekstrakurikuler.absensi-ekstrakurikuler-print');
 
@@ -236,6 +242,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('guru/wali-kelas/input-catatan', InputCatatan::class)->name('guru.wali-kelas.input-catatan');
         Route::get('guru/wali-kelas/input-skor', WaliKelasInputSkor::class)->name('guru.wali-kelas.input-skor');
         Route::get('guru/wali-kelas/download-data-siswa', DownloadDataSiswa::class)->name('guru.wali-kelas.download-data-siswa');
+    });
+
+    // Route For Kesiswaan
+    Route::middleware(['role:Kesiswaan'])->group(function () {
+        Route::get('kesiswaan/ekstrakurikuler/pendaftaran-siswa', PendaftaranSiswa::class)->name('kesiswaan.ekstrakurikuler.pendaftaran-siswa');
     });
 
     // Route For Konseling
@@ -299,6 +310,22 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Sarpras'])->group(function () {
         //Menu Inventaris
         Route::get('sarpras/inventaris/data-inventaris', DataInventaris::class)->name('sarpras.inventaris.data-inventaris');
+    });
+
+    // Route For Siswa
+    Route::middleware(['role:Siswa'])->group(function () {
+        
+        // Administrasi
+        Route::get('siswa/administrasi', Administrasi::class)->name('siswa.administrasi');
+
+        // Data Skor
+        Route::get('siswa/data-skor', SiswaDataSkor::class)->name('siswa.data-skor');
+
+        // Kehadiran
+        Route::get('siswa/kehadiran', Kehadiran::class)->name('siswa.kehadiran');
+
+        // Nilai
+        Route::get('siswa/nilai', Nilai::class)->name('siswa.nilai');
     });
 
     //Route For Tata Usaha

@@ -14,4 +14,8 @@ class AbsensiEkstra extends Model
     {
         return $this->belongsTo(Ekstrakurikuler::class, 'ekstrakurikuler_id');
     }
+    public function kehadiran()
+    {
+        return $this->belongsTo(Kehadiran::class);
+    }
 }

@@ -19,19 +19,17 @@ Vendor/spatie/laravel-permission/src/Models/Role.php
 3. config/app.php
 timezone, locale, faker_local id_ID
 
-4. ABSENSI EKSTRA - Print absensi Ekstra - Done
 5. Karakter Siswa / Keterangan di Bimbingan - print bimbingan siswa
 6. Input Skor X jumlah = Kasir
-7. Bendahara Done
-8. Siswa
+8. Menu  Siswa Kurang Nilai
 9. Print Skor Per Siswa
 10. Rapor Draft Nilai Per Mapel
-11. Jurnal Guru dan Jurnal Wali Kelas
+11. Jurnal Guru dan Jurnal Wali Kelas - pending akhir tahun
 12. Rekap Bimbingan Print
 13. Rekap Skor Print - belum selesai, tanda tangan , tambahkan lagi sesuai BK yang mengampu
 14. Set Role Username perbaiki
 15. Table User dan Set Role Perbaiki, tambahkan pencarian User
-16. rekapan ekstra per kelas
+16. rekapan ekstra per kelas - buat print rekap data siswa per ekstra
 17. data skor per siswa
 18. Nilai Quran - on going - kurang print per siswa
 19. alpha dari skor

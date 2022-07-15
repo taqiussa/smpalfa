@@ -9,4 +9,9 @@ class Absensi extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function kehadiran()
+    {
+        return $this->belongsTo(Kehadiran::class);
+    }
 }

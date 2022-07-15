@@ -15,6 +15,9 @@
         @role('Guru')
             @include('layouts.partials.sidebar.sidebar-guru', ['title' => 'Guru'])
         @endrole
+        @role('Kesiswaan')
+        @include('layouts.partials.sidebar.sidebar-kesiswaan', ['title' => 'Kesiswaan'])
+        @endrole
         @role('Konseling')
         @include('layouts.partials.sidebar.sidebar-konseling', ['title' => 'Konseling'])
         @endrole

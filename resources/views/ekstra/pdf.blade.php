@@ -89,7 +89,7 @@
             @endforeach
         </tbody>
     </table>
-    <div style="padding: 15"></div>
+    {{-- <div style="padding: 15"></div>
     <table style="padding-left: 25px;text-align:center" width="100%">
         <tr>
             <td colspan="2"></td>
@@ -154,7 +154,7 @@
                 </b>
             </td>
         </tr>
-    </table>
+    </table> --}}
 </body>
 
 </html>
