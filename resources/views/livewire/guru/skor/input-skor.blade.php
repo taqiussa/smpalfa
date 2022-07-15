@@ -6,7 +6,7 @@
                     <div class="row my-2">
                         <div class="col-md-3">
                             <label for="tanggal" class="form-label">Tanggal</label>
-                            <input wire:model.defer="tanggal" type="date" class="form-control">
+                            <input wire:model="tanggal" type="date" class="form-control">
                             @error('tanggal')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -26,7 +26,7 @@
                         </div>
                         <div class="col-md-3">
                             <label for="semester" class="form-label">Semester</label>
-                            <select wire:model.defer="semester" id="" class="form-select">
+                            <select wire:model="semester" id="" class="form-select">
                                 <option value="">Pilih Semester</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -51,7 +51,7 @@
                     <div class="row my-2">
                         <div class="col-md-4">
                             <label for="siswa" class="form-label">Siswa</label>
-                            <select wire:model.defer="siswa" id="siswa" class="form-select">
+                            <select wire:model="siswa" id="siswa" class="form-select">
                                 <option value="">Pilih Siswa</option>
                                 @foreach ($list_siswa as $siswa)
                                     <option value="{{ $siswa->nis }}">{{ $siswa->name }}</option>
