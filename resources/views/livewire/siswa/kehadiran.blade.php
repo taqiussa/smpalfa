@@ -23,14 +23,19 @@
                         <thead>
                             <tr>
                                 <th>Hari, Tanggal</th>
-                                <th>Jam 1-2</th>
-                                <th>Jam 3-4</th>
-                                <th>Jam 5-6</th>
-                                <th>Jam 7-8</th>
+                                <th>Jam</th>
+                                <th>Kehadiran</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            @foreach ($list_kehadiran as $kehadiran)
+                                <tr>
+                                    <td>{{ Carbon\Carbon::parse($kehadiran->tanggal)->translatedFormat('l, d F Y') }}</td>
+                                    <td>{{ $kehadiran->jam }}</td>
+                                    <td>{{ $kehadiran->kehadiran->nama }}</td>
+                                </tr>
+                            @endforeach
+                            {{-- <tr>
                                 <td>
                                     <table class="table">
                                         @foreach ($list_kehadiran['1-2'] as $kehadiran)
@@ -52,7 +57,7 @@
                                         </table>
                                     </td>
                                 @endforeach
-                            </tr>
+                            </tr> --}}
                         </tbody>
                     </table>
                 </div>

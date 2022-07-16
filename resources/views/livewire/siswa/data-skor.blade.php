@@ -8,7 +8,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Tanggal</th>
+                                <th class="text-nowrap">Hari, Tanggal</th>
                                 <th>Keterangan</th>
                                 <th>Skor</th>
                                 <th>Guru</th>
@@ -18,7 +18,7 @@
                             @foreach ($list_skor as $skor)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ date('d M Y', strtotime($skor->tanggal)) }}</td>
+                                    <td>{{ Carbon\Carbon::parse($skor->tanggal)->translatedFormat('l, d F Y') }}</td>
                                     <td>{{ $skor->skors->keterangan }}</td>
                                     <td>{{ $skor->skor }}</td>
                                     <td>{{ $skor->nama_guru }}</td>

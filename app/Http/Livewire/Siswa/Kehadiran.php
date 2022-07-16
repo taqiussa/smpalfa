@@ -18,15 +18,14 @@ class Kehadiran extends Component
     public $cek_kehadiran = [];
     public function render()
     {
-        foreach($this->jam as $jam)
-        {
-            $this->list_kehadiran[$jam] = Absensi::whereBetween('tanggal', [$this->tanggalawal, $this->tanggalakhir])
+        // foreach($this->jam as $jam)
+        // {
+            $this->list_kehadiran = Absensi::whereBetween('tanggal', [$this->tanggalawal, $this->tanggalakhir])
             ->where('nis', auth()->user()->nis)
-            ->where('jam', $jam)
             ->with('kehadiran')
             ->orderBy('tanggal')
             ->get();
-        }
+        // }
         return view('livewire.siswa.kehadiran');
     }
 
