@@ -46,7 +46,7 @@
                                         <table class="table">
                                             @foreach ($list_kehadiran[$jam] as $kehadiran)
                                                 <tr class="text-nowrap">
-                                                    <td>{{ $kehadiran->kehadiran->nama }}</td>
+                                                    <td>{{ $kehadiran->kehadiran->nama ?? 'Belum ada absensi' }}</td>
                                                 </tr>
                                             @endforeach
                                         </table>

@@ -93,6 +93,7 @@ class AbsensiBk extends Component
                     'tahun' => $this->tahun,
                     'semester' => $this->semester,
                     'nis' => $siswa->nis,
+                    'user_id' => auth()->user()->id,
                     'kehadiran_id' => 1,
                 ]);
             }
