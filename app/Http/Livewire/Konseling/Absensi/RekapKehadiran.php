@@ -17,10 +17,17 @@ class RekapKehadiran extends Component
     public $hadir, $izin, $sakit, $alpha, $bolos, $pulang, $siswa, $absensi;
     public function render()
     {
-        $this->cekRekap();
         return view('livewire.konseling.absensi.rekap-kehadiran');
     }
     
+    public function updated($property)
+    {
+        $this->cekRekap();
+    }
+    public function hydrate()
+    {
+        $this->cekRekap();
+    }
     public function mount()
     {
         $bulan = gmdate('m');
@@ -33,6 +40,7 @@ class RekapKehadiran extends Component
         }
         $this->tanggal = gmdate('Y-m-d');
         $this->jam = '1-2';
+        $this->cekRekap();
     }
     private function cekRekap(){
         $this->resetExcept(['tahun', 'tanggal', 'jam']);
