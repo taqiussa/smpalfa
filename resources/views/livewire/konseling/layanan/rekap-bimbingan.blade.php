@@ -52,16 +52,17 @@
                             </td>
                             <td>{{ date('d M Y',strtotime($rekap->tanggal)) }}</td>
                             <td>
-                                {{ $rekap->nama }}
+                                {{ $rekap->kelas }}
                             </td>
                             <td>
-                                {{ $rekap->name }}
+                                {{ $rekap->siswa }}
                             </td>
                             <td>{{ $rekap->bentuk_bimbingan }}</td>
                             <td>{{ $rekap->permasalahan }}</td>
                             <td>{{ $rekap->tindak_lanjut }}</td>
                             <td>
                                 <a href="{{ route('konseling.layanan.detail-bimbingan', $rekap->slug) }}" class="btn btn-primary" role="button">Detail</a>
+                                <button wire:click.prevent="confirm({{ $rekap->id }})" class="btn btn-danger">Hapus</button>
                             </td>
                         </tr>
                         @endforeach

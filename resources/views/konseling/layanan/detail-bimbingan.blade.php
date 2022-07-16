@@ -12,15 +12,18 @@
                         {{ $detail->user_name }}
                     </h4>
                     <p>
-                        Tanggal : {{ $detail->tanggal }}
+                        Tanggal : {{ Carbon\Carbon::parse($detail->tanggal)->translatedFormat('l, d F Y') }}
                     </p>
                     @if ($bk->bentuk_bimbingan == 'Kelompok')
                         <h3>Bimbingan Kelompok </h3>
                         <h5>
                             @foreach ($bk->details as $bkdetail)
-                                <a href="{{ route('konseling.layanan.detail-bimbingan', $bkdetail->slug) }}"
+                                {{-- <a href="{{ route('konseling.layanan.detail-bimbingan', $bkdetail->slug) }}"
                                     class="nav-link text-black-50">{{ $loop->iteration }}. {{ $bkdetail->name }} -
-                                    {{ $bkdetail->nama }}</a>
+                                    {{ $bkdetail->nama }}</a> --}}
+                                    <div>
+                                        {{ $loop->iteration }}. {{ $bkdetail->name }} - {{ $bkdetail->nama }}
+                                    </div>
                             @endforeach
                         </h5>
                     @endif

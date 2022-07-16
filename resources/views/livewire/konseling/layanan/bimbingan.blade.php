@@ -228,7 +228,7 @@
                 <div class="row my-2">
                     <div class="col-md-12">
                         <label for="tindak_lanjut" class="form-label">Tindak Lanjut</label>
-                        <textarea wire:model="tindak_lanjut" id="tindak_lanjut" cols="30" rows="3" class="form-control"></textarea>
+                        <textarea wire:model.defer="tindak_lanjut" id="tindak_lanjut" cols="30" rows="3" class="form-control"></textarea>
                     </div>
                     @error('tindak_lanjut')
                         <small class="text-danger">{{ $message }}</small>

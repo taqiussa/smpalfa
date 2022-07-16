@@ -13,6 +13,32 @@ Index.php di public di sesuaikan vendor/autoload.php
         request()->merge([$field => $login]);
         return $field;
     }
+
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        throw ValidationException::withMessages([
+            // $this->username() => [trans('auth.failed')],
+            $this->username() => 'Username / Password Salah',
+        ]);
+    }
+
+     public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        if ($response = $this->loggedOut($request)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 204)
+            : redirect('/login');
+    }
+    
 }
 2. Spatie Role tambahkan Sluggable
 Vendor/spatie/laravel-permission/src/Models/Role.php
