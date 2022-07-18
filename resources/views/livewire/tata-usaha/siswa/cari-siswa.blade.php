@@ -21,7 +21,7 @@
                     <div class="col-md-4 my-2">
                         <div class="input-group">
                             <span class="input-group-text">Cari</span>
-                            <input wire:model.debounce.100ms="search" type="text" class="form-control"
+                            <input wire:model="search" type="text" class="form-control"
                                 placeholder="Cari Siswa...">
                         </div>
                     </div>
@@ -31,6 +31,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>NIS</th>
                                 <th>Nama Siswa</th>
                                 <th>Kelas</th>
                                 <th>Orang Tua</th>
@@ -41,6 +42,7 @@
                             @foreach ($list_siswa as $key => $siswa)
                                 <tr>
                                     <td>{{ $list_siswa->firstItem() + $key }}</td>
+                                    <td>{{ $siswa->user->nis }}</td>
                                     <td>{{ $siswa->user->name }}</td>
                                     <td>{{ $siswa->kelas->nama }}</td>
                                     <td>{{ $siswa->orangtua->nama_ayah }}</td>

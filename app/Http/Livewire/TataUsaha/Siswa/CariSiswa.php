@@ -24,7 +24,7 @@ class CariSiswa extends Component
         return view('livewire.tata-usaha.siswa.cari-siswa',
     [
         'list_siswa' => Siswa::where('tahun', $this->tahun)
-        ->whereHas('user', function (Builder $query) { $query->where('name', 'like', '%' . $this->search . '%');})
+        ->whereHas('user', function (Builder $query) { $query->where('name', 'like', '%' . $this->search . '%')->orWhere('nis', $this->search);})
         ->with([
             'user',
             'kelas',
