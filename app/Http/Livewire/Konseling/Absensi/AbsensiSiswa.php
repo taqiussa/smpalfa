@@ -86,7 +86,8 @@ class AbsensiSiswa extends Component
                     [
                         'kehadiran_id' => $this->kehadiran[$key]['kehadiran'],
                         'user_id' => auth()->user()->id,
-                    ]
+                        'semester' => $this->semester,
+                        ]
                 );
             }
             $this->dispatchBrowserEvent('notyf', [
