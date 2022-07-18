@@ -50,7 +50,7 @@
                     <li class="nav-item">
                         <a class="nav-link fs-4" href="#">Profile</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle fs-4" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Gallery
@@ -63,7 +63,7 @@
                             </li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
                 </ul>
                 <div class="d-flex">
                     <a href="{{ route('login') }}" class="btn btn-light" role="button">Login</a>

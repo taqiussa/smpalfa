@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Guru\WaliKelas;
 
 use App\Exports\ExportDataSiswa;
 use App\Models\Kelas;
+use App\Models\Siswa;
 use App\Traits\GetData;
 use Livewire\Component;
 use Maatwebsite\Excel\Facades\Excel;
@@ -18,6 +19,7 @@ class DownloadDataSiswa extends Component
     // array
     public $list_kelas = [];
     public $list_siswa = [];
+    public $list_data_siswa = [];
 
     protected $rules =
     [
@@ -47,4 +49,19 @@ class DownloadDataSiswa extends Component
         $nama_kelas = Kelas::find($this->kelas)->nama;
         return Excel::download(new ExportDataSiswa($this->tahun,$this->kelas), $nama_kelas . '.xlsx');
     }
+    private function get_list_data_siswa()
+    {
+        $this->list_data_siswa = Siswa::where('tahun', $this->tahun)
+        ->where('kelas_id', $this->kelas)
+        ->with(
+            [
+                'user',
+                'alamat',
+                'orangtua',
+                'wali'
+            ]
+        )
+        ->get();
+    }
+
 }

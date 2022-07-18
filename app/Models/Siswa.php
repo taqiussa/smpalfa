@@ -26,4 +26,12 @@ class Siswa extends Model
     {
         return $this->belongsTo(OrangTua::class, 'nis', 'nis');
     }
+    public function wali()
+    {
+        return $this->belongsTo(Wali::class, 'nis', 'nis');
+    }
+    public function biodata()
+    {
+        return $this->belongsTo(Biodata::class, 'nis', 'nis');
+    }
 }

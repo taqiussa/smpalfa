@@ -57,15 +57,15 @@
                     <h5>Tahun Ajaran 2023 / 2024</h5>
                     <ol class="list-group list-group-flush list-group-numbered my-2">
                         <h5 class="my-2">Gelombang I</h5>
-                        <li class="list-group-item">Tanggal : 1 Januari - 8 Januari 2023</li>
-                        <li class="list-group-item">Tanggal : 1 Januari - 8 Januari 2023</li>
-                        <li class="list-group-item">Tanggal : 1 Januari - 8 Januari 2023</li>
+                        <li class="list-group-item">Tanggal : -</li>
+                        <li class="list-group-item">Tanggal : -</li>
+                        <li class="list-group-item">Tanggal : -</li>
                     </ol>
                     <ol class="list-group list-group-flush list-group-numbered my-2">
                         <h5 class="my-2">Gelombang II</h5>
-                        <li class="list-group-item">Tanggal : 1 Februari - 8 Februari 2023</li>
-                        <li class="list-group-item">Tanggal : 1 Februari - 8 Februari 2023</li>
-                        <li class="list-group-item">Tanggal : 1 Februari - 8 Februari 2023</li>
+                        <li class="list-group-item">Tanggal : -</li>
+                        <li class="list-group-item">Tanggal : -</li>
+                        <li class="list-group-item">Tanggal : -</li>
                     </ol>
                 </div>
                 {{-- end infor --}}
