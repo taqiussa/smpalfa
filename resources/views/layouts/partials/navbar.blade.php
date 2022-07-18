@@ -27,7 +27,19 @@
                             </div>
                             <i class="lni lni-chevron-down"></i>
                         </button>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+                                </form>
+                            </li>
+                        </ul>
+                        {{-- <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
                             <li class="d-flex justify-content-center">
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
@@ -35,7 +47,7 @@
                                         Out </button>
                                 </form>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </div>
                     <!-- profile end -->
                 </div>

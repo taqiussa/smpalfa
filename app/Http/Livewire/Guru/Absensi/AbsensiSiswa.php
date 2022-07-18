@@ -91,7 +91,8 @@ class AbsensiSiswa extends Component
                         'nis' => $siswa->nis,
                     ],
                     [
-                        'kehadiran_id' => $this->kehadiran[$key]['kehadiran']
+                        'kehadiran_id' => $this->kehadiran[$key]['kehadiran'],
+                        'user_id' => auth()->user()->id
                     ]
                 );
             }
