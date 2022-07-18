@@ -90,6 +90,7 @@ use App\Http\Livewire\Siswa\Administrasi;
 use App\Http\Livewire\Siswa\DataSkor as SiswaDataSkor;
 use App\Http\Livewire\Siswa\Kehadiran;
 use App\Http\Livewire\Siswa\Nilai;
+use App\Http\Livewire\TataUsaha\Siswa\AturKelasSiswa;
 use App\Http\Livewire\TataUsaha\Siswa\DataSiswa;
 use App\Http\Livewire\TataUsaha\Siswa\HapusSiswa;
 use App\Http\Livewire\TataUsaha\Siswa\PindahKelasSiswa;
@@ -331,7 +332,8 @@ Route::middleware(['auth'])->group(function () {
     //Route For Tata Usaha
     Route::middleware(['role:Tata Usaha'])->group(function () {
         // Menu Siswa
-        Route::get('tata-usaha/siswa/data-siswa', DataSiswa::class)->name('tata-usaha.siswa.data-siswa');
+        Route::get('tata-usaha/siswa/atur-kelas-siswa', AturKelasSiswa::class)->name('tata-usaha.siswa.atur-kelas-siswa');
+        Route::get('tata-usaha/siswa/cari-siswa', DataSiswa::class)->name('tata-usaha.siswa.cari-siswa');
         Route::get('tata-usaha/siswa/hapus-siswa', HapusSiswa::class)->name('tata-usaha.siswa.hapus-siswa');
         Route::get('tata-usaha/siswa/pindah-kelas-siswa', PindahKelasSiswa::class)->name('tata-usaha.siswa.pindah-kelas-siswa');
         Route::get('tata-usaha/siswa/tambah-siswa', TambahSiswa::class)->name('tata-usaha.siswa.tambah-siswa');

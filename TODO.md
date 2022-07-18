@@ -38,7 +38,7 @@ Index.php di public di sesuaikan vendor/autoload.php
             ? new JsonResponse([], 204)
             : redirect('/login');
     }
-    
+
 }
 2. Spatie Role tambahkan Sluggable
 Vendor/spatie/laravel-permission/src/Models/Role.php
@@ -59,3 +59,4 @@ timezone, locale, faker_local id_ID
 17. data skor per siswa
 18. Nilai Quran - on going - kurang print per siswa
 19. alpha dari skor
+20. Tambah Siswa

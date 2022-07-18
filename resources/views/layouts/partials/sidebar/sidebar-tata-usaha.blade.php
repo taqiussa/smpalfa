@@ -12,12 +12,16 @@
         </a>
         <ul id="tatausaha_siswa" class="{{ Request::routeIs('tata-usaha.siswa.*') ? '' : 'collapse' }} dropdown-nav">
             <li>
-                <a href="{{ route('tata-usaha.siswa.data-siswa') }}"
-                    class="{{ Request::routeIs('tata-usaha.siswa.data-siswa') ? 'active' : '' }}"> Data Siswa </a>
+                <a href="{{ route('tata-usaha.siswa.atur-kelas-siswa') }}"
+                    class="{{ Request::routeIs('tata-usaha.siswa.atur-kelas-siswa') ? 'active' : '' }}"> Atur Kelas Siswa </a>
             </li>
             <li>
                 <a href="{{ route('tata-usaha.siswa.hapus-siswa') }}"
-                    class="{{ Request::routeIs('tata-usaha.siswa.hapus-siswa') ? 'active' : '' }}"> Hapus Siswa </a>
+                class="{{ Request::routeIs('tata-usaha.siswa.hapus-siswa') ? 'active' : '' }}"> Hapus Siswa </a>
+            </li>
+            <li>
+                <a href="{{ route('tata-usaha.siswa.cari-siswa') }}"
+                    class="{{ Request::routeIs('tata-usaha.siswa.cari-siswa') ? 'active' : '' }}"> Pencarian Siswa </a>
             </li>
             <li>
                 <a href="{{ route('tata-usaha.siswa.pindah-kelas-siswa') }}"

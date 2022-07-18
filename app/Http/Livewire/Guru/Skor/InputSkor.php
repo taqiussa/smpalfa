@@ -36,21 +36,6 @@ class InputSkor extends Component
 
     public function render()
     {
-        $this->list_nilai_skor = PenilaianSkor::with('skors')
-            ->join('users as siswa', 'siswa.nis', '=', 'penilaian_skors.nis')
-            ->join('users as guru', 'guru.id', '=', 'penilaian_skors.user_id')
-            ->where('siswa.nis', $this->siswa)
-            ->where('penilaian_skors.tanggal', $this->tanggal)
-            ->select(
-                'siswa.name as nama_siswa',
-                'guru.name as nama_guru',
-                'penilaian_skors.tanggal as tanggal',
-                'penilaian_skors.kelas_id as kelas_id',
-                'penilaian_skors.skor_id as skor_id',
-                'penilaian_skors.skor as skor',
-                'penilaian_skors.created_at as created_at'
-            )
-            ->orderBy('created_at', 'desc')->get();
         return view('livewire.guru.skor.input-skor');
     }
 
@@ -65,6 +50,7 @@ class InputSkor extends Component
     public function hydrate()
     {
         $this->get_list_siswa();
+        $this->get_list_skor();
     }
     public function simpan()
     {
@@ -93,9 +79,33 @@ class InputSkor extends Component
     public function updatedKelas()
     {
         $this->get_list_siswa();
+        $this->get_list_skor();
     }
     public function updatedTahun()
     {
         $this->get_list_siswa();
+        $this->get_list_skor();
+    }
+    public function updatedSiswa()
+    {
+        $this->get_list_skor();
+    }
+    private function get_list_skor()
+    {
+        $this->list_nilai_skor = PenilaianSkor::with('skors')
+            ->join('users as siswa', 'siswa.nis', '=', 'penilaian_skors.nis')
+            ->join('users as guru', 'guru.id', '=', 'penilaian_skors.user_id')
+            ->where('siswa.nis', $this->siswa)
+            ->where('penilaian_skors.tanggal', $this->tanggal)
+            ->select(
+                'siswa.name as nama_siswa',
+                'guru.name as nama_guru',
+                'penilaian_skors.tanggal as tanggal',
+                'penilaian_skors.kelas_id as kelas_id',
+                'penilaian_skors.skor_id as skor_id',
+                'penilaian_skors.skor as skor',
+                'penilaian_skors.created_at as created_at'
+            )
+            ->orderBy('created_at', 'desc')->get();
     }
 }
