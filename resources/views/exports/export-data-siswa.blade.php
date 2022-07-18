@@ -7,6 +7,7 @@
             <th>Ayah</th>
             <th>Ibu</th>
             <th>Wali</th>
+            <th>Desa</th>
             <th>Kontak</th>
         </tr>
     </thead>
@@ -19,6 +20,7 @@
                 <td>{{ $siswa->orangtua->nama_ayah }}</td>
                 <td>{{ $siswa->orangtua->nama_ibu }}</td>
                 <td>{{ $siswa->wali->nama_wali ?? '-' }}</td>
+                <td>{{ $siswa->alamat->desa }}</td>
                 <td>{{ $siswa->biodata->telepon }}</td>
             </tr>
         @endforeach

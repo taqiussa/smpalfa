@@ -96,6 +96,7 @@ use App\Http\Livewire\TataUsaha\Siswa\DataSiswa;
 use App\Http\Livewire\TataUsaha\Siswa\HapusSiswa;
 use App\Http\Livewire\TataUsaha\Siswa\PindahKelasSiswa;
 use App\Http\Livewire\TataUsaha\Siswa\TambahSiswa;
+use App\Http\Livewire\User\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -117,7 +118,8 @@ Route::get('/detail/{slug}', [LandingController::class, 'detail'])->name('landin
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+    Route::get('user/profile', Profile::class)->name('user.profile');
+    
     // Route For Admin
     Route::middleware(['role:Admin'])->group(function () {
         //Menu Kelas

@@ -28,7 +28,7 @@
                             <i class="lni lni-chevron-down"></i>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
