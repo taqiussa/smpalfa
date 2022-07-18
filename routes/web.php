@@ -43,6 +43,7 @@ use App\Http\Livewire\Bendahara\Rekap\RekapTahunanPengeluaran;
 use App\Http\Livewire\Bendahara\Transaksi\Pemasukan;
 use App\Http\Livewire\Bendahara\Transaksi\PembayaranSiswa;
 use App\Http\Livewire\Bendahara\Transaksi\Pengeluaran;
+use App\Http\Livewire\Bendahara\Transaksi\TransaksiPembayaran;
 use App\Http\Livewire\Guru\Ekstra\AbsensiEkstra;
 use App\Http\Livewire\Guru\Absensi\AbsensiSiswa as AbsensiAbsensiSiswa;
 use App\Http\Livewire\Guru\Alquran\InputNilai as AlquranInputNilai;
@@ -174,7 +175,8 @@ Route::middleware(['auth'])->group(function () {
 
 
         //Menu Transaksi
-        Route::get('bendahara/transaksi/pembayaran-siswa', PembayaranSiswa::class)->name('bendahara.transaksi.pembayaran-siswa');
+        // Route::get('bendahara/transaksi/pembayaran-siswa', PembayaranSiswa::class)->name('bendahara.transaksi.pembayaran-siswa');
+        Route::get('bendahara/transaksi/pembayaran-siswa', TransaksiPembayaran::class)->name('bendahara.transaksi.pembayaran-siswa');
         Route::get('bendahara/transaksi/pemasukan', Pemasukan::class)->name('bendahara.transaksi.pemasukan');
         Route::get('bendahara/transaksi/pengeluaran', Pengeluaran::class)->name('bendahara.transaksi.pengeluaran');
 

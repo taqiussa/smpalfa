@@ -23,7 +23,7 @@
                         @enderror
                     </div>
                     <div class="col-md-6">
-                        <label for="passwor_confirmationd" class="form-label">Password</label>
+                        <label for="passwor_confirmationd" class="form-label">Konfirmasi Password</label>
                         <input wire:model.defer="password_confirmation" id="password_confirmation" type="password"
                             class="form-control">
                     </div>
