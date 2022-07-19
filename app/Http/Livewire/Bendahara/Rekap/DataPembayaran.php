@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Bendahara\Rekap;
 
 use App\Models\Pembayaran;
+use App\Models\Transaksi;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -19,24 +20,40 @@ class DataPembayaran extends Component
     {
         return view('livewire.bendahara.rekap.data-pembayaran',
     [
-        'list_pembayaran' => Pembayaran::join('gunabayars', 'gunabayars.id', '=', 'pembayarans.gunabayar_id')
-        ->join('users as siswa', 'siswa.nis', '=', 'pembayarans.nis')
-        ->join('users as bendahara', 'bendahara.id', '=', 'pembayarans.user_id')
-        ->join('kelas', 'kelas.id', '=', 'pembayarans.kelas_id')
+        'list_pembayaran' => Transaksi::join('users as siswa', 'siswa.nis', '=', 'transaksis.nis')
+        ->join('users as bendahara', 'bendahara.id', '=', 'transaksis.user_id')
+        ->join('kelas', 'kelas.id', '=', 'transaksis.kelas_id')
         ->select(
-            'pembayarans.id as id',
-            'pembayarans.tanggal as tanggal',
-            'pembayarans.tahun as tahun',
-            'pembayarans.jumlah as jumlah',
-            'gunabayars.nama as gunabayar',
+            'transaksis.id as id',
+            'transaksis.tanggal as tanggal',
+            'transaksis.tahun as tahun',
+            'transaksis.jumlah as jumlah',
             'siswa.name as siswa',
             'siswa.nis as nis',
             'bendahara.name as bendahara',
             'kelas.nama as kelas'
         )
         ->where('siswa.name', 'like', '%'. $this->search . '%')
-        ->orderBy('pembayarans.created_at', 'desc')
-        ->paginate(10)
+        ->orderBy('transaksis.created_at', 'desc')
+        ->paginate(10),
+        // 'list_pembayaran' => Pembayaran::join('gunabayars', 'gunabayars.id', '=', 'pembayarans.gunabayar_id')
+        // ->join('users as siswa', 'siswa.nis', '=', 'pembayarans.nis')
+        // ->join('users as bendahara', 'bendahara.id', '=', 'pembayarans.user_id')
+        // ->join('kelas', 'kelas.id', '=', 'pembayarans.kelas_id')
+        // ->select(
+        //     'pembayarans.id as id',
+        //     'pembayarans.tanggal as tanggal',
+        //     'pembayarans.tahun as tahun',
+        //     'pembayarans.jumlah as jumlah',
+        //     'gunabayars.nama as gunabayar',
+        //     'siswa.name as siswa',
+        //     'siswa.nis as nis',
+        //     'bendahara.name as bendahara',
+        //     'kelas.nama as kelas'
+        // )
+        // ->where('siswa.name', 'like', '%'. $this->search . '%')
+        // ->orderBy('pembayarans.created_at', 'desc')
+        // ->paginate(10)
     ]);
     }
 

@@ -43,19 +43,19 @@
     </table>
     <div style="display: flex;justify-content:space-between">
         <span>Telah Terima Dari</span>
-        <span>Tanggal Bayar : Tanggal</span>
+        <span>Tanggal Bayar : {{ Carbon\Carbon::parse($tanggal)->translatedFormat('d F Y') }}</span>
     </div>
     <table style="padding-left: 25px;">
         <thead>
             <tr style="text-align: left">
                 <td>Nama</td>
                 <td>:</td>
-                <th>Nama</th>
+                <th>{{ $siswa }}</th>
             </tr>
             <tr style="text-align: left">
                 <td>Kelas</td>
                 <td>:</td>
-                <th>Kelas  Tahun</th>
+                <th>{{ $kelas }} - {{ $tahun }}</th>
             </tr>
         </thead>
     </table>

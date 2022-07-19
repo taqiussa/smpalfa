@@ -21,8 +21,6 @@ class CreateTransaksisTable extends Migration
             $table->string('tingkat')->nullable();
             $table->foreignId('nis')->nullable();
             $table->foreignId('kelas_id')->nullable();
-            $table->foreignId('kategori_pemasukan_id');
-            $table->foreignId('gunabayar_id')->nullable();
             $table->bigInteger('jumlah');
             $table->foreignId('user_id');
             $table->timestamps();

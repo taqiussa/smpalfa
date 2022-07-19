@@ -14,7 +14,6 @@
                         <th>Tanggal</th>
                         <th>Siswa</th>
                         <th>Kelas</th>
-                        <th>Gunabayar</th>
                         <th>Tahun</th>
                         <th>Jumlah</th>
                         <th>Bendahara</th>
@@ -28,12 +27,12 @@
                             <td>{{ date('d M Y', strtotime($pembayaran->tanggal)) }}</td>
                             <td>{{ $pembayaran->siswa }}</td>
                             <td>{{ $pembayaran->kelas }}</td>
-                            <td>{{ $pembayaran->gunabayar }}</td>
                             <td>{{ $pembayaran->tahun }}</td>
                             <td>{{ 'Rp ' . number_format($pembayaran->jumlah, 0, ',', '.') }}</td>
                             <td>{{ $pembayaran->bendahara }}</td>
                             <td>
                                 <a href="{{ route('bendahara.transaksi.pembayaran-siswa-print', [
+                                    'id' => $pembayaran->id,
                                     'tanggal' => $pembayaran->tanggal,
                                     'nis' => $pembayaran->nis,
                                     'kelas' => $pembayaran->kelas,

@@ -21,7 +21,7 @@
                     <div class="col-md-4 my-2">
                         <div class="input-group">
                             <span class="input-group-text">Cari</span>
-                            <input wire:model="search" type="text" class="form-control"
+                            <input wire:model.debounce.500ms="search" type="text" class="form-control"
                                 placeholder="Cari Siswa...">
                         </div>
                     </div>

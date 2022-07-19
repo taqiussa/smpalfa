@@ -20,18 +20,18 @@ class Siswa extends Model
     }
     public function alamat()
     {
-        return $this->belongsTo(Alamat::class, 'nis', 'nis');
+        return $this->belongsTo(Alamat::class, 'nis', 'nis')->withDefault();
     }
     public function orangtua()
     {
-        return $this->belongsTo(OrangTua::class, 'nis', 'nis');
+        return $this->belongsTo(OrangTua::class, 'nis', 'nis')->withDefault();
     }
     public function wali()
     {
-        return $this->belongsTo(Wali::class, 'nis', 'nis');
+        return $this->belongsTo(Wali::class, 'nis', 'nis')->withDefault();
     }
     public function biodata()
     {
-        return $this->belongsTo(Biodata::class, 'nis', 'nis');
+        return $this->belongsTo(Biodata::class, 'nis', 'nis')->withDefault();
     }
 }

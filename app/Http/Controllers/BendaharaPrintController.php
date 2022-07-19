@@ -9,6 +9,7 @@ use App\Models\Kelas;
 use App\Models\Pemasukan;
 use App\Models\Pembayaran;
 use App\Models\Pengeluaran;
+use App\Models\Transaksi;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -16,13 +17,16 @@ class BendaharaPrintController extends Controller
 {
     public function pembayaran_siswa()
     {
+        $id = request('id');
         $tanggal = request('tanggal');
         $nis = request('nis');
         $kelas = request('kelas');
         $siswa = request('siswa');
         $tahun = request('tahun');
-        $pembayaran = Pembayaran::with('gunabayar')->where('tanggal', $tanggal)->where('nis', $nis)->get();
-        $total = Pembayaran::where('tanggal', $tanggal)->where('nis', $nis)->sum('jumlah');
+        // $pembayaran = Pembayaran::with('gunabayar')->where('tanggal', $tanggal)->where('nis', $nis)->get();
+        // $total = Pembayaran::where('tanggal', $tanggal)->where('nis', $nis)->sum('jumlah');
+        $pembayaran = Pembayaran::with('gunabayar')->where('transaksi_id', $id)->get();
+        $total = Transaksi::find($id)->jumlah;
         $data = [
             'list_pembayaran' => $pembayaran,
             'tanggal' => $tanggal,

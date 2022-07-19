@@ -12,6 +12,6 @@ class Kkm extends Model
 
     public function mapel()
     {
-        return $this->belongsTo(MataPelajaran::class, 'mata_pelajaran_id');
+        return $this->belongsTo(MataPelajaran::class, 'mata_pelajaran_id')->withDefault();
     }
 }

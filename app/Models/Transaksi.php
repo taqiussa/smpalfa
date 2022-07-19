@@ -10,8 +10,8 @@ class Transaksi extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function pembayaran()
+    public function pembayarans()
     {
-        return $this->belongsTo(Pembayaran::class);
+        return $this->hasMany(Pembayaran::class);
     }
 }

@@ -20,6 +20,6 @@ class SiswaEkstra extends Model
     }
     public function ekstra()
     {
-        return $this->belongsTo(Ekstrakurikuler::class, 'ekstrakurikuler_id');
+        return $this->belongsTo(Ekstrakurikuler::class, 'ekstrakurikuler_id')->withDefault();
     }
 }

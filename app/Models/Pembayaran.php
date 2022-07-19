@@ -14,4 +14,8 @@ class Pembayaran extends Model
     {
         return $this->belongsTo(Gunabayar::class);
     }
+    public function transaksi()
+    {
+        return $this->belongsTo(Transaksi::class);
+    }
 }
