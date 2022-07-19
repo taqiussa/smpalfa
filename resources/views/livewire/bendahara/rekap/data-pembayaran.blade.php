@@ -38,6 +38,7 @@
                                     'kelas' => $pembayaran->kelas,
                                     'siswa' => $pembayaran->siswa,
                                     'tahun' => $pembayaran->tahun,
+                                    'tingkat' => $pembayaran->tingkat
                                 ]) }}"
                                     class="badge text-success mx-2 my-2" target="__blank"><i
                                         class="fas fa-file-alt"></i></a>

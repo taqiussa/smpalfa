@@ -11,6 +11,7 @@ use App\Models\Pembayaran;
 use App\Models\Pengeluaran;
 use App\Models\Transaksi;
 use App\Models\User;
+use App\Models\WajibBayar;
 use Illuminate\Http\Request;
 
 class BendaharaPrintController extends Controller
@@ -23,9 +24,13 @@ class BendaharaPrintController extends Controller
         $kelas = request('kelas');
         $siswa = request('siswa');
         $tahun = request('tahun');
+        $tingkat = request('tingkat');
         // $pembayaran = Pembayaran::with('gunabayar')->where('tanggal', $tanggal)->where('nis', $nis)->get();
         // $total = Pembayaran::where('tanggal', $tanggal)->where('nis', $nis)->sum('jumlah');
         $pembayaran = Pembayaran::with('gunabayar')->where('transaksi_id', $id)->get();
+        $wajibbayar = WajibBayar::where('tingkat', $tingkat)->where('tahun', $tahun)->first()->jumlah;
+        $totalbayar = Pembayaran::where('nis', $nis)->where('tahun', $tahun)->sum('jumlah');
+        $kurangbayar = $wajibbayar - $totalbayar;
         $total = Transaksi::find($id)->jumlah;
         $data = [
             'list_pembayaran' => $pembayaran,
@@ -34,6 +39,9 @@ class BendaharaPrintController extends Controller
             'siswa' => $siswa,
             'tahun' => $tahun,
             'total' => $total,
+            'wajibbayar' => $wajibbayar,
+            'totalbayar' => $totalbayar,
+            'kurangbayar' => $kurangbayar
         ];
         return view('pembayaran.print',$data);
     }

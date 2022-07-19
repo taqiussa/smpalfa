@@ -26,8 +26,7 @@
 </head>
 
 <body>
-    <table align="center"
-        style="padding:5px; text-align:center;line-height:1px;width:100%">
+    <table align="center" style="padding:5px; text-align:center;line-height:1px;width:100%">
         <tbody>
             <tr>
                 <td style="text-align: right"><img src="{{ asset('images/logoalfahp.png') }}" alt="logo"
@@ -35,8 +34,10 @@
                 <td style="text-align: center;word-wrap:break-word;border-bottom:solid 2px #000">
                     <div style="margin-bottom: 15px"><strong>YAYASAN AL MUSYAFFA'</strong></div>
                     <div style="margin-bottom: 15px"><strong>SMP AL MUSYAFFA' KENDAL</strong></div>
-                    <div style="margin-bottom: 15px">Jln. Kampir-Sudipayung, Kec. Ngampel, Kab. Kendal - Jawa Tengah </div>
-                    <div style="margin-bottom: 15px"> Hp: 0822-8000-1111 E-mail : smpalmusyaffa@gmail.com Website : www.smpalmusyaffa.com </div>
+                    <div style="margin-bottom: 15px">Jln. Kampir-Sudipayung, Kec. Ngampel, Kab. Kendal - Jawa Tengah
+                    </div>
+                    <div style="margin-bottom: 15px"> Hp: 0822-8000-1111 E-mail : smpalmusyaffa@gmail.com Website :
+                        www.smpalmusyaffa.com </div>
                 </td>
             </tr>
         </tbody>
@@ -59,24 +60,51 @@
             </tr>
         </thead>
     </table>
-    <table border="1" align="center" style="border-collapse:collapse;width:50%">
-        <tbody>
-            <tr>
-                <td style="padding-left: 20px">Gunabayar</td>
-                <td style="padding-left: 20px">Jumlah</td>
-            </tr>
-            @foreach ($list_pembayaran as $pembayaran)
-            <tr>
-                <td style="padding-left: 20px">{{ $pembayaran->gunabayar->nama }}</td>
-                <td style="padding-left: 20px">{{ 'Rp ' . number_format($pembayaran->jumlah, 0, ',', '.') }}</td>
-            </tr>
-            @endforeach
-            <tr>
-                <td style="padding-left: 20px">Total</td>
-                <td style="padding-left: 20px"><b>{{ 'Rp ' . number_format($total, 0, ',', '.') }}</b></td>
-            </tr>
-        </tbody>
-    </table>
+    <div style="display: flex;justify-content: space-between">
+        <table border="1" style="border-collapse:collapse;width:60%">
+            <tbody>
+                <tr>
+                    <td style="padding-left: 20px">Gunabayar</td>
+                    <td style="padding-left: 20px">Jumlah</td>
+                </tr>
+                @foreach ($list_pembayaran as $pembayaran)
+                    <tr>
+                        <td style="padding-left: 20px">{{ $pembayaran->gunabayar->nama }}</td>
+                        <td style="padding-left: 20px">{{ 'Rp ' . number_format($pembayaran->jumlah, 0, ',', '.') }}
+                        </td>
+                    </tr>
+                @endforeach
+                <tr>
+                    <td style="padding-left: 20px">Total</td>
+                    <td style="padding-left: 20px"><b>{{ 'Rp ' . number_format($total, 0, ',', '.') }}</b></td>
+                </tr>
+            </tbody>
+        </table>
+        <table style="width:40%; padding:5px; font-size:10pt">
+            <thead>
+                <tr>
+                    <td colspan="3">Keterangan :</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Administrasi 1 Tahun</td>
+                    <td>:</td>
+                    <td>{{ 'Rp ' . number_format($wajibbayar, 0, ',', '.') }}</td>
+                </tr>
+                <tr>
+                    <td>Total Terbayar</td>
+                    <td>:</td>
+                    <td>{{ 'Rp ' . number_format($totalbayar, 0, ',', '.') }}</td>
+                </tr>
+                <tr>
+                    <td>Kurang Bayar</td>
+                    <td>:</td>
+                    <td>{{ 'Rp ' . number_format($kurangbayar, 0, ',', '.') }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <table align="right">
         <tr>
             <td>Kendal, {{ Carbon\Carbon::parse($tanggal)->translatedFormat('d F Y') }}</td>

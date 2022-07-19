@@ -13,6 +13,7 @@ class Profile extends Component
     public $nama;
     public $password;
     public $password_confirmation;
+    public $id_user;
 
     protected $rules = [
         'nama' => 'required',
@@ -26,17 +27,29 @@ class Profile extends Component
     public function mount()
     {
         $this->nama = auth()->user()->name;
+        $this->id_user = auth()->user()->id;
     }
 
-    public function simpan()
+    public function ganti_nama()
     {
-        $this->validate();
+        $this->validate(['nama' => 'required']);
         try {
-            User::find(auth()->user()->id)->update(['password' => bcrypt($this->password)]);
-            $this->dispatchBrowserEvent('notyf', ['type' => 'success', 'message' => 'Berhasil Update Profile']);
-            return redirect()->route('home');
+            User::find($this->id_user)->update(['name' => $this->nama]);
+            $this->dispatchBrowserEvent('notyf', ['type' => 'success', 'message' => 'Berhasil Ganti Nama']);
         } catch (\Throwable $th) {
             $this->dispatchBrowserEvent('notyf', ['type' => 'error', 'message' => 'Koneksi Terputus, Ulangi']);
         }
+    }
+
+    public function ganti_password()
+    {
+        $this->validate(['password' => 'required|min:8|confirmed']);
+        try {
+            User::find(auth()->user()->id)->update(['password' => bcrypt($this->password)]);
+            $this->dispatchBrowserEvent('notyf', ['type' => 'success', 'message' => 'Berhasil Ganti Password']);
+        } catch (\Throwable $th) {
+            $this->dispatchBrowserEvent('notyf', ['type' => 'error', 'message' => 'Koneksi Terputus, Ulangi']);
+        }
+        $this->reset('password', 'password_confirmation');
     }
 }

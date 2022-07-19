@@ -76,6 +76,7 @@ class TransaksiPembayaran extends Component
                 );
             }
             $this->dispatchBrowserEvent('notyf', ['type' => 'success', 'message' => 'Berhasil Simpan Pembayaran']);
+            $this->get_data_pembayaran();
             $this->reset('list_transaksi','total','format_total');
             $this->get_list_pembayaran();
         } catch (\Throwable $th) {
@@ -179,7 +180,8 @@ class TransaksiPembayaran extends Component
             'siswa.name as siswa',
             'siswa.nis as nis',
             'bendahara.name as bendahara',
-            'kelas.nama as kelas'
+            'kelas.nama as kelas',
+            'kelas.tingkat as tingkat'
         )
         ->where('transaksis.nis', $this->siswa)
         ->where('transaksis.tahun', $this->tahun)

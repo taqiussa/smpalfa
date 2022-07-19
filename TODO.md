@@ -60,3 +60,4 @@ timezone, locale, faker_local id_ID
 18. Nilai Quran - on going - kurang print per siswa
 19. alpha dari skor
 20. Tambah Siswa
+21. Print kwitansi tambahi total bayar dan wajib bayar serta kurang bayar

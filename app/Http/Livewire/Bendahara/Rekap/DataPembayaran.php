@@ -31,7 +31,8 @@ class DataPembayaran extends Component
             'siswa.name as siswa',
             'siswa.nis as nis',
             'bendahara.name as bendahara',
-            'kelas.nama as kelas'
+            'kelas.nama as kelas',
+            'kelas.tingkat as tingkat'
         )
         ->where('siswa.name', 'like', '%'. $this->search . '%')
         ->orderBy('transaksis.created_at', 'desc')
