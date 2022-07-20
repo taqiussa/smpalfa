@@ -21,28 +21,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($list_pembayaran as $key => $pembayaran)
+                    @foreach ($list_transaksi as $key => $transaksi)
                         <tr>
-                            <td>{{ $list_pembayaran->firstItem() + $key }}</td>
-                            <td>{{ date('d M Y', strtotime($pembayaran->tanggal)) }}</td>
-                            <td>{{ $pembayaran->siswa }}</td>
-                            <td>{{ $pembayaran->kelas }}</td>
-                            <td>{{ $pembayaran->tahun }}</td>
-                            <td>{{ 'Rp ' . number_format($pembayaran->jumlah, 0, ',', '.') }}</td>
-                            <td>{{ $pembayaran->bendahara }}</td>
+                            <td>{{ $list_transaksi->firstItem() + $key }}</td>
+                            <td>{{ date('d M Y', strtotime($transaksi->tanggal)) }}</td>
+                            <td>{{ $transaksi->siswa }}</td>
+                            <td>{{ $transaksi->kelas }}</td>
+                            <td>{{ $transaksi->tahun }}</td>
+                            <td>{{ 'Rp ' . number_format($transaksi->jumlah, 0, ',', '.') }}</td>
+                            <td>{{ $transaksi->bendahara }}</td>
                             <td>
                                 <a href="{{ route('bendahara.transaksi.pembayaran-siswa-print', [
-                                    'id' => $pembayaran->id,
-                                    'tanggal' => $pembayaran->tanggal,
-                                    'nis' => $pembayaran->nis,
-                                    'kelas' => $pembayaran->kelas,
-                                    'siswa' => $pembayaran->siswa,
-                                    'tahun' => $pembayaran->tahun,
-                                    'tingkat' => $pembayaran->tingkat
+                                    'id' => $transaksi->id,
+                                    'tanggal' => $transaksi->tanggal,
+                                    'nis' => $transaksi->nis,
+                                    'kelas' => $transaksi->kelas,
+                                    'siswa' => $transaksi->siswa,
+                                    'tahun' => $transaksi->tahun,
+                                    'tingkat' => $transaksi->tingkat
                                 ]) }}"
                                     class="badge text-success mx-2 my-2" target="__blank"><i
                                         class="fas fa-file-alt"></i></a>
-                                <a wire:click.prevent="confirm({{ $pembayaran->id }})" class="badge text-danger"
+                                <a wire:click.prevent="confirm({{ $transaksi->id }})" class="badge text-danger"
                                     role="button">
                                     <i class="fas fa-trash-alt"></i>
                                 </a>
@@ -53,7 +53,7 @@
             </table>
         </div>
         <div>
-            {{ $list_pembayaran->links() }}
+            {{ $list_transaksi->links() }}
         </div>
     </x-card>
 </div>

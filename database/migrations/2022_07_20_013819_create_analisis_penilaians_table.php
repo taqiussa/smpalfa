@@ -15,6 +15,7 @@ class CreateAnalisisPenilaiansTable extends Migration
     {
         Schema::create('analisis_penilaians', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('nis');
             $table->timestamps();
         });
     }

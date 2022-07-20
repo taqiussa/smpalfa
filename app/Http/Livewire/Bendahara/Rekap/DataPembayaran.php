@@ -20,7 +20,7 @@ class DataPembayaran extends Component
     {
         return view('livewire.bendahara.rekap.data-pembayaran',
     [
-        'list_pembayaran' => Transaksi::join('users as siswa', 'siswa.nis', '=', 'transaksis.nis')
+        'list_transaksi' => Transaksi::join('users as siswa', 'siswa.nis', '=', 'transaksis.nis')
         ->join('users as bendahara', 'bendahara.id', '=', 'transaksis.user_id')
         ->join('kelas', 'kelas.id', '=', 'transaksis.kelas_id')
         ->select(
@@ -64,7 +64,9 @@ class DataPembayaran extends Component
     }
     public function delete($id)
     {
-        Pembayaran::find($id)->delete();
+        $trans = Transaksi::find($id);
+        $trans->pembayarans()->delete();
+        $trans->delete();
         $this->dispatchBrowserEvent('notyf', ['type' => 'error', 'message' => 'Berhasil Hapus Data Pembayaran']);
     }
 }
