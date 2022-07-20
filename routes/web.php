@@ -53,6 +53,7 @@ use App\Http\Livewire\Guru\Penilaian\InputNilai;
 use App\Http\Livewire\Guru\Penilaian\InputNilaiEkstra;
 use App\Http\Livewire\Guru\Penilaian\InputNilaiSikap;
 use App\Http\Livewire\Guru\Penilaian\InputPrestasi;
+use App\Http\Livewire\Guru\Penilaian\UploadAnalisis;
 use App\Http\Livewire\Guru\Penilaian\UploadNilai;
 use App\Http\Livewire\Guru\Rapor\CetakRapor;
 use App\Http\Livewire\Guru\Rapor\DaftarNilaiGuru;
@@ -88,6 +89,8 @@ use App\Http\Livewire\Kurikulum\Rapor\UploadKdRapor as RaporUploadKdRapor;
 use App\Http\Livewire\Landing\Posts;
 use App\Http\Livewire\Sarpras\Inventaris\DataInventaris;
 use App\Http\Livewire\Siswa\Administrasi;
+use App\Http\Livewire\Siswa\AlquranBilGhoib;
+use App\Http\Livewire\Siswa\AlquranBinNadzor;
 use App\Http\Livewire\Siswa\DataSkor as SiswaDataSkor;
 use App\Http\Livewire\Siswa\Kehadiran;
 use App\Http\Livewire\Siswa\Nilai;
@@ -229,6 +232,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('guru/penilaian/input-nilai-ekstra', InputNilaiEkstra::class)->name('guru.penilaian.input-nilai-ekstra');
         Route::get('guru/penilaian/input-nilai-sikap', InputNilaiSikap::class)->name('guru.penilaian.input-nilai-sikap');
         Route::get('guru/penilaian/input-prestasi', InputPrestasi::class)->name('guru.penilaian.input-prestasi');
+        Route::get('guru/penilaian/upload-analisis', UploadAnalisis::class)->name('guru.penilaian.upload-analisis');
         Route::get('guru/penilaian/upload-nilai', UploadNilai::class)->name('guru.penilaian.upload-nilai');
 
         //Menu Rapor
@@ -323,6 +327,10 @@ Route::middleware(['auth'])->group(function () {
         
         // Administrasi
         Route::get('siswa/administrasi', Administrasi::class)->name('siswa.administrasi');
+
+        //Alquran
+        Route::get('siswa/alquran/bil-ghoib', AlquranBilGhoib::class)->name('siswa.alquran.bil-ghoib');
+        Route::get('siswa/alquran/bin-nadzor', AlquranBinNadzor::class)->name('siswa.alquran.bin-nadzor');
 
         // Data Skor
         Route::get('siswa/data-skor', SiswaDataSkor::class)->name('siswa.data-skor');

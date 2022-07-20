@@ -89,6 +89,10 @@
                     class="{{ Request::routeIs('guru.penilaian.input-prestasi') ? 'active' : '' }}">Input Prestasi</a>
             </li>
             <li>
+                <a href="{{ route('guru.penilaian.upload-analisis') }}"
+                    class="{{ Request::routeIs('guru.penilaian.upload-analisis') ? 'active' : '' }}">Upload Analisis</a>
+            </li>
+            <li>
                 <a href="{{ route('guru.penilaian.upload-nilai') }}"
                     class="{{ Request::routeIs('guru.penilaian.upload-nilai') ? 'active' : '' }}">Upload Nilai</a>
             </li>
