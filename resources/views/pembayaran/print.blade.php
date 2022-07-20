@@ -60,8 +60,7 @@
             </tr>
         </thead>
     </table>
-    <div style="display: flex;justify-content: space-between">
-        <table border="1" style="border-collapse:collapse;width:60%">
+        <table align="center" border="1" style="border-collapse:collapse;width:70%">
             <tbody>
                 <tr>
                     <td style="padding-left: 20px">Gunabayar</td>
@@ -80,31 +79,30 @@
                 </tr>
             </tbody>
         </table>
-        <table style="width:40%; padding:5px; font-size:10pt">
-            <thead>
-                <tr>
-                    <td colspan="3">Keterangan :</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Administrasi 1 Tahun</td>
-                    <td>:</td>
-                    <td>{{ 'Rp ' . number_format($wajibbayar, 0, ',', '.') }}</td>
-                </tr>
-                <tr>
-                    <td>Total Terbayar</td>
-                    <td>:</td>
-                    <td>{{ 'Rp ' . number_format($totalbayar, 0, ',', '.') }}</td>
-                </tr>
-                <tr>
-                    <td>Kurang Bayar</td>
-                    <td>:</td>
-                    <td>{{ 'Rp ' . number_format($kurangbayar, 0, ',', '.') }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <table align="left" style="width:40%; padding:5px; font-size:10pt">
+        <thead>
+            <tr>
+                <td colspan="3">Keterangan :</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Administrasi 1 Tahun</td>
+                <td>:</td>
+                <td>{{ 'Rp ' . number_format($wajibbayar, 0, ',', '.') }}</td>
+            </tr>
+            <tr>
+                <td>Total Terbayar</td>
+                <td>:</td>
+                <td>{{ 'Rp ' . number_format($totalbayar, 0, ',', '.') }}</td>
+            </tr>
+            <tr>
+                <td>Kurang Bayar</td>
+                <td>:</td>
+                <td>{{ 'Rp ' . number_format($kurangbayar, 0, ',', '.') }}</td>
+            </tr>
+        </tbody>
+    </table>
     <table align="right">
         <tr>
             <td>Kendal, {{ Carbon\Carbon::parse($tanggal)->translatedFormat('d F Y') }}</td>
