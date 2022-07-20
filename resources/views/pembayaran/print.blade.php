@@ -107,7 +107,7 @@
             </tr>
         </tbody>
     </table>
-    <table align="right">
+    <table align="right" style="padding-right: 30px;">
         <tr>
             <td>Kendal, {{ Carbon\Carbon::parse($tanggal)->translatedFormat('d F Y') }}</td>
         </tr>
