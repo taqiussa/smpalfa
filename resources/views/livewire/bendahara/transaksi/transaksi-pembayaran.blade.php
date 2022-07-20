@@ -99,11 +99,13 @@
                         </tbody>
                     </table>
                 </div>
+                @if ($list_transaksi)
                 <div class="d-flex justify-content-end">
                     <button wire:click.prevent="simpan" wire:loading.class="disabled" wire:target="simpanz"
-                        class="btn btn-primary">Simpan <i wire:loading wire:target="simpan"
-                            class="fas fa-spin fa-spinner"></i></button>
+                    class="btn btn-primary">Simpan <i wire:loading wire:target="simpan"
+                    class="fas fa-spin fa-spinner"></i></button>
                 </div>
+                @endif
             </x-card>
         </div>
     </div>
@@ -111,7 +113,7 @@
         <div class="col">
             <x-card>
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-striped">
                         <tr>
                             <th>#</th>
                             <th>Semester</th>
@@ -132,11 +134,11 @@
                                     <td>{{ $list_bendahara[$key] ?? '' }}</td>
                                     <td>
                                         @if (!empty($list_jumlah[$key]))
-                                            <span class="badge text-success"><i class="fas fa-check-circle"></i></span>
+                                            <span class="badge text-success"><i class="fas fa-check-circle fa-lg"></i></span>
                                         @else
                                             <a wire:click.prevent="tambah({{ $bayar->id }})"
                                                 class="badge text-primary" role="button">
-                                                <i class="fas fa-plus"></i></a>
+                                                <i class="fas fa-plus fa-lg"></i></a>
                                         @endif
                                     </td>
                                 </tr>
@@ -183,7 +185,7 @@
                                             'tingkat' => $pembayaran->tingkat
                                         ]) }}"
                                             class="badge text-success mx-2 my-2" target="__blank"><i
-                                                class="fas fa-file-alt"></i></a>
+                                                class="fas fa-file-alt fa-lg"></i></a>
                                         {{-- <a wire:click.prevent="confirm({{ $pembayaran->id }})" class="badge text-danger"
                                         role="button">
                                         <i class="fas fa-trash-alt"></i> --}}

@@ -56,8 +56,8 @@ timezone, locale, faker_local id_ID
 14. Set Role Username perbaiki
 15. Table User dan Set Role Perbaiki, tambahkan pencarian User
 16. rekapan ekstra per kelas - buat print rekap data siswa per ekstra
-17. data skor per siswa
+17. Print data skor per siswa
 18. Nilai Quran - on going - kurang print per siswa
 19. alpha dari skor
-20. Tambah Siswa
-21. Print kwitansi tambahi total bayar dan wajib bayar serta kurang bayar
+20. Tambah Siswa - kurang data alamat dan lain lain
+21. Analisis Penilaian
