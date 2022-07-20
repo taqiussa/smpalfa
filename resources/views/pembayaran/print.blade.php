@@ -42,12 +42,11 @@
             </tr>
         </tbody>
     </table>
-    <div style="display: flex;justify-content:space-between">
-        <span>Telah Terima Dari</span>
-        <span>Tanggal Bayar : {{ Carbon\Carbon::parse($tanggal)->translatedFormat('d F Y') }}</span>
-    </div>
     <table style="padding-left: 25px;">
         <thead>
+            <tr style="text-align: left">
+                <td>Telah Terima Dari :</td>
+            </tr>
             <tr style="text-align: left">
                 <td>Nama</td>
                 <td>:</td>
@@ -58,28 +57,33 @@
                 <td>:</td>
                 <th>{{ $kelas }} - {{ $tahun }}</th>
             </tr>
+            <tr style="text-align: left">
+                <td>Tanggal Bayar</td>
+                <td>:</td>
+                <td> {{ Carbon\Carbon::parse($tanggal)->translatedFormat('d F Y') }}</td>
+            </tr>
         </thead>
     </table>
-        <table align="center" border="1" style="border-collapse:collapse;width:70%">
-            <tbody>
+    <table align="center" style="border-collapse:collapse;width:40%">
+        <tbody>
+            <tr>
+                <td style="padding-left: 20px">Gunabayar</td>
+                <td style="padding-left: 20px">Jumlah</td>
+            </tr>
+            @foreach ($list_pembayaran as $pembayaran)
                 <tr>
-                    <td style="padding-left: 20px">Gunabayar</td>
-                    <td style="padding-left: 20px">Jumlah</td>
+                    <td style="padding-left: 20px">{{ $pembayaran->gunabayar->nama }}</td>
+                    <td style="padding-left: 20px">{{ 'Rp ' . number_format($pembayaran->jumlah, 0, ',', '.') }}
+                    </td>
                 </tr>
-                @foreach ($list_pembayaran as $pembayaran)
-                    <tr>
-                        <td style="padding-left: 20px">{{ $pembayaran->gunabayar->nama }}</td>
-                        <td style="padding-left: 20px">{{ 'Rp ' . number_format($pembayaran->jumlah, 0, ',', '.') }}
-                        </td>
-                    </tr>
-                @endforeach
-                <tr>
-                    <td style="padding-left: 20px">Total</td>
-                    <td style="padding-left: 20px"><b>{{ 'Rp ' . number_format($total, 0, ',', '.') }}</b></td>
-                </tr>
-            </tbody>
-        </table>
-    <table align="left" style="width:40%; padding:5px; font-size:10pt">
+            @endforeach
+            <tr>
+                <td style="padding-left: 20px">Total</td>
+                <td style="padding-left: 20px"><b>{{ 'Rp ' . number_format($total, 0, ',', '.') }}</b></td>
+            </tr>
+        </tbody>
+    </table>
+    <table align="left" style="width:40%; padding:5px; font-size:10pt;border-collapse:collapse">
         <thead>
             <tr>
                 <td colspan="3">Keterangan :</td>
