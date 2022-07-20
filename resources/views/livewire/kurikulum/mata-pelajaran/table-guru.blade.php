@@ -43,7 +43,7 @@
         </div>
     </div>
     <div class="row my-2">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card shadow rounded-md border-top-0 border-end-0 border-bottom-0 border-3 border-primary">
                 <div class="card-body">
                     <div class="table-responsive">
@@ -67,13 +67,19 @@
                                         </td>
                                         <td>
                                             @foreach ($mata_pelajaran->guru as $guru)
-                                                <li>{{ $guru->name }}</li>
+                                                <ol class=" list-group-numbered">
+                                                    <li>{{ $guru->name }}</li>
+                                                </ol>
                                             @endforeach
                                         </td>
                                         <td>
                                             @foreach ($mata_pelajaran->guru as $guru)
-                                            <li><a wire:click.prevent="delete({{ $mata_pelajaran->id }},{{ $guru->id }})" role="button" class="badge text-danger"><i class="fas fa-trash-alt"></i></a></li>
-                                        @endforeach
+                                                <ol class=" list-group-numbered">
+                                                    <li><a wire:click.prevent="delete({{ $mata_pelajaran->id }},{{ $guru->id }})"
+                                                            role="button" class="badge text-danger"><i
+                                                                class="fas fa-trash-alt"></i></a></li>
+                                                </ol>
+                                            @endforeach
                                         </td>
                                     </tr>
                                 @endforeach
