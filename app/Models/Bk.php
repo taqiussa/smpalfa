@@ -14,4 +14,9 @@ class Bk extends Model
     {
         return $this->hasMany(BkDetail::class);
     }
+
+    public function guru()
+    {
+        return $this->belongsTo(User::class, 'user_id')->withDefault();
+    }
 }

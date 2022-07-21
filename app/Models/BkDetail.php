@@ -13,6 +13,10 @@ class BkDetail extends Model
     public function bk(){
         return $this->belongsTo(Bk::class);
     }
+    public function guru()
+    {
+        return $this->belongsTo(User::class, 'user_id')->withDefault();
+    }
     public function sluggable(): array
     {
         return [

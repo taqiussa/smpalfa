@@ -41,6 +41,7 @@
                             <th>Bentuk Bimbingan</th>
                             <th>Permasalahan</th>
                             <th>Tindak Lanjut</th>
+                            <th>Guru Bk</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -60,6 +61,7 @@
                             <td>{{ $rekap->bentuk_bimbingan }}</td>
                             <td>{{ $rekap->permasalahan }}</td>
                             <td>{{ $rekap->tindak_lanjut }}</td>
+                            <td>{{ $rekap->guru->name }}</td>
                             <td class="text-nowrap">
                                 <a href="{{ route('konseling.layanan.detail-bimbingan', $rekap->slug) }}" class="btn btn-primary mx-1 my-1" role="button">Detail</a>
                                 <button wire:click.prevent="confirm({{ $rekap->id }})" class="btn btn-danger mx-1 my-1">Hapus</button>

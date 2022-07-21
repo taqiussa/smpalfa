@@ -61,13 +61,15 @@
             <td>Taqius Shofi Albastomi,S.Kom</td>
         </tr>
     </table>
-    <table border="1" style="border-collapse:collapse; width:100%">
+    <table border="1" style="border-collapse:collapse; width:100%;font-size:9pt">
         <thead>
             <tr>
                 <th>No</th>
                 <th>NIS</th>
                 <th>Nama</th>
-                <th>Tugas</th>
+                @foreach ($list_penilaian as $penilaian)
+                    <th></th>
+                @endforeach
             </tr>
         </thead>
         <tbody>

@@ -6,11 +6,13 @@ use App\Models\Bk;
 use App\Models\User;
 use App\Models\Kelas;
 use App\Models\Siswa;
+use App\Traits\GetData;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class Bimbingan extends Component
 {
+    use GetData;
     use WithFileUploads;
     // model
     public $tanggal;
@@ -42,6 +44,12 @@ class Bimbingan extends Component
     {
         return view('livewire.konseling.layanan.bimbingan');
     }
+    public function mount()
+    {
+        $this->tanggal = gmdate('Y-m-d');
+        $this->get_tahun();
+        $this->list_kelas = Kelas::get();
+    }
     public function tambah()
     {
         $this->validate([
@@ -67,7 +75,7 @@ class Bimbingan extends Component
     }
     public function simpan()
     {
-        
+
         switch ($this->bentuk_bimbingan) {
             case 'Individu':
                 $this->resetErrorBag();
@@ -99,6 +107,7 @@ class Bimbingan extends Component
                     'permasalahan' => $this->permasalahan,
                     'penyelesaian' => $this->penyelesaian,
                     'tindak_lanjut' => $this->tindak_lanjut,
+                    'user_id' => auth()->user()->id,
                     'foto' => $foto,
                     'foto_dokumen' => $fotoDokumen,
                 ]);
@@ -114,6 +123,7 @@ class Bimbingan extends Component
                     'permasalahan' => $this->permasalahan,
                     'penyelesaian' => $this->penyelesaian,
                     'tindak_lanjut' => $this->tindak_lanjut,
+                    'user_id' => auth()->user()->id,
                     'foto' => $foto,
                     'foto_dokumen' => $fotoDokumen,
                 ]);
@@ -128,11 +138,17 @@ class Bimbingan extends Component
                 $this->resetErrorBag();
                 $this->validate();
                 if ($this->foto) {
+                    $this->validate([
+                        'foto' => 'image|max:2048'
+                    ]);
                     $foto = $this->foto->store('foto');
                 } else {
                     $foto = '';
                 }
                 if ($this->foto_dokumen) {
+                    $this->validate([
+                        'foto_dokumen' => 'image|max:2048'
+                    ]);
                     $fotoDokumen = $this->foto_dokumen->store('fotodokumen');
                 } else {
                     $fotoDokumen = '';
@@ -147,6 +163,7 @@ class Bimbingan extends Component
                     'permasalahan' => $this->permasalahan,
                     'penyelesaian' => $this->penyelesaian,
                     'tindak_lanjut' => $this->tindak_lanjut,
+                    'user_id' => auth()->user()->id,
                     'foto' => $foto,
                     'foto_dokumen' => $fotoDokumen,
                 ]);
@@ -162,6 +179,7 @@ class Bimbingan extends Component
                         'permasalahan' => $this->permasalahan,
                         'penyelesaian' => $this->penyelesaian,
                         'tindak_lanjut' => $this->tindak_lanjut,
+                        'user_id' => auth()->user()->id,
                         'foto' => $foto,
                         'foto_dokumen' => $fotoDokumen,
                     ]);
@@ -178,11 +196,17 @@ class Bimbingan extends Component
                 $this->resetErrorBag();
                 $this->validate();
                 if ($this->foto) {
+                    $this->validate([
+                        'foto' => 'image|max:2048'
+                    ]);
                     $foto = $this->foto->store('foto');
                 } else {
                     $foto = '';
                 }
                 if ($this->foto_dokumen) {
+                    $this->validate([
+                        'foto_dokumen' => 'image|max:2048'
+                    ]);
                     $fotoDokumen = $this->foto_dokumen->store('fotodokumen');
                 } else {
                     $fotoDokumen = '';
@@ -206,6 +230,7 @@ class Bimbingan extends Component
                     'permasalahan' => $this->permasalahan,
                     'penyelesaian' => $this->penyelesaian,
                     'tindak_lanjut' => $this->tindak_lanjut,
+                    'user_id' => auth()->user()->id,
                     'foto' => $foto,
                     'foto_dokumen' => $fotoDokumen,
                 ]);
@@ -221,6 +246,7 @@ class Bimbingan extends Component
                         'permasalahan' => $this->permasalahan,
                         'penyelesaian' => $this->penyelesaian,
                         'tindak_lanjut' => $this->tindak_lanjut,
+                        'user_id' => auth()->user()->id,
                         'foto' => $foto,
                         'foto_dokumen' => $fotoDokumen,
                     ]);
@@ -233,22 +259,11 @@ class Bimbingan extends Component
                 break;
 
             default:
-            $this->validate();
+                $this->validate();
                 break;
         }
     }
-    public function mount()
-    {
-        $this->tanggal = gmdate('Y-m-d');
-        $tahunIni = gmdate('Y');
-        $bulanIni = gmdate('m');
-        if ($bulanIni <= 6) {
-            $this->tahun = (intval($tahunIni) - 1) . ' / ' . intval($tahunIni);
-        } else {
-            $this->tahun = intval($tahunIni) . ' / ' . (intval($tahunIni) + 1);
-        }
-        $this->list_kelas = Kelas::get();
-    }
+
     public function updatedBentukBimbingan()
     {
         $this->kelas = '';
@@ -293,7 +308,7 @@ class Bimbingan extends Component
             ->orderBy('users.name')
             ->get();
     }
-    private function clearVar()
+    public function clearVar()
     {
         $tahunIni = gmdate('Y');
         $bulanIni = gmdate('m');
