@@ -45,7 +45,13 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-end">
-                        <a href="{{ route('guru.rapor.daftar-nilai-guru-print') }}" class="btn btn-success" role="button"><i class="fas fa-file-alt"></i> Print</a>
+                        <a href="{{ route('guru.rapor.daftar-nilai-guru-print',
+                        [
+                            'tahun' => $tahun,
+                            'semester' => $semester,
+                            'kelas' => $kelas,
+                            'mata_pelajaran'=> $mata_pelajaran
+                        ]) }}" target="__blank" class="btn btn-success" role="button"><i class="fas fa-file-alt"></i> Print</a>
                     </div>
                 </div>
             </div>

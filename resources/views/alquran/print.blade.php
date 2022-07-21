@@ -53,8 +53,8 @@
             </div>
         </div>
         <div style="display:flex;justify-content:space-around">
-        <b>Bilghoib</b>
-        <b>Binnadzor</b>
+        <b>Juz 'Amma Bilghoib</b>
+        <b>Al-Qur'an Binnadzor</b>
         </div>
         <div style="display: flex; flex-direction:row;">
             <table border="1" style="width: 100%;border-collapse:collapse;margin:5px">

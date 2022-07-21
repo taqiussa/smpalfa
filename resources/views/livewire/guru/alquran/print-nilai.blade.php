@@ -24,9 +24,11 @@
                         <select wire:model="kelas" id="kelas" class="form-select">
                             <option value="">Pilih Kelas</option>
                             @foreach ($list_kelas as $kelas)
-                                <option value="{{ $kelas->id }}">{{ $kelas->nama }}</option>
+                            <option value="{{ $kelas->id }}">{{ $kelas->nama }}</option>
                             @endforeach
                         </select>
+                        <small wire:loading wire:target="kelas">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
+                        <small wire:loading wire:target="tahun">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">

@@ -109,7 +109,7 @@
     </table>
     <table align="right" style="padding-right: 30px;">
         <tr>
-            <td>Kendal, {{ Carbon\Carbon::parse($tanggal)->translatedFormat('d F Y') }}</td>
+            <td style="text-align: center">Kendal, {{ Carbon\Carbon::parse($tanggal)->translatedFormat('d F Y') }}</td>
         </tr>
         <tr>
             <td style="text-align: center">Bendahara</td>

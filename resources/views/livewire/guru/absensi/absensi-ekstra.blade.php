@@ -1,6 +1,7 @@
 <div>
     <x-slot name="header">
         <h4>Absensi Ekstrakurikuler</h4>
+        {{-- absensi lama sudah tidak dipakai --}}
     </x-slot>
     <div class="row my-2">
         <div class="col-md-12">

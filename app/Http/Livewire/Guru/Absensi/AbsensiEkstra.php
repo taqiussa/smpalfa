@@ -12,7 +12,7 @@ use App\Models\Kehadiran;
 class AbsensiEkstra extends Component
 {
     use GetData;
-
+// absensi model lama , sudah tidak dipakai
     //model
     public $tanggal;
     public $tahun;

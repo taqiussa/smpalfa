@@ -69,6 +69,16 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="col-md-3">
+                            <label for="loading" class="form-label">&nbsp;</label>
+                            <small wire:loading wire:target="tanggal" class="form-control border-0">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
+                            <small wire:loading wire:target="tahun" class="form-control border-0">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
+                            <small wire:loading wire:target="semester" class="form-control border-0">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
+                            <small wire:loading wire:target="mata_pelajaran" class="form-control border-0">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
+                            <small wire:loading wire:target="kategori_nilai" class="form-control border-0">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
+                            <small wire:loading wire:target="jenis_penilaian" class="form-control border-0">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
+                            <small wire:loading wire:target="kelas" class="form-control border-0">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
+                        </div>
                     </div>
                 </div>
             </div>

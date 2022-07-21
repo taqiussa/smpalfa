@@ -81,6 +81,12 @@
                                 @enderror
                             </div>
                         </div>
+                        <div>
+                                <small wire:loading wire:target="tahun" class="form-control border-0">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
+                                <small wire:loading wire:target="semester" class="form-control border-0">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
+                                <small wire:loading wire:target="ekstrakurikuler" class="form-control border-0">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
+                                <small wire:loading wire:target="kelas" class="form-control border-0">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
+                        </div>
                         <div class="d-flex my-2 justify-content-end">
                             <button wire:click.prevent="simpan" wire:loading.class="disabled" wire:target="simpan"
                                 class="btn btn-primary mx-2 my-2" type="submit">Simpan <i wire:loading
