@@ -12,10 +12,10 @@
             <span class="text">Absensi</span>
         </a>
         <ul id="menu_absensi" class="{{ Request::routeIs('konseling.absensi.*') ? '' : 'collapse' }} dropdown-nav">
-            {{-- <li>
+            <li>
                 <a href="{{ route('konseling.absensi.absensi-siswa') }}"
                     class="{{ Request::routeIs('konseling.absensi.absensi-siswa') ? 'active' : '' }}"> Absensi Siswa </a>
-            </li> --}}
+            </li>
             <li>
                 <a href="{{ route('konseling.absensi.absensi-bk') }}" class="{{ Request::routeIs('konseling.absensi.absensi-bk') ? 'active' : '' }}">
                     Absensi BK </a>
