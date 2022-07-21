@@ -47,7 +47,7 @@ timezone, locale, faker_local id_ID
 
 5. Karakter Siswa / Keterangan di Bimbingan - print bimbingan siswa
 6. Input Skor X jumlah = Kasir
-8. Menu  Siswa Kurang  Nilai dan Alquran
+8. Menu  Siswa Kurang  Nilai 
 9. Print Skor Per Siswa
 10. Rapor Draft Nilai Per Mapel
 11. Jurnal Guru dan Jurnal Wali Kelas - pending akhir tahun

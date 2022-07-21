@@ -15,6 +15,12 @@
                         <input wire:model="tanggalakhir" type="date" class="form-control">
                     </div>
                 </div>
+                <div>
+                    <small wire:loading wire:target="tanggalawal">Sedang Memuat Data... <i
+                            class="fas fa-spin fa-spinner"></i></small>
+                    <small wire:loading wire:target="tanggalakhir">Sedang Memuat Data... <i
+                            class="fas fa-spin fa-spinner"></i></small>
+                </div>
             </x-card>
         </div>
     </div>
@@ -33,7 +39,8 @@
                         <tbody>
                             @foreach ($list_kehadiran as $kehadiran)
                                 <tr>
-                                    <td>{{ Carbon\Carbon::parse($kehadiran->tanggal)->translatedFormat('l, d F Y') }}</td>
+                                    <td>{{ Carbon\Carbon::parse($kehadiran->tanggal)->translatedFormat('l, d F Y') }}
+                                    </td>
                                     <td>{{ $kehadiran->jam }}</td>
                                     <td>{{ $kehadiran->kehadiran->nama }}</td>
                                 </tr>
