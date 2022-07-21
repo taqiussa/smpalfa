@@ -9,6 +9,7 @@
                     <div class="col">
                         <label for="tanggal" class="form-label">Tanggal</label>
                         <input wire:model="tanggal" type="date" class="form-control">
+                        <small wire:loading wire:target="tanggal">Sedang Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
                     </div>
                 </div>
             </x-card>
@@ -18,7 +19,7 @@
         <div class="col">
             <x-card>
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th>#</th>

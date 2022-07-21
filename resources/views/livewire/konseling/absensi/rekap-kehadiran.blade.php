@@ -1,7 +1,6 @@
 <div>
     <x-slot name="header">
         <h4>
-
             Rekap Kehadiran
         </h4>
     </x-slot>
@@ -13,6 +12,9 @@
                         <div class="col-md-4">
                             <label for="tanggal" class="form-label">Tanggal</label>
                             <input wire:model="tanggal" type="date" class="form-control">
+                        <small wire:loading wire:target="tanggal">Sedang Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
+                        <small wire:loading wire:target="jam">Sedang Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
+                        <small wire:loading wire:target="tahun">Sedang Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
                         </div>
                         <div class="col-md-4">
                             <label for="jam" class="form-label">Jam</label>
