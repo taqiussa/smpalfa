@@ -64,7 +64,7 @@
             </tr>
         </thead>
     </table>
-    <table align="center" style="border-collapse:collapse;width:40%">
+    <table align="left" style="border-collapse:collapse;width:100%;margin-left:8px">
         <tbody>
             <tr>
                 <td style="padding-left: 20px">Gunabayar</td>
@@ -72,18 +72,19 @@
             </tr>
             @foreach ($list_pembayaran as $pembayaran)
                 <tr>
-                    <td style="padding-left: 20px">{{ $pembayaran->gunabayar->nama }}</td>
+                    <td style="padding-left: 20px"><span style="border-bottom: 1px solid #000">{{ $loop->iteration . '. ' . $pembayaran->gunabayar->nama }}</span></td>
                     <td style="padding-left: 20px">{{ 'Rp ' . number_format($pembayaran->jumlah, 0, ',', '.') }}
                     </td>
                 </tr>
             @endforeach
             <tr>
-                <td style="padding-left: 20px">Total</td>
-                <td style="padding-left: 20px"><b>{{ 'Rp ' . number_format($total, 0, ',', '.') }}</b></td>
+                <td style="padding-left: 20px;"><b>Total</b></td>
+                <td style="padding-left: 20px;"><b style="border-top: solid 1px #000">{{ 'Rp ' . number_format($total, 0, ',', '.') }}</b></td>
             </tr>
         </tbody>
     </table>
-    <table align="left" style="width:40%; padding:5px; font-size:10pt;border-collapse:collapse">
+    <br>
+    <table align="left" style="width:40%; font-size:10pt;border-collapse:collapse; margin-left:30px;">
         <thead>
             <tr>
                 <td colspan="3">Keterangan :</td>
