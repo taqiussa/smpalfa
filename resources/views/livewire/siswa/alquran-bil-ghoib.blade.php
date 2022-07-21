@@ -1,6 +1,6 @@
 <div>
     <x-slot name="header">
-        <h4>Juz 'Amma Bil Ghoib</h4>
+        <h4>Penilaian Juz 'Amma Bil Ghoib</h4>
     </x-slot>
     <div class="row my-2">
         <div class="table-responsive">

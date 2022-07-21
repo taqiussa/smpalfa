@@ -1,4 +1,7 @@
 <div>
+    <x-slot name="header">
+        <h4>List Postinga</h4>
+    </x-slot>
     <div class="col-md-12">
         <x-card>
             <div class="table-responsive">

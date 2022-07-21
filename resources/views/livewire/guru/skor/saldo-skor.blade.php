@@ -1,4 +1,7 @@
 <div>
+    <x-slot name="header">
+        <h4>Cek Saldo Skor</h4>
+    </x-slot>
     <div class="row my-2">
         <div class="col-md-6">
             <div class="card shadow rounded-md border-top-0 border-end-0 border-bottom-0 border-3 border-primary">

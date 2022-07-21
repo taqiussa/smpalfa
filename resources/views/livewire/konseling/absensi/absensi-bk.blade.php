@@ -1,7 +1,9 @@
 <div>
     <x-slot name='header'>
-        Absensi
-    </x-slot>
+        <h4>
+            Absensi
+            </h4>
+        </x-slot>
     <div class="card rounded-md">
         <div class="card-body">
             <div class="row my-2">

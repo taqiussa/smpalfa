@@ -1,4 +1,7 @@
 <div>
+    <x-slot name="header">
+        <h4>Form Buat Post</h4>
+    </x-slot>
     <x-card>
         <form wire:submit.prevent="simpan">
             <div class="col-md-6 my-2">

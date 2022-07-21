@@ -1,3 +1,5 @@
 <div>
-    {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
+    <x-slot name="header">
+        <h4>Hasil Penilaian Siswa</h4>
+    </x-slot>
 </div>

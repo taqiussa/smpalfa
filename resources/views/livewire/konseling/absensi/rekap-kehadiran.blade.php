@@ -1,6 +1,9 @@
 <div>
     <x-slot name="header">
-        Rekap Kehadiran
+        <h4>
+
+            Rekap Kehadiran
+        </h4>
     </x-slot>
     <div class="row my-2">
         <div class="col-md-6">

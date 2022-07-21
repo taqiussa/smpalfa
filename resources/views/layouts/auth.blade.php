@@ -44,18 +44,18 @@
     </div>
     <div class="social-icons">
         <div class="d-flex flex-row flex-lg-column justify-content-center align-items-center h-100 mt-3 mt-lg-0">
-            <a class="btn m-3" href="#"><img src="{{ asset('images/logoalfa.png') }}"
+            {{-- <a class="btn m-3" href="#"><img src="{{ asset('images/logoalfa.png') }}"
                     class="img img-thumbnail rounded-circle" alt=""></a>
             <a class="btn btn-primary m-3" href="#"><img src="{{ asset('images/facebook.png') }}"
                 class="img img-thumbnail rounded-circle" alt=""></a>
             <a class="btn btn-danger m-3" href="#"><img src="{{ asset('images/instagram.jpg') }}"
-                class="img img-thumbnail rounded-circle" alt=""></a>
-            {{-- <a class="btn m-3" href="#!"><img src="{{ asset('images/logoalfa.png') }}"
+                class="img img-thumbnail rounded-circle" alt=""></a> --}}
+            <a class="btn m-3" href="https://www.smpalmusyaffa.com" target="__blank"><img src="{{ asset('images/logoalfa.png') }}"
                     class="img img-thumbnail rounded-circle" alt=""></a>
             <a class="btn btn-primary m-3" href="https://www.facebook.com/SMP-Al-Musyaffa-Kendal-718345841588079" target="__blank"><img src="{{ asset('images/facebook.png') }}"
                 class="img img-thumbnail rounded-circle" alt=""></a>
             <a class="btn btn-danger m-3" href="https://www.instagram.com/smp_almusyaffa/" target="__blank"><img src="{{ asset('images/instagram.jpg') }}"
-                class="img img-thumbnail rounded-circle" alt=""></a> --}}
+                class="img img-thumbnail rounded-circle" alt=""></a>
         </div>
     </div>
 </body>

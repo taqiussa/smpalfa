@@ -65,6 +65,7 @@ use App\Http\Livewire\Guru\WaliKelas\InputSkor as WaliKelasInputSkor;
 use App\Http\Livewire\Kesiswaan\Ekstrakurikuler\PendaftaranSiswa;
 use App\Http\Livewire\Konseling\Absensi\AbsensiBk;
 use App\Http\Livewire\Konseling\Absensi\AbsensiSiswa;
+use App\Http\Livewire\Konseling\Absensi\CekListAbsensi;
 use App\Http\Livewire\Konseling\Absensi\ListKehadiran;
 use App\Http\Livewire\Konseling\Absensi\RekapKehadiran;
 use App\Http\Livewire\Konseling\Layanan\Bimbingan;
@@ -265,6 +266,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('konseling/absensi/absensi-siswa', AbsensiSiswa::class)->name('konseling.absensi.absensi-siswa');
         Route::get('konseling/absensi/absensi-bk', AbsensiBk::class)->name('konseling.absensi.absensi-bk');
         Route::get('konseling/absensi/rekap-kehadiran', RekapKehadiran::class)->name('konseling.absensi.rekap-kehadiran');
+        Route::get('konseling/absensi/cek-list-absensi', CekListAbsensi::class)->name('konseling.absensi.cek-list-absensi');
         Route::get('konseling/absensi/list-kehadiran/{tanggal}/{jam}/{kehadiran}', ListKehadiran::class)->name('konseling.absensi.list-kehadiran');
 
         //Menu Layanan

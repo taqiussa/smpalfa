@@ -1,4 +1,7 @@
 <div>
+    <x-slot name="header">
+        <h4>Pendaftaran Siswa ke Ekstrakurikuler</h4>
+    </x-slot>
     <div class="row my-2">
         <div class="col-md-12">
             <x-card>

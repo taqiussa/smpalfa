@@ -1,6 +1,6 @@
 <div>
     <x-slot name="header">
-        List Kehadiran
+        Cek Kehadiran Siswa
     </x-slot>
     <div class="col-md-3">
         <a href="{{ route('konseling.absensi.rekap-kehadiran') }}" role="button" class="btn btn-primary w-auto"><i

@@ -1,4 +1,7 @@
 <div>
+    <x-slot name="header">
+        <h4>Input Catatan Wali Kelas</h4>
+    </x-slot>
     @if ($informasi)
         <div class="row my-2">
             <div class="col-md-8">

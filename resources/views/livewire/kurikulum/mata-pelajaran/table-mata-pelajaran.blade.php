@@ -1,6 +1,9 @@
 <div>
     <x-slot name="header">
-        Table Mata Pelajaran
+        <h4>
+
+            Table Mata Pelajaran
+        </h4>
     </x-slot>
     <div class="row my-2">
         <div class="col-md-6">

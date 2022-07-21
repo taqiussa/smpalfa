@@ -1,4 +1,7 @@
 <div>
+    <x-slot name="header">
+        <h4>Print Nilai Al-Qur'an</h4>
+    </x-slot>
     <div class="row my-2">
         <div class="col-md-8">
             <x-card>

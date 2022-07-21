@@ -1,6 +1,6 @@
 <div>
     <x-slot name="header">
-        <h2>Rekap Bimbingan dan Konseling</h2>
+        <h4>Rekap Bimbingan dan Konseling</h4>
     </x-slot>
     <div class="card rounded-md">
         <div class="card-body">

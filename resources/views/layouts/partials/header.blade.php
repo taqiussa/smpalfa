@@ -1,8 +1,8 @@
 <div class="title-wrapper my-3">
     <div class="row align-items-center">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div class="titlemb-30">
-                <h2>{{ $header ?? '' }}</h2>
+                {{ $header ?? '' }}
             </div>
         </div>
         <!-- end col -->

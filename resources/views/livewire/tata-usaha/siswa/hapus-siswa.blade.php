@@ -1,4 +1,7 @@
 <div>
+    <x-slot name="header">
+        <h4>Hapus Siswa dari Kelas</h4>
+    </x-slot>
     <div class="row my-2">
         <div class="col-md-6">
             <x-card>

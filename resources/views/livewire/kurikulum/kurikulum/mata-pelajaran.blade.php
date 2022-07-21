@@ -1,6 +1,9 @@
 <div>
     <x-slot name="header">
-        Mata Pelajaran Kurikulum
+        <h4>
+
+            Mata Pelajaran Kurikulum
+        </h4>
     </x-slot>
     <div class="row my-2">
         <div class="col-md-8">

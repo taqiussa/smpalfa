@@ -1,4 +1,7 @@
 <div>
+    <x-slot name="header">
+        <h4>Data Pembayaran Siswa</h4>
+    </x-slot>
     <x-card>
         <div class="col-md-6 my-2">
             <div class="input-group">

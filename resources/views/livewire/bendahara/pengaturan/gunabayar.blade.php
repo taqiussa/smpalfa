@@ -1,4 +1,7 @@
 <div>
+    <x-slot name="header">
+        <h4>Gunabayar</h4>
+    </x-slot>
     <div class="row my-2">
         <div class="col-md-8">
             <x-card>

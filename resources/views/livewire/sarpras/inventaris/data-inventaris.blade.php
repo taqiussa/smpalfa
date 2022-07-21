@@ -1,6 +1,9 @@
 <div>
     <x-slot name="header">
-        Data Inventaris
+        <h4>
+
+            Data Inventaris
+        </h4>
     </x-slot>
     <div class="row my-2">
         <div class="col-md-12">

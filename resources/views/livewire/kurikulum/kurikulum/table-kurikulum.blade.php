@@ -1,6 +1,9 @@
 <div>
     <x-slot name="header">
-        Table Kurikulum
+        
+        <h4>
+            Table Kurikulum
+            </h4>
     </x-slot>
     <div class="row my-2">
         <div class="col-md-6">

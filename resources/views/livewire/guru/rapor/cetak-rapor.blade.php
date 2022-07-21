@@ -1,6 +1,8 @@
 <div>
     <x-slot name="header">
-        Cetak Rapor
+        <h4>
+            Cetak Rapor
+        </h4>
     </x-slot>
     @if ($informasi)
         <div class="row my-2">
