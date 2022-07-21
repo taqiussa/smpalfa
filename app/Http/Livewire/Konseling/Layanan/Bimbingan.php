@@ -50,6 +50,19 @@ class Bimbingan extends Component
         $this->get_tahun();
         $this->list_kelas = Kelas::get();
     }
+    public function hydrate()
+    {
+        switch ($this->bentuk_bimbingan) {
+            case 'Individu':
+                $this->get_list_siswa();
+                break;
+            case 'Kelompok':
+                $this->get_list_siswa();
+                break;
+            default:
+                break;
+        }
+    }
     public function tambah()
     {
         $this->validate([
@@ -73,6 +86,7 @@ class Bimbingan extends Component
         unset($this->kelompok_siswa[$key]);
         $this->kelompok_siswa = array_values($this->kelompok_siswa);
     }
+
     public function simpan()
     {
 
@@ -327,6 +341,6 @@ class Bimbingan extends Component
         $this->penyelesaian = '';
         $this->tindak_lanjut = '';
         $this->foto = '';
-        $this->fotoDokumen = '';
+        $this->foto_dokumen = '';
     }
 }
