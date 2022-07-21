@@ -60,7 +60,7 @@
                             <td>{{ $rekap->bentuk_bimbingan }}</td>
                             <td>{{ $rekap->permasalahan }}</td>
                             <td>{{ $rekap->tindak_lanjut }}</td>
-                            <td>
+                            <td class="text-nowrap">
                                 <a href="{{ route('konseling.layanan.detail-bimbingan', $rekap->slug) }}" class="btn btn-primary mx-2 my-2" role="button">Detail</a>
                                 <button wire:click.prevent="confirm({{ $rekap->id }})" class="btn btn-danger mx-2 my-2">Hapus</button>
                             </td>
