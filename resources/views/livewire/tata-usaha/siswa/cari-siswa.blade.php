@@ -28,14 +28,18 @@
                                 placeholder="Cari Siswa...">
                         </div>
                     </div>
+                    <div class="col-md-4 my-2">
+                        <small wire:loading wire:target="search" class="form-control border-0">Mencari Data... <i class="fas fa-spin fa-spinner"></i></small>
+                    </div>
                 </div>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>NIS</th>
+                                <th>Nis</th>
                                 <th>Nama Siswa</th>
+                                <th>NISN</th>
                                 <th>Kelas</th>
                                 <th>Orang Tua</th>
                                 <th>Desa</th>
@@ -47,6 +51,7 @@
                                     <td>{{ $list_siswa->firstItem() + $key }}</td>
                                     <td>{{ $siswa->user->nis }}</td>
                                     <td>{{ $siswa->user->name }}</td>
+                                    <td>{{ $siswa->biodata->nisn }}</td>
                                     <td>{{ $siswa->kelas->nama }}</td>
                                     <td>{{ $siswa->orangtua->nama_ayah }}</td>
                                     <td>{{ $siswa->alamat->desa }}</td>
