@@ -12,9 +12,6 @@
                         <div class="col-md-4">
                             <label for="tanggal" class="form-label">Tanggal</label>
                             <input wire:model="tanggal" type="date" class="form-control">
-                        <small wire:loading wire:target="tanggal">Sedang Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
-                        <small wire:loading wire:target="jam">Sedang Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
-                        <small wire:loading wire:target="tahun">Sedang Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
                         </div>
                         <div class="col-md-4">
                             <label for="jam" class="form-label">Jam</label>
@@ -36,6 +33,14 @@
                                 @endfor
                             </select>
                         </div>
+                    </div>
+                    <div>
+                        <small wire:loading wire:target="tanggal">Sedang Memuat Data... <i
+                                class="fas fa-spin fa-spinner"></i></small>
+                        <small wire:loading wire:target="jam">Sedang Memuat Data... <i
+                                class="fas fa-spin fa-spinner"></i></small>
+                        <small wire:loading wire:target="tahun">Sedang Memuat Data... <i
+                                class="fas fa-spin fa-spinner"></i></small>
                     </div>
                 </div>
             </div>
@@ -84,10 +89,10 @@
                                 'jam' => $jam,
                                 'kehadiran' => 'Izin',
                             ]) }}">
-                        <div class="content">
-                            <h6 class="mb-10">Total Izin</h6>
-                            <h3 class="text-bold mb-10">{{ $izin }}</h3>
-                        </div>
+                            <div class="content">
+                                <h6 class="mb-10">Total Izin</h6>
+                                <h3 class="text-bold mb-10">{{ $izin }}</h3>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -102,10 +107,10 @@
                                 'jam' => $jam,
                                 'kehadiran' => 'Alpha',
                             ]) }}">
-                        <div class="content">
-                            <h6 class="mb-10">Total Alpha</h6>
-                            <h3 class="text-bold mb-10">{{ $alpha }}</h3>
-                        </div>
+                            <div class="content">
+                                <h6 class="mb-10">Total Alpha</h6>
+                                <h3 class="text-bold mb-10">{{ $alpha }}</h3>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -122,10 +127,10 @@
                                 'jam' => $jam,
                                 'kehadiran' => 'Bolos',
                             ]) }}">
-                        <div class="content">
-                            <h6 class="mb-10">Total Bolos</h6>
-                            <h3 class="text-bold mb-10">{{ $bolos }}</h3>
-                        </div>
+                            <div class="content">
+                                <h6 class="mb-10">Total Bolos</h6>
+                                <h3 class="text-bold mb-10">{{ $bolos }}</h3>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -140,10 +145,10 @@
                                 'jam' => $jam,
                                 'kehadiran' => 'Izin Pulang',
                             ]) }}">
-                        <div class="content">
-                            <h6 class="mb-10">Total Pulang</h6>
-                            <h3 class="text-bold mb-10">{{ $pulang }}</h3>
-                        </div>
+                            <div class="content">
+                                <h6 class="mb-10">Total Pulang</h6>
+                                <h3 class="text-bold mb-10">{{ $pulang }}</h3>
+                            </div>
                         </a>
                     </div>
                 </div>
