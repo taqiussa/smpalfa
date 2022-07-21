@@ -38,9 +38,11 @@ class RekapBimbingan extends Component
                 'bk_details.permasalahan as permasalahan',
                 'bk_details.tindak_lanjut as tindak_lanjut',
                 'bk_details.tanggal as tanggal',
+                'bk_details.user_id as user_id',
                 'kelas.nama as kelas',
                 'users.name as siswa'
             )
+            ->with('guru')
             ->orderBy('bk_details.created_at', 'desc')->paginate(5)
         ]);
     }
