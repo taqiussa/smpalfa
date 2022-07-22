@@ -38,11 +38,12 @@
                     </div>
                 </div>
                 <div>
-                    <a href="{{ route('bendahara.kas.kas-bulanan-print',
-                    [
+                    <a href="{{ route('bendahara.kas.kas-bulanan-print', [
                         'tahun' => $tahun,
                         'bulan' => $bulan,
-                    ]) }}" target="__blank" class="btn btn-success" role="button"><i class="fas fa-file-alt"></i> Print</a>
+                    ]) }}"
+                        target="__blank" class="btn btn-success" role="button"><i class="fas fa-file-alt"></i>
+                        Print</a>
                 </div>
             </x-card>
         </div>
@@ -65,13 +66,13 @@
                                 <td>SPP</td>
                                 <td>{{ 'Rp ' . number_format($total_pembayaran, 0, ',', '.') }}</td>
                             </tr>
-                            @foreach ($list_kategori_pemasukan as $key => $kategori)
+                            @foreach ($list_pemasukan as $pemasukan)
                                 <tr>
                                     <td>{{ $loop->iteration + 1 }}</td>
-                                    <td>{{ $kategori->nama }}</td>
-                                    <td>{{ 'Rp ' . number_format($subtotal_pemasukan[$key], 0, ',', '.') }}</td>
+                                    <td>{{ $pemasukan->kategori->nama }}</td>
+                                    <td>{{ 'Rp ' . number_format($pemasukan->jumlah, 0, ',', '.') }}</td>
                                 </tr>
-                            @endforeach
+                                @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -89,11 +90,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($list_kategori_pengeluaran as $key => $kategori)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $kategori->nama }}</td>
-                                    <td>{{ 'Rp ' . number_format($subtotal_pengeluaran[$key], 0, ',', '.') }}</td>
+                            @foreach ($list_pengeluaran as $pengeluaran)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $pengeluaran->kategori->nama }}</td>
+                                <td>{{ 'Rp ' . number_format($pengeluaran->jumlah, 0, ',', '.') }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -109,15 +110,21 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Total Pemasukan Bulan {{ Carbon\Carbon::parse(date('Y-m-d',mktime(0,0,0,$bulan,1,2000)))->translatedFormat('F') }} Tahun {{ $tahun }}</th>
+                                <th>Total Pemasukan Bulan
+                                    {{ Carbon\Carbon::parse(date('Y-m-d', mktime(0, 0, 0, $bulan, 1, 2000)))->translatedFormat('F') }}
+                                    Tahun {{ $tahun }}</th>
                                 <th>{{ 'Rp ' . number_format($total_pemasukan, 0, ',', '.') }}</th>
                             </tr>
                             <tr>
-                                <th>Total Pengeluaran Bulan {{ Carbon\Carbon::parse(date('Y-m-d',mktime(0,0,0,$bulan,1,2000)))->translatedFormat('F') }} Tahun {{ $tahun }}</th>
+                                <th>Total Pengeluaran Bulan
+                                    {{ Carbon\Carbon::parse(date('Y-m-d', mktime(0, 0, 0, $bulan, 1, 2000)))->translatedFormat('F') }}
+                                    Tahun {{ $tahun }}</th>
                                 <th>{{ 'Rp ' . number_format($total_pengeluaran, 0, ',', '.') }}</th>
                             </tr>
                             <tr>
-                                <th>Saldo Akhir Bulan {{ Carbon\Carbon::parse(date('Y-m-d',mktime(0,0,0,$bulan,1,2000)))->translatedFormat('F') }} Tahun {{ $tahun }}</th>
+                                <th>Saldo Akhir Bulan
+                                    {{ Carbon\Carbon::parse(date('Y-m-d', mktime(0, 0, 0, $bulan, 1, 2000)))->translatedFormat('F') }}
+                                    Tahun {{ $tahun }}</th>
                                 <th>{{ 'Rp ' . number_format($saldo, 0, ',', '.') }}</th>
                             </tr>
                         </thead>
