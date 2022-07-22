@@ -64,15 +64,15 @@
             </tr>
         </thead>
     </table>
-    <table align="left" style="border-collapse:collapse;width:100%;margin-left:8px">
+    <table align="left" style="border-collapse:collapse;width:100%;margin:8px">
         <tbody>
-            <tr>
+            <tr style="margin-bottom: 5px">
                 <td style="padding-left: 20px">Gunabayar</td>
                 <td style="padding-left: 20px">Jumlah</td>
             </tr>
             @foreach ($list_pembayaran as $pembayaran)
                 <tr>
-                    <td style="padding-left: 20px"><span style="border-bottom: 1px solid #000">{{ $loop->iteration . '. ' . $pembayaran->gunabayar->nama }}</span></td>
+                    <td style="padding-left: 20px">{{ $loop->iteration . '. ' . $pembayaran->gunabayar->nama }}</td>
                     <td style="padding-left: 20px">{{ 'Rp ' . number_format($pembayaran->jumlah, 0, ',', '.') }}
                     </td>
                 </tr>
@@ -114,9 +114,6 @@
         </tr>
         <tr>
             <td style="text-align: center">Bendahara</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
