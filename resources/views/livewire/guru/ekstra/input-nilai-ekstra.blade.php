@@ -27,30 +27,18 @@
                         </div>
                         <div class="col-md-3">
                             <label for="ekstra" class="form-label">Ekstrakurikuler</label>
-                            <select wire:model="ekstra" id="ekstre" class="form-select">
+                            <select wire:model="ekstra" id="ekstra" class="form-select">
                                 <option value="">Pilih Ekstrakurikuler</option>
                                 @foreach ($list_ekstra as $ekstra)
                                     <option value="{{ $ekstra->id }}">{{ $ekstra->nama }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-md-3">
-                            <label for="loading" class="form-label">&nbsp;</label>
-                            <small wire:loading wire:target="tanggal" class="form-control border-0">Memuat Data... <i
-                                    class="fas fa-spin fa-spinner"></i></small>
-                            <small wire:loading wire:target="tahun" class="form-control border-0">Memuat Data... <i
-                                    class="fas fa-spin fa-spinner"></i></small>
-                            <small wire:loading wire:target="semester" class="form-control border-0">Memuat Data... <i
-                                    class="fas fa-spin fa-spinner"></i></small>
-                            <small wire:loading wire:target="mata_pelajaran" class="form-control border-0">Memuat
-                                Data... <i class="fas fa-spin fa-spinner"></i></small>
-                            <small wire:loading wire:target="kategori_nilai" class="form-control border-0">Memuat
-                                Data... <i class="fas fa-spin fa-spinner"></i></small>
-                            <small wire:loading wire:target="jenis_penilaian" class="form-control border-0">Memuat
-                                Data... <i class="fas fa-spin fa-spinner"></i></small>
-                            <small wire:loading wire:target="kelas" class="form-control border-0">Memuat Data... <i
-                                    class="fas fa-spin fa-spinner"></i></small>
-                        </div>
+                    </div>
+                    <div>
+                        <span wire:loading wire:target="tahun">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="semester">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="ekstra">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
                     </div>
                 </div>
             </div>

@@ -35,12 +35,12 @@
                         </div>
                     </div>
                     <div>
-                        <small wire:loading wire:target="tanggal">Sedang Memuat Data... <i
-                                class="fas fa-spin fa-spinner"></i></small>
-                        <small wire:loading wire:target="jam">Sedang Memuat Data... <i
-                                class="fas fa-spin fa-spinner"></i></small>
-                        <small wire:loading wire:target="tahun">Sedang Memuat Data... <i
-                                class="fas fa-spin fa-spinner"></i></small>
+                        <span wire:loading wire:target="tanggal">Memuat Data... <i
+                                class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="jam">Memuat Data... <i
+                                class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="tahun">Memuat Data... <i
+                                class="fas fa-spin fa-spinner"></i></span>
                     </div>
                 </div>
             </div>

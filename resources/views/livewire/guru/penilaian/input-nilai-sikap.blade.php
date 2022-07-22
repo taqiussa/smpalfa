@@ -82,6 +82,14 @@
                             @enderror
                         </div>
                     </div>
+                    <div>
+                        <span wire:loading wire:target="tahun">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="semester">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="kelas">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="mata_pelajaran">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="kategori">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="jenis_sikap">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                    </div>
                     <div class="d-flex justify-content-end">
                         <button wire:click.prevent="exports" wire:loading.class="disabled" wire:target="exports"
                             class="btn btn-success">Download Draft <i wire:loading wire:target="exports"

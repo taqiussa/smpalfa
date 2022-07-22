@@ -49,7 +49,6 @@ class InputNilai extends Component
     public function render()
     {
         $this->tanggal = gmdate('Y-m-d');
-        $this->get_nilai();
         return view('livewire.guru.alquran.input-nilai');
     }
 
@@ -62,16 +61,25 @@ class InputNilai extends Component
 
     public function updated($property)
     {
+        $this->list_siswa = [];
         $this->get_list_siswa();
+        $this->list_jenis = [];
         $this->list_jenis = JenisAlquran::where('kategori_alquran_id', $this->kategori)->get();
         $this->get_nilai();
     }
-
+    public function hydrate()
+    {
+        $this->list_siswa = [];
+        $this->get_list_siswa();
+        $this->list_jenis = [];
+        $this->list_jenis = JenisAlquran::where('kategori_alquran_id', $this->kategori)->get();
+        $this->get_nilai();
+    }
     public function simpan()
     {
         $this->validate();
         try {
-            if($this->is_edit){
+            if ($this->is_edit) {
                 PenilaianAlquran::updateOrCreate(
                     [
                         'nis' => $this->siswa,
@@ -82,36 +90,35 @@ class InputNilai extends Component
                         'nilai' => $this->nilai,
                         'user_id' => auth()->user()->id
                     ]
-                    );
-                    $this->dispatchBrowserEvent('notyf', ['type' => 'success', 'message' => 'Berhasil Update Nilai Alquran']);
-                } else {
-                    PenilaianAlquran::create([
-                        'tanggal' => $this->tanggal,
-                        'nis' => $this->siswa,
-                        'kelas_id' => $this->kelas,
-                        'tahun' => $this->tahun,
-                        'kategori_alquran_id' => $this->kategori,
-                        'jenis_alquran_id' => $this->jenis,
-                        'nilai' => $this->nilai,
-                        'user_id' => auth()->user()->id
-                    ]);
-                    $this->dispatchBrowserEvent('notyf', ['type' => 'success', 'message' => 'Berhasil Simpan Nilai Alquran']);
-                }
-            } catch (\Throwable $th) {
-                $this->dispatchBrowserEvent('notyf', ['type' => 'error', 'message' => 'Koneksi Terputus, Ulangi']);
+                );
+                $this->dispatchBrowserEvent('notyf', ['type' => 'success', 'message' => 'Berhasil Update Nilai Alquran']);
+            } else {
+                PenilaianAlquran::create([
+                    'tanggal' => $this->tanggal,
+                    'nis' => $this->siswa,
+                    'kelas_id' => $this->kelas,
+                    'tahun' => $this->tahun,
+                    'kategori_alquran_id' => $this->kategori,
+                    'jenis_alquran_id' => $this->jenis,
+                    'nilai' => $this->nilai,
+                    'user_id' => auth()->user()->id
+                ]);
+                $this->dispatchBrowserEvent('notyf', ['type' => 'success', 'message' => 'Berhasil Simpan Nilai Alquran']);
             }
+        } catch (\Throwable $th) {
+            $this->dispatchBrowserEvent('notyf', ['type' => 'error', 'message' => 'Koneksi Terputus, Ulangi']);
+        }
     }
     public function get_nilai()
     {
-        foreach($this->list_jenis as $key => $jenis)
-        {
-            $cari = PenilaianAlquran::where('nis', $this->siswa)
-            ->where('jenis_alquran_id', $jenis->id)
-            ->first();
-            $this->list_nilai[$key] = $cari->nilai ?? '';
-            $this->list_tanggal[$key] = $cari->tanggal ?? '';
-            $user = User::find($cari->user_id ?? '');
-            $this->list_guru[$key] = $user->name ?? '';
-        }
+            foreach ($this->list_jenis as $key => $jenis) {
+                $cari = PenilaianAlquran::where('nis', $this->siswa)
+                    ->where('jenis_alquran_id', $jenis->id)
+                    ->first();
+                $this->list_nilai[$key] = $cari->nilai ?? '';
+                $this->list_tanggal[$key] = $cari->tanggal ?? '';
+                $user = User::find($cari->user_id ?? '');
+                $this->list_guru[$key] = $user->name ?? '';
+            }
     }
 }

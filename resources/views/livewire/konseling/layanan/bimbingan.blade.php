@@ -132,8 +132,8 @@
                             </div>
                             <div class="col-md-2">
                                 <label class="form-label">&nbsp;</label>
-                                <button wire:click.prevent="tambah" class="btn btn-primary form-control">
-                                    Tambah
+                                <button wire:click.prevent="tambah" wire:loading.class="disabled" wire:target="tambah" class="btn btn-primary form-control">
+                                    Tambah <i wire:loading wire:target="tambah" class="fas fa-spin fa-spinner"></i>
                                 </button>
                             </div>
                         </div>
@@ -166,7 +166,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <button wire:click.prevent="hapus({{ $key }})" class="btn btn-danger"><i
+                                                <button wire:click.prevent="hapus({{ $key }})" wire:loading.class="disabled" wire:target="hapus" class="btn btn-danger"><i
                                                         class="fas fa-times"></i></button>
                                             </td>
                                         </tr>
@@ -181,7 +181,7 @@
                         <div class="row my-2">
                             <div class="col-md-4">
                                 <label class="form-label">Kelas</label>
-                                <select wire:model.defer="kelas" class="form-select">
+                                <select wire:model="kelas" class="form-select">
                                     <option value="">Pilih Kelas</option>
                                     @foreach ($list_kelas as $kelas)
                                         <option value="{{ $kelas->id }}">{{ $kelas->nama }}</option>
@@ -193,7 +193,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="tahun" class="form-label">Tahun</label>
-                                <select wire:model.defer="tahun" id="tahun" class="form-select">
+                                <select wire:model="tahun" id="tahun" class="form-select">
                                     <option value="">Pilih Tahun</option>
                                     @for ($i = 2017; $i < gmdate('Y'); $i++)
                                         <option value="{{ $i + 1 . ' / ' . ($i + 2) }}">{{ $i + 1 . ' / ' . ($i + 2) }}
@@ -209,6 +209,12 @@
 
                     @default
                 @endswitch
+                <div class="row my-2">
+                    <span wire:loading wire:target="tanggal">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                    <span wire:loading wire:target="bentuk_bimbingan">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                    <span wire:loading wire:target="kelas">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                    <span wire:loading wire:target="tahun">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                </div>
                 <div class="row my-2">
                     <div class="col-md-6">
                         <label for="permasalahan" class="form-label">Permasalahan</label>

@@ -40,6 +40,12 @@
                     </select>
                 </div>
             </div>
+            <div>
+                <span wire:loading wire:target="tahun">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                <span wire:loading wire:target="tanggal">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                <span wire:loading wire:target="kelas">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                <span wire:loading wire:target="jam">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+            </div>
             <div class="table-responsive">
                 <table class="table table-hover table-striped table-bordered">
                     <thead>

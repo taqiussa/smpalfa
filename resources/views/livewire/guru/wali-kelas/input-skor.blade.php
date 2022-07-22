@@ -77,6 +77,12 @@
                             <small class="text-danger"></small>
                         @enderror
                     </div>
+                    <div>
+                        <span wire:loading wire:target="tanggal">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="tahun">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="semester">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="siswa">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                    </div>
                     <div class="d-flex justify-content-end">
                         <button wire:click.prevent="simpan" wire:loading.class="disabled" wire:target="simpan"
                             class="btn btn-primary">Simpan <i wire:loading wire:target="simpan"

@@ -9,8 +9,10 @@
                     <div class="col">
                         <label for="tanggal" class="form-label">Tanggal</label>
                         <input wire:model="tanggal" type="date" class="form-control">
-                        <small wire:loading wire:target="tanggal">Sedang Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
                     </div>
+                </div>
+                <div>
+                    <span wire:loading wire:target="tanggal">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
                 </div>
             </x-card>
         </div>

@@ -20,6 +20,9 @@
                         @enderror
                     </div>
                 </div>
+                <div>
+                    <span wire:loading wire:target="tahun">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                </div>
                 <div class="d-flex justify-content-end">
                     <a href="{{ route('bendahara.rekap-pemasukan.rekap-tahunan-pemasukan-print',
                     [

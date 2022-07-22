@@ -36,6 +36,9 @@
                         @enderror
                     </div>
                 </div>
+                <div>
+                    <span wire:loading wire:target="tahun">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                </div>
                 {{-- <div class="d-flex justify-content-end">
                     <button wire:click.prevent="pilih" class="btn btn-primary">Pilih Siswa</button>
                 </div> --}}

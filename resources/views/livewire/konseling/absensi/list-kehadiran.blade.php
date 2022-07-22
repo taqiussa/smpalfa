@@ -34,6 +34,11 @@
                             </select>
                         </div>
                     </div>
+                    <div>
+                        <span wire:loading wire:target="jam">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="tanggal">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="kehadiran">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                    </div>
                 </div>
             </div>
         </div>

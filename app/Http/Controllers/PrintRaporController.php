@@ -125,7 +125,7 @@ class PrintRaporController extends Controller
         return view('rapor.rapor-print-v', $data);
     }
 
-    public function get_sikap($nis, $kategori)
+    private function get_sikap($nis, $kategori)
     {
         $id_mapel = GuruMapel::where('user_id', auth()->user()->id)
             ->pluck('mata_pelajaran_id');
@@ -158,7 +158,7 @@ class PrintRaporController extends Controller
         }
         return $predikat;
     }
-    public function get_mapel($tingkat, $kelompok)
+    private function get_mapel($tingkat, $kelompok)
     {
         return KurikulumMapel::where('kurikulum_mata_pelajaran.tahun', $this->tahun)
             ->where('kurikulum_mata_pelajaran.tingkat', $tingkat)
@@ -175,7 +175,7 @@ class PrintRaporController extends Controller
             ->orderBy('mata_pelajarans.id')
             ->get();
     }
-    public function get_nilai($nis, $tingkat, $kategori, $kelompok)
+    private function get_nilai($nis, $tingkat, $kategori, $kelompok)
     {
         $jenis_penilaian = PenilaianRapor::where('semester', $this->semester)
             ->where('tahun', $this->tahun)->where('kategori_nilai_id', $kategori)->pluck('jenis_penilaian_id');
@@ -203,7 +203,7 @@ class PrintRaporController extends Controller
             ->orderBy('mata_pelajarans.id')
             ->get();
     }
-    public function get_kehadiran($nis, $kehadiran)
+    private function get_kehadiran($nis, $kehadiran)
     {
         $absensi =  Absensi::where('tahun', $this->tahun)
             ->where('semester', $this->semester)

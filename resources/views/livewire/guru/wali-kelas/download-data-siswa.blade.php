@@ -32,6 +32,10 @@
                         @enderror
                     </div>
                 </div>
+                <div>
+                    <span wire:loading wire:target="tahun">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                    <span wire:loading wire:target="kelas">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                </div>
                 <div class="d-flex justify-content-end">
                     <button wire:click.prevent="downloadsiswa" wire:loading.class="disabled" wire:target="downloadsiswa" class="btn btn-primary">Download Data <i wire:loading wire:target="downloadsiswa" class="fas fa-spin fa-spinner"></i></button>
                 </div>

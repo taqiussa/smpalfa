@@ -42,20 +42,27 @@
                                     <option value="{{ $mata_pelajaran->id }}">{{ $mata_pelajaran->nama }}</option>
                                 @endforeach
                             </select>
-                            <small wire:loading wire:target="tahun">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
-                            <small wire:loading wire:target="semester">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
-                            <small wire:loading wire:target="kelas">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
-                            <small wire:loading wire:target="mata_pelajaran">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
                         </div>
                     </div>
+                    <div>
+                        <span wire:loading wire:target="tahun">Memuat Data... <i
+                                class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="semester">Memuat Data... <i
+                                class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="kelas">Memuat Data... <i
+                                class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="mata_pelajaran">Memuat Data... <i
+                                class="fas fa-spin fa-spinner"></i></span>
+                    </div>
                     <div class="d-flex justify-content-end">
-                        <a href="{{ route('guru.rapor.daftar-nilai-guru-print',
-                        [
+                        <a href="{{ route('guru.rapor.daftar-nilai-guru-print', [
                             'tahun' => $tahun,
                             'semester' => $semester,
                             'id_kelas' => $id_kelas,
-                            'mata_pelajaran'=> $mata_pelajaran
-                        ]) }}" target="__blank" class="btn btn-success" role="button"><i class="fas fa-file-alt"></i> Print</a>
+                            'mata_pelajaran' => $mata_pelajaran,
+                        ]) }}"
+                            target="__blank" class="btn btn-success" role="button"><i class="fas fa-file-alt"></i>
+                            Print</a>
                     </div>
                 </div>
             </div>

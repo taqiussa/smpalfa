@@ -8,6 +8,9 @@
                 <span class="input-group-text"><i class="fas fa-search"></i></span>
                 <input wire:model.debounce.500ms="search" type="text" class="form-control" placeholder="Pencarian">
             </div>
+            <div>
+                <span wire:loading wire:target="search">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+            </div>
         </div>
         <div class="table-responsive my-2">
             <table class="table">

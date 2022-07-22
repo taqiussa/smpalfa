@@ -254,6 +254,7 @@ Route::middleware(['auth'])->group(function () {
 
         //Menu Wali Kelas
         Route::get('guru/wali-kelas/daftar-nilai-kelas', DaftarNilaiKelas::class)->name('guru.wali-kelas.daftar-nilai-kelas');
+        Route::get('guru/wali-kelas/daftar-nilai-kelas-print', [DaftarNilaiController::class, 'nilai_kelas'])->name('guru.wali-kelas.daftar-nilai-kelas-print');
         Route::get('guru/wali-kelas/download-data-siswa', DownloadDataSiswa::class)->name('guru.wali-kelas.download-data-siswa');
         Route::get('guru/wali-kelas/input-catatan', InputCatatan::class)->name('guru.wali-kelas.input-catatan');
         Route::get('guru/wali-kelas/input-skor', WaliKelasInputSkor::class)->name('guru.wali-kelas.input-skor');

@@ -157,6 +157,10 @@
         </a>
         <ul id="wali_kelas" class="{{ Request::routeIs('guru.wali-kelas.*') ? '' : 'collapse' }} dropdown-nav">
             <li>
+                <a href="{{ route('guru.wali-kelas.daftar-nilai-kelas') }}"
+                    class="{{ Request::routeIs('guru.wali-kelas.daftar-nilai-kelas') ? 'active' : '' }}">Daftar Nilai Kelas</a>
+            </li>
+            <li>
                 <a href="{{ route('guru.wali-kelas.download-data-siswa') }}"
                     class="{{ Request::routeIs('guru.wali-kelas.download-data-siswa') ? 'active' : '' }}">Download Data Siswa</a>
             </li>

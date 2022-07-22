@@ -37,6 +37,11 @@
                             @enderror
                         </div>
                     </div>
+                    <div>
+                        <span wire:loading wire:target="tahun">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="tanggal">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="ekstra">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                    </div>
                 </div>
             </div>
         </div>

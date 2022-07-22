@@ -28,9 +28,10 @@
                                 placeholder="Cari Siswa...">
                         </div>
                     </div>
-                    <div class="col-md-4 my-2">
-                        <small wire:loading wire:target="search" class="form-control border-0">Mencari Data... <i class="fas fa-spin fa-spinner"></i></small>
-                    </div>
+                </div>
+                <div>
+                    <span wire:loading wire:target="search">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                    <span wire:loading wire:target="tahun">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
                 </div>
                 <div class="table-responsive">
                     <table class="table">

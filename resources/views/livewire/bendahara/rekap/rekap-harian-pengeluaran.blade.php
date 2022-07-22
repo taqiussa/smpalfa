@@ -15,6 +15,10 @@
                         <input wire:model="tanggalakhir" type="date" class="form-control">
                     </div>
                 </div>
+                <div>
+                    <span wire:loading wire:target="tanggalawal">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                    <span wire:loading wire:target="tanggalakhir">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                </div>
                 <div class="d-flex justify-content-end">
                     <a href="{{ route('bendahara.rekap-pengeluaran.rekap-harian-pengeluaran-print',
                     [

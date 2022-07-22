@@ -21,6 +21,9 @@
                     </div>
                 </div>
                 <div>
+                    <span wire:loading wire:target="tahun">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                </div>
+                <div>
                     <a href="{{ route('bendahara.kas.kas-tahunan-print',
                     [
                         'tahun' => $tahun
