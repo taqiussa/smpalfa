@@ -14,4 +14,8 @@ class PenilaianEkstrakurikuler extends Model
     {
         return $this->belongsTo(Ekstrakurikuler::class, 'ekstrakurikuler_id')->withDefault();
     }
+    public function siswa()
+    {
+        return $this->belongsTo(User::class, 'nis', 'nis')->withDefault();
+    }
 }

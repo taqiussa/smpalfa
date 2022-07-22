@@ -61,4 +61,6 @@ timezone, locale, faker_local id_ID
 19. alpha dari skor
 20. Tambah Siswa - kurang data alamat dan lain lain
 21. Analisis Penilaian - kurang print analisis
-22. Input Nilai Ekstra sesuaikan dengan Input Nilai - kalau perlu buat Upload Nilai Ekstra
+22. Input Nilai Ekstra sesuaikan dengan Input Nilai SUDAH - kalau perlu buat Upload Nilai Ekstra ini belum
+23. DAFTAR NILAI KELAS : WALI KELAS
+24. WALI KELAS DAFTAR EKSTRA SISWA PER KELASNYA

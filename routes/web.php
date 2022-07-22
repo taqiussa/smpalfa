@@ -49,8 +49,8 @@ use App\Http\Livewire\Guru\Absensi\AbsensiSiswa as AbsensiAbsensiSiswa;
 use App\Http\Livewire\Guru\Alquran\InputNilai as AlquranInputNilai;
 use App\Http\Livewire\Guru\Alquran\PrintNilai;
 use App\Http\Livewire\Guru\Ekstra\AbsensiEkstraPrint;
+use App\Http\Livewire\Guru\Ekstra\InputNilaiEkstra;
 use App\Http\Livewire\Guru\Penilaian\InputNilai;
-use App\Http\Livewire\Guru\Penilaian\InputNilaiEkstra;
 use App\Http\Livewire\Guru\Penilaian\InputNilaiSikap;
 use App\Http\Livewire\Guru\Penilaian\InputPrestasi;
 use App\Http\Livewire\Guru\Penilaian\UploadAnalisis;
@@ -59,6 +59,7 @@ use App\Http\Livewire\Guru\Rapor\CetakRapor;
 use App\Http\Livewire\Guru\Rapor\DaftarNilaiGuru;
 use App\Http\Livewire\Guru\Skor\InputSkor;
 use App\Http\Livewire\Guru\Skor\SaldoSkor;
+use App\Http\Livewire\Guru\WaliKelas\DaftarNilaiKelas;
 use App\Http\Livewire\Guru\WaliKelas\DownloadDataSiswa;
 use App\Http\Livewire\Guru\WaliKelas\InputCatatan;
 use App\Http\Livewire\Guru\WaliKelas\InputSkor as WaliKelasInputSkor;
@@ -124,7 +125,7 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('user/profile', Profile::class)->name('user.profile');
-    
+
     // Route For Admin
     Route::middleware(['role:Admin'])->group(function () {
         //Menu Kelas
@@ -209,8 +210,8 @@ Route::middleware(['auth'])->group(function () {
         // Menu KAS
         Route::get('bendahara/kas/kas-bulanan', KasBulanan::class)->name('bendahara.kas.kas-bulanan');
         Route::get('bendahara/kas/kas-tahunan', KasTahunan::class)->name('bendahara.kas.kas-tahunan');
-        Route::get('bendahara/kas/kas-bulanan-print', [BendaharaPrintController::class,'kas_bulanan'])->name('bendahara.kas.kas-bulanan-print');
-        Route::get('bendahara/kas/kas-tahunan-print', [BendaharaPrintController::class,'kas_tahunan'])->name('bendahara.kas.kas-tahunan-print');
+        Route::get('bendahara/kas/kas-bulanan-print', [BendaharaPrintController::class, 'kas_bulanan'])->name('bendahara.kas.kas-bulanan-print');
+        Route::get('bendahara/kas/kas-tahunan-print', [BendaharaPrintController::class, 'kas_tahunan'])->name('bendahara.kas.kas-tahunan-print');
     });
 
     //Route For Guru
@@ -221,16 +222,17 @@ Route::middleware(['auth'])->group(function () {
         // Menu Alquran
         Route::get('guru/alquran/input-nilai', AlquranInputNilai::class)->name('guru.alquran.input-nilai');
         Route::get('guru/alquran/print-nilai', PrintNilai::class)->name('guru.alquran.print-nilai');
-        Route::get('guru/alquran/print-nilai-print', [PrintAlquranController::class,'index'])->name('guru.alquran.print-nilai-print');
-        
+        Route::get('guru/alquran/print-nilai-print', [PrintAlquranController::class, 'index'])->name('guru.alquran.print-nilai-print');
+
         //Menu Ekstrakurikuler
         // Route::get('guru/ekstrakurikuler/absensi-ekstrakurikuler', AbsensiEkstra::class)->name('guru.ekstrakurikuler.absensi-ekstrakurikuler');
         Route::get('guru/ekstrakurikuler/absensi-ekstrakurikuler', AbsensiEkstra::class)->name('guru.ekstrakurikuler.absensi-ekstrakurikuler');
         Route::get('guru/ekstrakurikuler/absensi-ekstrakurikuler-print', AbsensiEkstraPrint::class)->name('guru.ekstrakurikuler.absensi-ekstrakurikuler-print');
+        Route::get('guru/ekstrakurikuler/input-nilai-ekstra', InputNilaiEkstra::class)->name('guru.ekstrakurikuler.input-nilai-ekstra');
 
         //Menu Penilaian
         Route::get('guru/penilaian/input-nilai', InputNilai::class)->name('guru.penilaian.input-nilai');
-        Route::get('guru/penilaian/input-nilai-ekstra', InputNilaiEkstra::class)->name('guru.penilaian.input-nilai-ekstra');
+        // Route::get('guru/penilaian/input-nilai-ekstra', InputNilaiEkstra::class)->name('guru.penilaian.input-nilai-ekstra');
         Route::get('guru/penilaian/input-nilai-sikap', InputNilaiSikap::class)->name('guru.penilaian.input-nilai-sikap');
         Route::get('guru/penilaian/input-prestasi', InputPrestasi::class)->name('guru.penilaian.input-prestasi');
         Route::get('guru/penilaian/upload-analisis', UploadAnalisis::class)->name('guru.penilaian.upload-analisis');
@@ -250,9 +252,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('guru/skor/saldo-skor', SaldoSkor::class)->name('guru.skor.saldo-skor');
 
         //Menu Wali Kelas
+        Route::get('guru/wali-kelas/daftar-nilai-kelas', DaftarNilaiKelas::class)->name('guru.wali-kelas.daftar-nilai-kelas');
+        Route::get('guru/wali-kelas/download-data-siswa', DownloadDataSiswa::class)->name('guru.wali-kelas.download-data-siswa');
         Route::get('guru/wali-kelas/input-catatan', InputCatatan::class)->name('guru.wali-kelas.input-catatan');
         Route::get('guru/wali-kelas/input-skor', WaliKelasInputSkor::class)->name('guru.wali-kelas.input-skor');
-        Route::get('guru/wali-kelas/download-data-siswa', DownloadDataSiswa::class)->name('guru.wali-kelas.download-data-siswa');
+    
     });
 
     // Route For Kesiswaan
@@ -268,6 +272,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('konseling/absensi/rekap-kehadiran', RekapKehadiran::class)->name('konseling.absensi.rekap-kehadiran');
         Route::get('konseling/absensi/cek-list-absensi', CekListAbsensi::class)->name('konseling.absensi.cek-list-absensi');
         Route::get('konseling/absensi/list-kehadiran/{tanggal}/{jam}/{kehadiran}', ListKehadiran::class)->name('konseling.absensi.list-kehadiran');
+
+        // Menu Data Siswa
+        Route::get('konseling/siswa/cari-siswa', CariSiswa::class)->name('konseling.siswa.cari-siswa');
 
         //Menu Layanan
         Route::get('konseling/layanan/bimbingan-dan-konseling', Bimbingan::class)->name('konseling.layanan.bimbingan');
@@ -293,7 +300,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('kreator/post/list-post', ListPost::class)->name('kreator.post.list-post');
         Route::get('kreator/post/list-post/detail/{slug}', [PostController::class, 'detail'])->name('kreator.post.list-post.detail');
     });
-    
+
     // Route For Kurikulum
     Route::middleware(['role:Kurikulum'])->group(function () {
 
@@ -326,7 +333,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Route For Siswa
     Route::middleware(['role:Siswa'])->group(function () {
-        
+
         // Administrasi
         Route::get('siswa/administrasi', Administrasi::class)->name('siswa.administrasi');
 

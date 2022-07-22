@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\AnalisisPenilaian;
+use App\Models\Penilaian;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -39,6 +40,22 @@ class ImportAnalisis implements ToCollection, WithHeadingRow
                     'no_8' => $row['no_8'],
                     'no_9' => $row['no_9'],
                     'no_10' => $row['no_10'],
+                    'nilai' => $row['nilai'],
+                ]
+                );
+            Penilaian::updateOrCreate(
+                [
+                    'tahun' => $row['tahun'],
+                    'semester' => $row['semester'],
+                    'mata_pelajaran_id' => $row['mata_pelajaran_id'],
+                    'kategori_nilai_id' => $row['kategori_nilai_id'],
+                    'jenis_penilaian_id' => $row['jenis_penilaian_id'],
+                    'kelas_id' => $row['kelas_id'],
+                    'nis' => $row['nis'],
+                ],
+                [
+                    'tanggal' => gmdate('Y-m-d'),
+                    'user_id' => auth()->user()->id,
                     'nilai' => $row['nilai'],
                 ]
                 );

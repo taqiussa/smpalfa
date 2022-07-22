@@ -58,6 +58,10 @@
                 <a href="{{ route('guru.ekstrakurikuler.absensi-ekstrakurikuler-print') }}"
                     class="{{ Request::routeIs('guru.ekstrakurikuler.absensi-ekstrakurikuler-print') ? 'active' : '' }}"> Absensi Print</a>
             </li>
+            <li>
+                <a href="{{ route('guru.ekstrakurikuler.input-nilai-ekstra') }}"
+                    class="{{ Request::routeIs('guru.ekstrakurikuler.input-nilai-ekstra') ? 'active' : '' }}">Input Nilai Ekstra</a>
+            </li>
         </ul>
     </li>
     <li class="nav-item nav-item-has-children">
@@ -76,10 +80,10 @@
                 <a href="{{ route('guru.penilaian.input-nilai') }}"
                     class="{{ Request::routeIs('guru.penilaian.input-nilai') ? 'active' : '' }}">Input Nilai</a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('guru.penilaian.input-nilai-ekstra') }}"
                     class="{{ Request::routeIs('guru.penilaian.input-nilai-ekstra') ? 'active' : '' }}">Input Nilai Ekstra</a>
-            </li>
+            </li> --}}
             <li>
                 <a href="{{ route('guru.penilaian.input-nilai-sikap') }}"
                     class="{{ Request::routeIs('guru.penilaian.input-nilai-sikap') ? 'active' : '' }}">Input Nilai Sikap</a>
@@ -153,16 +157,16 @@
         </a>
         <ul id="wali_kelas" class="{{ Request::routeIs('guru.wali-kelas.*') ? '' : 'collapse' }} dropdown-nav">
             <li>
+                <a href="{{ route('guru.wali-kelas.download-data-siswa') }}"
+                    class="{{ Request::routeIs('guru.wali-kelas.download-data-siswa') ? 'active' : '' }}">Download Data Siswa</a>
+            </li>
+            <li>
                 <a href="{{ route('guru.wali-kelas.input-catatan') }}"
                     class="{{ Request::routeIs('guru.wali-kelas.input-catatan') ? 'active' : '' }}">Input Catatan Wali Kelas</a>
             </li>
             <li>
                 <a href="{{ route('guru.wali-kelas.input-skor') }}"
                     class="{{ Request::routeIs('guru.wali-kelas.input-skor') ? 'active' : '' }}">Input Skor</a>
-            </li>
-            <li>
-                <a href="{{ route('guru.wali-kelas.download-data-siswa') }}"
-                    class="{{ Request::routeIs('guru.wali-kelas.download-data-siswa') ? 'active' : '' }}">Download Data Siswa</a>
             </li>
         </ul>
     </li>

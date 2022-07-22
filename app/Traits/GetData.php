@@ -7,6 +7,7 @@ use App\Models\Absensi;
 use App\Models\GuruMapel;
 use App\Models\WaliKelas;
 use App\Models\AbsensiEkstra;
+use App\Models\PenilaianRapor;
 
 trait GetData
 {
@@ -119,5 +120,13 @@ trait GetData
                 'mata_pelajarans.nama as nama'
             )
             ->get();
+    }
+
+    public function cek_jenis_penilaian()
+    {
+        $jenis_penilaian = PenilaianRapor::where('tahun', $this->tahun)
+        ->where('semester', $this->semester)
+        ->pluck('jenis_penilaian_id');
+        return $jenis_penilaian;
     }
 }

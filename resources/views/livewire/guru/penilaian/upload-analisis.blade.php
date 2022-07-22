@@ -82,6 +82,15 @@
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
+                        <div class="col-md-3">
+                            <label for="loading" class="form-label">&nbsp;</label>
+                            <span wire:loading wire:target="tahun" class="form-control border-0">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                            <span wire:loading wire:target="semester" class="form-control border-0">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                            <span wire:loading wire:target="mata_pelajaran" class="form-control border-0">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                            <span wire:loading wire:target="kategori_nilai" class="form-control border-0">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                            <span wire:loading wire:target="jenis_penilaian" class="form-control border-0">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                            <span wire:loading wire:target="kelas" class="form-control border-0">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                        </div>
                     </div>
                     <div class="row my-2 d-flex justify-content-end px-3">
                         <button wire:click.prevent="exports" wire:loading.class="disabled" wire:target="exports"
@@ -140,7 +149,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $siswa->nis }}</td>
-                                        <td>{{ $siswa->name }}</td>
+                                        <td class="text-nowrap">{{ $siswa->name }}</td>
                                         <td>
                                             <input wire:model.defer="nilai.{{ $key }}.no_1" type="text"
                                                 class="form-control-plaintext" readonly>

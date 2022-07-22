@@ -26,40 +26,39 @@
 </head>
 
 <body>
-    {{-- <table align="center" style="padding:5px; text-align:center;line-height:1px;width:100%">
-        <tbody>
-            <tr>
-                <td style="text-align: right"><img src="{{ asset('images/logoalfahp.png') }}" alt="logo"
-                        style="width: 75px"></td>
-                <td style="text-align: center;word-wrap:break-word;border-bottom:solid 2px #000">
-                    <div style="margin-bottom: 15px"><strong>SMP AL MUSYAFFA' KENDAL</strong></div>
-                    <div style="margin-bottom: 15px">Jln. Kampir-Sudipayung, Kec. Ngampel, Kab. Kendal - Jawa Tengah
-                    </div>
-                    www.smpalmusyaffa.com </div>
-                </td>
+    <div style="margin-bottom: 5px; text-align:center;border-bottom:2px solid rgb(80, 78, 78);"><strong>Daftar Kumpulan
+            Nilai {{ $nama_mapel }}</strong></div>
+    <table align="left">
+        <thead>
+            <tr style="text-align: left">
+                <th>Kelas</th>
+                <th>:</th>
+                <th>{{ $nama_kelas }}</th>
             </tr>
-        </tbody>
-    </table> --}}
-    <div style="margin-bottom: 5px; text-align:center;border-bottom:2px solid rgb(80, 78, 78);"><strong>Daftar Kumpulan Nilai Informatika</strong></div>
-    <table align="center" style="width:100%">
-        <tr>
-            <td>Kelas</td>
-            <td>:</td>
-            <td>7.A</td>
-            <td style="width: 20%">&nbsp;</td>
-            <td>Tahun</td>
-            <td>:</td>
-            <td>2021 / 2022</td>
-        </tr>
-        <tr>
-            <td>Semester</td>
-            <td>:</td>
-            <td>1</td>
-            <td style="width: 20%">&nbsp;</td>
-            <td>Wali Kelas</td>
-            <td>:</td>
-            <td>Taqius Shofi Albastomi,S.Kom</td>
-        </tr>
+            <tr style="text-align: left">
+                <th>Semester</th>
+                <th>:</th>
+                <th>{{ $semester }}</th>
+            </tr>
+        </thead>
+    </table>
+    <table align="right">
+        <thead>
+            <tr style="text-align: left">
+                <th>Tahun</th>
+                <th>:</th>
+                <th>{{ $tahun }}</th>
+            </tr>
+            <tr style="text-align: left">
+                <th>Wali Kelas</th>
+                <th>:</th>
+                <th>
+                    @foreach ($wali_kelas as $wali)
+                        {{ $wali->guru->name }}
+                    @endforeach
+                </th>
+            </tr>
+        </thead>
     </table>
     <table border="1" style="border-collapse:collapse; width:100%;font-size:9pt">
         <thead>
@@ -68,40 +67,56 @@
                 <th>NIS</th>
                 <th>Nama</th>
                 @foreach ($list_penilaian as $penilaian)
-                    <th></th>
+                    <th>{{ $penilaian->jenis_penilaian->nama }}</th>
                 @endforeach
+                <th>Nilai Rapor Pengetahuan</th>
+                <th>Nilai Rapor Keterampilan</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td style="text-align: center">1</td>
-            </tr>
+            @foreach ($list_siswa as $siswa)
+                <tr>
+                    <td style="text-align: center">{{ $loop->iteration }}</td>
+                    <td style="text-align: center">{{ $siswa->nis }}</td>
+                    <td style="padding-left:5px; white-space:nowrap">{{ $siswa->user->name }}</td>
+                    @foreach ($list_penilaian as $penilaian)
+                        <td style="text-align: center">
+                            @php
+                                $nilai = App\Models\Penilaian::where('tahun', $tahun)
+                                    ->where('semester', $semester)
+                                    ->where('jenis_penilaian_id', $penilaian->jenis_penilaian_id)
+                                    ->where('mata_pelajaran_id', $mata_pelajaran)
+                                    ->where('nis', $siswa->nis)
+                                    ->value('nilai');
+                            @endphp
+                            {{ $nilai }}
+                        </td>
+                    @endforeach
+                    <td style="text-align: center">
+                        @php
+                            $pengetahuan = App\Models\Penilaian::where('tahun', $tahun)
+                            ->where('semester', $semester)
+                            ->where('kategori_nilai_id', 3)
+                            ->where('nis', $siswa->nis)
+                            ->pluck('nilai')->avg();
+                        @endphp
+                        {{ round($pengetahuan) }}
+                    </td>
+                    <td style="text-align: center">
+                        @php
+                            $keterampilan = App\Models\Penilaian::where('tahun', $tahun)
+                            ->where('semester', $semester)
+                            ->where('kategori_nilai_id', 4)
+                            ->where('nis', $siswa->nis)
+                            ->pluck('nilai')->avg();
+                        @endphp
+                        {{ round($keterampilan) }}
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
-    {{-- <table align="left" style="width:40%; padding:5px; font-size:10pt;border-collapse:collapse">
-        <thead>
-            <tr>
-                <td colspan="3">Keterangan :</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Administrasi 1 Tahun</td>
-                <td>:</td>
-                <td>{{ 'Rp ' . number_format($wajibbayar, 0, ',', '.') }}</td>
-            </tr>
-            <tr>
-                <td>Total Terbayar</td>
-                <td>:</td>
-                <td>{{ 'Rp ' . number_format($totalbayar, 0, ',', '.') }}</td>
-            </tr>
-            <tr>
-                <td>Kurang Bayar</td>
-                <td>:</td>
-                <td>{{ 'Rp ' . number_format($kurangbayar, 0, ',', '.') }}</td>
-            </tr>
-        </tbody>
-    </table> --}}
+    <div style="padding: 8px"></div>
     <table align="center" style="text-align: center; width:100%">
         <tr>
             <td>Mengetahui</td>
@@ -109,23 +124,27 @@
             <td>Kendal, {{ Carbon\Carbon::parse(gmdate('Y-m-d'))->translatedFormat('d F Y') }}</td>
         </tr>
         <tr>
-            <td>Guru Mata Pelajaran</td>
-            <td>&nbsp;</td>
             <td>Wali Kelas</td>
-        </tr>
-        <tr>
-            <td colspan="3">&nbsp;</td>
-        </tr>
-        <tr>
-            <td colspan="3">&nbsp;</td>
-        </tr>
-        <tr>
-            <td colspan="3">&nbsp;</td>
-        </tr>
-        <tr>
-            <td><b>{{ auth()->user()->name }}</b></td>
             <td>&nbsp;</td>
-            <td><b>Nama Wali Kelas</b></td>
+            <td>Guru Mata Pelajaran</td>
+        </tr>
+        <tr>
+            <td colspan="3">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="3">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="3">&nbsp;</td>
+        </tr>
+        <tr>
+            <td><b>
+                @foreach ($wali_kelas as $wali)
+                {{ $wali->guru->name }}
+                @endforeach
+            </b></td>
+            <td>&nbsp;</td>
+            <td><b>{{ auth()->user()->name }}</b></td>
         </tr>
     </table>
 </body>

@@ -42,7 +42,7 @@
                                 <th>NISN</th>
                                 <th>Kelas</th>
                                 <th>Orang Tua</th>
-                                <th>Desa</th>
+                                <th>Alamat</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,7 +54,7 @@
                                     <td>{{ $siswa->biodata->nisn }}</td>
                                     <td>{{ $siswa->kelas->nama }}</td>
                                     <td>{{ $siswa->orangtua->nama_ayah }}</td>
-                                    <td>{{ $siswa->alamat->desa }}</td>
+                                    <td>{{ 'Rt ' . $siswa->alamat->rt . ' Rw ' .  $siswa->alamat->rw . ', Desa ' .  $siswa->alamat->desa . ' - Kec. ' . $siswa->alamat->kecamatan }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

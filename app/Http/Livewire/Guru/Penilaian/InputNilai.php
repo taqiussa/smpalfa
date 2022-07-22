@@ -9,9 +9,12 @@ use App\Models\GuruMapel;
 use App\Models\KategoriNilai;
 use App\Models\JenisPenilaian;
 use App\Models\Penilaian;
+use App\Traits\GetData;
 
 class InputNilai extends Component
 {
+    use GetData;
+
     //model
     public $tanggal;
     public $tahun;
@@ -106,49 +109,52 @@ class InputNilai extends Component
         $this->get_mata_pelajaran();
         $this->tanggal = gmdate('Y-m-d');
         $this->list_kategori_nilai = KategoriNilai::orderBy('nama')->get();
-        $this->list_jenis_penilaian = JenisPenilaian::orderBy('nama')->get();
         $this->list_kelas = Kelas::orderBy('nama')->get();
-        $tahunIni = gmdate('Y');
-        $bulanIni = gmdate('m');
-        if ($bulanIni <= 6) {
-            $this->tahun = (intval($tahunIni) - 1) . ' / ' . intval($tahunIni);
-        } else {
-            $this->tahun = intval($tahunIni) . ' / ' . (intval($tahunIni) + 1);
-        }
+        $this->get_tahun();
+        $this->get_semester();
+        $this->list_jenis_penilaian = JenisPenilaian::whereIn('id', $this->cek_jenis_penilaian())->orderBy('nama')->get();
     }
     public function hydrate()
     {
         $this->get_mata_pelajaran();
         $this->get_list_siswa();
         $this->get_nilai();
+        $this->list_jenis_penilaian = JenisPenilaian::whereIn('id', $this->cek_jenis_penilaian())->orderBy('nama')->get();
     }
     public function updatedTanggal()
     {
         $this->get_nilai();
+        $this->list_jenis_penilaian = JenisPenilaian::whereIn('id', $this->cek_jenis_penilaian())->orderBy('nama')->get();
     }
     public function updatedTahun()
     {
         $this->get_nilai();
+        $this->list_jenis_penilaian = JenisPenilaian::whereIn('id', $this->cek_jenis_penilaian())->orderBy('nama')->get();
     }
     public function updatedSemester()
     {
         $this->get_nilai();
+        $this->list_jenis_penilaian = JenisPenilaian::whereIn('id', $this->cek_jenis_penilaian())->orderBy('nama')->get();
     }
     public function updatedMataPelajaran()
     {
         $this->get_nilai();
+        $this->list_jenis_penilaian = JenisPenilaian::whereIn('id', $this->cek_jenis_penilaian())->orderBy('nama')->get();
     }
     public function updatedKategoriNilai()
     {
         $this->get_nilai();
+        $this->list_jenis_penilaian = JenisPenilaian::whereIn('id', $this->cek_jenis_penilaian())->orderBy('nama')->get();
     }
     public function updatedJenisPenilaian()
     {
         $this->get_nilai();
+        $this->list_jenis_penilaian = JenisPenilaian::whereIn('id', $this->cek_jenis_penilaian())->orderBy('nama')->get();
     }
     public function updatedKelas()
     {
         $this->get_nilai();
+        $this->list_jenis_penilaian = JenisPenilaian::whereIn('id', $this->cek_jenis_penilaian())->orderBy('nama')->get();
     }
     private function get_mata_pelajaran()
     {
@@ -162,18 +168,6 @@ class InputNilai extends Component
             ->get();
         //atur supaya otomatis mengambil id mata pelajaran , supaya tidak null(bug livewire)
         // $this->mata_pelajaran = $this->list_mata_pelajaran[0]->id;
-    }
-    private function get_list_siswa()
-    {
-        $this->list_siswa = Siswa::join('users', 'siswas.nis', '=', 'users.nis')
-            ->where('siswas.kelas_id', $this->kelas)
-            ->where('siswas.tahun', $this->tahun)
-            ->select(
-                'users.name as name',
-                'siswas.nis as nis',
-            )
-            ->orderBy('users.name')
-            ->get();
     }
     private function get_nilai()
     {

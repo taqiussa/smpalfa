@@ -9,7 +9,7 @@
                     <div class="row my-2">
                         <div class="col-md-3">
                             <label for="tahun" class="form-label">Tahun</label>
-                            <select wire:model.defer='tahun' id="tahun" class="form-select">
+                            <select wire:model='tahun' id="tahun" class="form-select">
                                 <option value="">Pilih Tahun</option>
                                 @for ($i = 2017; $i < gmdate('Y'); $i++)
                                     <option value="{{ $i + 1 . ' / ' . ($i + 2) }}">{{ $i + 1 . ' / ' . ($i + 2) }}
@@ -19,7 +19,7 @@
                         </div>
                         <div class="col-md-3">
                             <label for="semester" class="form-label">Semester</label>
-                            <select wire:model.defer="semester" id="semester" class="form-select">
+                            <select wire:model="semester" id="semester" class="form-select">
                                 <option value="">Pilih Semester</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -27,7 +27,7 @@
                         </div>
                         <div class="col-md-3">
                             <label for="kelas" class="form-label">Kelas</label>
-                            <select wire:model.defer='kelas' id="kelas" class="form-select">
+                            <select wire:model='kelas' id="kelas" class="form-select">
                                 <option value="">Pilih Kelas</option>
                                 @foreach ($list_kelas as $kelas)
                                     <option value="{{ $kelas->id }}">{{ $kelas->nama }}</option>
@@ -36,12 +36,16 @@
                         </div>
                         <div class="col-md-3">
                             <label for="mata_pelajaran" class="form-label">Mata Pelajaran</label>
-                            <select wire:model.defer="mata_pelajaran" id="mata_pelajaran" class="form-select">
+                            <select wire:model="mata_pelajaran" id="mata_pelajaran" class="form-select">
                                 <option value="">Pilih Mata Pelajaran</option>
                                 @foreach ($list_mata_pelajaran as $mata_pelajaran)
                                     <option value="{{ $mata_pelajaran->id }}">{{ $mata_pelajaran->nama }}</option>
                                 @endforeach
                             </select>
+                            <small wire:loading wire:target="tahun">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
+                            <small wire:loading wire:target="semester">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
+                            <small wire:loading wire:target="kelas">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
+                            <small wire:loading wire:target="mata_pelajaran">Memuat Data... <i class="fas fa-spin fa-spinner"></i></small>
                         </div>
                     </div>
                     <div class="d-flex justify-content-end">
@@ -49,7 +53,7 @@
                         [
                             'tahun' => $tahun,
                             'semester' => $semester,
-                            'kelas' => $kelas,
+                            'id_kelas' => $id_kelas,
                             'mata_pelajaran'=> $mata_pelajaran
                         ]) }}" target="__blank" class="btn btn-success" role="button"><i class="fas fa-file-alt"></i> Print</a>
                     </div>

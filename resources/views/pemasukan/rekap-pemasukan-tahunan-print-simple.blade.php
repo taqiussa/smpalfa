@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Print Laporan Harian</title>
+    <title>Print Laporan Tahunan</title>
     <style>
         body {
             font-family: 'Times New Roman', Times, serif !important;

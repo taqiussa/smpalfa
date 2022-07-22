@@ -61,10 +61,11 @@ class UploadAnalisis extends Component
 public function mount()
     {
         $this->get_tahun();
+        $this->get_semester();
         $this->get_mata_pelajaran();
         $this->list_kategori_nilai = KategoriNilai::orderBy('nama')->get();
-        $this->list_jenis_penilaian = JenisPenilaian::orderBy('nama')->get();
         $this->list_kelas = Kelas::orderBy('nama')->get();
+        $this->list_jenis_penilaian = JenisPenilaian::whereIn('id', $this->cek_jenis_penilaian())->orderBy('nama')->get();
     }
     public function exports()
     {
@@ -91,10 +92,14 @@ public function mount()
         $this->get_mata_pelajaran();
         $this->get_list_siswa();
         $this->get_nilai();
+        $this->list_jenis_penilaian = JenisPenilaian::whereIn('id', $this->cek_jenis_penilaian())->orderBy('nama')->get();
+
     }
     public function updated($property)
     {
         $this->get_nilai();
+        $this->list_jenis_penilaian = JenisPenilaian::whereIn('id', $this->cek_jenis_penilaian())->orderBy('nama')->get();
+
     }
     private function get_mata_pelajaran()
     {

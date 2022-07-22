@@ -20,6 +20,7 @@
             <td>no_8</td>
             <td>no_9</td>
             <td>no_10</td>
+            <td>skor</td>
             <td>nilai</td>
         </tr>
     </thead>
@@ -35,16 +36,17 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $siswa->nis }}</td>
                 <td>{{ $siswa->name }}</td>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
-                <td>7</td>
-                <td>8</td>
-                <td>9</td>
-                <td>10</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Total Skor</td>
                 <td>1</td>
             </tr>
         @endforeach

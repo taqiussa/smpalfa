@@ -16,7 +16,7 @@ class DaftarNilaiGuru extends Component
     public $wali_kelas;
     public $mata_pelajaran;
     public $semester;
-
+    public $id_kelas;
     //array
     public $list_siswa = [];
     public $list_kelas = [];
@@ -34,5 +34,11 @@ class DaftarNilaiGuru extends Component
         $this->list_kelas = Kelas::get();
         $this->list_mata_pelajaran = $this->cek_mata_pelajaran();
     }
-    
+    public function updated($property)
+    {
+        $this->get_tahun();
+        $this->get_semester();
+        $this->id_kelas = $this->kelas;
+        $this->list_mata_pelajaran = $this->cek_mata_pelajaran();
+    }
 }
