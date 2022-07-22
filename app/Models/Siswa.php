@@ -12,7 +12,7 @@ class Siswa extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'nis', 'nis');
+        return $this->belongsTo(User::class, 'nis', 'nis')->withDefault();
     }
     public function kelas()
     {
