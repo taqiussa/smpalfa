@@ -133,7 +133,7 @@ class Bimbingan extends Component
                     'tahun' => $this->tahun,
                     'nis' => $this->siswa,
                     'user_name' => $cari_siswa->name,
-                    'karakter' => $this->karakter,
+                    // 'karakter' => $this->karakter,
                     'permasalahan' => $this->permasalahan,
                     'penyelesaian' => $this->penyelesaian,
                     'tindak_lanjut' => $this->tindak_lanjut,

@@ -82,12 +82,12 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row my-2">
+                        {{-- <div class="row my-2">
                             <div class="col-md-12">
                                 <label for="karakter" class="form-label">Karakter Individual Siswa</label>
                                 <input wire:model.defer="karakter" type="text" class="form-control">
                             </div>
-                        </div>
+                        </div> --}}
                     @break
 
                     @case('Kelompok')

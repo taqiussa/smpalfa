@@ -49,7 +49,6 @@ timezone, locale, faker_local id_ID
 6. Input Skor X jumlah = Kasir
 8. Menu  Siswa Kurang  Nilai 
 9. Print Skor Per Siswa
-10. Rapor Draft Nilai Per Mapel
 11. Jurnal Guru dan Jurnal Wali Kelas - pending akhir tahun
 12. Rekap Bimbingan Print
 13. Rekap Skor Print - belum selesai, tanda tangan , tambahkan lagi sesuai BK yang mengampu
@@ -64,3 +63,4 @@ timezone, locale, faker_local id_ID
 22. Input Nilai Ekstra sesuaikan dengan Input Nilai SUDAH - kalau perlu buat Upload Nilai Ekstra ini belum
 23. DAFTAR NILAI KELAS : WALI KELAS
 24. WALI KELAS DAFTAR EKSTRA SISWA PER KELASNYA
+25. Rekap Absensi Bulanan, Semester, Tahun + presentase kehadiran - Menu BK

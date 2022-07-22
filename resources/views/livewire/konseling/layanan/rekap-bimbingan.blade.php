@@ -25,9 +25,13 @@
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-6">
                     <label for="search" class="form-label">Search</label>
                     <input wire:model.debounce.500ms="search" type="text" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="loading" class="form-label">&nbsp;</label>
+                    <span wire:loading wire:target="search" class="form-control border-0">Mencari Data... <i class="fas fa-spin fa-spinner"></i></span>
                 </div>
             </div>
             <div class="table-responsive">

@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Kesiswaan\Ekstrakurikuler;
 use App\Models\Ekstrakurikuler;
 use App\Models\Kelas;
 use App\Models\SiswaEkstra;
+use App\Models\User;
 use App\Traits\GetData;
 use Livewire\Component;
 
@@ -52,7 +53,7 @@ class PendaftaranSiswa extends Component
         $this->validate();
         try {
             if ($this->is_edit) {
-                SiswaEkstra::createOrUpdate(
+                SiswaEkstra::updateOrCreate(
                     [
                         'tahun' => $this->tahun,
                         'kelas_id' => $this->kelas,
@@ -77,7 +78,7 @@ class PendaftaranSiswa extends Component
         } catch (\Throwable $th) {
             $this->dispatchBrowserEvent('notyf', ['type' => 'error', 'message' => 'Koneksi Terputus,Silahkan ulangi']);
         }
-        $this->resetExcept('list_kelas', 'tahun', 'list_ekstra');
+        $this->resetExcept('list_kelas', 'tahun', 'list_ekstra','ekstra');
     }
     public function edit($id)
     {
@@ -118,6 +119,8 @@ class PendaftaranSiswa extends Component
                     'kelas',
                 ]
             )
+            // ->orderBy(Kelas::select('nama')->whereColumn('kelas.id', 'siswa_ekstras.kelas_id'))
+            ->orderBy(User::select('name')->whereColumn('users.nis', 'siswa_ekstras.nis'))
             ->get();
     }
 }

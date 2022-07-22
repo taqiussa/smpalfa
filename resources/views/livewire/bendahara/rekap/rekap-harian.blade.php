@@ -51,11 +51,11 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ date('d M Y', strtotime($pembayaran->tanggal)) }}</td>
-                                    <td>{{ $pembayaran->siswa }}</td>
-                                    <td>{{ $pembayaran->kelas }}</td>
-                                    <td>{{ $pembayaran->gunabayar }}</td>
+                                    <td>{{ $pembayaran->siswa->name }}</td>
+                                    <td>{{ $pembayaran->kelas->nama }}</td>
+                                    <td>{{ $pembayaran->gunabayar->nama }}</td>
                                     <td>{{ $pembayaran->tahun }}</td>
-                                    <td>{{ $pembayaran->bendahara }}</td>
+                                    <td>{{ $pembayaran->bendahara->name }}</td>
                                     <td>{{ 'Rp ' . number_format($pembayaran->jumlah, 0, ',', '.') }}</td>
                                 </tr>
                             @endforeach
@@ -66,6 +66,9 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div>
+                    {{ $list_pembayaran->links() }}
                 </div>
             </x-card>
         </div>
@@ -91,9 +94,9 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ date('d M Y', strtotime($pemasukan->tanggal)) }}</td>
-                                    <td>{{ $pemasukan->kategori }}</td>
+                                    <td>{{ $pemasukan->kategori->nama }}</td>
                                     <td>{{ $pemasukan->keterangan }}</td>
-                                    <td>{{ $pemasukan->bendahara }}</td>
+                                    <td>{{ $pemasukan->user->name }}</td>
                                     <td>{{ 'Rp ' . number_format($pemasukan->jumlah, 0, ',', '.') }}</td>
                                 </tr>
                             @endforeach
@@ -109,6 +112,9 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div>
+                    {{ $list_pemasukan->links() }}
                 </div>
             </x-card>
         </div>

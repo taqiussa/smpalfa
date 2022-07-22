@@ -54,10 +54,10 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ date('d M Y', strtotime($pengeluaran->tanggal)) }}</td>
-                                    <td>{{ $pengeluaran->kategori }}</td>
+                                    <td>{{ $pengeluaran->kategori->nama }}</td>
                                     <td>{{ $pengeluaran->keterangan }}</td>
                                     <td>{{ date('d M Y', strtotime($pengeluaran->tanggal_nota)) }}</td>
-                                    <td>{{ $pengeluaran->bendahara }}</td>
+                                    <td>{{ $pengeluaran->user->name }}</td>
                                     <td>{{ 'Rp ' . number_format($pengeluaran->jumlah, 0, ',', '.') }}</td>
                                 </tr>
                             @endforeach
@@ -67,6 +67,9 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div>
+                    {{ $list_pengeluaran->links() }}
                 </div>
             </x-card>
         </div>

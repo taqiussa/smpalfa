@@ -20,6 +20,15 @@
                         @enderror
                     </div>
                     <div class="col-md-3">
+                        <label for="ekstra" class="form-label">Ekstrakurikuler</label>
+                        <select wire:model="ekstra" id="ekstra" class="form-select">
+                            <option value="">Pilih Ekstra</option>
+                            @foreach ($list_ekstra as $ekstra)
+                                <option value="{{ $ekstra->id }}">{{ $ekstra->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-3">
                         <label for="kelas" class="form-label">Kelas</label>
                         <select wire:model="kelas" id="kelas" class="form-select" {{ $is_disabled }}>
                             <option value="">Pilih Kelas</option>
@@ -42,15 +51,6 @@
                         @error('siswa')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
-                    </div>
-                    <div class="col-md-3">
-                        <label for="ekstra" class="form-label">Ekstrakurikuler</label>
-                        <select wire:model="ekstra" id="ekstra" class="form-select">
-                            <option value="">Pilih Ekstra</option>
-                            @foreach ($list_ekstra as $ekstra)
-                                <option value="{{ $ekstra->id }}">{{ $ekstra->nama }}</option>
-                            @endforeach
-                        </select>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
@@ -79,9 +79,9 @@
                                     <td>{{ $siswa_ekstra->siswa->name }}</td>
                                     <td>{{ $siswa_ekstra->kelas->nama }}</td>
                                     <td>
-                                        <a wire:click.prevent="edit({{ $siswa_ekstra->id }})" class="badge text-primary mx-2 my-2">
+                                        <a wire:click.prevent="edit({{ $siswa_ekstra->id }})" class="badge text-primary mx-2 my-2" role="button">
                                         <i class="fas fa-edit"></i></a>
-                                        <a wire:click.prevent="confirm({{ $siswa_ekstra->id }})" class="badge text-danger mx-2 my-2">
+                                        <a wire:click.prevent="confirm({{ $siswa_ekstra->id }})" class="badge text-danger mx-2 my-2" role="button">
                                         <i class="fas fa-trash-alt"></i></a>
 
                                     </td>
