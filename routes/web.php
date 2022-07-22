@@ -99,6 +99,7 @@ use App\Http\Livewire\Siswa\Nilai;
 use App\Http\Livewire\TataUsaha\Siswa\AturKelasSiswa;
 use App\Http\Livewire\TataUsaha\Siswa\CariSiswa;
 use App\Http\Livewire\TataUsaha\Siswa\DataSiswa;
+use App\Http\Livewire\TataUsaha\Siswa\EditDataSiswa;
 use App\Http\Livewire\TataUsaha\Siswa\HapusSiswa;
 use App\Http\Livewire\TataUsaha\Siswa\PindahKelasSiswa;
 use App\Http\Livewire\TataUsaha\Siswa\TambahSiswa;
@@ -355,6 +356,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Tata Usaha'])->group(function () {
         // Menu Siswa
         Route::get('tata-usaha/siswa/atur-kelas-siswa', AturKelasSiswa::class)->name('tata-usaha.siswa.atur-kelas-siswa');
+        Route::get('tata-usaha/siswa/edit-data-siswa', EditDataSiswa::class)->name('tata-usaha.siswa.edit-data-siswa');
         Route::get('tata-usaha/siswa/cari-siswa', CariSiswa::class)->name('tata-usaha.siswa.cari-siswa');
         Route::get('tata-usaha/siswa/hapus-siswa', HapusSiswa::class)->name('tata-usaha.siswa.hapus-siswa');
         Route::get('tata-usaha/siswa/pindah-kelas-siswa', PindahKelasSiswa::class)->name('tata-usaha.siswa.pindah-kelas-siswa');

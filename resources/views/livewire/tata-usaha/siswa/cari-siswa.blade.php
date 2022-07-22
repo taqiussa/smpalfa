@@ -43,6 +43,7 @@
                                 <th>Kelas</th>
                                 <th>Orang Tua</th>
                                 <th>Alamat</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,6 +56,12 @@
                                     <td>{{ $siswa->kelas->nama }}</td>
                                     <td>{{ $siswa->orangtua->nama_ayah }}</td>
                                     <td>{{ 'Rt ' . $siswa->alamat->rt . ' Rw ' .  $siswa->alamat->rw . ', Desa ' .  $siswa->alamat->desa . ' - Kec. ' . $siswa->alamat->kecamatan }}</td>
+                                    <td>
+                                        <a href="{{ route('tata-usaha.siswa.edit-data-siswa',
+                                        [
+                                            'id' => $siswa->user->id
+                                        ]) }}" class="badge text-primary"><i class="fas fa-edit"></i></a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
