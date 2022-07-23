@@ -45,7 +45,10 @@ class InputNilai extends Component
         'jenis' => 'required'
     ];
 
-    protected $listeners = ['delete' => 'delete'];
+    protected $listeners = [
+        'delete' => 'delete',
+        'refresh' => '$refresh'
+    ];
     public function render()
     {
         $this->tanggal = gmdate('Y-m-d');
@@ -59,7 +62,15 @@ class InputNilai extends Component
         $this->list_kategori = KategoriAlquran::get();
     }
 
-    public function updated($property)
+    // public function updated($property)
+    // {
+    //     $this->list_siswa = [];
+    //     $this->get_list_siswa();
+    //     $this->list_jenis = [];
+    //     $this->list_jenis = JenisAlquran::where('kategori_alquran_id', $this->kategori)->get();
+    //     $this->get_nilai();
+    // }
+    public function hydrate()
     {
         $this->list_siswa = [];
         $this->get_list_siswa();
@@ -67,9 +78,32 @@ class InputNilai extends Component
         $this->list_jenis = JenisAlquran::where('kategori_alquran_id', $this->kategori)->get();
         $this->get_nilai();
     }
-    public function hydrate()
+    public function updatedTahun()
     {
         $this->list_siswa = [];
+        $this->get_list_siswa();
+        $this->list_jenis = [];
+        $this->list_jenis = JenisAlquran::where('kategori_alquran_id', $this->kategori)->get();
+        $this->get_nilai();
+    }
+    public function updatedKelas()
+    {
+        $this->list_siswa = [];
+        $this->siswa = '';
+        $this->get_list_siswa();
+        $this->list_jenis = [];
+        $this->list_jenis = JenisAlquran::where('kategori_alquran_id', $this->kategori)->get();
+        $this->get_nilai();
+    }
+    public function updatedSiswa()
+    {
+        $this->get_list_siswa();
+        $this->list_jenis = [];
+        $this->list_jenis = JenisAlquran::where('kategori_alquran_id', $this->kategori)->get();
+        $this->get_nilai();
+    }
+    public function updatedKategori()
+    {
         $this->get_list_siswa();
         $this->list_jenis = [];
         $this->list_jenis = JenisAlquran::where('kategori_alquran_id', $this->kategori)->get();
@@ -108,6 +142,7 @@ class InputNilai extends Component
         } catch (\Throwable $th) {
             $this->dispatchBrowserEvent('notyf', ['type' => 'error', 'message' => 'Koneksi Terputus, Ulangi']);
         }
+        $this->emitSelf('refresh');
     }
     public function get_nilai()
     {
