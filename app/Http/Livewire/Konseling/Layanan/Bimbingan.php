@@ -96,7 +96,7 @@ class Bimbingan extends Component
                 $this->validate();
                 if ($this->foto) {
                     $this->validate([
-                        'foto' => 'image|max:2048'
+                        'foto' => 'image'
                     ]);
                     $foto = $this->foto->store('foto');
                 } else {
@@ -104,7 +104,7 @@ class Bimbingan extends Component
                 }
                 if ($this->foto_dokumen) {
                     $this->validate([
-                        'foto_dokumen' => 'image|max:2048'
+                        'foto_dokumen' => 'image'
                     ]);
                     $fotoDokumen = $this->foto_dokumen->store('fotodokumen');
                 } else {
@@ -153,7 +153,7 @@ class Bimbingan extends Component
                 $this->validate();
                 if ($this->foto) {
                     $this->validate([
-                        'foto' => 'image|max:2048'
+                        'foto' => 'image'
                     ]);
                     $foto = $this->foto->store('foto');
                 } else {
@@ -161,7 +161,7 @@ class Bimbingan extends Component
                 }
                 if ($this->foto_dokumen) {
                     $this->validate([
-                        'foto_dokumen' => 'image|max:2048'
+                        'foto_dokumen' => 'image'
                     ]);
                     $fotoDokumen = $this->foto_dokumen->store('fotodokumen');
                 } else {
@@ -211,7 +211,7 @@ class Bimbingan extends Component
                 $this->validate();
                 if ($this->foto) {
                     $this->validate([
-                        'foto' => 'image|max:2048'
+                        'foto' => 'image'
                     ]);
                     $foto = $this->foto->store('foto');
                 } else {
@@ -219,7 +219,7 @@ class Bimbingan extends Component
                 }
                 if ($this->foto_dokumen) {
                     $this->validate([
-                        'foto_dokumen' => 'image|max:2048'
+                        'foto_dokumen' => 'image'
                     ]);
                     $fotoDokumen = $this->foto_dokumen->store('fotodokumen');
                 } else {

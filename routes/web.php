@@ -93,6 +93,7 @@ use App\Http\Livewire\Sarpras\Inventaris\DataInventaris;
 use App\Http\Livewire\Siswa\Administrasi;
 use App\Http\Livewire\Siswa\AlquranBilGhoib;
 use App\Http\Livewire\Siswa\AlquranBinNadzor;
+use App\Http\Livewire\Siswa\Bimbingan as SiswaBimbingan;
 use App\Http\Livewire\Siswa\DataSkor as SiswaDataSkor;
 use App\Http\Livewire\Siswa\Kehadiran;
 use App\Http\Livewire\Siswa\Nilai;
@@ -344,6 +345,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('siswa/alquran/bil-ghoib', AlquranBilGhoib::class)->name('siswa.alquran.bil-ghoib');
         Route::get('siswa/alquran/bin-nadzor', AlquranBinNadzor::class)->name('siswa.alquran.bin-nadzor');
 
+        // Data Bimbingan
+        Route::get('siswa/data-bimbingan', SiswaBimbingan::class)->name('siswa.data-bimbingan');
+        
         // Data Skor
         Route::get('siswa/data-skor', SiswaDataSkor::class)->name('siswa.data-skor');
 

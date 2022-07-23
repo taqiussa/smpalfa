@@ -17,6 +17,10 @@ class BkDetail extends Model
     {
         return $this->belongsTo(User::class, 'user_id')->withDefault();
     }
+    public function siswa()
+    {
+        return $this->belongsTo(User::class, 'nis', 'nis')->withDefault();
+    }
     public function sluggable(): array
     {
         return [
