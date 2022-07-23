@@ -9,14 +9,14 @@ use Livewire\WithPagination;
 class Bimbingan extends Component
 {
     use WithPagination;
-    
+
     public function render()
     {
         return view(
             'livewire.siswa.bimbingan',
             [
                 'list_rekap' => BkDetail::where('nis', auth()->user()->nis)
-                    ->with(['siswa', 'guru'])
+                    ->with(['siswa', 'guru', 'kelas'])
                     ->orderBy('created_at', 'desc')
                     ->paginate(5),
             ]

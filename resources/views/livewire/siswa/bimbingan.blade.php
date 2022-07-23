@@ -26,10 +26,10 @@
                                 </td>
                                 <td>{{ date('d M Y', strtotime($rekap->tanggal)) }}</td>
                                 <td>
-                                    {{ $rekap->kelas }}
+                                    {{ $rekap->kelas->nama }}
                                 </td>
                                 <td>
-                                    {{ $rekap->siswa }}
+                                    {{ $rekap->siswa->name }}
                                 </td>
                                 <td>{{ $rekap->permasalahan }}</td>
                                 <td>{{ $rekap->tindak_lanjut }}</td>

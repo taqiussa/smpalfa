@@ -21,6 +21,10 @@ class BkDetail extends Model
     {
         return $this->belongsTo(User::class, 'nis', 'nis')->withDefault();
     }
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class)->withDefault();
+    }
     public function sluggable(): array
     {
         return [
