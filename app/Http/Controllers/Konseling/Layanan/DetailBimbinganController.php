@@ -21,4 +21,16 @@ class DetailBimbinganController extends Controller
         ])->find($bk_detail->bk_id)
     ]);
     }
+    public function show_siswa(BkDetail $bk_detail)
+    {
+        return view('siswa.detail-bimbingan',
+    [
+        'header' => 'Detail Bimbingan',
+        'detail' => $bk_detail,
+        'bk' => Bk::with(['details' => fn($query) => 
+            $query->join('users', 'users.nis', '=', 'bk_details.nis')
+            ->join('kelas', 'kelas.id', '=', 'bk_details.kelas_id')
+        ])->find($bk_detail->bk_id)
+    ]);
+    }
 }

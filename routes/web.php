@@ -347,6 +347,7 @@ Route::middleware(['auth'])->group(function () {
 
         // Data Bimbingan
         Route::get('siswa/data-bimbingan', SiswaBimbingan::class)->name('siswa.data-bimbingan');
+        Route::get('siswa/detail-bimbingan/{bk_detail}', [DetailBimbinganController::class, 'show_siswa'])->name('siswa.detail-bimbingan');
         
         // Data Skor
         Route::get('siswa/data-skor', SiswaDataSkor::class)->name('siswa.data-skor');

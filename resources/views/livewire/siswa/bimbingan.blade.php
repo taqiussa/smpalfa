@@ -35,7 +35,7 @@
                                 <td>{{ $rekap->tindak_lanjut }}</td>
                                 <td>{{ $rekap->guru->name }}</td>
                                 <td class="text-nowrap">
-                                    <a href="{{ route('konseling.layanan.detail-bimbingan', $rekap->slug) }}"
+                                    <a href="{{ route('siswa.detail-bimbingan', $rekap->slug) }}"
                                         class="btn btn-primary mx-1 my-1" role="button">Detail</a>
                                 </td>
                             </tr>
