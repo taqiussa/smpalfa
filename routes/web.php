@@ -243,6 +243,8 @@ Route::middleware(['auth'])->group(function () {
 
         //Menu Rapor
         Route::get('guru/rapor/cetak-rapor', CetakRapor::class)->name('guru.rapor.cetak-rapor');
+        Route::get('guru/rapor/cetak-ledger', DaftarNilaiKelas::class)->name('guru.rapor.cetak-ledger');
+        Route::get('guru/rapor/cetak-ledger-print', [DaftarNilaiController::class, 'nilai_kelas'])->name('guru.rapor.cetak-ledger-print');
         Route::get('guru/rapor/pdf', [HomeController::class, 'pdf'])->name('guru.rapor.pdf-rapor');
         Route::get('guru/rapor/rapor-print', [PrintRaporController::class, 'index'])->name('guru.rapor.rapor-print');
         Route::get('guru/rapor/rapor-print-v', [PrintRaporController::class, 'indexv'])->name('guru.rapor.rapor-print-v');
@@ -255,8 +257,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('guru/skor/saldo-skor', SaldoSkor::class)->name('guru.skor.saldo-skor');
 
         //Menu Wali Kelas
-        Route::get('guru/wali-kelas/daftar-nilai-kelas', DaftarNilaiKelas::class)->name('guru.wali-kelas.daftar-nilai-kelas');
-        Route::get('guru/wali-kelas/daftar-nilai-kelas-print', [DaftarNilaiController::class, 'nilai_kelas'])->name('guru.wali-kelas.daftar-nilai-kelas-print');
         Route::get('guru/wali-kelas/download-data-siswa', DownloadDataSiswa::class)->name('guru.wali-kelas.download-data-siswa');
         Route::get('guru/wali-kelas/input-catatan', InputCatatan::class)->name('guru.wali-kelas.input-catatan');
         Route::get('guru/wali-kelas/input-skor', WaliKelasInputSkor::class)->name('guru.wali-kelas.input-skor');

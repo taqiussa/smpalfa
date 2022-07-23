@@ -1,6 +1,6 @@
 <div>
     <x-slot name="header">
-        <h4>Daftar Nilai Kelas</h4>
+        <h4>Cetak Ledger</h4>
     </x-slot>
     <div class="row my-2">
         <div class="col">
@@ -39,7 +39,7 @@
                     <span wire:loading wire:target="semester">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <a href="{{ route('guru.wali-kelas.daftar-nilai-kelas-print',
+                    <a href="{{ route('guru.rapor.cetak-ledger-print',
                     [
                         'tahun' => $tahun,
                         'semester' => $semester,

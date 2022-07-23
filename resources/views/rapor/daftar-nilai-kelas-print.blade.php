@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Print Daftar Nilai Kelas</title>
+    <title>Print Ledger Kelas</title>
     <style>
         body {
             font-family: 'Times New Roman', Times, serif !important;
@@ -26,8 +26,7 @@
 </head>
 
 <body>
-    <div style="margin-bottom: 5px; text-align:center;border-bottom:2px solid rgb(80, 78, 78);"><strong>Daftar Kumpulan
-            Nilai</strong></div>
+    <div style="margin-bottom: 5px; text-align:center;border-bottom:2px solid rgb(80, 78, 78);"><strong>Ledger Hasil Penilaian Kelas</strong></div>
     <table align="left">
         <thead>
             <tr style="text-align: left">

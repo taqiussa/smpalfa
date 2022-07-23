@@ -119,6 +119,10 @@
         </a>
         <ul id="rapor_guru" class="{{ Request::routeIs('guru.rapor.*') ? '' : 'collapse' }} dropdown-nav">
             <li>
+                <a href="{{ route('guru.rapor.cetak-ledger') }}"
+                    class="{{ Request::routeIs('guru.rapor.cetak-ledger') ? 'active' : '' }}">Cetak Ledger</a>
+            </li>
+            <li>
                 <a href="{{ route('guru.rapor.cetak-rapor') }}"
                     class="{{ Request::routeIs('guru.rapor.cetak-rapor') ? 'active' : '' }}">Cetak Rapor</a>
             </li>
@@ -160,10 +164,6 @@
             <span class="text">Wali Kelas</span>
         </a>
         <ul id="wali_kelas" class="{{ Request::routeIs('guru.wali-kelas.*') ? '' : 'collapse' }} dropdown-nav">
-            <li>
-                <a href="{{ route('guru.wali-kelas.daftar-nilai-kelas') }}"
-                    class="{{ Request::routeIs('guru.wali-kelas.daftar-nilai-kelas') ? 'active' : '' }}">Daftar Nilai Kelas</a>
-            </li>
             <li>
                 <a href="{{ route('guru.wali-kelas.download-data-siswa') }}"
                     class="{{ Request::routeIs('guru.wali-kelas.download-data-siswa') ? 'active' : '' }}">Download Data Siswa</a>
