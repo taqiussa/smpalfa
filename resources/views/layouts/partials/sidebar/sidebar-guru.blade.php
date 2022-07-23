@@ -13,6 +13,10 @@
         </a>
         <ul id="absensi_guru" class="{{ Request::routeIs('guru.absensi.*') ? '' : 'collapse' }} dropdown-nav">
             <li>
+                <a href="{{ route('guru.absensi.absensi-bk') }}" class="{{ Request::routeIs('guru.absensi.absensi-bk') ? 'active' : '' }}">
+                    Absensi cara BK </a>
+            </li>
+            <li>
                 <a href="{{ route('guru.absensi.absensi-siswa') }}"
                     class="{{ Request::routeIs('guru.absensi.absensi-siswa') ? 'active' : '' }}"> Absensi Siswa </a>
             </li>

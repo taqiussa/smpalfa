@@ -1,6 +1,5 @@
 <div>
     <x-slot name="header">
-        
         <h4>
             Table Kurikulum
             </h4>

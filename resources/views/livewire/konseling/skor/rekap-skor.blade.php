@@ -17,6 +17,9 @@
                     @error('tahun')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
+                    <div>
+                        <span wire:loading wire:target="tahun">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                    </div>
                 </div>
             </div>
         </div>

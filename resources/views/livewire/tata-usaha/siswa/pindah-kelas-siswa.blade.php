@@ -56,6 +56,12 @@
                         @enderror
                     </div>
                 </div>
+                <div>
+                    <span wire:loading wire:target="tahun">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                    <span wire:loading wire:target="kelas">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                    <span wire:loading wire:target="siswa">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                    <span wire:loading wire:target="kelas_tujuan">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                </div>
                 <div class="d-flex justify-content-end">
                     <button wire:click.prevent="pindah" wire:loading.class="disabled" wire:target="pindah" class="btn btn-primary">Pindahkan <i wire:loading wire:target="pindah" class="fas fa-spin fa-spinner"></i></button>
                 </div>

@@ -74,6 +74,12 @@
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
+                    <div>
+                        <span wire:loading wire:target="tahun">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="semester">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="tingkat">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="kategori_nilai_id">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                    </div>
                     <div class="row my-2 d-flex justify-content-end px-3">
                         <button wire:click.prevent="exports" wire:loading.class="disabled" wire:target="exports"
                             class="btn btn-success w-auto">Download Draft <i wire:loading wire:target="exports"

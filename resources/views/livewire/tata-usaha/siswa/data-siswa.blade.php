@@ -24,10 +24,14 @@
                     <div class="col-md-4 my-2">
                         <div class="input-group">
                             <span class="input-group-text">Cari</span>
-                            <input wire:model.debounce.100ms="search" type="text" class="form-control"
+                            <input wire:model.debounce.500ms="search" type="text" class="form-control"
                                 placeholder="Cari Siswa...">
                         </div>
                     </div>
+                </div>
+                <div class="my-2">
+                    <span wire:loading wire:target="tahun">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                    <span wire:loading wire:target="search">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
                 </div>
                 <div class="table-responsive">
                     <table class="table">

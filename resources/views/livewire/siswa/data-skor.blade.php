@@ -30,6 +30,9 @@
                         </tbody>
                     </table>
                 </div>
+                <div>
+                    {{ $list_skor->links() }}
+                </div>
             </x-card>
         </div>
     </div>

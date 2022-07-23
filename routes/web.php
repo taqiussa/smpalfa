@@ -218,6 +218,7 @@ Route::middleware(['auth'])->group(function () {
     //Route For Guru
     Route::middleware(['role:Guru'])->group(function () {
         //Menu Absensi
+        Route::get('guru/absensi/absensi-bk', AbsensiBk::class)->name('guru.absensi.absensi-bk');
         Route::get('guru/absensi/absensi-siswa', AbsensiAbsensiSiswa::class)->name('guru.absensi.absensi-siswa');
 
         // Menu Alquran

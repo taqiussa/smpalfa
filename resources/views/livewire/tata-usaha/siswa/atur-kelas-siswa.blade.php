@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-md-4">
                         <label for="nis" class="form-label">NIS</label>
-                        <input wire:model="nis" type="text" class="form-control">
+                        <input wire:model.defer="nis" type="text" class="form-control">
                     </div>
                     <div class="col-md-4">
                         <label for="kelas" class="form-label">Kelas</label>
@@ -32,6 +32,9 @@
                             @endforeach
                         </select>
                     </div>
+                </div>
+                <div>
+                    <span wire:loading wire:target="tahun">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
                 </div>
                 <div class="d-flex justify-content-end">
                     <button wire:click.prevent="simpan" wire:loading.class="disabled" wire:target="simpan" class="btn btn-primary mx-2 my-2">Simpan <i wire:loading wire:target="simpan" class="fas fa-spin fa-spinner"></i></button>

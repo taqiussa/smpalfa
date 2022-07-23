@@ -9,14 +9,14 @@
                     <div class="row my-2">
                         <div class="col-md-6">
                             <label for="nis" class="form-label">NIS</label>
-                            <input wire:model="nis" type="text" class="form-control">
+                            <input wire:model.defer="nis" type="text" class="form-control">
                             @error('nis')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="col-md-6">
                             <label for="nama" class="form-label">Nama Siswa</label>
-                            <input wire:model="nama" type="text" class="form-control">
+                            <input wire:model.defer="nama" type="text" class="form-control">
                             @error('nama')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror

@@ -35,11 +35,15 @@
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="col-md-3 my-2">
-                            <button wire:click.prevent="simpan" wire:loading.class="disabled" wire:target="simpan"
-                                class="btn btn-primary w-auto">Set <i wire:loading wire:target="simpan"
-                                    class="fas fa-spin fa-spinner"></i></button>
-                        </div>
+                    </div>
+                    <div>
+                        <span wire:loading wire:target="guru">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                        <span wire:loading wire:target="mata_pelajaran">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button wire:click.prevent="simpan" wire:loading.class="disabled" wire:target="simpan"
+                            class="btn btn-primary">Set <i wire:loading wire:target="simpan"
+                                class="fas fa-spin fa-spinner"></i></button>
                     </div>
                 </div>
             </div>

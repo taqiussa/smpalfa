@@ -16,10 +16,10 @@
                     </div>
                 </div>
                 <div>
-                    <small wire:loading wire:target="tanggalawal">Sedang Memuat Data... <i
-                            class="fas fa-spin fa-spinner"></i></small>
-                    <small wire:loading wire:target="tanggalakhir">Sedang Memuat Data... <i
-                            class="fas fa-spin fa-spinner"></i></small>
+                    <span wire:loading wire:target="tanggalawal">Sedang Memuat Data... <i
+                            class="fas fa-spin fa-spinner"></i></span>
+                    <span wire:loading wire:target="tanggalakhir">Sedang Memuat Data... <i
+                            class="fas fa-spin fa-spinner"></i></span>
                 </div>
             </x-card>
         </div>

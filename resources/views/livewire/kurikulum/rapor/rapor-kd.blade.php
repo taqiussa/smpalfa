@@ -133,6 +133,9 @@
                     @error('tahuntable')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
+                    <div>
+                        <span wire:loading wire:target="tahuntable">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
+                    </div>
                     </select>
                 </div>
             </div>
