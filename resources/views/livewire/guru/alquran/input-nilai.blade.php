@@ -9,7 +9,7 @@
                     <div class="row my-2">
                         <div class="col-md-3">
                             <label for="tahun" class="form-label">Tahun</label>
-                            <select wire:model="tahun" id="tahun" class="form-select">
+                            <select wire:model="tahun" id="tahun" class="form-select" {{ $is_disabled }}>
                                 <option value="">Pilih Tahun</option>
                                 @for ($i = 2017; $i < gmdate('Y'); $i++)
                                     <option value="{{ $i + 1 . ' / ' . ($i + 2) }}">{{ $i + 1 . ' / ' . ($i + 2) }}
@@ -22,7 +22,7 @@
                         </div>
                         <div class="col-md-3">
                             <label for="kelas" class="form-label">Kelas</label>
-                            <select wire:model="kelas" id="kelas" class="form-select">
+                            <select wire:model="kelas" id="kelas" class="form-select" {{ $is_disabled }}>
                                 <option value="">Pilih Kelas</option>
                                 @foreach ($list_kelas as $kelas)
                                     <option value="{{ $kelas->id }}">{{ $kelas->nama }}</option>
@@ -34,7 +34,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="siswa" class="form-label">Siswa</label>
-                            <select wire:model="siswa" id="siswa" class="form-select">
+                            <select wire:model="siswa" id="siswa" class="form-select" {{ $is_disabled }}>
                                 <option value="">Pilih Siswa</option>
                                 @foreach ($list_siswa as $siswa)
                                     <option value="{{ $siswa->nis }}">{{ $siswa->name }}</option>
@@ -48,7 +48,7 @@
                     <div class="row my-2">
                         <div class="col-md-3">
                             <label for="kategori" class="form-label">Kategori Penilaian</label>
-                            <select wire:model="kategori" id="kategori" class="form-select">
+                            <select wire:model="kategori" id="kategori" class="form-select" {{ $is_disabled }}>
                                 <option value="">Pilih Kategori</option>
                                 @foreach ($list_kategori as $kategori)
                                     <option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="col-md-4">
                             <label for="jenis" class="form-label">Surah / Juz</label>
-                            <select wire:model.defer="jenis" id="jenis" class="form-select">
+                            <select wire:model.defer="jenis" id="jenis" class="form-select" {{ $is_disabled }}>
                                 <option value="">Pilih Surah / Juz</option>
                                 @foreach ($list_jenis as $jenis)
                                     <option value="{{ $jenis->id }}">{{ $jenis->nama }}</option>
@@ -105,7 +105,6 @@
                                 <th>Surah / Juz</th>
                                 <th>Nilai</th>
                                 <th>Guru</th>
-                                {{-- <th>Aksi</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -116,16 +115,6 @@
                                     <td>{{ $jenis->nama }}</td>
                                     <td>{{ $list_nilai[$key] }}</td>
                                     <td>{{ $list_guru[$key] }}</td>
-                                    {{-- <td>
-                                        <a wire:click.prevent="edit({{ $jenis->id }})"
-                                            class="badge text-primary mx-2 my-2" role="button">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <a wire:click.prevent="confirm({{ $jenis->id }})"
-                                            class="badge text-danger mx-2 my-2" role="button">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </a>
-                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>

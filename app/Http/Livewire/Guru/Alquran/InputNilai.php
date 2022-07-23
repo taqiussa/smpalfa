@@ -21,9 +21,9 @@ class InputNilai extends Component
     public $siswa;
     public $kategori;
     public $jenis;
-    public $nilai;
+    public $nilai = '';
     public $is_edit = false;
-    public $is_disabled;
+    public $is_disabled = '';
     public $id_jenis;
 
     //array
@@ -61,15 +61,6 @@ class InputNilai extends Component
         $this->list_kelas = Kelas::get();
         $this->list_kategori = KategoriAlquran::get();
     }
-
-    // public function updated($property)
-    // {
-    //     $this->list_siswa = [];
-    //     $this->get_list_siswa();
-    //     $this->list_jenis = [];
-    //     $this->list_jenis = JenisAlquran::where('kategori_alquran_id', $this->kategori)->get();
-    //     $this->get_nilai();
-    // }
     public function hydrate()
     {
         $this->list_siswa = [];
@@ -113,32 +104,21 @@ class InputNilai extends Component
     {
         $this->validate();
         try {
-            if ($this->is_edit) {
-                PenilaianAlquran::updateOrCreate(
-                    [
-                        'nis' => $this->siswa,
-                        'kategori_alquran_id' => $this->kategori,
-                        'jenis_alquran_id' => $this->jenis
-                    ],
-                    [
-                        'nilai' => $this->nilai,
-                        'user_id' => auth()->user()->id
-                    ]
-                );
-                $this->dispatchBrowserEvent('notyf', ['type' => 'success', 'message' => 'Berhasil Update Nilai Alquran']);
-            } else {
-                PenilaianAlquran::create([
-                    'tanggal' => $this->tanggal,
+            PenilaianAlquran::updateOrCreate(
+                [
                     'nis' => $this->siswa,
-                    'kelas_id' => $this->kelas,
-                    'tahun' => $this->tahun,
                     'kategori_alquran_id' => $this->kategori,
                     'jenis_alquran_id' => $this->jenis,
+                ],
+                [
+                    'kelas_id' => $this->kelas,
+                    'tahun' => $this->tahun,
+                    'tanggal' => $this->tanggal,
                     'nilai' => $this->nilai,
                     'user_id' => auth()->user()->id
-                ]);
-                $this->dispatchBrowserEvent('notyf', ['type' => 'success', 'message' => 'Berhasil Simpan Nilai Alquran']);
-            }
+                ]
+            );
+            $this->dispatchBrowserEvent('notyf', ['type' => 'success', 'message' => 'Berhasil Simpan Nilai Alquran']);
         } catch (\Throwable $th) {
             $this->dispatchBrowserEvent('notyf', ['type' => 'error', 'message' => 'Koneksi Terputus, Ulangi']);
         }
@@ -146,14 +126,14 @@ class InputNilai extends Component
     }
     public function get_nilai()
     {
-            foreach ($this->list_jenis as $key => $jenis) {
-                $cari = PenilaianAlquran::where('nis', $this->siswa)
-                    ->where('jenis_alquran_id', $jenis->id)
-                    ->first();
-                $this->list_nilai[$key] = $cari->nilai ?? '';
-                $this->list_tanggal[$key] = $cari->tanggal ?? '';
-                $user = User::find($cari->user_id ?? '');
-                $this->list_guru[$key] = $user->name ?? '';
-            }
+        foreach ($this->list_jenis as $key => $jenis) {
+            $cari = PenilaianAlquran::where('nis', $this->siswa)
+                ->where('jenis_alquran_id', $jenis->id)
+                ->first();
+            $this->list_nilai[$key] = $cari->nilai ?? '';
+            $this->list_tanggal[$key] = $cari->tanggal ?? '';
+            $user = User::find($cari->user_id ?? '');
+            $this->list_guru[$key] = $user->name ?? '';
+        }
     }
 }
