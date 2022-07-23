@@ -1,7 +1,7 @@
 <div>
     <x-slot name='header'>
         <h4>
-            Absensi
+            Absensi Cara BK
             </h4>
         </x-slot>
     <div class="card rounded-md">
