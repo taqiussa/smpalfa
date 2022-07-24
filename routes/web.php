@@ -60,6 +60,7 @@ use App\Http\Livewire\Guru\Rapor\DaftarNilaiGuru;
 use App\Http\Livewire\Guru\Skor\InputSkor;
 use App\Http\Livewire\Guru\Skor\SaldoSkor;
 use App\Http\Livewire\Guru\WaliKelas\DaftarNilaiKelas;
+use App\Http\Livewire\Guru\WaliKelas\DataEkstraSiswa;
 use App\Http\Livewire\Guru\WaliKelas\DownloadDataSiswa;
 use App\Http\Livewire\Guru\WaliKelas\InputCatatan;
 use App\Http\Livewire\Guru\WaliKelas\InputSkor as WaliKelasInputSkor;
@@ -239,6 +240,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('guru/penilaian/input-nilai-sikap', InputNilaiSikap::class)->name('guru.penilaian.input-nilai-sikap');
         Route::get('guru/penilaian/input-prestasi', InputPrestasi::class)->name('guru.penilaian.input-prestasi');
         Route::get('guru/penilaian/upload-analisis', UploadAnalisis::class)->name('guru.penilaian.upload-analisis');
+        Route::get('guru/penilaian/upload-analisis-print', [PrintRaporController::class, 'analisis'])->name('guru.penilaian.upload-analisis-print');
         Route::get('guru/penilaian/upload-nilai', UploadNilai::class)->name('guru.penilaian.upload-nilai');
 
         //Menu Rapor
@@ -257,6 +259,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('guru/skor/saldo-skor', SaldoSkor::class)->name('guru.skor.saldo-skor');
 
         //Menu Wali Kelas
+        Route::get('guru/wali-kelas/data-ekstra-siswa', DataEkstraSiswa::class)->name('guru.wali-kelas.data-ekstra-siswa');
         Route::get('guru/wali-kelas/download-data-siswa', DownloadDataSiswa::class)->name('guru.wali-kelas.download-data-siswa');
         Route::get('guru/wali-kelas/input-catatan', InputCatatan::class)->name('guru.wali-kelas.input-catatan');
         Route::get('guru/wali-kelas/input-skor', WaliKelasInputSkor::class)->name('guru.wali-kelas.input-skor');

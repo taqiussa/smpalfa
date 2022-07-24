@@ -25,9 +25,11 @@ class UploadAnalisis extends Component
     public $tahun;
     public $semester;
     public $kelas;
+    public $id_kelas;
     public $mata_pelajaran;
     public $kategori_nilai;
     public $jenis_penilaian;
+    public $id_jenis;
     public $nilai = [];
     public $file_import;
 
@@ -93,13 +95,15 @@ public function mount()
         $this->get_list_siswa();
         $this->get_nilai();
         $this->list_jenis_penilaian = JenisPenilaian::whereIn('id', $this->cek_jenis_penilaian())->orderBy('nama')->get();
-
+        $this->id_kelas = $this->kelas;
+        $this->id_jenis = $this->jenis_penilaian;
     }
     public function updated($property)
     {
         $this->get_nilai();
         $this->list_jenis_penilaian = JenisPenilaian::whereIn('id', $this->cek_jenis_penilaian())->orderBy('nama')->get();
-
+        $this->id_kelas = $this->kelas;
+        $this->id_jenis = $this->jenis_penilaian;
     }
     private function get_mata_pelajaran()
     {

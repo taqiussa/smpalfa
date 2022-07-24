@@ -91,9 +91,18 @@
                         <span wire:loading wire:target="jenis_penilaian">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
                         <span wire:loading wire:target="kelas">Memuat Data... <i class="fas fa-spin fa-spinner"></i></span>
                     </div>
-                    <div class="row my-2 d-flex justify-content-end px-3">
+                    <div class="my-2 d-flex justify-content-end px-3">
+                        <a href="{{ route('guru.penilaian.upload-analisis-print',
+                        [
+                            'tahun' => $tahun,
+                            'semester' => $semester,
+                            'mata_pelajaran' => $mata_pelajaran,
+                            'kategori_nilai' => $kategori_nilai,
+                            'jenis_penilaian' => $id_jenis,
+                            'kelas' => $id_kelas,
+                        ]) }}" target="__blank" class="btn btn-success mx-2 my-2" role="button"><i class="fas fa-file-alt"></i> Print Analisis</a>
                         <button wire:click.prevent="exports" wire:loading.class="disabled" wire:target="exports"
-                            class="btn btn-success w-auto">Download Draft <i wire:loading wire:target="exports"
+                            class="btn btn-success mx-2 my-2">Download Draft <i wire:loading wire:target="exports"
                                 class="fas fa-spin fa-spinner"></i></button>
                     </div>
                 </div>

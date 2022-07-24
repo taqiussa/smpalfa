@@ -34,4 +34,9 @@ class Siswa extends Model
     {
         return $this->belongsTo(Biodata::class, 'nis', 'nis')->withDefault();
     }
+    public function ekstra()
+    {
+        //nis dari siswa ekstra, id dari ekstrakurikuler, nis dari siswa, ekstra_id dari siswa ekstra;
+        return $this->hasOneThrough(Ekstrakurikuler::class, SiswaEkstra::class, 'nis', 'id', 'nis', 'ekstrakurikuler_id')->withDefault();
+    }
 }

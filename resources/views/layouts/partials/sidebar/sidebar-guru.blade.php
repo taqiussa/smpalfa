@@ -98,7 +98,7 @@
             </li>
             <li>
                 <a href="{{ route('guru.penilaian.upload-analisis') }}"
-                    class="{{ Request::routeIs('guru.penilaian.upload-analisis') ? 'active' : '' }}">Upload Analisis</a>
+                    class="{{ Request::routeIs('guru.penilaian.upload-analisis') ? 'active' : '' }}">Upload/Print Analisis</a>
             </li>
             <li>
                 <a href="{{ route('guru.penilaian.upload-nilai') }}"
@@ -164,6 +164,10 @@
             <span class="text">Wali Kelas</span>
         </a>
         <ul id="wali_kelas" class="{{ Request::routeIs('guru.wali-kelas.*') ? '' : 'collapse' }} dropdown-nav">
+            <li>
+                <a href="{{ route('guru.wali-kelas.data-ekstra-siswa') }}"
+                    class="{{ Request::routeIs('guru.wali-kelas.data-ekstra-siswa') ? 'active' : '' }}">Data Ekstrakurikuler Siswa</a>
+            </li>
             <li>
                 <a href="{{ route('guru.wali-kelas.download-data-siswa') }}"
                     class="{{ Request::routeIs('guru.wali-kelas.download-data-siswa') ? 'active' : '' }}">Download Data Siswa</a>

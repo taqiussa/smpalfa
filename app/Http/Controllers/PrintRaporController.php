@@ -16,7 +16,11 @@ use App\Models\PenilaianRapor;
 use App\Models\PenilaianSikap;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\AnalisisPenilaian;
+use App\Models\JenisPenilaian;
+use App\Models\Kkm;
 use App\Models\PenilaianEkstrakurikuler;
+use App\Models\Siswa;
 
 class PrintRaporController extends Controller
 {
@@ -25,7 +29,9 @@ class PrintRaporController extends Controller
     public $tahun;
     public $nama;
     public $semester;
-
+    public $mata_pelajaran;
+    public $kategori_nilai;
+    public $jenis_penilaian;
     public function index()
     {
         $this->kelas = Kelas::find(request('kelas'));
@@ -124,7 +130,38 @@ class PrintRaporController extends Controller
         ];
         return view('rapor.rapor-print-v', $data);
     }
-
+    public function analisis()
+    {
+        $this->kelas = request('kelas');
+        $this->tahun = request('tahun');
+        $this->semester = request('semester');
+        $this->mata_pelajaran = request('mata_pelajaran');
+        $this->kategori_nilai = request('kategori_nilai');
+        $this->jenis_penilaian = request('jenis_penilaian');
+        $kelas = Kelas::find($this->kelas);
+        $data = 
+        [
+            'kepala_sekolah' => User::role('Kepala Sekolah')->get(),
+            'jenis_penilaian' => JenisPenilaian::find($this->jenis_penilaian)->nama,
+            'nama_kelas' => $kelas->nama,
+            'list_siswa' => Siswa::where('tahun', $this->tahun)
+            ->where('kelas_id', $this->kelas)
+            ->with(['user'])
+            ->get(),
+            'list_analisis' => AnalisisPenilaian::where('kelas_id', $this->kelas)
+            ->where('tahun', $this->tahun)
+            ->where('mata_pelajaran_id', $this->mata_pelajaran)
+            ->where('jenis_penilaian_id', $this->jenis_penilaian)
+            ->with(['siswa'])
+            ->get()
+            ->sortBy('siswa.name'),
+            'kkm' => Kkm::where('tahun', $this->tahun)
+            ->where('mata_pelajaran_id', $this->mata_pelajaran)
+            ->where('tingkat', $kelas->tingkat)
+            ->first()->kkm,
+        ];
+        return view('rapor.analisis-print', $data);
+    }
     private function get_sikap($nis, $kategori)
     {
         $id_mapel = GuruMapel::where('user_id', auth()->user()->id)

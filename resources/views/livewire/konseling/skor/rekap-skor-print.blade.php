@@ -71,7 +71,7 @@
                                         <td>{{ $siswa->name }}</td>
 
                                         <td>
-                                            <a wire:click.prevent="confirm({{ $siswa->nis }})"
+                                            {{-- <a wire:click.prevent="confirm({{ $siswa->nis }})"
                                                 class="btn btn-danger mx-2 my-2" role="button">Download <i
                                                     class="fas fa-download"></i></a>
                                             <a href="{{ route('konseling.skor.rekap-skor-persiswa', [
@@ -80,7 +80,7 @@
                                                 'nis' => $siswa->nis,
                                             ]) }}"
                                                 class="btn btn-success mx-2 my-2" role="button">Print <i
-                                                    class="fas fa-file-alt"></i></a>
+                                                    class="fas fa-file-alt"></i></a> --}}
                                         </td>
 
                                     </tr>
