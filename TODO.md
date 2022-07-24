@@ -47,18 +47,18 @@ timezone, locale, faker_local id_ID
 
 5. Karakter Siswa / Keterangan di Bimbingan - print bimbingan siswa
 6. Input Skor X jumlah = Kasir
-8. Menu  Siswa Kurang  Nilai 
-9. Print Skor Per Siswa
-11. Jurnal Guru dan Jurnal Wali Kelas - pending akhir tahun
-12. Rekap Bimbingan Print
-13. Rekap Skor Print - belum selesai, Rekap Skor Per Siswa / Download Per Siswa
-14. Set Role Username perbaiki
-15. Table User dan Set Role Perbaiki, tambahkan pencarian User
-16. rekapan ekstra per kelas - buat print rekap data siswa per ekstra
-17. Print data skor per siswa mengacu pada nomor 13
-18. Nilai Quran - on going - kurang print per siswa
-19. alpha dari skor
-20. Tambah Siswa - kurang data alamat dan lain lain
-22. Input Nilai Ekstra sesuaikan dengan Input Nilai SUDAH - kalau perlu buat Upload Nilai Ekstra ini belum
-24. WALI KELAS DAFTAR EKSTRA SISWA PER KELASNYA
-25. Rekap Absensi Bulanan, Semester, Tahun + presentase kehadiran - Menu BK
+7. Menu  Siswa Kurang  Nilai 
+8. Print Skor Per Siswa
+9. Jurnal Guru dan Jurnal Wali Kelas - pending akhir tahun
+10. Rekap Bimbingan Print
+11. Rekap Skor Print - belum selesai, Rekap Skor Per Siswa / Download Per Siswa
+12. Set Role Username perbaiki
+13. Table User dan Set Role Perbaiki, tambahkan pencarian User
+14. rekapan ekstra per kelas - buat print rekap data siswa per ekstra
+15. Print data skor per siswa mengacu pada nomor 13
+16. Nilai Quran - on going - kurang print per siswa
+17. alpha dari skor
+18. Tambah Siswa - kurang data alamat dan lain lain
+19. Input Nilai Ekstra sesuaikan dengan Input Nilai SUDAH - kalau perlu buat Upload Nilai Ekstra ini belum
+20. Rekap Absensi Bulanan, Semester, Tahun + presentase kehadiran - Menu BK
+21. Guru list kelas sesuai SK mengajar

@@ -1,7 +1,7 @@
 <h3 class="px-3">{{ $title ?? '' }}</h3>
 <ul>
     <li class="nav-item nav-item-has-children">
-        <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#menu_absensi" aria-controls="menu_absensi"
+        <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#absensi_konseling" aria-controls="absensi_konseling"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon">
                 <svg width="22" height="22" viewBox="0 0 22 22">
@@ -11,18 +11,22 @@
             </span>
             <span class="text">Absensi</span>
         </a>
-        <ul id="menu_absensi" class="{{ Request::routeIs('konseling.absensi.*') ? '' : 'collapse' }} dropdown-nav">
-            <li>
-                <a href="{{ route('konseling.absensi.absensi-siswa') }}"
-                    class="{{ Request::routeIs('konseling.absensi.absensi-siswa') ? 'active' : '' }}"> Absensi Siswa </a>
-            </li>
+        <ul id="absensi_konseling" class="{{ Request::routeIs('konseling.absensi.*') ? '' : 'collapse' }} dropdown-nav">
             <li>
                 <a href="{{ route('konseling.absensi.absensi-bk') }}" class="{{ Request::routeIs('konseling.absensi.absensi-bk') ? 'active' : '' }}">
                     Absensi BK </a>
             </li>
             <li>
+                <a href="{{ route('konseling.absensi.absensi-siswa') }}"
+                    class="{{ Request::routeIs('konseling.absensi.absensi-siswa') ? 'active' : '' }}"> Absensi Siswa </a>
+            </li>
+            <li>
                 <a href="{{ route('konseling.absensi.cek-list-absensi') }}" class="{{ Request::routeIs('konseling.absensi.cek-list-absensi') ? 'active' : '' }}">
                     Cek List Absensi</a>
+            </li>
+            <li>
+                <a href="{{ route('konseling.absensi.print-absensi') }}" class="{{ Request::routeIs('konseling.absensi.print-absensi') ? 'active' : '' }}">
+                    Print Absensi</a>
             </li>
             <li>
                 <a href="{{ route('konseling.absensi.rekap-kehadiran') }}" class="{{ Request::routeIs('konseling.absensi.rekap-kehadiran') ? 'active' : '' }}">

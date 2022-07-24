@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Konseling\Layanan\DetailBimbinganController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PrintAbsensiController;
 use App\Http\Controllers\PrintAlquranController;
 use App\Http\Controllers\PrintRaporController;
 use App\Http\Controllers\RekapSkorPrintController;
@@ -69,6 +70,7 @@ use App\Http\Livewire\Konseling\Absensi\AbsensiBk;
 use App\Http\Livewire\Konseling\Absensi\AbsensiSiswa;
 use App\Http\Livewire\Konseling\Absensi\CekListAbsensi;
 use App\Http\Livewire\Konseling\Absensi\ListKehadiran;
+use App\Http\Livewire\Konseling\Absensi\PrintAbsensi;
 use App\Http\Livewire\Konseling\Absensi\RekapKehadiran;
 use App\Http\Livewire\Konseling\Layanan\Bimbingan;
 use App\Http\Livewire\Konseling\Layanan\RekapBimbingan;
@@ -276,9 +278,11 @@ Route::middleware(['auth'])->group(function () {
         //Menu Absensi
         Route::get('konseling/absensi/absensi-siswa', AbsensiSiswa::class)->name('konseling.absensi.absensi-siswa');
         Route::get('konseling/absensi/absensi-bk', AbsensiBk::class)->name('konseling.absensi.absensi-bk');
-        Route::get('konseling/absensi/rekap-kehadiran', RekapKehadiran::class)->name('konseling.absensi.rekap-kehadiran');
         Route::get('konseling/absensi/cek-list-absensi', CekListAbsensi::class)->name('konseling.absensi.cek-list-absensi');
         Route::get('konseling/absensi/list-kehadiran/{tanggal}/{jam}/{kehadiran}', ListKehadiran::class)->name('konseling.absensi.list-kehadiran');
+        Route::get('konseling/absensi/print-absensi', PrintAbsensi::class)->name('konseling.absensi.print-absensi');
+        Route::get('konseling/absensi/print-absensi-print', [PrintAbsensiController::class, 'index'])->name('konseling.absensi.print-absensi-print');
+        Route::get('konseling/absensi/rekap-kehadiran', RekapKehadiran::class)->name('konseling.absensi.rekap-kehadiran');
 
         // Menu Data Siswa
         Route::get('konseling/siswa/cari-siswa', CariSiswa::class)->name('konseling.siswa.cari-siswa');
