@@ -79,6 +79,7 @@ use App\Http\Livewire\Konseling\Skor\RekapSkor;
 use App\Http\Livewire\Konseling\Skor\RekapSkorPrint;
 use App\Http\Livewire\Kreator\Post\BuatPost;
 use App\Http\Livewire\Kreator\Post\ListPost;
+use App\Http\Livewire\Kurikulum\Kelas\TableGuru as KelasTableGuru;
 use App\Http\Livewire\Kurikulum\Kurikulum\MataPelajaran as KurikulumMataPelajaran;
 use App\Http\Livewire\Kurikulum\Kurikulum\TableKurikulum as KurikulumTableKurikulum;
 use App\Http\Livewire\Kurikulum\MataPelajaran\TableGuru as MataPelajaranTableGuru;
@@ -314,6 +315,9 @@ Route::middleware(['auth'])->group(function () {
 
     // Route For Kurikulum
     Route::middleware(['role:Kurikulum'])->group(function () {
+
+        // Menu Kelas
+        Route::get('kurikulum/kelas/table-guru', KelasTableGuru::class)->name('kurikulum.kelas.table-guru');
 
         //Menu Kurikulum
         Route::get('kurikulum/kurikulum/table-kurikulum', KurikulumTableKurikulum::class)->name('kurikulum.kurikulum.table-kurikulum');

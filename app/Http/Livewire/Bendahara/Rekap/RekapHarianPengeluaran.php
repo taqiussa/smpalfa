@@ -17,6 +17,8 @@ class RekapHarianPengeluaran extends Component
 
     //array
     // public $list_pengeluaran = [];
+    protected $paginationTheme = 'bootstrap';
+
     public function render()
     {
         return view('livewire.bendahara.rekap.rekap-harian-pengeluaran',

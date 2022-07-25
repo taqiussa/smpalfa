@@ -10,6 +10,8 @@ class Bimbingan extends Component
 {
     use WithPagination;
 
+    protected $paginationTheme = 'bootstrap';
+
     public function render()
     {
         return view(

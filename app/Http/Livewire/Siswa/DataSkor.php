@@ -15,6 +15,8 @@ class DataSkor extends Component
     // model
     public $tahun;
     public $saldo;
+    protected $paginationTheme = 'bootstrap';
+
     public function render()
     {
         $this->get_tahun();

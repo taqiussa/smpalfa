@@ -63,3 +63,4 @@ timezone, locale, faker_local id_ID
 16. Guru list kelas sesuai SK mengajar
 17. Rekap Pembayaran / Tagihan Per kelas
 18. Print Data Ekstra per kelas + Nilai, TTD Pembina, Kesiswaan , Kasek
+19. BK pembuatan karakter SISWA

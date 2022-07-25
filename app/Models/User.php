@@ -67,4 +67,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(OrangTua::class, 'nis', 'nis');
     }
+    public function kelas()
+    {
+        return $this->belongsToMany(Kelas::class, 'guru_kelas', 'guru_id', 'kelas_id')->orderBy('nama');
+    }
 }

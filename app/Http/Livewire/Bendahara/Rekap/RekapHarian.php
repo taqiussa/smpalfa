@@ -21,6 +21,8 @@ class RekapHarian extends Component
     //array
     // public $list_pembayaran = [];
     // public $list_pemasukan = [];
+    protected $paginationTheme = 'bootstrap';
+
     public function render()
     {
         return view('livewire.bendahara.rekap.rekap-harian',
