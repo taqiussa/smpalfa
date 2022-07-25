@@ -36,7 +36,7 @@ class RekapSkor extends Component
             'penilaian_skors.id as id',
             'penilaian_skors.created_at as created_at'
         )
-        ->orderBy('created_at','desc')->paginate(5),
+        ->orderBy('penilaian_skors.created_at','desc')->paginate(5),
     ]);
     }
 

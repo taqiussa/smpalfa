@@ -15,7 +15,9 @@ class PrintAbsensi extends Component
     public $semester;
     public $kelas;
     public $id_kelas;
-
+    public $tanggalawal;
+    public $tanggalakhir;
+    
     // array
     public $list_kelas = [];
     public function render()
