@@ -21,7 +21,7 @@ class DataSkor extends Component
         $total = PenilaianSkor::where('tahun', $this->tahun)
         ->where('nis', auth()->user()->nis)
         ->sum('skor');
-        $this->saldo = 500 + $total;
+        $this->saldo = $total;
         return view(
             'livewire.siswa.data-skor',
             [

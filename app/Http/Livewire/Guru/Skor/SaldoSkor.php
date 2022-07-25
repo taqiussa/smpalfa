@@ -64,7 +64,7 @@ class SaldoSkor extends Component
             $skor = PenilaianSkor::where('tahun', $this->tahun)
             ->where('nis', $siswa->nis)
             ->sum('skor');
-            $this->total_skor[$key] = 500 + $skor;
+            $this->total_skor[$key] = $skor;
         }
     }
 }

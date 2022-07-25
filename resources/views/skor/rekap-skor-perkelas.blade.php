@@ -59,7 +59,7 @@
                             $hitung_skor = App\Models\PenilaianSkor::where('nis', $siswa->nis)
                                 ->where('tahun', $tahun)
                                 ->sum('skor');
-                            $total_skor = 500 + $hitung_skor;
+                            $total_skor = $hitung_skor;
                         @endphp
                         {{ $total_skor }}
                     </td>

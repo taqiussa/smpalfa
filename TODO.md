@@ -62,3 +62,4 @@ timezone, locale, faker_local id_ID
 15. Rekap Absensi Bulanan, Semester, Tahun + presentase kehadiran - Menu BK
 16. Guru list kelas sesuai SK mengajar
 17. Rekap Pembayaran / Tagihan Per kelas
+18. Print Data Ekstra per kelas + Nilai, TTD Pembina, Kesiswaan , Kasek
