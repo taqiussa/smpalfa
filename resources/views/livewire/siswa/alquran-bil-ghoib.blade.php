@@ -5,14 +5,14 @@
     <div class="row my-2">
         <x-card>
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <td>#</td>
-                            <td>Surah</td>
-                            <td>Nilai</td>
-                            <td>Guru</td>
-                            <td>Tanggal</td>
+                            <th>#</th>
+                            <th>Surah</th>
+                            <th>Nilai</th>
+                            <th>Guru</th>
+                            <th>Tanggal</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -22,7 +22,9 @@
                                 <td>{{ $jenis->nama }}</td>
                                 <td>{{ $list_nilai[$key] }}</td>
                                 <td class="text-nowrap">{{ $list_guru[$key] }}</td>
-                                <td class="text-nowrap">{{ $list_tanggal[$key] }}</td>
+                                <td class="text-nowrap">
+                                    {{ $list_tanggal[$key] ? Carbon\Carbon::parse($list_tanggal[$key])->translatedFormat('l, d F Y') : '' }}
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
