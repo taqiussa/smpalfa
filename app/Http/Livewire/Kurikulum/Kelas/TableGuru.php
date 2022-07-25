@@ -31,7 +31,7 @@ class TableGuru extends Component
     ];
     protected $listeners =
     [
-        'refresh' => '$rsefresh'
+        'refresh' => '$refresh'
     ];
     protected $paginationTheme = 'bootstrap';
     public function render()
