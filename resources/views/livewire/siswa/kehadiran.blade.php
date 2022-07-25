@@ -45,29 +45,6 @@
                                     <td>{{ $kehadiran->kehadiran->nama }}</td>
                                 </tr>
                             @endforeach
-                            {{-- <tr>
-                                <td>
-                                    <table class="table">
-                                        @foreach ($list_kehadiran['1-2'] as $kehadiran)
-                                            <tr class="text-nowrap">
-                                                <td>{{ Carbon\Carbon::parse($kehadiran->tanggal)->translatedFormat('l, d F Y') }}
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </table>
-                                </td>
-                                @foreach ($jam as $jam)
-                                    <td>
-                                        <table class="table">
-                                            @foreach ($list_kehadiran[$jam] as $kehadiran)
-                                                <tr class="text-nowrap">
-                                                    <td>{{ $kehadiran->kehadiran->nama ?? 'Belum ada absensi' }}</td>
-                                                </tr>
-                                            @endforeach
-                                        </table>
-                                    </td>
-                                @endforeach
-                            </tr> --}}
                         </tbody>
                     </table>
                 </div>

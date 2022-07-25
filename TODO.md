@@ -61,3 +61,4 @@ timezone, locale, faker_local id_ID
 14. Input Nilai Ekstra sesuaikan dengan Input Nilai SUDAH - kalau perlu buat Upload Nilai Ekstra ini belum
 15. Rekap Absensi Bulanan, Semester, Tahun + presentase kehadiran - Menu BK
 16. Guru list kelas sesuai SK mengajar
+17. Rekap Pembayaran / Tagihan Per kelas
