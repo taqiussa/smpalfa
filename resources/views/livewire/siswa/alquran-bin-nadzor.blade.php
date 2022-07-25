@@ -20,7 +20,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $jenis->nama }}</td>
-                                <td>{{ $list_nilai[$key] }}</td>
+                                <td class="text-center">{{ $list_nilai[$key] }}</td>
                                 <td class="text-nowrap">{{ $list_guru[$key] }}</td>
                                 <td class="text-nowrap">
                                     {{ $list_tanggal[$key] ? Carbon\Carbon::parse($list_tanggal[$key])->translatedFormat('l, d F Y') : '' }}
