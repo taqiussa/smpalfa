@@ -5,6 +5,7 @@ use App\Http\Controllers\DaftarNilaiController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Konseling\Layanan\DetailBimbinganController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PrintAbsensiController;
 use App\Http\Controllers\PrintAlquranController;
@@ -28,6 +29,7 @@ use App\Http\Livewire\Admin\Skor\DataSkor;
 use App\Http\Livewire\Admin\User\SetRole;
 use App\Http\Livewire\Admin\User\SetUserSiswa;
 use App\Http\Livewire\Admin\User\TableUser;
+use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Bendahara\Kas\KasBulanan;
 use App\Http\Livewire\Bendahara\Kas\KasTahunan;
 use App\Http\Livewire\Bendahara\Pengaturan\Gunabayar;
@@ -127,8 +129,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', Posts::class)->name('landing');
 Route::get('/detail/{slug}', [LandingController::class, 'detail'])->name('landing.detail');
 
-Auth::routes();
+// Auth::routes();
+Route::middleware(['guest'])->group(function () {
+    Route::get('login', Login::class)->name('login');
+});
 Route::middleware(['auth'])->group(function () {
+    Route::post('logout', LogoutController::class)->name('logout');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('user/profile', Profile::class)->name('user.profile');
 
