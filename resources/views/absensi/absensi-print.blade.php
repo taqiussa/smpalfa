@@ -83,13 +83,13 @@
                     <td style="text-align: center">{{ $loop->iteration }}</td>
                     <td style="text-align: center">{{ $siswa->nis }}</td>
                     <td style="padding-left:5px; white-space:nowrap">{{ $siswa->user->name }}</td>
-                    <td style="padding-left:5px; white-space:nowrap">{{ $list_hadir[$key] }}</td>
-                    <td style="padding-left:5px; white-space:nowrap">{{ $list_izin[$key] }}</td>
-                    <td style="padding-left:5px; white-space:nowrap">{{ $list_sakit[$key] }}</td>
-                    <td style="padding-left:5px; white-space:nowrap">{{ $list_alpha[$key] }}</td>
-                    <td style="padding-left:5px; white-space:nowrap">{{ $list_bolos[$key] }}</td>
-                    <td style="padding-left:5px; white-space:nowrap">{{ $list_pulang[$key] }}</td>
-                    <td style="padding-left:5px; white-space:nowrap">{{ $list_present[$key] . ' %' }}</td>
+                    <td style="text-align:center">{{ $list_hadir[$key] }}</td>
+                    <td style="text-align:center">{{ $list_izin[$key] }}</td>
+                    <td style="text-align:center">{{ $list_sakit[$key] }}</td>
+                    <td style="text-align:center">{{ $list_alpha[$key] }}</td>
+                    <td style="text-align:center">{{ $list_bolos[$key] }}</td>
+                    <td style="text-align:center">{{ $list_pulang[$key] }}</td>
+                    <td style="text-align:center">{{ $list_present[$key] . ' %' }}</td>
                 </tr>
             @endforeach
         </tbody>
