@@ -9,9 +9,11 @@ use App\Models\Kelas;
 use App\Models\Pemasukan;
 use App\Models\Pembayaran;
 use App\Models\Pengeluaran;
+use App\Models\Siswa;
 use App\Models\Transaksi;
 use App\Models\User;
 use App\Models\WajibBayar;
+use App\Models\WaliKelas;
 use Illuminate\Http\Request;
 
 class BendaharaPrintController extends Controller
@@ -242,5 +244,28 @@ class BendaharaPrintController extends Controller
             'saldo' => $totalpemasukan - $totalpengeluaran
         ];
         return view('kas.kas-tahunan-print', $data);
+    }
+
+    // Tagihan Siswa
+    public function tagihan_siswa()
+    {
+        $tahun = request('tahun');
+        $idkelas = request('kelas');
+        $kelas = Kelas::find($idkelas);
+        $data =
+        [
+            'tahun' =>$tahun,
+            'nama_kelas' => $kelas->nama,
+            'wali_kelas' => WaliKelas::where('tahun', $tahun)
+            ->where('kelas_id', $idkelas)
+            ->get(),
+            'list_siswa' => Siswa::where('tahun', $tahun)
+            ->where('kelas_id', $idkelas)
+            ->with(['user'])
+            ->get()
+            ->sortBy('user.name'),
+            'list_gunabayar' => Gunabayar::orderBy('semester')->get(),
+        ];
+        return view('tagihan.tagihan-siswa-print', $data);
     }
 }

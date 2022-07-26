@@ -43,6 +43,7 @@ use App\Http\Livewire\Bendahara\Rekap\RekapHarian;
 use App\Http\Livewire\Bendahara\Rekap\RekapHarianPengeluaran;
 use App\Http\Livewire\Bendahara\Rekap\RekapTahunan;
 use App\Http\Livewire\Bendahara\Rekap\RekapTahunanPengeluaran;
+use App\Http\Livewire\Bendahara\TagihanSiswa;
 use App\Http\Livewire\Bendahara\Transaksi\Pemasukan;
 use App\Http\Livewire\Bendahara\Transaksi\PembayaranSiswa;
 use App\Http\Livewire\Bendahara\Transaksi\Pengeluaran;
@@ -224,6 +225,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('bendahara/kas/kas-tahunan', KasTahunan::class)->name('bendahara.kas.kas-tahunan');
         Route::get('bendahara/kas/kas-bulanan-print', [BendaharaPrintController::class, 'kas_bulanan'])->name('bendahara.kas.kas-bulanan-print');
         Route::get('bendahara/kas/kas-tahunan-print', [BendaharaPrintController::class, 'kas_tahunan'])->name('bendahara.kas.kas-tahunan-print');
+    
+        // Menu Tagihan Siswa
+        Route::get('bendahara/tagihan-siswa', TagihanSiswa::class)->name('bendahara.tagihan-siswa');
+        Route::get('bendahara/tagihan-siswa-print', [BendaharaPrintController::class, 'tagihan_siswa'])->name('bendahara.tagihan-siswa-print');
     });
 
     //Route For Guru
