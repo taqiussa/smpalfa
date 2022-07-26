@@ -61,3 +61,4 @@ timezone, locale, faker_local id_ID
 14. Rekap Pembayaran / Tagihan Per kelas
 15. Print Data Ekstra per kelas + Nilai, TTD Pembina, Kesiswaan , Kasek
 16. BK pembuatan karakter SISWA
+17. RAPBS
