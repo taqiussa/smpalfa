@@ -45,9 +45,11 @@
                                 </div>
                             @endif
                             <div class="d-flex justify-content-end">
-                                <button wire:click.prevent="simpan" type="submit" class="btn btn-primary"
+                                <button wire:click.prevent="simpan" type="submit" class="btn btn-primary mx-2 my-2"
                                     wire:loading.class="disabled" wire:target="simpan">Simpan <i wire:loading
                                         wire:target="simpan" class="fas fa-spin fa-spinner"></i></button>
+                                <button wire:click.prevent="batal" wire:loading.class="disabled" wire:target="batal" class="btn btn-secondary mx-2 my-2">Batal <i wire:loading
+                                    wire:target="batal" class="fas fa-spin fa-spinner"></i></button>
                             </div>
                         </form>
                     @endif
@@ -59,6 +61,17 @@
         <div class="col-md-12">
             <div class="card shadow rounded-md border-top-0 border-end-0 border-bottom-0 border-3 border-primary">
                 <div class="card-body">
+                    <div class="col-md-6 my-2">
+                        <div class="input-group">
+                            <span class="input-group-text">Cari</span>
+                            <input wire:model.debounce.500ms="search" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="my-2">
+                        <span wire:loading wire:target="search">Memuat Data... <i class="fas fa-spin fa-spinner"></i> </span>
+                        <span wire:loading wire:target="batal">Memuat Data... <i class="fas fa-spin fa-spinner"></i> </span>
+                        <span wire:loading wire:target="edit">Memuat Data... <i class="fas fa-spin fa-spinner"></i> </span>
+                    </div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>

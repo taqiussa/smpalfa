@@ -15,22 +15,27 @@ class SetRole extends Component
     public $user;
     public $user_id;
     public $nama;
+    public $search = '';
 
     //array
     public $list_role;
     public $roles_name;
 
     protected $paginationTheme = 'bootstrap';
-    protected $rules = 
+    protected $rules =
     [
         'user' => 'required'
     ];
     public function render()
     {
-        return view('livewire.admin.user.set-role',
-    [
-        'list_user' => User::where('username', '!=', '')->orderBy('name')->paginate(5)
-    ]);
+        return view(
+            'livewire.admin.user.set-role',
+            [
+                'list_user' => User::where('username', '!=', '')
+                    ->where('name', 'like', '%' . $this->search . '%')
+                    ->orderBy('name')->paginate(5)
+            ]
+        );
     }
 
     public function mount()

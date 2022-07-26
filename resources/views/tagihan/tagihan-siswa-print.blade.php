@@ -15,6 +15,9 @@
             margin-left: 10px;
             margin-right: 10px;
         }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
 
         @page {
             margin-top: 15px;

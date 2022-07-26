@@ -51,16 +51,13 @@ timezone, locale, faker_local id_ID
 4. Jurnal Guru dan Jurnal Wali Kelas - pending akhir tahun
 5. Rekap Bimbingan Print
 6. Rekap Skor Print - belum selesai, Rekap Skor Per Siswa / Download Per Siswa
-7. Set Role Username perbaiki
-8. Table User dan Set Role Perbaiki, tambahkan pencarian User
-9. rekapan ekstra per kelas - buat print rekap data siswa per ekstra
-10. Print data skor per siswa mengacu pada nomor 13
-11. Nilai Quran - on going - kurang print per siswa
-12. alpha dari skor
-13. Tambah Siswa - kurang data alamat dan lain lain
-14. Input Nilai Ekstra sesuaikan dengan Input Nilai SUDAH - kalau perlu buat Upload Nilai Ekstra ini belum
-15. Rekap Absensi Bulanan, Semester, Tahun + presentase kehadiran - Menu BK
-16. Guru list kelas sesuai SK mengajar
-17. Rekap Pembayaran / Tagihan Per kelas
-18. Print Data Ekstra per kelas + Nilai, TTD Pembina, Kesiswaan , Kasek
-19. BK pembuatan karakter SISWA
+7. rekapan ekstra per kelas - buat print rekap data siswa per ekstra
+8. Print data skor per siswa mengacu pada nomor 13
+9. Nilai Quran - on going - kurang print per siswa
+10. alpha dari skor
+11. Tambah Siswa - kurang data alamat dan lain lain
+12. Input Nilai Ekstra sesuaikan dengan Input Nilai SUDAH - kalau perlu buat Upload Nilai Ekstra ini belum
+13. Guru list kelas sesuai SK mengajar
+14. Rekap Pembayaran / Tagihan Per kelas
+15. Print Data Ekstra per kelas + Nilai, TTD Pembina, Kesiswaan , Kasek
+16. BK pembuatan karakter SISWA

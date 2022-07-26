@@ -34,6 +34,7 @@ class DataSkor extends Component
     }
     public function simpan()
     {
+        $this->validate();
         if($this->is_edit)
         {
             Skor::where('id', $this->id_skor)

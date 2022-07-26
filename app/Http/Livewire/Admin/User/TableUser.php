@@ -20,8 +20,9 @@ class TableUser extends Component
     public $password_confirmation;
     public $is_edit;
     public $id_user;
-    //array
+    public $search = '';
 
+    //array
     protected $paginationTheme = 'bootstrap';
     protected $rules = [
         'name' => 'required',
@@ -29,14 +30,16 @@ class TableUser extends Component
         'password' => 'required|min:8|confirmed'
     ];
     protected $listeners = [
-        'delete' => 'delete'
+        'delete' => 'delete',
     ];
     public function render()
     {
         return view(
             'livewire.admin.user.table-user',
             [
-                'list_user' => User::where('username', '!=', '')->orderBy('name')->paginate(10)
+                'list_user' => User::where('username', '!=', '')
+                ->where('name', 'like', '%' . $this->search . '%')
+                ->orderBy('name')->paginate(10)
             ]
         );
     }
@@ -49,6 +52,10 @@ class TableUser extends Component
         $user = User::find($id);
         $this->name = $user->name;
         $this->username = $user->username;
+    }
+    public function batal()
+    {
+        $this->reset();
     }
     public function simpan()
     {
